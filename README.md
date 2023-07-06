@@ -1,6 +1,6 @@
 # devops_coursework
 This is a coursework repository for the Devops Subject [Group 3]
-Hello testing
+
 <br>Following is main and develop building status, license and release status 
 
 <br>Main Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
