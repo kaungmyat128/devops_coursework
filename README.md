@@ -1,6 +1,7 @@
 # devops_coursework
 This is a coursework repository for the Devops Subject [Group 3]
 Hello testing
+Following is main and develop building status, license and release status 
 
 Main Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
 Develop Build Status: ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=main)
