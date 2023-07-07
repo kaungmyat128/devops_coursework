@@ -35,6 +35,12 @@ jobs:
       # Step: Build with Maven
       - name: Build with Maven
         run: mvn package
+      - name: Build Docker Image
+        run: docker build -t semimage .
+      - name: Run image
+        run: docker run --name semcontainer -d semimage
+      - name: view logs
+        run: docker logs semcontainer
 
       # Step: Run docker compose
       - name: Run docker compose
