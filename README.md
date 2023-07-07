@@ -11,7 +11,7 @@ This is a coursework repository for the Devops Subject [Group 3]
 
 <br>Master Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
 <br>Develop Build Status: ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
-<br><b>License Status </b>: [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
+<br><b>License Status: </b> [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
 <br><b>Release Status:</b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
 
 
