@@ -7,6 +7,14 @@ This is a coursework repository for the Devops Subject [Group 3]
 <br>4. Zwe Htut Htay Lwin
 <br>5. Hein Thaw Zin
 
+<br>Following is main and develop building status, license and release status 
+
+<br>Master Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
+<br>Develop Build Status: ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
+<br><b>License Status </b>: [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
+<br><b>Release Status:</b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
+
+
 <br> We are working for organization that require reporting on world population information. 
 <br>
 <br> We have been ask to implement the new system which can easily access to the information of the population.
@@ -19,12 +27,6 @@ This is a coursework repository for the Devops Subject [Group 3]
 <br>
 <br> User can find the top populated countries in the world, cities and capital cities, continents and  regions as user wish (For example top 10 populated countries in the world) 
 <br>
-<br>Following is main and develop building status, license and release status 
-
-<br>Master Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
-<br>Develop Build Status: ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
-<br>LICENSE STATUS: [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
-<br>RELEASES STATUS: [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
 
 
 
