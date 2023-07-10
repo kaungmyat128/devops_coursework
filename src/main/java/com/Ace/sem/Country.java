@@ -154,4 +154,33 @@ public class Country {
         System.out.println("============================================================");
     }
 
+    public void displayCountries_Continent(ArrayList<Country> countries_list)
+    {
+        // Print header
+        System.out.println("============================================================");
+        System.out.println("Top 25 countries population in the world ");
+
+        // Initialize Current Continent variable
+        String currentContinent = null;
+
+        // Loop over all countries population in the list
+        for (Country cp : countries_list)
+        {
+            // Check the current continent changed or not
+            if (!cp.Continent.equals(currentContinent)) {
+                // Print the continent header
+                System.out.println("\n Top N Countries Population in " + cp.Continent);
+                System.out.println("===========================================");
+                currentContinent = cp.Continent;
+                System.out.println(String.format("%-10s %-20s %-15s %-20s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+
+            }
+
+            String countries_info =
+                    String.format("%-10s %-20s %-15s %-20s %-15s %-15s",
+                            cp.Code, cp.Name, cp.Continent, cp.Region, cp.Population, cp.Capital);
+            System.out.println(countries_info);
+        }
+        System.out.println("============================================================");
+    }
 }

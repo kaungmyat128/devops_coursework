@@ -27,6 +27,10 @@ public class App {
         ArrayList<Country> CPop4 = c2.get_top_countries(a.con);
         c.displayCountries(CPop4);
 
+        // Display Top N Countries Population in Each Continents
+        ArrayList<Country> CPop5 = c2.get_top_countries_continents(a.con);
+        c.displayCountries_Continent(CPop5);
+
         // Display All City Population Around The World
         //ArrayList<City> World = a.getWorldPop();
         //a.displayInfo(World);
