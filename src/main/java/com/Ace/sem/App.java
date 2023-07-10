@@ -8,13 +8,19 @@ public class App {
         // Create new Application
         App a = new App();
 
+        //
+        Country c = new Country();
+
         // Connect to database
         a.connect();
 
         // Extract employee salary information
         ArrayList<City> World = a.getWorldPop();
-
         a.displayInfo(World);
+
+        //
+        ArrayList<Country> CPop = c.getCountryPop();
+        c.displayInfo(CPop);
 
         // Disconnect from database
         a.disconnect();
