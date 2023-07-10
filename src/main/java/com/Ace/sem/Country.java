@@ -168,7 +168,7 @@ public class Country {
             // Check the current continent changed or not
             if (!cp.Continent.equals(currentContinent)) {
                 // Print the continent header
-                System.out.println("\n Top 20 Countries Population in " + cp.Continent);
+                System.out.println("\n Top 20 Countries Population in " + cp.Continent + " Continent");
                 System.out.println("===========================================");
                 currentContinent = cp.Continent;
                 System.out.println(String.format("%-10s %-20s %-15s %-20s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
@@ -197,7 +197,7 @@ public class Country {
             // Check the current continent changed or not
             if (!cp.Region.equals(currentRegion)) {
                 // Print the continent header
-                System.out.println("\n Top 10 Countries Population in " + cp.Region);
+                System.out.println("\n Top 10 Countries Population in " + cp.Region + " Region");
                 System.out.println("===========================================");
                 currentRegion = cp.Region;
                 System.out.println(String.format("%-10s %-20s %-15s %-20s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
