@@ -19,7 +19,7 @@ public class App {
         a.displayInfo(World);
 
         //
-        ArrayList<Country> CPop = c.getCountryPop();
+        ArrayList<Country> CPop = c.getCountryPop(a.con);
         c.displayInfo(CPop);
 
         // Disconnect from database
