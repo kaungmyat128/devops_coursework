@@ -140,7 +140,7 @@ public class Country {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 25 countries population in the world ");
+        System.out.println("Top 20 countries population in the world ");
 
         System.out.println(String.format("%-10s %-20s %-15s %-20s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
         // Loop over all countries population in the list
