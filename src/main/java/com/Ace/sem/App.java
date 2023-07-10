@@ -4,9 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class App {
-    public String Name;
-    public int Population;
-
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -15,7 +12,7 @@ public class App {
         a.connect();
 
         // Extract employee salary information
-        ArrayList<App> World = a.getWorldPop(10);
+        ArrayList<City> World = a.getWorldPop(10);
 
         a.displayInfo(World);
 
@@ -73,7 +70,7 @@ public class App {
         }
     }
 
-    public ArrayList<App> getWorldPop(int num) {
+    public ArrayList<City> getWorldPop(int num) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -85,9 +82,9 @@ public class App {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
-            ArrayList<App> Worldpop = new ArrayList<App>();
+            ArrayList<City> Worldpop = new ArrayList<City>();
             while (rset.next()) {
-                App world = new App();
+                City world = new City();
                 world.Name = rset.getString("city.Name");
                 world.Population = rset.getInt("city.Population");
                 Worldpop.add(world);
@@ -99,12 +96,12 @@ public class App {
             return null;
         }
     }
-    public void displayInfo(ArrayList<App> World)
+    public void displayInfo(ArrayList<City> World)
     {
         // Print header
         System.out.println(String.format("%-10s %-15s", "Name", "Population"));
         // Loop over all employees in the list
-        for (App world : World)
+        for (City world : World)
         {
             String world_info =
                     String.format("%-10s %-15s",
