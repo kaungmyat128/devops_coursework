@@ -23,13 +23,17 @@ public class App {
         ArrayList<Country> CPop1 = c.getCountryPop(a.con);
         c.displayCountries(CPop1);
 
-        // Display Top N Countries Population
+        // Display Top 20 Countries Population
         ArrayList<Country> CPop4 = c2.get_top_countries(a.con);
         c.displayCountries(CPop4);
 
-        // Display Top N Countries Population in Each Continents
+        // Display Top 20 Countries Population in Each Continent
         ArrayList<Country> CPop5 = c2.get_top_countries_continents(a.con);
         c.displayCountries_Continent(CPop5);
+
+        // Display Top 10 Countries Population in Each Region
+        ArrayList<Country> CPop6 = c2.get_top_countries_regions(a.con);
+        c.displayCountries_Region(CPop6);
 
         // Display All City Population Around The World
         //ArrayList<City> World = a.getWorldPop();
