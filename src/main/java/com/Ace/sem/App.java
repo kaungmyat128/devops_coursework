@@ -4,32 +4,38 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class App {
-    public static void main(String[] args) {
-        // Create new Application
-        App a = new App();
+    /**
+     * Connection to MySQL database.
+     */
+    private Connection con = null;
 
-        //
+    public static void main(String[] args) {
+        // Create new Application Object
+        App a = new App();
+        // Create new Country Object
         Country c = new Country();
+        // Create new object for top countries population Class Java
+        top_countries_population c2 = new top_countries_population();
 
         // Connect to database
         a.connect();
+        // Display All Countries Population
+        ArrayList<Country> CPop1 = c.getCountryPop(a.con);
+        c.displayCountries(CPop1);
 
-        // Extract employee salary information
-        ArrayList<City> World = a.getWorldPop();
-        a.displayInfo(World);
+        // Display Top N Countries Population
+        ArrayList<Country> CPop4 = c2.get_top_countries(a.con);
+        c.displayCountries(CPop4);
 
-        //
-        ArrayList<Country> CPop = c.getCountryPop(a.con);
-        c.displayInfo(CPop);
+        // Display All City Population Around The World
+        //ArrayList<City> World = a.getWorldPop();
+        //a.displayInfo(World);
 
         // Disconnect from database
         a.disconnect();
     }
 
-    /**
-     * Connection to MySQL database.
-     */
-    private Connection con = null;
+
 
     /**
      * Connect to the MySQL database.

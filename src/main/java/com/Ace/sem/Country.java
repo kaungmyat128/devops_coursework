@@ -4,9 +4,6 @@ import java.sql.*;
 import java.util.*;
 
 public class Country {
-    public static void main(String[] args) {
-
-    }
     /**
      * City Code
      */
@@ -27,56 +24,15 @@ public class Country {
     public String Region;
 
     /**
-     * City SurfaceArea
-     */
-    public float SurfaceArea;
-    /**
-     * City IndepYear
-     */
-    public int IndepYear;
-
-    /**
      * City Population
      */
     public int Population;
 
     /**
-     * City LifeExpectancy
-     */
-    public float LifeExpectancy;
-
-    /**
-     * City GNP
-     */
-    public float GNP;
-
-    /**
-     * City GNPOld
-     */
-    public float GNPOld;
-
-    /**
-     * City LocalName
-     */
-    public String LocalName;
-    /**
-     * City GovermentForm
-     */
-    public String GovermentForm;
-
-    /**
-     * City HeadOfState
-     */
-    public String HeadOfState;
-
-    /**
      * City Capital
      */
-    public int Capital;
-    /**
-     * City Code2
-     */
-    public String Code2;
+    public String Capital;
+
 
     //creating an array to gather data from country table
     public ArrayList<Country> getCountryPop(Connection con) {
@@ -179,18 +135,21 @@ public class Country {
     }
 
 
-    public void displayInfo(ArrayList<Country> countrypop)
+
+    public void displayCountries(ArrayList<Country> countries_list)
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println(String.format("%-10s %-15s %-15s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population"));
-        // Loop over all employees in the list
-        for (Country cp : countrypop)
+        System.out.println("Top 25 countries population in the world ");
+
+        System.out.println(String.format("%-10s %-20s %-15s %-20s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+        // Loop over all countries population in the list
+        for (Country cp : countries_list)
         {
-            String world_info =
-                    String.format("%-10s %-15s %-15s %-15s %-15s",
-                            cp.Code, cp.Name, cp.Continent, cp.Region, cp.Population);
-            System.out.println(world_info);
+            String countries_info =
+                    String.format("%-10s %-20s %-15s %-20s %-15s %-15s",
+                            cp.Code, cp.Name, cp.Continent, cp.Region, cp.Population, cp.Capital);
+            System.out.println(countries_info);
         }
         System.out.println("============================================================");
     }
