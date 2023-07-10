@@ -158,7 +158,6 @@ public class Country {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 25 countries population in the world ");
 
         // Initialize Current Continent variable
         String currentContinent = null;
@@ -169,7 +168,7 @@ public class Country {
             // Check the current continent changed or not
             if (!cp.Continent.equals(currentContinent)) {
                 // Print the continent header
-                System.out.println("\n Top N Countries Population in " + cp.Continent);
+                System.out.println("\n Top 20 Countries Population in " + cp.Continent);
                 System.out.println("===========================================");
                 currentContinent = cp.Continent;
                 System.out.println(String.format("%-10s %-20s %-15s %-20s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
