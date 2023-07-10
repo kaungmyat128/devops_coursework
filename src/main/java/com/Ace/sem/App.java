@@ -17,8 +17,6 @@ public class App {
         // Extract employee salary information
         ArrayList<App> World = a.getWorldPop(10);
 
-        // Test the size of the returned data - should be 240124
-        System.out.println(World.size());
         a.displayInfo(World);
 
         // Disconnect from database
