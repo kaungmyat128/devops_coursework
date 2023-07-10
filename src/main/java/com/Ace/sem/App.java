@@ -12,7 +12,7 @@ public class App {
         a.connect();
 
         // Extract employee salary information
-        ArrayList<City> World = a.getWorldPop(10);
+        ArrayList<City> World = a.getWorldPop();
 
         a.displayInfo(World);
 
@@ -70,7 +70,7 @@ public class App {
         }
     }
 
-    public ArrayList<City> getWorldPop(int num) {
+    public ArrayList<City> getWorldPop() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -78,7 +78,7 @@ public class App {
             String strSelect =
                     "SELECT Name,Population "
                             + "FROM city "
-                            + "ORDER BY Population DESC LIMIT num";
+                            + "ORDER BY Population DESC LIMIT 10";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
