@@ -250,7 +250,7 @@ public class TopPopulatedCities {
             if (!cty.District.equals(currentDistrict)){
                 System.out.println("\n Cities sorted by Population in " + cty.District + " District");
                 System.out.println("===========================================");
-                currentDistrict = cty.CountryName;
+                currentDistrict = cty.District;
                 System.out.println(String.format("%-20s %-30s %-35s %-20s", "City", "Country", "District", "Population"));
             }
             String countries_info =
