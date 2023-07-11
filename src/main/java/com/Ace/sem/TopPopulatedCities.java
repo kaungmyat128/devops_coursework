@@ -14,8 +14,8 @@ public class TopPopulatedCities {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-            "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, country.Continent, city.Population"
-                    + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery"
+            "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, country.Continent, city.Population "
+                    + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                     + "WHERE row_num <= 20 ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -43,8 +43,8 @@ public class TopPopulatedCities {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, country.Continent, city.Population"
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery"
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, country.Continent, city.Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                             + "WHERE row_num <= 20 ORDER BY Continent ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -73,8 +73,8 @@ public class TopPopulatedCities {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, country.Region AS Region, city.Population"
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery"
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, country.Region AS Region, city.Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                             + "WHERE row_num <= 20 ORDER BY Region ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -103,8 +103,8 @@ public class TopPopulatedCities {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, city.Population"
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery"
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, city.Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                             + "WHERE row_num <= 20 ORDER BY CountryName ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -132,8 +132,8 @@ public class TopPopulatedCities {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, city.Population"
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery"
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District, city.Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                             + "WHERE row_num <= 20 ORDER BY District ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
