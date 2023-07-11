@@ -175,11 +175,19 @@ public class TopPopulatedCities {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 20 cities with most population in the world ");
-        System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Continent", "District", "Population"));
-        // Loop over all countries population in the list
+
+        // Initialize Current Continent variable
+        String currentContinents = null;
+
+        // Loop over all continents population in the list
         for (City cty : continent_list)
         {
+            if(!cty.Continents.equals(currentContinents)){
+                System.out.println("\n Cities sorted by Population in " + cty.Continents + " Continents");
+                System.out.println("===========================================");
+                currentContinents = cty.Continents;
+                System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Continent", "District", "Population"));
+            }
             String continent_info =
                     String.format("%-10s %-20s %-15s %-15s %-20s",
                             cty.CityName, cty.CountryName, cty.Continents, cty.District, cty.Population);
@@ -191,7 +199,7 @@ public class TopPopulatedCities {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 20 cities with most population in the world ");
+        System.out.println("Top 20 cities with most population in a Region ");
 
         System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Region", "District", "Population"));
         // Loop over all countries population in the list
@@ -208,7 +216,7 @@ public class TopPopulatedCities {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 20 cities with most population in the world ");
+        System.out.println("Top 20 cities with most population in a country ");
 
         System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
         // Loop over all countries population in the list
@@ -225,7 +233,7 @@ public class TopPopulatedCities {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 20 cities with most population in the world ");
+        System.out.println("Top 20 cities with most population in a District");
 
         System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
         // Loop over all countries population in the list
