@@ -24,6 +24,9 @@ public class App {
         // Create new object for top countries population Class Java
         top_countries_population c2 = new top_countries_population();
 
+
+        City_report c3 = new City_report();
+
         // Connect to database
         a.connect();
 
@@ -59,9 +62,6 @@ public class App {
 
         ArrayList<City> CtyTop = cty.getCityWorldPop(a.con);
         cty.displayTopCities(CtyTop);
-        // Display All City Population Around The World
-        //ArrayList<City> World = a.getWorldPop();
-        //a.displayInfo(World);
 
         // Disconnect from database
         a.disconnect();
