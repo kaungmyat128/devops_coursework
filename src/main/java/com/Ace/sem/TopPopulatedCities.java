@@ -45,7 +45,7 @@ public class TopPopulatedCities {
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
                             + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY Population DESC LIMIT 20";
+                            + "WHERE row_num <= 20 ORDER BY Continent ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
@@ -75,7 +75,7 @@ public class TopPopulatedCities {
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
                             + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY Population DESC LIMIT 20";
+                            + "WHERE row_num <= 20 ORDER BY Region ASC ,Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
@@ -105,7 +105,7 @@ public class TopPopulatedCities {
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                             + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY Population DESC LIMIT 20";
+                            + "WHERE row_num <= 20 ORDER BY CountryName ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
@@ -133,8 +133,8 @@ public class TopPopulatedCities {
             // Create string for SQL statement
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY Population DESC LIMIT 20";
+                            + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE row_num <= 20 ORDER BY District DESC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
@@ -160,7 +160,7 @@ public class TopPopulatedCities {
         System.out.println("============================================================");
         System.out.println("Top 20 cities with most population in the world ");
 
-        System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
+        System.out.println(String.format("%-15s %-25s %-20s %-20s", "City", "Country", "District", "Population"));
         // Loop over all countries population in the list
         for (City cty : cities_list)
         {
@@ -177,15 +177,15 @@ public class TopPopulatedCities {
         System.out.println("============================================================");
 
         // Initialize Current Continent variable
-        String currentContinents = null;
+        String currentContinent = null;
 
         // Loop over all continents population in the list
         for (City cty : continent_list)
         {
-            if(!cty.Continents.equals(currentContinents)){
+            if(!cty.Continents.equals(currentContinent)){
                 System.out.println("\n Cities sorted by Population in " + cty.Continents + " Continents");
                 System.out.println("===========================================");
-                currentContinents = cty.Continents;
+                currentContinent = cty.Continents;
                 System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Continent", "District", "Population"));
             }
             String continent_info =
@@ -199,48 +199,62 @@ public class TopPopulatedCities {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 20 cities with most population in a Region ");
+        // Initialize Current Continent variable
+        String currentRegion = null;
 
-        System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Region", "District", "Population"));
-        // Loop over all countries population in the list
-        for (City cty : region_list)
-        {
+        // Loop over all continents population in the list
+        for (City cty : region_list){
+            if(!cty.Region.equals(currentRegion)){
+                System.out.println("\n Cities sorted by Population in " + cty.Region + " Region");
+                System.out.println("===========================================");
+                currentRegion = cty.Continents;
+                System.out.println(String.format("%-20s %-25s %-35s %-20s %-20s", "City", "Country", "Continent", "District", "Population"));
+            }
             String region_info =
-                    String.format("%-10s %-20s %-15s %-15s %-20s",
+                    String.format("%-20s %-25s %-35s %-20s %-20s",
                             cty.CityName, cty.CountryName, cty.District,cty.Region, cty.Population);
             System.out.println(region_info);
         }
         System.out.println("============================================================");
     }
-    public void displayTPCICountry(ArrayList<City> cities_list)
+    public void displayTPCICountry(ArrayList<City> countries_list)
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 20 cities with most population in a country ");
+        // Initialize Current Country variable
+        String currentCountry = null;
 
-        System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
         // Loop over all countries population in the list
-        for (City cty : cities_list)
-        {
+        for (City cty : countries_list){
+            if (!cty.CountryName.equals(currentCountry)){
+                System.out.println("\n Cities sorted by Population in " + cty.CountryName + " Country");
+                System.out.println("===========================================");
+                currentCountry = cty.CountryName;
+                System.out.println(String.format("%-20s %-30s %-35s %-20s", "City", "Country", "District", "Population"));
+            }
             String countries_info =
-                    String.format("%-10s %-20s %-15s %-20s",
+                    String.format("%-20s %-30s %-35s %-20s",
                             cty.CityName, cty.CountryName, cty.District, cty.Population);
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
     }
-    public void displayTPCIDistrict(ArrayList<City> cities_list)
+    public void displayTPCIDistrict(ArrayList<City> districts_list)
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println("Top 20 cities with most population in a District");
+        // Initialize Current Country variable
+        String currentDistrict = null;
 
-        System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
-        // Loop over all countries population in the list
-        for (City cty : cities_list)
-        {
+        for (City cty : districts_list){
+            if (!cty.District.equals(currentDistrict)){
+                System.out.println("\n Cities sorted by Population in " + cty.District + " District");
+                System.out.println("===========================================");
+                currentDistrict = cty.District;
+                System.out.println(String.format("%-20s %-30s %-35s %-20s", "City", "Country", "District", "Population"));
+            }
             String countries_info =
-                    String.format("%-10s %-20s %-15s %-20s",
+                    String.format("%-20s %-30s %-35s %-20s",
                             cty.CityName, cty.CountryName, cty.District, cty.Population);
             System.out.println(countries_info);
         }
