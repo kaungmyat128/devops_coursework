@@ -32,7 +32,7 @@ public class TopPopulatedCities {
             return worldPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get Population of City by World");
             return null;
         }
     }
@@ -55,13 +55,14 @@ public class TopPopulatedCities {
                 continent.CityName = rset.getString("CityName");
                 continent.CountryName = rset.getString("CountryName");
                 continent.District = rset.getString("District");
+                continent.Continents = rset.getString("Continents");
                 continent.Population = rset.getInt("Population");
                 continentPop.add(continent);
             }
             return continentPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get Population of City by Continent");
             return null;
         }
     }
@@ -84,13 +85,14 @@ public class TopPopulatedCities {
                 region.CityName = rset.getString("CityName");
                 region.CountryName = rset.getString("CountryName");
                 region.District = rset.getString("District");
+                region.Region = rset.getString("Region");
                 region.Population = rset.getInt("Population");
                 regionPop.add(region);
             }
             return regionPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get Population of City by Region");
             return null;
         }
     }
@@ -119,7 +121,7 @@ public class TopPopulatedCities {
             return countryPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get Population of City by Country");
             return null;
         }
     }
@@ -148,7 +150,7 @@ public class TopPopulatedCities {
             return districtPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get Population of City By District");
             return null;
         }
     }
