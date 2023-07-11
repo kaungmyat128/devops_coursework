@@ -4,30 +4,46 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class App {
-    public static void main(String[] args) {
-        // Create new Application
-        App a = new App();
-        Country c = new Country();
-        //
-        TopPopulatedCities b = new TopPopulatedCities();
-        ArrayList<City> World= b.getWorldPop(a.con);
-        b.displayInfo(World);
-        // Connect to database
-        b.connect();
-
-        //
-        ArrayList<Country> CPop = c.getCountryPop(a.con);
-        c.displayInfo(CPop);
-
-        // Disconnect from database
-        a.disconnect();
-        b.disconnect();
-    }
-
     /**
      * Connection to MySQL database.
      */
-    public Connection con = null;
+    private Connection con = null;
+
+    public static void main(String[] args) {
+        // Create new Application Object
+        App a = new App();
+        // Create new Country Object
+        Country c = new Country();
+        // Create new object for top countries population Class Java
+        top_countries_population c2 = new top_countries_population();
+
+        // Connect to database
+        a.connect();
+        // Display All Countries Population
+        ArrayList<Country> CPop1 = c.getCountryPop(a.con);
+        c.displayCountries(CPop1);
+
+        // Display Top 20 Countries Population
+        ArrayList<Country> CPop4 = c2.get_top_countries(a.con);
+        c.displayCountries(CPop4);
+
+        // Display Top 20 Countries Population in Each Continent
+        ArrayList<Country> CPop5 = c2.get_top_countries_continents(a.con);
+        c.displayCountries_Continent(CPop5);
+
+        // Display Top 10 Countries Population in Each Region
+        ArrayList<Country> CPop6 = c2.get_top_countries_regions(a.con);
+        c.displayCountries_Region(CPop6);
+
+        // Display All City Population Around The World
+        //ArrayList<City> World = a.getWorldPop();
+        //a.displayInfo(World);
+
+        // Disconnect from database
+        a.disconnect();
+    }
+
+
 
     /**
      * Connect to the MySQL database.
@@ -71,6 +87,46 @@ public class App {
             } catch (Exception e) {
                 System.out.println("Error closing connection to database");
             }
+        }
+    }
+
+    public ArrayList<City> getWorldPop() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name,Population "
+                            + "FROM city "
+                            + "ORDER BY Population DESC LIMIT 10";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> Worldpop = new ArrayList<City>();
+            while (rset.next()) {
+                City world = new City();
+                world.Name = rset.getString("city.Name");
+                world.Population = rset.getInt("city.Population");
+                Worldpop.add(world);
+            }
+            return Worldpop;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+    public void displayInfo(ArrayList<City> World)
+    {
+        // Print header
+        System.out.println(String.format("%-10s %-15s", "Name", "Population"));
+        // Loop over all employees in the list
+        for (City world : World)
+        {
+            String world_info =
+                    String.format("%-10s %-15s",
+                            world.Name, world.Population);
+            System.out.println(world_info);
         }
     }
 }
