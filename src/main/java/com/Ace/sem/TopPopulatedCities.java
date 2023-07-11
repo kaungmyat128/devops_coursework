@@ -45,7 +45,7 @@ public class TopPopulatedCities {
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
                             + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY Population DESC LIMIT 20";
+                            + "WHERE row_num <= 20 ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
