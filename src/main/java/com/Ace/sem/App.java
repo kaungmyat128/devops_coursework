@@ -60,7 +60,6 @@ public class App {
         ArrayList<Country> CPop6 = c2.get_top_countries_regions(a.con);
         System.out.println("Top 20 Countries Population in Each Region");
         c.displayCountries_Region(CPop6);
-
         // Display All City Population Around The World
         //ArrayList<City> World = a.getWorldPop();
         //a.displayInfo(World);
