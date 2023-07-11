@@ -3,6 +3,10 @@ package com.Ace.sem;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * contains objects to initialize and stop connection to the database
+ * uses other classes to gather country data and display them.
+ */
 public class App {
     /**
      * Connection to MySQL database.
@@ -14,25 +18,44 @@ public class App {
         App a = new App();
         // Create new Country Object
         Country c = new Country();
+
+        // Create new object with Country_report java Class
+        Country_report cr = new Country_report();
+
         // Create new object for top countries population Class Java
         top_countries_population c2 = new top_countries_population();
 
         // Connect to database
         a.connect();
+
         // Display All Countries Population
-        ArrayList<Country> CPop1 = c.getCountryPop(a.con);
+        ArrayList<Country> CPop1 = cr.getCountryPop(a.con);
+        System.out.println("All Countries Population in the World");
         c.displayCountries(CPop1);
+
+        // Display country population based on continent
+        ArrayList<Country> CPop2 = cr.getCounContPop(a.con);
+        System.out.println("All Countries Population in the World categorized by Continents");
+        c.displayCountries_Continent(CPop2);
+
+        // Display country population based on region
+        ArrayList<Country> CPop3 = cr.getCounRegPop(a.con);
+        System.out.println("All Countries Population in the World categorized by Regions");
+        c.displayCountries_Region(CPop3);
 
         // Display Top 20 Countries Population
         ArrayList<Country> CPop4 = c2.get_top_countries(a.con);
+        System.out.println("Top 20 Countries Population in the World");
         c.displayCountries(CPop4);
 
         // Display Top 20 Countries Population in Each Continent
         ArrayList<Country> CPop5 = c2.get_top_countries_continents(a.con);
+        System.out.println("Top 20 Countries Population in Each Continent");
         c.displayCountries_Continent(CPop5);
 
         // Display Top 10 Countries Population in Each Region
         ArrayList<Country> CPop6 = c2.get_top_countries_regions(a.con);
+        System.out.println("Top 20 Countries Population in Each Region");
         c.displayCountries_Region(CPop6);
 
         // Display All City Population Around The World

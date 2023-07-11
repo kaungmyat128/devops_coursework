@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+    /**
+     * Creates methods to write sql queries and create arraylists of top 20 countries
+    */
 public class top_countries_population extends Country {
+    //creates array to gather top 20 populated country data
      public ArrayList<Country> get_top_countries (Connection con){
         try {
             // Create an SQL statement
@@ -18,7 +21,7 @@ public class top_countries_population extends Country {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             // Extract population of countries information
-            ArrayList<Country> top_countries_population = new ArrayList<Country>();
+            ArrayList<Country> top_countries_population = new ArrayList<>();
             while (query1.next()) {
                 Country cp = new Country();
                 cp.Code = query1.getString("country.Code");
@@ -38,6 +41,7 @@ public class top_countries_population extends Country {
         }
     }
 
+    //creates array to gather top 20 populated country data based on continents
     public ArrayList<Country> get_top_countries_continents (Connection con){
         try {
             // Create an SQL statement
@@ -53,7 +57,7 @@ public class top_countries_population extends Country {
             ResultSet query2 = stmt.executeQuery(strSelect);
 
             // Extract population of countries information
-            ArrayList<Country> top_countries_population = new ArrayList<Country>();
+            ArrayList<Country> top_countries_population = new ArrayList<>();
             while (query2.next()) {
                 Country cp = new Country();
                 cp.Code = query2.getString("Code");
@@ -73,6 +77,7 @@ public class top_countries_population extends Country {
         }
     }
 
+        //creates array to gather top 20 populated country data based on regions
     public ArrayList<Country> get_top_countries_regions (Connection con){
         try {
             // Create an SQL statement
@@ -88,7 +93,7 @@ public class top_countries_population extends Country {
             ResultSet query3 = stmt.executeQuery(strSelect);
 
             // Extract population of countries information
-            ArrayList<Country> top_countries_population = new ArrayList<Country>();
+            ArrayList<Country> top_countries_population = new ArrayList<>();
             while (query3.next()) {
                 Country cp = new Country();
                 cp.Code = query3.getString("Code");
