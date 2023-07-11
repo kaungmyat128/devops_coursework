@@ -18,10 +18,9 @@ public class App {
         App a = new App();
         // Create new Country Object
         Country c = new Country();
-
         // Create new object with Country_report java Class
         Country_report cr = new Country_report();
-
+        TopPopulatedCities cty = new TopPopulatedCities();
         // Create new object for top countries population Class Java
         top_countries_population c2 = new top_countries_population();
 
@@ -58,6 +57,8 @@ public class App {
         System.out.println("Top 20 Countries Population in Each Region");
         c.displayCountries_Region(CPop6);
 
+        ArrayList<City> CtyTop = cty.getCityWorldPop(a.con);
+        cty.displayTopCities(CtyTop);
         // Display All City Population Around The World
         //ArrayList<City> World = a.getWorldPop();
         //a.displayInfo(World);
@@ -110,46 +111,6 @@ public class App {
             } catch (Exception e) {
                 System.out.println("Error closing connection to database");
             }
-        }
-    }
-
-    public ArrayList<City> getWorldPop() {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT Name,Population "
-                            + "FROM city "
-                            + "ORDER BY Population DESC LIMIT 10";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<City> Worldpop = new ArrayList<City>();
-            while (rset.next()) {
-                City world = new City();
-                world.Name = rset.getString("city.Name");
-                world.Population = rset.getInt("city.Population");
-                Worldpop.add(world);
-            }
-            return Worldpop;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
-            return null;
-        }
-    }
-    public void displayInfo(ArrayList<City> World)
-    {
-        // Print header
-        System.out.println(String.format("%-10s %-15s", "Name", "Population"));
-        // Loop over all employees in the list
-        for (City world : World)
-        {
-            String world_info =
-                    String.format("%-10s %-15s",
-                            world.Name, world.Population);
-            System.out.println(world_info);
         }
     }
 }

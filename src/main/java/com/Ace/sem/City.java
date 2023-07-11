@@ -1,5 +1,10 @@
 package com.Ace.sem;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 public class City {
     public static void main(String[] args) {
 
@@ -11,7 +16,7 @@ public class City {
     /**
      * City Name
      */
-    public String Name;
+    public String CityName;
 
     /**
      * City CountryCode
@@ -27,6 +32,11 @@ public class City {
      * City Population
      */
     public int Population;
+
+    /**
+     * CountryName
+     */
+    public String CountryName;
 }
 
 
