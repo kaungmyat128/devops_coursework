@@ -21,7 +21,7 @@ public class City_report extends City {
             ArrayList<City> City_report = new ArrayList<>();
             while (data1.next()) {
                 City ct = new City();
-                ct.CityName = data1.getString("Name");
+                ct.CityName = data1.getString("CityName");
                 ct.CountryName = data1.getString("CountryName");
                 ct.District = data1.getString("District");
                 ct.Population = data1.getInt("Population");
