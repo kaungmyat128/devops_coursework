@@ -8,7 +8,7 @@ import java.util.ArrayList;
     /**
      * Creates methods to write sql queries and create arraylists of all countries
     */
-public class Country_report extends Country{
+public class Country_report {
 
     //creating an array to gather data from country table
     public ArrayList<Country> getCountryPop(Connection con) {

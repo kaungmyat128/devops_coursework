@@ -6,13 +6,12 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * contains objects to initialize and stop connection to the database
- * uses other classes to gather country data and display them.
+ * Contains Connect() and Disconnect() Methods for database connection
+ * Initialize New App Object, Country Object, Country Report Object, top_countries_population Object
+ * Initialize City Object, City Report Object, Top Populated Cities Object
  */
 public class App {
-    /**
-     * Connection to MySQL database.
-     */
+    // Connection to MySQL database.
     private Connection con = null;
 
     public static void main(String[] args) {
@@ -22,11 +21,13 @@ public class App {
         Country c = new Country();
         // Create new object with Country_report java Class
         Country_report cr = new Country_report();
-        TopPopulatedCities cty = new TopPopulatedCities();
         // Create new object for top countries population Class Java
         top_countries_population c2 = new top_countries_population();
+
         // Create new object for City_report java Class
         City_report cityR = new City_report();
+        // Create new object for top populated cities Class Java
+        TopPopulatedCities cty = new TopPopulatedCities();
 
         // Connect to database
         a.connect();
