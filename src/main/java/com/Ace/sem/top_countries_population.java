@@ -87,7 +87,7 @@ public class top_countries_population extends Country {
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
                     + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
-                    + "city.Name as Capital FROM country INNER JOIN city ON country.Capital = city.ID) AS subquery "
+                    + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
                     + "WHERE row_num <= 20 ORDER BY Region ASC, Population DESC";
             // Execute SQL statement
             ResultSet query3 = stmt.executeQuery(strSelect);
