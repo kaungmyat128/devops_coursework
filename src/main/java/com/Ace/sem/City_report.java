@@ -17,8 +17,8 @@ public class City_report extends City {
                             + "ORDER BY Population DESC LIMIT 5";
             // Execute SQL statement
             ResultSet data1 = stmt.executeQuery(strSelect);
-            // Extract population of countries information
-            ArrayList<City> City_report = new ArrayList<City>();
+            // Extract population of city information
+            ArrayList<City> City_report = new ArrayList<>();
             while (data1.next()) {
                 City ct = new City();
                 ct.CityName = data1.getString("Name");
