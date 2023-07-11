@@ -25,7 +25,8 @@ public class App {
         TopPopulatedCities cty = new TopPopulatedCities();
         // Create new object for top countries population Class Java
         top_countries_population c2 = new top_countries_population();
-
+        // Create new object for district Class Java
+        District dis = new District();
         // Create new object for City_report java Class
         City_report cityR = new City_report();
 
@@ -68,6 +69,11 @@ public class App {
 
         ArrayList<City> CtyTop = cty.getCityWorldPop(a.con);
         cty.displayTopCities(CtyTop);
+
+        // Display district population based on
+        ArrayList<City> DisPop = cityR.get_city_world(a.con);
+        System.out.println("All districts sorted by population in the world ");
+        dis.displayDistrict(DisPop);
 
         // Disconnect from database
         a.disconnect();
