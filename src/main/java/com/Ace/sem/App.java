@@ -1,5 +1,7 @@
 package com.Ace.sem;
 
+import com.mysql.cj.exceptions.CJTimeoutException;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -24,8 +26,8 @@ public class App {
         // Create new object for top countries population Class Java
         top_countries_population c2 = new top_countries_population();
 
-
-        City_report c3 = new City_report();
+        // Create new object for City_report java Class
+        City_report cityR = new City_report();
 
         // Connect to database
         a.connect();
@@ -59,6 +61,10 @@ public class App {
         ArrayList<Country> CPop6 = c2.get_top_countries_regions(a.con);
         System.out.println("Top 20 Countries Population in Each Region");
         c.displayCountries_Region(CPop6);
+
+        //Display all the cities population in the world
+        ArrayList<City> CityW = cityR.get_city_world(a.con);
+        cityR.displayAllCities(CityW);
 
         ArrayList<City> CtyTop = cty.getCityWorldPop(a.con);
         cty.displayTopCities(CtyTop);

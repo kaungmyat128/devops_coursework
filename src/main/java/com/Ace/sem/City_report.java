@@ -35,4 +35,21 @@ public class City_report extends City {
             return null;
         }
     }
+    public void displayAllCities(ArrayList<City> cities_list)
+    {
+        // Print header
+        System.out.println("============================================================");
+        System.out.println("All the Cities population in the world ");
+
+        System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
+        // Loop over all countries population in the list
+        for (City cityR : cities_list)
+        {
+            String countries_info =
+                    String.format("%-10s %-20s %-15s %-20s",
+                            cityR.CityName, cityR.CountryName, cityR.District, cityR.Population);
+            System.out.println(countries_info);
+        }
+        System.out.println("============================================================");
+    }
 }
