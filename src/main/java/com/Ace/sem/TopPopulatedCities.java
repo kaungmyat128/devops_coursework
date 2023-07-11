@@ -204,7 +204,7 @@ public class TopPopulatedCities {
 
         // Loop over all continents population in the list
         for (City cty : region_list){
-            if(!cty.Continents.equals(currentRegion)){
+            if(!cty.Region.equals(currentRegion)){
                 System.out.println("\n Cities sorted by Population in " + cty.Region + " Region");
                 System.out.println("===========================================");
                 currentRegion = cty.Continents;
