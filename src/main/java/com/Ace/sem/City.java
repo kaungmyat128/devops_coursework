@@ -37,6 +37,10 @@ public class City {
      * CountryName
      */
     public String CountryName;
+
+    public String Continents;
+
+    public String Region;
 }
 
 

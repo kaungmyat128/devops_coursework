@@ -67,8 +67,20 @@ public class App {
         ArrayList<City> CityW = cityR.get_city_world(a.con);
         cityR.displayAllCities(CityW);
 
-        ArrayList<City> CtyTop = cty.getCityWorldPop(a.con);
-        cty.displayTopCities(CtyTop);
+        ArrayList<City> TPCICity = cty.getWorldPopByCity(a.con);
+        cty.displayTPCICity(TPCICity);
+
+        ArrayList<City> TPCIContinent = cty.getContinentPopByCity(a.con);
+        cty.DisplayTPCIContinent(TPCIContinent);
+
+        ArrayList<City> TPCIRegion = cty.getRegionPopByCity(a.con);
+        cty.DisplayTPCIRegion(TPCIRegion);
+
+        ArrayList<City> TPCICountry = cty.getCountryPopByCity(a.con);
+        cty.displayTPCICountry(TPCICountry);
+
+        ArrayList<City> TPCIDistrict = cty.getDistrictPopByCity(a.con);
+        cty.displayTPCIDistrict(TPCIDistrict);
 
         // Display district population based on
         ArrayList<City> DisPop = cityR.get_city_world(a.con);
