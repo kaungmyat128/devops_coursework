@@ -14,6 +14,7 @@ User Stories
 - As a data analyst, I want to view population report of all countries in each region
   ordered by largest to smallest populated countries
   so that I can easily know countries population of any region that I want to see based on this report.
+
   ===========================================================================
 
 Epic 2 - As a data analyst, I want to see top N countries population report.
@@ -26,6 +27,7 @@ User Stories
 
 - As a data analyst, I want to view top N countries population in a region
   so that I can easily view top most populated countries in each region
+
   ===========================================================================
 
 Epic 3 - As a data analyst, I want to see cities populuation report
@@ -67,8 +69,9 @@ User Stories
 - As a data analyst, I want to view top N cities population in each country
   so that I can easily view top most populated countries in each country.
 
-- As a data analyst, I want to view top N cities population in a district
+-  As a data analyst, I want to view top N cities population in a district
   so that I can easily view top most populated countries in each district.
+
   =========================================================================
 
 Epic 5 - As a data analyst, I want to see Capital Cities populuation report.
