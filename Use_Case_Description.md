@@ -25,7 +25,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b><br>
-?
+2nd Week of the Development
 
 <b> MAIN SUCCESS SCENARIO </b><br>
 Data Analyst views the population report of all countries successfully
@@ -39,7 +39,7 @@ Data Analyst views the population report of all countries successfully
 None.
 
 <b> SCHEDULE </b><br>
-DUE DATE: Release 1.0
+DUE DATE: 14th of July, 2023
 
 ============================================================================================
 <h3> USE CASE: 2 Population report of all countries in each continent ordered by largest to smallest populated countries </h3>
@@ -69,7 +69,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b><br>
-?
+2nd Week of The Development after Use Case 1
 
 <b> MAIN SUCCESS SCENARIO </b><br>
 Data Analyst views the population report of all countries of each continent successfully
@@ -83,7 +83,7 @@ Data Analyst views the population report of all countries of each continent succ
 None.
 
 <b> SCHEDULE </b><br>
-DUE DATE: Release 1.0
+DUE DATE: 14th of July, 2023
 
 ===============================================================================
 
@@ -114,7 +114,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-?
+2nd Week of The Development, Implement parallelly with Use Case 1
 
 <b> MAIN SUCCESS SCENARIO </b><br>
 Data Analyst views the population report of all countries of each region successfully
@@ -128,7 +128,7 @@ Data Analyst views the population report of all countries of each region success
 None.
 
 <b> SCHEDULE </b><br>
-DUE DATE: Release 1.0
+DUE DATE: 14th of July, 2023
 
 =============================================================
 <h3> USE CASE: 4 Population report of top N countries population report </h3>
@@ -148,7 +148,7 @@ Primary Task.
 We need to produce top N populated countries population report in the world that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
 
 <b> Success End Condition </b><br>
-A report is available for Data Analyst to view population report of all countries in the world.
+Exactly N number of Countries' Population will be returned. They should be top populated Countries around the world.
 
 <b> Failed End Condition </b><br>
 No report is produced.
@@ -157,7 +157,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b><br>
-?
+2nd Week of The Development, After Use Case 3
 
 <b> MAIN SUCCESS SCENARIO </b> <br>
 Data Analyst views the population report of top N populated countries in the world successfully
@@ -171,7 +171,7 @@ Data Analyst views the population report of top N populated countries in the wor
 None.
 
 <b> SCHEDULE </b> 
-DUE DATE: Release 1.0
+DUE DATE: 14th of July, 2023
 
 =========================================================================================
 <h3> USE CASE: 5 Population report of top N countries population in each continent report </h3>
@@ -190,9 +190,8 @@ Primary Task.
 <b> Preconditions </b><br>
 We need to produce top N populated countries population report in each continent that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
 
-
 <b> Success End Condition </b><br>
-A report is available for Data Analyst to view population report of all countries in each continent
+Exactly N number of Countries' Population will be returned. They should be top populated Countries ine ach continent
 
 <b> Failed End Condition </b><br>
 No report is produced.
@@ -201,7 +200,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b><br>
-?
+2nd week of development, after use case 4.
 
 <b> MAIN SUCCESS SCENARIO </b><br>
 Data Analyst views the population report of top N populated countries in each continent successfully
@@ -215,7 +214,7 @@ Data Analyst views the population report of top N populated countries in each co
 None.
 
 <b> SCHEDULE </b><br>
-DUE DATE: Release 1.0
+DUE DATE: 14th of July, 2023
 
 ==========================================================================
 <h3> USE CASE: 6 Population report of top N countries population in each region report </h3>
@@ -236,7 +235,7 @@ We need to produce top N populated countries population report in each region th
 
 
 <b> Success End Condition</b><br>
-A report is available for Data Analyst to view population report of all countries in each region
+Exactly N number of Countries' Population will be returned. They should be top populated Countries in each region
 
 <b> Failed End Condition</b><br>
 No report is produced.
@@ -245,7 +244,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-***
+2nd week of development, after use case 5
 
 <b> MAIN SUCCESS SCENARIO</b><br>
 Data Analyst views the population report of top N populated countries in each region successfully
@@ -259,7 +258,7 @@ Data Analyst views the population report of top N populated countries in each re
 None.
 
 <b> SCHEDULE</b><br>
-DUE DATE: Release 1.0
+due date - 14th of July, 2023
 
 ====================================================================================
 <h3> USE CASE: 7 Population report of Cities in the world </h3>
@@ -278,7 +277,6 @@ Primary Task.
 <b> Preconditions</b><br>
 We need to produce cities population report in the world that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
 
-
 <b> Success End Condition</b><br>
 A report is available for Data Analyst to view population report of all cities in the world
 
@@ -289,7 +287,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-***
+2nd week of development, after use case 6
 
 <b> MAIN SUCCESS SCENARIO</b><br>
 Data Analyst views the population report of cities successfully
@@ -303,7 +301,7 @@ Data Analyst views the population report of cities successfully
 None.
 
 <b> SCHEDULE</b><br>
-DUE DATE: Release 1.0
+due date - 14th of July, 2023
 
 ==========================================================================
 <h3>USE CASE: 8 Population report of Cities in each continent</h3>
@@ -333,7 +331,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-***
+2nd week of development, after use case 7
 
 <b> MAIN SUCCESS SCENARIO</b><br>
 Data Analyst views the population report of cities in each continent successfully
@@ -347,7 +345,7 @@ Data Analyst views the population report of cities in each continent successfull
 None.
 
 <b> SCHEDULE</b><br>
-DUE DATE: Release 1.0
+due date - 14th of July, 2023
 
 =======================================================================
 <h3>USE CASE: 9 Population report of Cities in each region</h3>
@@ -377,7 +375,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-***
+2nd Week of The Development, after use case 8
 
 <b> MAIN SUCCESS SCENARIO</b><br>
 Data Analyst views the population report of cities in each region successfully
@@ -391,7 +389,7 @@ Data Analyst views the population report of cities in each region successfully
 None.
 
 <b> SCHEDULE</b><br>
-DUE DATE: Release 1.0
+due date - 14th of July, 2023
 
 ===============================================================
 <h3> USE CASE: 10 Population report of Cities in each country </h3>
@@ -421,7 +419,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-***
+2nd Week of the Development, after Use case 9
 
 <b> MAIN SUCCESS SCENARIO</b><br>
 Data Analyst views the population report of cities in each country successfully
@@ -435,7 +433,7 @@ Data Analyst views the population report of cities in each country successfully
 None.
 
 <b> SCHEDULE</b><br>
-DUE DATE: Release 1.0
+due date - 14th of July, 2023
 
 ================================================================
 <h3> USE CASE: 11 Population report of Cities in each district </h3>
@@ -465,7 +463,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-***
+2nd Week of the Development, after Use case 10
 
 <b> MAIN SUCCESS SCENARIO</b><br>
 Data Analyst views the population report of cities in each district successfully
@@ -479,7 +477,7 @@ Data Analyst views the population report of cities in each district successfully
 None.
 
 <b>SCHEDULE</b><br>
-DUE DATE: Release 1.0
+due date - 14th of July, 2023
 
 ======================================================
 
