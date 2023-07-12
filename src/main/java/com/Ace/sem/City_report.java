@@ -23,10 +23,10 @@ public class City_report {
             ArrayList<City> City_report = new ArrayList<>();
             while (data1.next()) {
                 City ct = new City();
-                ct.CityName = data1.getString("CityName");
-                ct.CountryName = data1.getString("CountryName");
-                ct.District = data1.getString("District");
-                ct.Population = data1.getInt("Population");
+                ct.setCityName(data1.getString("CityName"));
+                ct.setCountryName(data1.getString("CountryName"));
+                ct.setDistrict(data1.getString("District"));
+                ct.setPopulation(data1.getInt("Population"));
                 City_report.add(ct);
             }
             return City_report;
@@ -54,11 +54,11 @@ public class City_report {
             ArrayList<City> City_report = new ArrayList<>();
             while (data2.next()) {
                 City ct = new City();
-                ct.CityName = data2.getString("CityName");
-                ct.CountryName = data2.getString("CountryName");
-                ct.Continents = data2.getString("Continent");
-                ct.District = data2.getString("District");
-                ct.Population = data2.getInt("Population");
+                ct.setCityName(data2.getString("CityName"));
+                ct.setCountryName(data2.getString("CountryName"));
+                ct.setContinents(data2.getString("Continent"));
+                ct.setDistrict(data2.getString("District"));
+                ct.setPopulation(data2.getInt("Population"));
                 City_report.add(ct);
             }
             return City_report;
@@ -86,11 +86,11 @@ public class City_report {
             ArrayList<City> City_report = new ArrayList<>();
             while (data3.next()) {
                 City ct = new City();
-                ct.CityName = data3.getString("CityName");
-                ct.CountryName = data3.getString("CountryName");
-                ct.District = data3.getString("District");
-                ct.Region = data3.getString("Region");
-                ct.Population = data3.getInt("Population");
+                ct.setCityName(data3.getString("CityName"));
+                ct.setCountryName(data3.getString("CountryName"));
+                ct.setDistrict(data3.getString("District"));
+                ct.setRegion(data3.getString("Region"));
+                ct.setPopulation(data3.getInt("Population"));
                 City_report.add(ct);
             }
             return City_report;
