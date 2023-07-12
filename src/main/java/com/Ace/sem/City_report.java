@@ -78,7 +78,7 @@ public class City_report extends City {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return cities population around the world");
+            System.out.println("Failed to return cities population around the continent");
             return null;
         }
     }
@@ -103,6 +103,58 @@ public class City_report extends City {
                     String.format("%-10s %-20s %-15s %-15s %-20s",
                             cityR.CityName, cityR.CountryName, cityR.Continents, cityR.District, cityR.Population);
             System.out.println(continent_info);
+        }
+        System.out.println("============================================================");
+    }
+    public ArrayList<City> get_city_region   (Connection con){
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE row_num <= 5 ORDER BY Region ASC ,Population DESC";
+            // Execute SQL statement
+            ResultSet data3 = stmt.executeQuery(strSelect);
+            // Extract population of city information for each region
+            ArrayList<City> City_report = new ArrayList<>();
+            while (data3.next()) {
+                City ct = new City();
+                ct.CityName = data3.getString("CityName");
+                ct.CountryName = data3.getString("CountryName");
+                ct.Continents = data3.getString("Continent");
+                ct.District = data3.getString("District");
+                ct.Population = data3.getInt("Population");
+                City_report.add(ct);
+            }
+            return City_report;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to return cities population around the region");
+            return null;
+        }
+    }
+    public void displayAllCities_Region(ArrayList<City> region_list)
+    {
+        // Print header
+        System.out.println("============================================================");
+        // Initialize Current Region variable
+        String currentRegion = null;
+
+        // Loop over all region population in the list
+        for (City cityR : region_list){
+            if(!cityR.Region.equals(currentRegion)){
+                System.out.println("\n Cities sorted by Population in " + cityR.Region + " Region");
+                System.out.println("===========================================");
+                currentRegion = cityR.Continents;
+                System.out.println(String.format("%-20s %-25s %-35s %-20s %-20s", "City", "Country", "Continent", "District", "Population"));
+            }
+            String region_info =
+                    String.format("%-20s %-25s %-35s %-20s %-20s",
+                            cityR.CityName, cityR.CountryName, cityR.District,cityR.Region, cityR.Population);
+            System.out.println(region_info);
         }
         System.out.println("============================================================");
     }

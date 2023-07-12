@@ -66,9 +66,13 @@ public class App {
         ArrayList<City> CityW = cityR.get_city_world(a.con);
         cityR.displayAllCities(CityW);
 
-        //Display all the cities population in the continent
+        //Display all the cities population in each continent
         ArrayList<City> CityC = cityR.get_city_continent(a.con);
         cityR.displayAllCities_continent(CityC);
+
+        //Display All the cities population in each region
+       ArrayList<City> CityReg = cityR.get_city_region(a.con);
+       cityR.displayAllCities_Region(CityReg);
 
         ArrayList<City> TPCICity = cty.getWorldPopByCity(a.con);
         cty.displayTPCICity(TPCICity);
