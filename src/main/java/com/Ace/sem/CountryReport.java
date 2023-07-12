@@ -113,6 +113,86 @@ public class CountryReport {
         }
     }
 
+        public void displayCountries(ArrayList<Country> countries_list)
+        {
+            // Print header
+            System.out.println("============================================================");
+            System.out.println("Countries sorted by population in the world ");
+
+            System.out.println(String.format("%-10s %-40s %-15s %-27s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+            // Loop over all countries population in the list
+            for (Country cp : countries_list)
+            {
+                String countries_info =
+                        String.format("%-10s %-40s %-15s %-27s %-15s %-15s",
+                                cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
+                                cp.getPopulation(), cp.getCapital());
+                System.out.println(countries_info);
+            }
+            System.out.println("============================================================");
+        }
+
+        //display regions based on continents
+        public void displayCountries_Continent(ArrayList<Country> countries_list)
+        {
+            // Print header
+            System.out.println("============================================================");
+
+            // Initialize Current Continent variable
+            String currentContinent = null;
+
+            // Loop over all countries population in the list
+            for (Country cp : countries_list)
+            {
+                // Check the current continent changed or not
+                if (!cp.getContinent().equals(currentContinent)) {
+                    // Print the continent header
+                    System.out.println("\n Countries sorted by Population in " + cp.getContinent() + " Continent");
+                    System.out.println("===========================================");
+                    currentContinent = cp.getContinent();
+                    System.out.println(String.format("%-10s %-40s %-15s %-27s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+
+                }
+
+                String countries_info =
+                        String.format("%-10s %-40s %-15s %-27s %-15s %-15s",
+                                cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
+                                cp.getPopulation(), cp.getCapital());
+                System.out.println(countries_info);
+            }
+            System.out.println("============================================================");
+        }
+
+        //display countries based on region
+        public void displayCountries_Region(ArrayList<Country> countries_list)
+        {
+            // Print header
+            System.out.println("============================================================");
+
+            // Initialize Current Region variable
+            String currentRegion = null;
+
+            // Loop over all countries population in the list
+            for (Country cp : countries_list)
+            {
+                // Check the current continent changed or not
+                if (!cp.getRegion().equals(currentRegion)) {
+                    // Print the continent header
+                    System.out.println("\n Countries sorted by Population in " + cp.getRegion() + " Region");
+                    System.out.println("===========================================");
+                    currentRegion = cp.getRegion();
+                    System.out.println(String.format("%-10s %-40s %-15s %-27s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+
+                }
+
+                String countries_info =
+                        String.format("%-10s %-40s %-15s %-27s %-15s %-15s",
+                                cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
+                                cp.getPopulation(), cp.getCapital());
+                System.out.println(countries_info);
+            }
+            System.out.println("============================================================");
+        }
 
         public ArrayList<Country> store_into_arraylist(ArrayList<Country> al, ResultSet qry) {
             try{

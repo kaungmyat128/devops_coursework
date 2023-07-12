@@ -41,34 +41,34 @@ public class App {
         // Display All Countries Population
         ArrayList<Country> CPop1 = cr.get_countries(a.con, 0);
         System.out.println("All Countries Population in the World");
-        c.displayCountries(CPop1);
+        cr.displayCountries(CPop1);
 
         // Display All Countries Population based on Each Continent
         ArrayList<Country> CPop2 = cr.get_countries_cont(a.con, 0);
         System.out.println("All Countries Population in the World categorized by Continents");
-        c.displayCountries_Continent(CPop2);
+        cr.displayCountries_Continent(CPop2);
 
         // Display All Countries Population based on Each Region
         ArrayList<Country> CPop3 = cr.get_countries_region(a.con, 0);
         System.out.println("All Countries Population in the World categorized by Regions");
-        c.displayCountries_Region(CPop3);
+        cr.displayCountries_Region(CPop3);
 
         //---------------Top Country Report---------------
 
         // Display Top 10 Countries Population
         ArrayList<Country> CPop4 = cr.get_countries(a.con, 10);
         System.out.println("Top 10 Countries Population in the World");
-        c.displayCountries(CPop4);
+        cr.displayCountries(CPop4);
 
         // Display Top 10 Countries Population in Each Continent
         ArrayList<Country> CPop5 = cr.get_countries_cont(a.con, 10);
         System.out.println("Top 10 Countries Population in Each Continent");
-        c.displayCountries_Continent(CPop5);
+        cr.displayCountries_Continent(CPop5);
 
         // Display Top 10 Countries Population in Each Region
         ArrayList<Country> CPop6 = cr.get_countries_region(a.con,10);
         System.out.println("Top 10 Countries Population in Each Region");
-        c.displayCountries_Region(CPop6);
+        cr.displayCountries_Region(CPop6);
 //
 //        //---------------All Cities Report---------------
 //
