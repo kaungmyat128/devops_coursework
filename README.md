@@ -1,5 +1,5 @@
 # devops_coursework
-- [X]
+
 <br>Following is main and develop building status, license and release status
 
 <br>Master Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
@@ -20,8 +20,9 @@ This is a coursework repository for the Devops Subject [Group 3]
 | Hein Thaw Zin      | 40501814             | Member        |
 
 <h2>Code Review 1</h2>
+
 - [X] GitHub project for coursework set-up.
-<br>- [x] Product Backlog created. Product Backlog can be seen [here](https://github.com/users/kaungmyat128/projects/5).
+- [x] Product Backlog created. Product Backlog can be seen [here](https://github.com/users/kaungmyat128/projects/5).
 - [x] Project builds to self-contained JAR with Maven.
 - [x] Dockerfile for project set-up and works.
 - [x] GitHub Actions for project set-up and build is working using JAR, and Docker
@@ -32,7 +33,7 @@ This is a coursework repository for the Devops Subject [Group 3]
 &emsp; We are working for the organization that require reporting on world population information.
 We have been ask to implement the new system which can easily access to the information of the population.
 The system will be using the world database.
-- [X]
+
 &emsp;Some of the reports that organization want are -
 
 * Finding the largest to smallest populated countries, cities and capital cities in the world, continents and regions.
