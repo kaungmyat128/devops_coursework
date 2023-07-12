@@ -17,15 +17,25 @@ public class TopPopulatedCountries {
     write sql query to produce 'top 20 most populated countries around the world'.
     Then return the data as array list.
     */
-     public ArrayList<Country> get_top_countries (Connection con){
+     public ArrayList<Country> get_top_countries (Connection con, int lim){
         try {
+
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
-                            + "FROM country INNER JOIN city ON country.Capital = city.ID "
-                            + "ORDER BY country.Population DESC LIMIT 10";
+            String strSelect = null;
+            if (lim>0) {
+                // Create string for SQL statement
+                strSelect =
+                        "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
+                                + "FROM country INNER JOIN city ON country.Capital = city.ID "
+                                + "ORDER BY country.Population DESC LIMIT " + lim;
+            } else if (lim==0) {
+                // Create string for SQL statement
+                strSelect =
+                        "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
+                                + "FROM country INNER JOIN city ON country.Capital = city.ID "
+                                + "ORDER BY country.Population DESC";
+            }
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather top 10 populated country data
