@@ -22,6 +22,7 @@ public class App {
         // Create new object for top countries population Class Java
         TopPopulatedCountries c2 = new TopPopulatedCountries();
 
+        City ct = new City();
         // Create new object for City_report java Class
         City_report cityR = new City_report();
         // Create new object for top populated cities Class Java
@@ -62,32 +63,43 @@ public class App {
 
         //Display all the cities population in the world
         ArrayList<City> CityW = cityR.get_city_world(a.con);
-        cityR.displayAllCities(CityW);
+        System.out.println("All the Cities Population in the world");
+        cityR.displayCities(CityW);
 
         //Display all the cities population in each continent
         ArrayList<City> CityC = cityR.get_city_continent(a.con);
         System.out.println("All the Cities Population in Each Continent");
-        cityR.displayAllCities_continent(CityC);
+        cityR.displayCityContinents(CityC);
 
         //Display All the cities population in each region
        ArrayList<City> CityReg = cityR.get_city_region(a.con);
        System.out.println("All the Cities Population in Each Region");
-       cityR.displayAllCities_Region(CityReg);
+       cityR.displayCityRegion(CityReg);
 
+        //Display Top 20 Cities Population in the world
         ArrayList<City> TPCICity = cty.getWorldPopByCity(a.con);
-        cty.displayTPCICity(TPCICity);
+        System.out.println("Top 20 Cities Population in the world");
+        ct.displayCities(TPCICity);
 
+        //Display Top 20 Cities Population in Each Continent
         ArrayList<City> TPCIContinent = cty.getContinentPopByCity(a.con);
-        cty.DisplayTPCIContinent(TPCIContinent);
+        System.out.println("Top 20 Cities Population in the each Continent");
+        ct.displayCityContinents(TPCIContinent);
 
+        //Display Top 20 Cities Population in Each Region
         ArrayList<City> TPCIRegion = cty.getRegionPopByCity(a.con);
-        cty.DisplayTPCIRegion(TPCIRegion);
+        System.out.println("Top 20 Cities Population in the each Region");
+        ct.displayCityRegion(TPCIRegion);
 
+        //Display Top 20 Cities Population in Each Country
         ArrayList<City> TPCICountry = cty.getCountryPopByCity(a.con);
-        cty.displayTPCICountry(TPCICountry);
+        System.out.println("Top 20 Cities Population in the each Country");
+        ct.displayCityCountries(TPCICountry);
 
+        //Display Top 20 Cities Population in Each District
         ArrayList<City> TPCIDistrict = cty.getDistrictPopByCity(a.con);
-        cty.displayTPCIDistrict(TPCIDistrict);
+        System.out.println("Top 20 Cities Population in the each District");
+        ct.displayCityDistrict(TPCIDistrict);
 
         // Disconnect from database
         a.disconnect();
