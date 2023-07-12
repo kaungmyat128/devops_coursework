@@ -218,268 +218,269 @@ None.
 DUE DATE: Release 1.0
 
 ==========================================================================
-USE CASE: 6 Population report of top N countries population in each region report
+<h3> USE CASE: 6 Population report of top N countries population in each region report </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION 
 
-Goal in Context
+<b> Goal in Context
 As a data analyst, I want to view top N countries population in each region so that I can easily view top most populated countries in each region
 
-Scope
+<b> Scope
 Company.
 
-Level
+<b> Level
 Primary Task.
 
-Preconditions
+<b> Preconditions
 We need to produce top N populated countries population report in each region that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition
 A report is available for Data Analyst to view population report of all countries in each region
 
-Failed End Condition
+<b> Failed End Condition
 No report is produced.
 
-Primary Actor
+<b> Primary Actor
 Data Analyst
 
-Trigger
+<b> Trigger
 ***
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO
 Data Analyst views the population report of top N populated countries in each region successfully
 
-EXTENSIONS
+<b> EXTENSIONS
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS
 None.
 
-SCHEDULE
+<b> SCHEDULE
 DUE DATE: Release 1.0
 
 ====================================================================================
-USE CASE: 7 Population report of Cities in the world
+<h3> USE CASE: 7 Population report of Cities in the world </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION</b>
 
-Goal in Context
+<b> Goal in Context</b>
 As a data analyst, I want to view population report of all cities in the world which have to be ordered by largest to smallest populated cities so that I can easily know cities population around the world based on this report.
 
-Scope
+<b> Scope</b>
 Company.
 
-Level
+<b> Level</b>
 Primary Task.
 
-Preconditions
+<b> Preconditions</b>
 We need to produce cities population report in the world that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition</b>
 A report is available for Data Analyst to view population report of all cities in the world
 
-Failed End Condition
+<b> Failed End Condition</b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor</b>
 Data Analyst
 
-Trigger
+<b> Trigger</b>
 ***
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO</b>
 Data Analyst views the population report of cities successfully
 
-EXTENSIONS
+<b> EXTENSIONS</b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS</b>
 None.
 
-SCHEDULE
+<b> SCHEDULE</b>
 DUE DATE: Release 1.0
 
 ==========================================================================
-USE CASE: 8 Population report of Cities in each continent
+<h3>USE CASE: 8 Population report of Cities in each continent</h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION</b>
 
-Goal in Context
+<b> Goal in Context</b>
 As a data analyst, I want to view population report of all cities in each continent ordered by largest to smallest populated cities so that I can easily know cities population of any continent that I want to see based on this report.
 
-Scope
+<b> Scope</b>
 Company.
 
-Level
+<b> Level</b>
 Primary Task.
 
-Preconditions
+<b> Preconditions</b>
 We need to produce cities population report in each continent that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition</b>
 A report is available for Data Analyst to view population report of all cities in each continent
 
-Failed End Condition
+<b> Failed End Condition</b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor</b>
 Data Analyst
 
-Trigger
+<b> Trigger</b>
 ***
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO</b>
 Data Analyst views the population report of cities in each continent successfully
 
-EXTENSIONS
+<b> EXTENSIONS</b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS</b>
 None.
 
-SCHEDULE
+<b> SCHEDULE</b>
 DUE DATE: Release 1.0
 
 =======================================================================
-USE CASE: 9 Population report of Cities in each region
+<h3>USE CASE: 9 Population report of Cities in each region</h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION</b>
 
-Goal in Context
+<b> Goal in Context</b>
 As a data analyst, I want to view population report of all cities in each region ordered by largest to smallest populated cities so that I can easily know cities population of any region that I want to see based on this report.
 
-Scope
+<b> Scope</b>
 Company.
 
-Level
+<b> Level</b>
 Primary Task.
 
-Preconditions
+<b> Preconditions</b>
 We need to produce cities population report in each region that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition</b>
 A report is available for Data Analyst to view population report of all cities in each region
 
-Failed End Condition
+<b> Failed End Condition</b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor</b>
 Data Analyst
 
-Trigger
+<b> Trigger</b>
 ***
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO</b>
 Data Analyst views the population report of cities in each region successfully
 
-EXTENSIONS
+<b> EXTENSIONS</b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS</b>
 None.
 
-SCHEDULE
+<b> SCHEDULE</b>
 DUE DATE: Release 1.0
 
 ===============================================================
-USE CASE: 10 Population report of Cities in each country
+<h3> USE CASE: 10 Population report of Cities in each country </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION</b>
 
-Goal in Context
+<b> Goal in Context</b>
 As a data analyst, I want to view population report of all cities in each country ordered by largest to smallest populated cities so that I can easily know cities population of any country that I want to see based on this report.
 
-Scope
+<b> Scope</b>
 Company.
 
-Level
+<b> Level</b>
 Primary Task.
 
-Preconditions
+<b> Preconditions</b>
 We need to produce cities population report in each country that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition</b>
 A report is available for Data Analyst to view population report of all cities in each country
 
-Failed End Condition
+<b> Failed End Condition</b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor</b>
 Data Analyst
 
-Trigger
+<b> Trigger</b>
 ***
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO</b>
 Data Analyst views the population report of cities in each country successfully
 
-EXTENSIONS
+<b> EXTENSIONS</b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS</b>
 None.
 
-SCHEDULE
+<b> SCHEDULE</b>
 DUE DATE: Release 1.0
 
 ================================================================
-USE CASE: 11 Population report of Cities in each district
+<h3> USE CASE: 11 Population report of Cities in each district </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION</b>
 
-Goal in Context
+<b> Goal in Context</b>
 As a data analyst, I want to view population report of all cities in each district ordered by largest to smallest populated cities so that I can easily know cities population of any district that I want to see based on this report.
 
-Scope
+<b> Scope</b>
 Company.
 
-Level
+<b> Level</b>
 Primary Task.
 
-Preconditions
+<b> Preconditions</b>
 We need to produce cities population report in each district that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition</b>
 A report is available for Data Analyst to view population report of all cities in each district
 
-Failed End Condition
+<b> Failed End Condition</b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor</b>
 Data Analyst
 
-Trigger
+<b> Trigger</b>
 ***
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO</b>
 Data Analyst views the population report of cities in each district successfully
 
-EXTENSIONS
+<b> EXTENSIONS</b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS</b>
 None.
 
-SCHEDULE
+<b>SCHEDULE</b>
 DUE DATE: Release 1.0
+
 ======================================================
 
 <h3>USE CASE 12: Population Report of All Cities in the World</h3>
@@ -721,6 +722,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 18: Population Report of All Capitals in each continent</h3>
@@ -762,6 +764,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 19: Population Report of All Capitals in each region</h3>
@@ -803,6 +806,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 20: Population Report of Top N Capitals in the world</h3>
@@ -845,6 +849,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 21: Population Report of Top N Capitals in each continent</h3>
@@ -888,6 +893,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 22: Population Report of Top N Capitals in each region</h3>
@@ -931,6 +937,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 23: Population Report of People who do live or do not live in the cities, in each continent</h3>
@@ -971,6 +978,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 24: Population Report of People who do live or do not live in the cities, in each region</h3>
@@ -1012,6 +1020,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 25: Population Report of People who do live or do not live in the cities, in each country</h3>
@@ -1052,6 +1061,7 @@ None
 
 <b>Schedule</b>
 due date - 22nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 26: Population Report of People all around the world</h3>
@@ -1092,6 +1102,7 @@ None
 
 <b>Schedule</b>
 due date - 29nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 27: Population Report of People from each continent</h3>
@@ -1132,6 +1143,7 @@ None
 
 <b>Schedule</b>
 due date - 29nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 28: Population Report of People from each region</h3>
@@ -1172,6 +1184,7 @@ None
 
 <b>Schedule</b>
 due date - 29nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 29: Population Report of People from each country</h3>
@@ -1212,6 +1225,7 @@ None
 
 <b>Schedule</b>
 due date - 29nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 30: Population Report of People from each district</h3>
@@ -1252,6 +1266,7 @@ None
 
 <b>Schedule</b>
 due date - 29nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 31: Population Report of People from each city</h3>
@@ -1292,6 +1307,7 @@ None
 
 <b>Schedule</b>
 due date - 29nd of July, 2023
+
 ===============================================================
 
 <h3>USE CASE 32: Population Report of People who speaks different languages</h3>
