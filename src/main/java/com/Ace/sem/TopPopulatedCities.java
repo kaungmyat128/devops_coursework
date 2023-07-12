@@ -9,15 +9,24 @@ public class TopPopulatedCities {
 
     //Method to extract the data for top 20 cities in the world
     public ArrayList<City>
-    getWorldPopByCity(Connection con) {
+    getWorldPopByCity(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+            String strSelect = null;
             // Create string for SQL statement
-            String strSelect =
-            "SELECT city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                    + "FROM country LEFT JOIN city ON country.Code = city.CountryCode "
-                    + "ORDER BY Population DESC LIMIT 20";
+            if (lim>0){
+                strSelect =
+                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
+                                + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
+                                + "ORDER BY Population DESC LIMIT "+ lim;
+            } else if (lim==0) {
+
+                strSelect =
+                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
+                                + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
+                                + "ORDER BY Population DESC";
+            }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information from database
@@ -40,15 +49,25 @@ public class TopPopulatedCities {
 
     //Method to extract the data for top 20 cities in Each Continent
     public ArrayList<City>
-    getContinentPopByCity(Connection con) {
+    getContinentPopByCity(Connection con,int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+            String strSelect = null;
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY Continent ASC, Population DESC";
+            if (lim>0){
+                 strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
+                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "WHERE row_num <= " + lim
+                                + " ORDER BY Continent ASC, Population DESC";
+            } else if (lim == 0) {
+                strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
+                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "ORDER BY Continent ASC, Population DESC";
+            }
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Continent from Database
@@ -72,15 +91,25 @@ public class TopPopulatedCities {
 
     //Method to extract the data for top 20 cities in Each Region
     public ArrayList<City>
-    getRegionPopByCity(Connection con) {
+    getRegionPopByCity(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+            String strSelect = null;
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY Region ASC ,Population DESC";
+            if (lim>0){
+                 strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
+                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "WHERE row_num <= " + lim
+                                + "ORDER BY Region ASC ,Population DESC";
+            } else if (lim==0) {
+                strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
+                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "ORDER BY Region ASC ,Population DESC";
+            }
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Region From Database
@@ -104,15 +133,24 @@ public class TopPopulatedCities {
 
     //Method to extract the data for top 20 cities in Each Country
     public ArrayList<City>
-    getCountryPopByCity(Connection con) {
+    getCountryPopByCity(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+            String strSelect = null;
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY CountryName ASC, Population DESC";
+            if (lim>0){
+                strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "WHERE row_num <= " + lim
+                                + " ORDER BY CountryName ASC, Population DESC";
+            } else if (lim==0) {
+                strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "ORDER BY CountryName ASC, Population DESC";
+            }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each country From Database
@@ -135,15 +173,25 @@ public class TopPopulatedCities {
 
     //Method to extract the data for top 20 cities in Each District
     public ArrayList<City>
-    getDistrictPopByCity(Connection con) {
+    getDistrictPopByCity(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+            String strSelect = null;
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                            + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 20 ORDER BY District ASC, Population DESC";
+            if (lim>0){
+                strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                                + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "WHERE row_num <= " + lim
+                                + " ORDER BY District ASC, Population DESC";
+            } else if (lim==0) {
+                strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                                + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
+                                + "ORDER BY District ASC, Population DESC";
+
+            }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each District From Database
