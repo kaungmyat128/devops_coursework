@@ -56,14 +56,14 @@ public class CountryReport {
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS Capital FROM country "
-                                + "INNER JOIN city ON country.Capital = city.ID) AS subquery "
-                                + "ORDER BY Continent ASC, Population DESC";
+                                + "INNER JOIN city ON country.Capital = city.ID) AS subquery WHERE row_num <= " + lim
+                                + " ORDER BY Continent ASC, Population DESC";
             } else if (lim==0) {
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital FROM country "
-                                + "INNER JOIN city ON country.Capital = city.ID) AS subquery WHERE row_num <= " + lim
-                                + " ORDER BY Continent ASC, Population DESC";
+                                + "INNER JOIN city ON country.Capital = city.ID) AS subquery "
+                                + "ORDER BY Continent ASC, Population DESC";
             }
             // Execute SQL statement
             ResultSet query2 = stmt.executeQuery(strSelect);
@@ -91,13 +91,13 @@ public class CountryReport {
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
                                 + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
-                                + "ORDER BY Region ASC, Population DESC";
+                                + "WHERE row_num <= " + lim + " ORDER BY Region ASC, Population DESC";
             } else if (lim==0) {
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
                                 + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
-                                + "WHERE row_num <= " + lim + " ORDER BY Region ASC, Population DESC";
+                                + "ORDER BY Region ASC, Population DESC";
             }
 
 
