@@ -8,15 +8,26 @@ import java.util.ArrayList;
 public class City_report {
 
     //Method to extract the data for cities in the world
-    public ArrayList<City> get_city_world (Connection con){
+    public ArrayList<City> get_city_world (Connection con, int lim){
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+            String strSelect = null;
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
-                            + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
-                            + "ORDER BY Population DESC LIMIT 5";
+
+            if (lim>0){
+                 strSelect =
+                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
+                                + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
+                                + "ORDER BY Population DESC LIMIT "+ lim;
+            } else if (lim==0) {
+
+                 strSelect =
+                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
+                                + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
+                                + "ORDER BY Population DESC";
+            }
+
             // Execute SQL statement
             ResultSet data1 = stmt.executeQuery(strSelect);
             // Extract population of city information for entire world
