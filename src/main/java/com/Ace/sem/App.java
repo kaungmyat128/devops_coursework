@@ -73,7 +73,7 @@ public class App {
         //---------------All Cities Report---------------
 
         //Display all the cities population in the world
-        /* ArrayList<City> CityW = cityR.get_city_world(a.con);
+        ArrayList<City> CityW = cityR.get_city_world(a.con);
         System.out.println("All the Cities Population in the world");
         cityR.displayCities(CityW);
 
@@ -112,7 +112,7 @@ public class App {
         //Display Top 20 Cities Population in Each District
         ArrayList<City> TPCIDistrict = cty.getDistrictPopByCity(a.con);
         System.out.println("Top 20 Cities Population in the each District");
-        ct.displayCityDistrict(TPCIDistrict); */
+        ct.displayCityDistrict(TPCIDistrict);
 
         // Disconnect from database
         a.disconnect();
