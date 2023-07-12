@@ -42,7 +42,7 @@ public class City_report extends City {
         System.out.println("All the Cities population in the world ");
         System.out.println("============================================================");
 
-        System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
+        System.out.println(String.format("%-30s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
         // Loop over all cities population in the list
         for (City cityR : cities_list)
         {
@@ -98,7 +98,7 @@ public class City_report extends City {
                 System.out.println("\n All the Cities sorted by Population in " + cityR.Continents + " Continents");
                 System.out.println("===========================================");
                 currentContinent = cityR.Continents;
-                System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Continent", "District", "Population"));
+                System.out.println(String.format("%-30s %-30s %-30s %-30s %-20s", "City", "Country", "Continent", "District", "Population"));
             }
             String continent_info =
                     String.format("%-10s %-20s %-15s %-15s %-20s",
@@ -150,10 +150,10 @@ public class City_report extends City {
                 System.out.println("\n All the Cities sorted by Population in " + cityR.Region + " Region");
                 System.out.println("===========================================");
                 currentRegion = cityR.Region;
-                System.out.println(String.format("%-20s %-25s %-35s %-20s %-20s", "City", "Country", "Continent", "District", "Population"));
+                System.out.println(String.format("%-20s %-25s %-35s %-20s %-20s", "City", "Country", "District", "Region", "Population"));
             }
             String region_info =
-                    String.format("%-20s %-25s %-35s %-20s %-20s",
+                    String.format("%-30s %-30s %-30s %-30s %-20s",
                             cityR.CityName, cityR.CountryName, cityR.District,cityR.Region, cityR.Population);
             System.out.println(region_info);
         }
