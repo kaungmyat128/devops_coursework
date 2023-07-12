@@ -68,10 +68,12 @@ public class App {
 
         //Display all the cities population in each continent
         ArrayList<City> CityC = cityR.get_city_continent(a.con);
+        System.out.println("All the Cities Population in Each Continent");
         cityR.displayAllCities_continent(CityC);
 
         //Display All the cities population in each region
        ArrayList<City> CityReg = cityR.get_city_region(a.con);
+       System.out.println("All the Cities Population in Each Region");
        cityR.displayAllCities_Region(CityReg);
 
         ArrayList<City> TPCICity = cty.getWorldPopByCity(a.con);

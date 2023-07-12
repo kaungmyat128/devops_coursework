@@ -40,6 +40,7 @@ public class City_report extends City {
         // Print header
         System.out.println("============================================================");
         System.out.println("All the Cities population in the world ");
+        System.out.println("============================================================");
 
         System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
         // Loop over all cities population in the list
@@ -60,7 +61,7 @@ public class City_report extends City {
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
                             + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 5 ORDER BY Continent ASC, Population DESC";
+                            + "ORDER BY Continent ASC, Population DESC";
             // Execute SQL statement
             ResultSet data2 = stmt.executeQuery(strSelect);
             // Extract population of city information for each continent
@@ -94,7 +95,7 @@ public class City_report extends City {
         for (City cityR : continent_list)
         {
             if(!cityR.Continents.equals(currentContinent)){
-                System.out.println("\n Cities sorted by Population in " + cityR.Continents + " Continents");
+                System.out.println("\n All the Cities sorted by Population in " + cityR.Continents + " Continents");
                 System.out.println("===========================================");
                 currentContinent = cityR.Continents;
                 System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Continent", "District", "Population"));
@@ -114,7 +115,7 @@ public class City_report extends City {
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
                             + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                            + "WHERE row_num <= 5 ORDER BY Region ASC ,Population DESC";
+                            + "ORDER BY Region ASC ,Population DESC";
             // Execute SQL statement
             ResultSet data3 = stmt.executeQuery(strSelect);
             // Extract population of city information for each region
@@ -146,7 +147,7 @@ public class City_report extends City {
         // Loop over all region population in the list
         for (City cityR : region_list){
             if(!cityR.Region.equals(currentRegion)){
-                System.out.println("\n Cities sorted by Population in " + cityR.Region + " Region");
+                System.out.println("\n All the Cities sorted by Population in " + cityR.Region + " Region");
                 System.out.println("===========================================");
                 currentRegion = cityR.Continents;
                 System.out.println(String.format("%-20s %-25s %-35s %-20s %-20s", "City", "Country", "Continent", "District", "Population"));
