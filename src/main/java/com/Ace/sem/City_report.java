@@ -17,7 +17,7 @@ public class City_report extends City {
                             + "ORDER BY Population DESC LIMIT 5";
             // Execute SQL statement
             ResultSet data1 = stmt.executeQuery(strSelect);
-            // Extract population of city information
+            // Extract population of city information for entire world
             ArrayList<City> City_report = new ArrayList<>();
             while (data1.next()) {
                 City ct = new City();
@@ -42,13 +42,67 @@ public class City_report extends City {
         System.out.println("All the Cities population in the world ");
 
         System.out.println(String.format("%-10s %-20s %-15s %-20s", "City", "Country", "District", "Population"));
-        // Loop over all countries population in the list
+        // Loop over all cities population in the list
         for (City cityR : cities_list)
         {
             String countries_info =
                     String.format("%-10s %-20s %-15s %-20s",
                             cityR.CityName, cityR.CountryName, cityR.District, cityR.Population);
             System.out.println(countries_info);
+        }
+        System.out.println("============================================================");
+    }
+    public ArrayList<City> get_city_continent  (Connection con){
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE row_num <= 5 ORDER BY Continent ASC, Population DESC";
+            // Execute SQL statement
+            ResultSet data2 = stmt.executeQuery(strSelect);
+            // Extract population of city information for each continent
+            ArrayList<City> City_report = new ArrayList<>();
+            while (data2.next()) {
+                City ct = new City();
+                ct.CityName = data2.getString("CityName");
+                ct.CountryName = data2.getString("CountryName");
+                ct.Continents = data2.getString("Continent");
+                ct.District = data2.getString("District");
+                ct.Population = data2.getInt("Population");
+                City_report.add(ct);
+            }
+            return City_report;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to return cities population around the world");
+            return null;
+        }
+    }
+    public void displayAllCities_continent(ArrayList<City> continent_list)
+    {
+        // Print header
+        System.out.println("============================================================");
+
+        // Initialize Current Continent variable
+        String currentContinent = null;
+
+        // Loop over all continents and cities population in the list
+        for (City cityR : continent_list)
+        {
+            if(!cityR.Continents.equals(currentContinent)){
+                System.out.println("\n Cities sorted by Population in " + cityR.Continents + " Continents");
+                System.out.println("===========================================");
+                currentContinent = cityR.Continents;
+                System.out.println(String.format("%-10s %-20s %-15s %-15s %-20s", "City", "Country", "Continent", "District", "Population"));
+            }
+            String continent_info =
+                    String.format("%-10s %-20s %-15s %-15s %-20s",
+                            cityR.CityName, cityR.CountryName, cityR.Continents, cityR.District, cityR.Population);
+            System.out.println(continent_info);
         }
         System.out.println("============================================================");
     }
