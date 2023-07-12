@@ -12,35 +12,121 @@ public class City {
     /**
      * City ID
      */
-    public int ID;
+    private int ID;
     /**
      * City Name
      */
-    public String CityName;
+    private String CityName;
 
     /**
      * City CountryCode
      */
-    public String CountryCode;
+    private String CountryCode;
 
     /**
      * City District
      */
-    public String District;
+    private String District;
 
     /**
      * City Population
      */
-    public int Population;
+    private int Population;
 
     /**
-     * CountryName
+     * City's CountryName
      */
-    public String CountryName;
+    private String CountryName;
 
-    public String Continents;
+    /**
+     * City Continents
+     */
+    private String Continents;
 
-    public String Region;
+    /**
+     * City Region
+     */
+    private String Region;
+
+    // Getter method for ID
+    public int getID() {
+        return ID;
+    }
+
+    // Setter method for ID
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    // Getter method for CityName
+    public String getCityName() {
+        return CityName;
+    }
+
+    // Setter method for CityName
+    public void setCityName(String CityName) {
+        this.CityName = CityName;
+    }
+
+    // Getter method for District
+    public String getDistrict() {
+        return District;
+    }
+
+    // Setter method for District
+    public void setDistrict(String District) {
+        this.District = District;
+    }
+
+    // Getter method for CountryCode
+    public String getCountryCode() {
+        return CountryCode;
+    }
+
+    // Setter method for CountryCode
+    public void setCountryCode(String CountryCode) {
+        this.CountryCode = CountryCode;
+    }
+
+    // Getter method for Population
+    public int getPopulation() {
+        return Population;
+    }
+
+    // Setter method for Population
+    public void setPopulation(int Population) {
+        this.Population = Population;
+    }
+
+    // Getter method for CountryName
+    public String getCountryName() {
+        return CountryName;
+    }
+
+    // Setter method for CountryName
+    public void setCountryName(String CountryName) {
+        this.CountryName = CountryName;
+    }
+
+    // Getter method for Continents
+    public String getContinents() {
+        return Continents;
+    }
+
+    // Setter method for Continents
+    public void setContinents(String Continents) {
+        this.Continents = Continents;
+    }
+
+    // Getter method for Region
+    public String getRegion() {
+        return Region;
+    }
+
+    // Setter method for Region
+    public void setRegion(String Region) {
+        this.Region = Region;
+    }
 
     //Method to Display Cities in the world
     public void displayCities(ArrayList<City> cities_list)
@@ -55,7 +141,7 @@ public class City {
         {
             String countries_info =
                     String.format("%-40s %-30s %-30s %-20s",
-                            cityR.CityName, cityR.CountryName, cityR.District, cityR.Population);
+                            cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(), cityR.getPopulation());
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -73,15 +159,16 @@ public class City {
         // Loop over all continents and cities population in the list
         for (City cityR : continent_list)
         {
-            if(!cityR.Continents.equals(currentContinent)){
-                System.out.println("\n Cities sorted by Population in " + cityR.Continents + " Continents");
+            if(!cityR.getContinents().equals(currentContinent)){
+                System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
                 System.out.println("===========================================");
-                currentContinent = cityR.Continents;
+                currentContinent = cityR.getContinents();
                 System.out.println(String.format("%-40s %-30s %-30s %-30s %-20s", "City", "Country", "Continent", "District", "Population"));
             }
             String continent_info =
                     String.format("%-40s %-30s %-30s %-30s %-20s",
-                            cityR.CityName, cityR.CountryName, cityR.Continents, cityR.District, cityR.Population);
+                            cityR.getCityName(), cityR.getCountryName(), cityR.getContinents(),
+                            cityR.getDistrict(), cityR.getPopulation());
             System.out.println(continent_info);
         }
         System.out.println("============================================================");
@@ -97,15 +184,16 @@ public class City {
 
         // Loop over all region population in the list
         for (City cityR : region_list){
-            if(!cityR.Region.equals(currentRegion)){
-                System.out.println("\n Cities sorted by Population in " + cityR.Region + " Region");
+            if(!cityR.getRegion().equals(currentRegion)){
+                System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
                 System.out.println("===========================================");
-                currentRegion = cityR.Region;
+                currentRegion = cityR.getRegion();
                 System.out.println(String.format("%-40s %-30s %-30s %-30s %-20s", "City", "Country", "District", "Region", "Population"));
             }
             String region_info =
                     String.format("%-40s %-30s %-30s %-30s %-20s",
-                            cityR.CityName, cityR.CountryName, cityR.District,cityR.Region, cityR.Population);
+                            cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
+                            cityR.getRegion(), cityR.getPopulation());
             System.out.println(region_info);
         }
         System.out.println("============================================================");
@@ -121,15 +209,15 @@ public class City {
 
         // Loop over all countries population in the list
         for (City cty : countries_list){
-            if (!cty.CountryName.equals(currentCountry)){
-                System.out.println("\n Cities sorted by Population in " + cty.CountryName + " Country");
+            if (!cty.getCountryName().equals(currentCountry)){
+                System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                 System.out.println("===========================================");
-                currentCountry = cty.CountryName;
+                currentCountry = cty.getCountryName();
                 System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
             }
             String countries_info =
                     String.format("%-40s %-30s %-30s %-20s",
-                            cty.CityName, cty.CountryName, cty.District, cty.Population);
+                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(), cty.getPopulation());
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -144,15 +232,15 @@ public class City {
         String currentDistrict = null;
 
         for (City cty : districts_list){
-            if (!cty.District.equals(currentDistrict)){
-                System.out.println("\n Cities sorted by Population in " + cty.District + " District");
+            if (!cty.getDistrict().equals(currentDistrict)){
+                System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                 System.out.println("===========================================");
-                currentDistrict = cty.District;
+                currentDistrict = cty.getDistrict();
                 System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
             }
             String countries_info =
                     String.format("%-40s %-30s %-30s %-20s",
-                            cty.CityName, cty.CountryName, cty.District, cty.Population);
+                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(), cty.getPopulation());
             System.out.println(countries_info);
         }
         System.out.println("============================================================");

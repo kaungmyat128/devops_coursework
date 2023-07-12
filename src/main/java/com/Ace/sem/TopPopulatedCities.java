@@ -24,10 +24,10 @@ public class TopPopulatedCities {
             ArrayList<City> worldPop = new ArrayList<City>();
             while (rset.next()) {
                 City world = new City();
-                world.CityName = rset.getString("CityName");
-                world.CountryName = rset.getString("CountryName");
-                world.District = rset.getString("District");
-                world.Population = rset.getInt("Population");
+                world.setCityName(rset.getString("CityName"));
+                world.setCountryName(rset.getString("CountryName"));
+                world.setDistrict(rset.getString("District"));
+                world.setPopulation(rset.getInt("Population"));
                 worldPop.add(world);
             }
             return worldPop;
@@ -55,11 +55,11 @@ public class TopPopulatedCities {
             ArrayList<City> continentPop = new ArrayList<City>();
             while (rset.next()) {
                 City continent = new City();
-                continent.CityName = rset.getString("CityName");
-                continent.CountryName = rset.getString("CountryName");
-                continent.District = rset.getString("District");
-                continent.Continents = rset.getString("Continent");
-                continent.Population = rset.getInt("Population");
+                continent.setCityName(rset.getString("CityName"));
+                continent.setCountryName(rset.getString("CountryName"));
+                continent.setDistrict(rset.getString("District"));
+                continent.setContinents(rset.getString("Continent"));
+                continent.setPopulation(rset.getInt("Population"));
                 continentPop.add(continent);
             }
             return continentPop;
@@ -87,11 +87,11 @@ public class TopPopulatedCities {
             ArrayList<City> regionPop = new ArrayList<City>();
             while (rset.next()) {
                 City region = new City();
-                region.CityName = rset.getString("CityName");
-                region.CountryName = rset.getString("CountryName");
-                region.District = rset.getString("District");
-                region.Region = rset.getString("Region");
-                region.Population = rset.getInt("Population");
+                region.setCityName(rset.getString("CityName"));
+                region.setCountryName(rset.getString("CountryName"));
+                region.setDistrict(rset.getString("District"));
+                region.setRegion(rset.getString("Region"));
+                region.setPopulation(rset.getInt("Population"));
                 regionPop.add(region);
             }
             return regionPop;
@@ -119,10 +119,10 @@ public class TopPopulatedCities {
             ArrayList<City> countryPop = new ArrayList<City>();
             while (rset.next()) {
                 City country = new City();
-                country.CityName = rset.getString("CityName");
-                country.CountryName = rset.getString("CountryName");
-                country.District = rset.getString("District");
-                country.Population = rset.getInt("Population");
+                country.setCityName(rset.getString("CityName"));
+                country.setCountryName(rset.getString("CountryName"));
+                country.setDistrict(rset.getString("District"));
+                country.setPopulation(rset.getInt("Population"));
                 countryPop.add(country);
             }
             return countryPop;
@@ -150,10 +150,10 @@ public class TopPopulatedCities {
             ArrayList<City> districtPop = new ArrayList<City>();
             while (rset.next()) {
                 City district = new City();
-                district.CityName = rset.getString("CityName");
-                district.CountryName = rset.getString("CountryName");
-                district.District = rset.getString("District");
-                district.Population = rset.getInt("Population");
+                district.setCityName(rset.getString("CityName"));
+                district.setCountryName(rset.getString("CountryName"));
+                district.setDistrict(rset.getString("District"));
+                district.setPopulation(rset.getInt("Population"));
                 districtPop.add(district);
             }
             return districtPop;
