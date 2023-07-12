@@ -25,7 +25,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b>
-***
+?
 
 <b> MAIN SUCCESS SCENARIO </b>
 Data Analyst views the population report of all countries successfully
@@ -42,179 +42,179 @@ None.
 DUE DATE: Release 1.0
 
 ============================================================================================
-USE CASE: 2 Population report of all countries in each continent ordered by largest to smallest populated countries
+<h3> USE CASE: 2 Population report of all countries in each continent ordered by largest to smallest populated countries </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION </b>
 
-Goal in Context
+<b> Goal in Context </b>
 As a data analyst, I want to view population report of all countries in each continent ordered by largest to smallest populated countries so that I can easily know countries population of any continent that I want to see based on this report.
 
-Scope
+<b> Scope </b>
 Company.
 
-Level
+<b> Level </b>
 Primary Task.
 
-Preconditions
+<b> Preconditions </b>
 We need to produce countries population report for each continent that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition </b>
 A report is available for Data Analyst to view population report of all countries of each continent.
 
-Failed End Condition
+<b> Failed End Condition </b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor </b>
 Data Analyst
 
-Trigger
-***
+<b> Trigger </b>
+?
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO </b>
 Data Analyst views the population report of all countries of each continent successfully
 
-EXTENSIONS
+<b> EXTENSIONS </b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS </b>
 None.
 
-SCHEDULE
+<b> SCHEDULE </b>
 DUE DATE: Release 1.0
 
 ===============================================================================
 
-USE CASE: 3 Population report of all countries in each region ordered by largest to smallest populated countries
+<h3> USE CASE: 3 Population report of all countries in each region ordered by largest to smallest populated countries </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION </b>
 
-Goal in Context
+<b> Goal in Context </b>
 As a data analyst, I want to view population report of all countries in each region ordered by largest to smallest populated countries so that I can easily know countries population of any region that I want to see based on this report.
 
-Scope
+<b> Scope </b>
 Company.
 
-Level
+<b> Level </b>
 Primary Task.
 
-Preconditions
+<b> Preconditions </b>
 We need to produce countries population report for each region that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition </b>
 A report is available for Data Analyst to view population report of all countries of each region.
 
-Failed End Condition
+<b> Failed End Condition </b>
 No report is produced.
 
-Primary Actor
+<b>Primary Actor </b>
 Data Analyst
 
 Trigger
-***
+?
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO </b>
 Data Analyst views the population report of all countries of each region successfully
 
-EXTENSIONS
+<b> EXTENSIONS </b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS </b>
 None.
 
-SCHEDULE
+<b> SCHEDULE </b>
 DUE DATE: Release 1.0
 
 =============================================================
-USE CASE: 4 Population report of top N countries population report
+<h3> USE CASE: 4 Population report of top N countries population report </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION </b>
 
-Goal in Context
+<b> Goal in Context </b>
 As a data analyst, I want to view top N countries population in the world so that I can easily view top most populated countries around the world
 
-Scope
+<b> Scope </b> 
 Company.
 
-Level
+<b> Level </b> 
 Primary Task.
 
-Preconditions
+<b> Preconditions </b> 
 We need to produce top N populated countries population report in the world that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
 
-
-Success End Condition
+<b> Success End Condition </b>
 A report is available for Data Analyst to view population report of all countries in the world.
 
-Failed End Condition
+<b> Failed End Condition </b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor </b>
 Data Analyst
 
-Trigger
+<b> Trigger </b>
 ***
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO </b> 
 Data Analyst views the population report of top N populated countries in the world successfully
 
-EXTENSIONS
+<b> EXTENSIONS </b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
-
-SUB-VARIATIONS
+   
+<b> SUB-VARIATIONS </b>
 None.
 
-SCHEDULE
+<b> SCHEDULE </b> 
 DUE DATE: Release 1.0
+
 =========================================================================================
-USE CASE: 5 Population report of top N countries population in each continent report
+<h3> USE CASE: 5 Population report of top N countries population in each continent report </h3>
 
-CHARACTERISTIC INFORMATION
+<b> CHARACTERISTIC INFORMATION </b>
 
-Goal in Context
+<b> Goal in Context </b>
 As a data analyst, I want to view top N countries population in each continent so that I can easily view top most populated countries in each continent
 
-Scope
+<b> Scope </b>
 Company.
 
-Level
+<b> Level </b>
 Primary Task.
 
-Preconditions
+<b> Preconditions </b>
 We need to produce top N populated countries population report in each continent that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
 
 
-Success End Condition
+<b> Success End Condition </b>
 A report is available for Data Analyst to view population report of all countries in each continent
 
-Failed End Condition
+<b> Failed End Condition </b>
 No report is produced.
 
-Primary Actor
+<b> Primary Actor </b>
 Data Analyst
 
-Trigger
-***
+<b> Trigger </b>
+?
 
-MAIN SUCCESS SCENARIO
+<b> MAIN SUCCESS SCENARIO </b>
 Data Analyst views the population report of top N populated countries in each continent successfully
 
-EXTENSIONS
+<b> EXTENSIONS </b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
 
-SUB-VARIATIONS
+<b> SUB-VARIATIONS </b> 
 None.
 
-SCHEDULE
+<b> SCHEDULE </b>
 DUE DATE: Release 1.0
 
 ==========================================================================
