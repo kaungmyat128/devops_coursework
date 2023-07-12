@@ -1,7 +1,5 @@
 package com.Ace.sem;
 
-import java.sql.*;
-import java.util.*;
     /**
      * Declares variables to be used for country related reports
      * Creates methods for displaying reports
