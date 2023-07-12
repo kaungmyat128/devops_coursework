@@ -43,31 +43,31 @@ public class App {
         System.out.println("All Countries Population in the World");
         c.displayCountries(CPop1);
 
-        // Display country population based on continent
+        // Display All Countries Population based on Each Continent
         ArrayList<Country> CPop2 = cr.getCounContPop(a.con);
         System.out.println("All Countries Population in the World categorized by Continents");
         c.displayCountries_Continent(CPop2);
 
-        // Display country population based on region
+        // Display All Countries Population based on Each Region
         ArrayList<Country> CPop3 = cr.getCounRegPop(a.con);
         System.out.println("All Countries Population in the World categorized by Regions");
         c.displayCountries_Region(CPop3);
 
         //---------------Top Country Report---------------
 
-        // Display Top 20 Countries Population
+        // Display Top 10 Countries Population
         ArrayList<Country> CPop4 = c2.get_top_countries(a.con);
-        System.out.println("Top 20 Countries Population in the World");
+        System.out.println("Top 10 Countries Population in the World");
         c.displayCountries(CPop4);
 
-        // Display Top 20 Countries Population in Each Continent
+        // Display Top 10 Countries Population in Each Continent
         ArrayList<Country> CPop5 = c2.get_top_countries_continents(a.con);
-        System.out.println("Top 20 Countries Population in Each Continent");
+        System.out.println("Top 10 Countries Population in Each Continent");
         c.displayCountries_Continent(CPop5);
 
         // Display Top 10 Countries Population in Each Region
         ArrayList<Country> CPop6 = c2.get_top_countries_regions(a.con);
-        System.out.println("Top 20 Countries Population in Each Region");
+        System.out.println("Top 10 Countries Population in Each Region");
         c.displayCountries_Region(CPop6);
 
         //---------------All Cities Report---------------
@@ -120,8 +120,9 @@ public class App {
 
 
 
-    /**
-     * Connect to the MySQL database.
+    /*
+     Connect to the MySQL database. Load mysql driver and connect database up to 100 tries
+     until database connection is connected.
      */
     public void connect() {
         try {
@@ -151,8 +152,8 @@ public class App {
         }
     }
 
-    /**
-     * Disconnect from the MySQL database.
+    /*
+     Disconnect from the MySQL database.
      */
     public void disconnect() {
         if (con != null) {
