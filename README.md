@@ -20,7 +20,7 @@ This is a coursework repository for the Devops Subject [Group 3]
 | Hein Thaw Zin      | 40501814             | Member        |
 
 <h2>Code Review 1</h2>
-<br>- [X] GitHub project for coursework set-up.
+- [X] GitHub project for coursework set-up.
 <br>- [x] Product Backlog created. Product Backlog can be seen [here](https://github.com/users/kaungmyat128/projects/5).
 - [x] Project builds to self-contained JAR with Maven.
 - [x] Dockerfile for project set-up and works.
