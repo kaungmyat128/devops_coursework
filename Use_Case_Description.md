@@ -504,7 +504,7 @@ No list of cities will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-1st week of development
+2nd week of development, after use case 11
 
 <b>Main Success Scenario</b><br>
 Data analyst views the population report of cities successfully.
@@ -518,7 +518,7 @@ Data analyst views the population report of cities successfully.
 None
 
 <b>Schedule</b><br>
-due date - 15th of July, 2023
+due date - 14th of July, 2023
 
 ===============================================================
 
@@ -544,7 +544,7 @@ No list of cities will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-1st week of development, after use case 12
+2nd week of development, after use case 12
 
 <b>Main Success Scenario</b><br>
 Data analyst views the population report of cities categorized by continents successfully.
@@ -558,7 +558,7 @@ Data analyst views the population report of cities categorized by continents suc
 None
 
 <b>Schedule</b><br>
-due date - 15th of July, 2023
+due date - 14th of July, 2023
 
 ===============================================================
 
@@ -585,7 +585,7 @@ No list of cities will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-1st week of development, after use case 13
+2nd week of development, after use case 13
 
 <b>Main Success Scenario</b><br>
 Data analyst views the population report of cities categorized by region successfully.
@@ -599,7 +599,7 @@ Data analyst views the population report of cities categorized by region success
 None
 
 <b>Schedule</b><br>
-due date - 15th of July, 2023
+due date - 14th of July, 2023
 
 ===============================================================
 
@@ -625,7 +625,7 @@ No list of cities will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-1st week of development, after use case 14
+2nd week of development, after use case 14
 
 <b>Main Success Scenario</b><br>
 Data analyst views the population report of cities categorized by countries successfully.
@@ -639,7 +639,7 @@ Data analyst views the population report of cities categorized by countries succ
 None
 
 <b>Schedule</b><br>
-due date - 15th of July, 2023
+due date - 14th of July, 2023
 
 ===============================================================
 
@@ -665,7 +665,7 @@ No list of cities will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-1st week of development, after use case 15
+2nd week of development, after use case 15
 
 <b>Main Success Scenario</b><br>
 Data analyst views the population report of cities categorized by districts successfully.
@@ -679,7 +679,7 @@ Data analyst views the population report of cities categorized by districts succ
 None
 
 <b>Schedule</b><br>
-due date - 15th of July, 2023
+due date - 14th of July, 2023
 
 ===============================================================
 
@@ -706,7 +706,7 @@ No list of capital will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 16
+3rd week of development, after use case 16
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of all capitals successfully.
@@ -720,7 +720,7 @@ Data analyst views population report of all capitals successfully.
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -748,7 +748,7 @@ Result returned with list of capitals that sorted by population and categorized 
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 17.
+3rd week of development, after use case 17.
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of all capitals in each continent successfully.
@@ -762,7 +762,7 @@ Data analyst views population report of all capitals in each continent successfu
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -790,7 +790,7 @@ Result returned with list of capitals that sorted by population and categorized 
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 17.
+3rd week of development, after use case 17.
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of all capitals in each region successfully.
@@ -804,7 +804,7 @@ Data analyst views population report of all capitals in each region successfully
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -833,7 +833,7 @@ Exactly N number of Capitals will be returned. They should be top populated capi
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 18 and 19.
+3rd week of development, after use case 18 and 19.
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of Top N populated capitals in the world successfully.
@@ -847,7 +847,7 @@ Data analyst views population report of Top N populated capitals in the world su
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -877,7 +877,7 @@ Exactly N number of Capitals will be returned. They should be top populated capi
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 20.
+3rd week of development, after use case 20.
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of Top N populated capitals in each continent successfully.
@@ -891,7 +891,7 @@ Data analyst views population report of Top N populated capitals in each contine
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -921,7 +921,7 @@ Exactly N number of Capitals will be returned. They should be top populated capi
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 20.
+3rd week of development, after use case 20.
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of Top N populated capitals in each region successfully.
@@ -935,7 +935,7 @@ Data analyst views population report of Top N populated capitals in each region 
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -962,7 +962,7 @@ Population not categorized and failed to produce to report.
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 21 and 22.
+3rd week of development, after use case 21 and 22.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views rural and urban population report of each continent.
@@ -976,7 +976,7 @@ Data Analyst successfully views rural and urban population report of each contin
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -1004,7 +1004,7 @@ Population not categorized and failed to produce to report.
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 23.
+3rd week of development, after use case 23.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views rural and urban population report of each region.
@@ -1018,7 +1018,7 @@ Data Analyst successfully views rural and urban population report of each region
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -1045,7 +1045,7 @@ Population not categorized and failed to produce to report.
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 24.
+3rd week of development, after use case 24.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views rural and urban population report of each country.
@@ -1059,7 +1059,7 @@ Data Analyst successfully views rural and urban population report of each countr
 None
 
 <b>Schedule</b><br>
-due date - 22nd of July, 2023
+due date - 21st of July, 2023
 
 ===============================================================
 
@@ -1086,7 +1086,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 25.
+4th week of development, after use case 25.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views population report of people all around the world
@@ -1100,7 +1100,7 @@ Data Analyst successfully views population report of people all around the world
 None
 
 <b>Schedule</b><br>
-due date - 29nd of July, 2023
+due date - 28th of July, 2023
 
 ===============================================================
 
@@ -1127,7 +1127,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 26.
+4th week of development, after use case 26.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views population report of people from each continent
@@ -1141,7 +1141,7 @@ Data Analyst successfully views population report of people from each continent
 None
 
 <b>Schedule</b><br>
-due date - 29nd of July, 2023
+due date - 28th of July, 2023
 
 ===============================================================
 
@@ -1168,7 +1168,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 27.
+4th week of development, after use case 27.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views population report of people from each region
@@ -1182,7 +1182,7 @@ Data Analyst successfully views population report of people from each region
 None
 
 <b>Schedule</b><br>
-due date - 29nd of July, 2023
+due date - 28th of July, 2023
 
 ===============================================================
 
@@ -1209,7 +1209,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 28.
+4th week of development, after use case 28.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views population report of people from each country.
@@ -1223,7 +1223,7 @@ Data Analyst successfully views population report of people from each country.
 None
 
 <b>Schedule</b><br>
-due date - 29nd of July, 2023
+due date - 28th of July, 2023
 
 ===============================================================
 
@@ -1250,7 +1250,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 29.
+4th week of development, after use case 29.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views population report of people from each district.
@@ -1264,7 +1264,7 @@ Data Analyst successfully views population report of people from each district.
 None
 
 <b>Schedule</b><br>
-due date - 29nd of July, 2023
+due date - 28th of July, 2023
 
 ===============================================================
 
@@ -1291,7 +1291,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 30.
+4th week of development, after use case 30.
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views population report of people from each city.
@@ -1305,7 +1305,7 @@ Data Analyst successfully views population report of people from each city.
 None
 
 <b>Schedule</b><br>
-due date - 29nd of July, 2023
+due date - 28th of July, 2023
 
 ===============================================================
 
@@ -1331,7 +1331,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 31.
+4th week of development, after use case 31.
 
 <b>Main Success Scenario</b><br>
 Data analyst successful views language by people report
@@ -1345,6 +1345,6 @@ Data analyst successful views language by people report
 None
 
 <b>Schedule</b><br>
-due date - 29nd of July, 2023
+due date - 28th of July, 2023
 
 ===============================================================
