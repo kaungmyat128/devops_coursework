@@ -124,8 +124,8 @@ public class City_report extends City {
                 City ct = new City();
                 ct.CityName = data3.getString("CityName");
                 ct.CountryName = data3.getString("CountryName");
-                ct.Region = data3.getString("Region");
                 ct.District = data3.getString("District");
+                ct.Region = data3.getString("Region");
                 ct.Population = data3.getInt("Population");
                 City_report.add(ct);
             }
