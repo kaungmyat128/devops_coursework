@@ -53,7 +53,4 @@ public class Country {
             this.Capital = Capital;
         }
 
-
-    //display all countries
-
 }
