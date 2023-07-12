@@ -32,7 +32,7 @@ This is a coursework repository for the Devops Subject [Group 3]
 &emsp; We are working for the organization that require reporting on world population information.
 We have been ask to implement the new system which can easily access to the information of the population.
 The system will be using the world database.
-
+- [X]
 &emsp;Some of the reports that organization want are -
 
 * Finding the largest to smallest populated countries, cities and capital cities in the world, continents and regions.
