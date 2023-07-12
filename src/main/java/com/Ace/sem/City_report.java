@@ -149,7 +149,7 @@ public class City_report extends City {
             if(!cityR.Region.equals(currentRegion)){
                 System.out.println("\n All the Cities sorted by Population in " + cityR.Region + " Region");
                 System.out.println("===========================================");
-                currentRegion = cityR.Continents;
+                currentRegion = cityR.Region;
                 System.out.println(String.format("%-20s %-25s %-35s %-20s %-20s", "City", "Country", "Continent", "District", "Population"));
             }
             String region_info =
