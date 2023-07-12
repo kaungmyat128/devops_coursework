@@ -7,7 +7,7 @@ import java.util.ArrayList;
     /**
      * Creates methods to write sql queries and create arraylists of top 20 countries
     */
-public class TopCountriesPopulation {
+public class TopPopulatedCountries {
     //creates array to gather top 20 populated country data
      public ArrayList<Country> get_top_countries (Connection con){
         try {

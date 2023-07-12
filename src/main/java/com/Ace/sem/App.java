@@ -20,7 +20,7 @@ public class App {
         // Create new object with Country_report java Class
         CountryReport cr = new CountryReport();
         // Create new object for top countries population Class Java
-        TopCountriesPopulation c2 = new TopCountriesPopulation();
+        TopPopulatedCountries c2 = new TopPopulatedCountries();
 
         // Create new object for City_report java Class
         City_report cityR = new City_report();
