@@ -25,12 +25,12 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b>
-***
+?
 
 <b> MAIN SUCCESS SCENARIO </b>
 Data Analyst views the population report of all countries successfully
 
-<b> EXTENSIONSv </b>
+<b> EXTENSIONS </b>
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
@@ -68,7 +68,7 @@ No report is produced.
 Primary Actor
 Data Analyst
 
-Trigger
+**Trigger**
 ***
 
 MAIN SUCCESS SCENARIO
@@ -113,7 +113,7 @@ No report is produced.
 Primary Actor
 Data Analyst
 
-Trigger
+**Trigger**
 ***
 
 MAIN SUCCESS SCENARIO
@@ -157,7 +157,7 @@ No report is produced.
 Primary Actor
 Data Analyst
 
-Trigger
+**Trigger**
 ***
 
 MAIN SUCCESS SCENARIO
