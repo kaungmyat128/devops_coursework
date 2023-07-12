@@ -19,14 +19,14 @@ This is a coursework repository for the Devops Subject [Group 3]
 | Hein Thaw Zin      | 40501814             | Member        |
 
 <h2>Code Review 1</h2>
--[x] GitHub project for coursework set-up.
--[x] Product Backlog created. Product Backlog can be seen [here](https://github.com/users/kaungmyat128/projects/5).
--[x] Project builds to self-contained JAR with Maven.
--[x] Dockerfile for project set-up and works.
--[x] GitHub Actions for project set-up and build is working using JAR, and Docker
--[x] Correct branches for GitFlow workflow created - includes master, develop, and release branches.
--[x] First release created on GitHub.
--[x] Code of Conduct defined. Code of Conduct can be seen [here](https://github.com/kaungmyat128/devops_coursework/blob/master/code_of_conduct.md).
+- [x] GitHub project for coursework set-up.
+- [x] Product Backlog created. Product Backlog can be seen [here](https://github.com/users/kaungmyat128/projects/5).
+- [x] Project builds to self-contained JAR with Maven.
+- [x] Dockerfile for project set-up and works.
+- [x] GitHub Actions for project set-up and build is working using JAR, and Docker
+- [x] Correct branches for GitFlow workflow created - includes master, develop, and release branches.
+- [x] First release created on GitHub.
+- [x] Code of Conduct defined. Code of Conduct can be seen [here](https://github.com/kaungmyat128/devops_coursework/blob/master/code_of_conduct.md).
 
 &emsp; We are working for the organization that require reporting on world population information.
 We have been ask to implement the new system which can easily access to the information of the population.
