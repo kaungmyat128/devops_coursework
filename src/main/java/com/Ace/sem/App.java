@@ -15,12 +15,17 @@ public class App {
     public static void main(String[] args) {
         // Create new Application Object
         App a = new App();
+
+        //------------Creating Object for Country Report------------
+
         // Create new Country Object
         Country c = new Country();
         // Create new object with Country_report java Class
         CountryReport cr = new CountryReport();
         // Create new object for top countries population Class Java
         TopPopulatedCountries c2 = new TopPopulatedCountries();
+
+        //------------Creating Object for Cities Report------------
 
         City ct = new City();
         // Create new object for City_report java Class
@@ -30,6 +35,8 @@ public class App {
 
         // Connect to database
         a.connect();
+
+        //---------------All Country Report---------------
 
         // Display All Countries Population
         ArrayList<Country> CPop1 = cr.getCountryPop(a.con);
@@ -46,6 +53,8 @@ public class App {
         System.out.println("All Countries Population in the World categorized by Regions");
         c.displayCountries_Region(CPop3);
 
+        //---------------Top Country Report---------------
+
         // Display Top 20 Countries Population
         ArrayList<Country> CPop4 = c2.get_top_countries(a.con);
         System.out.println("Top 20 Countries Population in the World");
@@ -61,6 +70,8 @@ public class App {
         System.out.println("Top 20 Countries Population in Each Region");
         c.displayCountries_Region(CPop6);
 
+        //---------------All Cities Report---------------
+
         //Display all the cities population in the world
         ArrayList<City> CityW = cityR.get_city_world(a.con);
         System.out.println("All the Cities Population in the world");
@@ -72,9 +83,11 @@ public class App {
         cityR.displayCityContinents(CityC);
 
         //Display All the cities population in each region
-       ArrayList<City> CityReg = cityR.get_city_region(a.con);
-       System.out.println("All the Cities Population in Each Region");
-       cityR.displayCityRegion(CityReg);
+        ArrayList<City> CityReg = cityR.get_city_region(a.con);
+        System.out.println("All the Cities Population in Each Region");
+        cityR.displayCityRegion(CityReg);
+
+        //---------------Top Cities Report---------------
 
         //Display Top 20 Cities Population in the world
         ArrayList<City> TPCICity = cty.getWorldPopByCity(a.con);

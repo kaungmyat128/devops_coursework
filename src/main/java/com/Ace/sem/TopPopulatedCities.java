@@ -1,5 +1,5 @@
 package com.Ace.sem;
-
+//importing necessary java sql and util library
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class TopPopulatedCities {
 
+    //Method to extract the data for top 20 cities in the world
     public ArrayList<City>
     getWorldPopByCity(Connection con) {
         try {
@@ -19,7 +20,7 @@ public class TopPopulatedCities {
                     + "ORDER BY Population DESC LIMIT 20";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract City information from database
             ArrayList<City> worldPop = new ArrayList<City>();
             while (rset.next()) {
                 City world = new City();
@@ -36,6 +37,8 @@ public class TopPopulatedCities {
             return null;
         }
     }
+
+    //Method to extract the data for top 20 cities in Each Continent
     public ArrayList<City>
     getContinentPopByCity(Connection con) {
         try {
@@ -48,7 +51,7 @@ public class TopPopulatedCities {
                             + "WHERE row_num <= 20 ORDER BY Continent ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract City information for Each Continent from Database
             ArrayList<City> continentPop = new ArrayList<City>();
             while (rset.next()) {
                 City continent = new City();
@@ -66,6 +69,8 @@ public class TopPopulatedCities {
             return null;
         }
     }
+
+    //Method to extract the data for top 20 cities in Each Region
     public ArrayList<City>
     getRegionPopByCity(Connection con) {
         try {
@@ -78,7 +83,7 @@ public class TopPopulatedCities {
                             + "WHERE row_num <= 20 ORDER BY Region ASC ,Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract City information for Each Region From Database
             ArrayList<City> regionPop = new ArrayList<City>();
             while (rset.next()) {
                 City region = new City();
@@ -96,6 +101,8 @@ public class TopPopulatedCities {
             return null;
         }
     }
+
+    //Method to extract the data for top 20 cities in Each Country
     public ArrayList<City>
     getCountryPopByCity(Connection con) {
         try {
@@ -108,7 +115,7 @@ public class TopPopulatedCities {
                             + "WHERE row_num <= 20 ORDER BY CountryName ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract City information for Each country From Database
             ArrayList<City> countryPop = new ArrayList<City>();
             while (rset.next()) {
                 City country = new City();
@@ -125,6 +132,8 @@ public class TopPopulatedCities {
             return null;
         }
     }
+
+    //Method to extract the data for top 20 cities in Each District
     public ArrayList<City>
     getDistrictPopByCity(Connection con) {
         try {
@@ -137,7 +146,7 @@ public class TopPopulatedCities {
                             + "WHERE row_num <= 20 ORDER BY District ASC, Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract City information for Each District From Database
             ArrayList<City> districtPop = new ArrayList<City>();
             while (rset.next()) {
                 City district = new City();

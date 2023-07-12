@@ -1,11 +1,13 @@
 package com.Ace.sem;
-
+//importing necessary java sql and util library
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 public class City_report extends City {
+
+    //Method to extract the data for cities in the world
     public ArrayList<City> get_city_world (Connection con){
         try {
             // Create an SQL statement
@@ -36,6 +38,7 @@ public class City_report extends City {
         }
     }
 
+    //Method to extract the data for cities in Each Continent
     public ArrayList<City> get_city_continent  (Connection con){
         try {
             // Create an SQL statement
@@ -67,6 +70,7 @@ public class City_report extends City {
         }
     }
 
+    //Method to extract the data for cities in Each Region
     public ArrayList<City> get_city_region   (Connection con){
         try {
             // Create an SQL statement
@@ -97,5 +101,9 @@ public class City_report extends City {
             return null;
         }
     }
+    //Method to extract the data for cities in Each Country
+
+
+    //Method to extract the data for cities in Each District
 
 }

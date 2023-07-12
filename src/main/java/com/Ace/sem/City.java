@@ -42,6 +42,7 @@ public class City {
 
     public String Region;
 
+    //Method to Display Cities in the world
     public void displayCities(ArrayList<City> cities_list)
     {
         // Print header
@@ -59,6 +60,8 @@ public class City {
         }
         System.out.println("============================================================");
     }
+
+    //Method to Display Cities in Each Continent
     public void displayCityContinents(ArrayList<City> continent_list)
     {
         // Print header
@@ -83,6 +86,8 @@ public class City {
         }
         System.out.println("============================================================");
     }
+
+    //Method to Display Cities in Each Region
     public void displayCityRegion(ArrayList<City> region_list)
     {
         // Print header
@@ -93,7 +98,7 @@ public class City {
         // Loop over all region population in the list
         for (City cityR : region_list){
             if(!cityR.Region.equals(currentRegion)){
-                System.out.println("\n All the Cities sorted by Population in " + cityR.Region + " Region");
+                System.out.println("\n Cities sorted by Population in " + cityR.Region + " Region");
                 System.out.println("===========================================");
                 currentRegion = cityR.Region;
                 System.out.println(String.format("%-40s %-30s %-30s %-30s %-20s", "City", "Country", "District", "Region", "Population"));
@@ -105,6 +110,8 @@ public class City {
         }
         System.out.println("============================================================");
     }
+
+    //Method to Display Cities in Each Country
     public void displayCityCountries(ArrayList<City> countries_list)
     {
         // Print header
@@ -127,6 +134,8 @@ public class City {
         }
         System.out.println("============================================================");
     }
+
+    //Method to Display Cities in Each District
     public void displayCityDistrict(ArrayList<City> districts_list)
     {
         // Print header
