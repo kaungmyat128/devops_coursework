@@ -157,7 +157,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b>
-***
+?
 
 <b> MAIN SUCCESS SCENARIO </b> 
 Data Analyst views the population report of top N populated countries in the world successfully
