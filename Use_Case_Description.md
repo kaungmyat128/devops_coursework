@@ -1,3 +1,487 @@
+USE CASE: 1 Population report of all countries in the world ordered by largest to smallest populated countries
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all countries in the world ordered by largest to smallest populated countries so that I can easily know countries population based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce all countries population report that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all countries in the world.
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of all countries successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+============================================================================================
+USE CASE: 2 Population report of all countries in each continent ordered by largest to smallest populated countries
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all countries in each continent ordered by largest to smallest populated countries so that I can easily know countries population of any continent that I want to see based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce countries population report for each continent that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all countries of each continent.
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of all countries of each continent successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+===============================================================================
+
+USE CASE: 3 Population report of all countries in each region ordered by largest to smallest populated countries
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all countries in each region ordered by largest to smallest populated countries so that I can easily know countries population of any region that I want to see based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce countries population report for each region that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all countries of each region.
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of all countries of each region successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+=============================================================
+USE CASE: 4 Population report of top N countries population report
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view top N countries population in the world so that I can easily view top most populated countries around the world
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce top N populated countries population report in the world that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all countries in the world.
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of top N populated countries in the world successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+=========================================================================================
+USE CASE: 5 Population report of top N countries population in each continent report
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view top N countries population in each continent so that I can easily view top most populated countries in each continent
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce top N populated countries population report in each continent that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all countries in each continent
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of top N populated countries in each continent successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+==========================================================================
+USE CASE: 6 Population report of top N countries population in each region report
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view top N countries population in each region so that I can easily view top most populated countries in each region
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce top N populated countries population report in each region that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all countries in each region
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of top N populated countries in each region successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+====================================================================================
+USE CASE: 7 Population report of Cities in the world
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all cities in the world which have to be ordered by largest to smallest populated cities so that I can easily know cities population around the world based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce cities population report in the world that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all cities in the world
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of cities successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+==========================================================================
+USE CASE: 8 Population report of Cities in each continent
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all cities in each continent ordered by largest to smallest populated cities so that I can easily know cities population of any continent that I want to see based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce cities population report in each continent that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all cities in each continent
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of cities in each continent successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+=======================================================================
+USE CASE: 9 Population report of Cities in each region
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all cities in each region ordered by largest to smallest populated cities so that I can easily know cities population of any region that I want to see based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce cities population report in each region that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all cities in each region
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of cities in each region successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+===============================================================
+USE CASE: 10 Population report of Cities in each country
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all cities in each country ordered by largest to smallest populated cities so that I can easily know cities population of any country that I want to see based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce cities population report in each country that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all cities in each country
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of cities in each country successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+
+================================================================
+USE CASE: 11 Population report of Cities in each district
+
+CHARACTERISTIC INFORMATION
+
+Goal in Context
+As a data analyst, I want to view population report of all cities in each district ordered by largest to smallest populated cities so that I can easily know cities population of any district that I want to see based on this report.
+
+Scope
+Company.
+
+Level
+Primary Task.
+
+Preconditions
+We need to produce cities population report in each district that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
+
+
+Success End Condition
+A report is available for Data Analyst to view population report of all cities in each district
+
+Failed End Condition
+No report is produced.
+
+Primary Actor
+Data Analyst
+
+Trigger
+***
+
+MAIN SUCCESS SCENARIO
+Data Analyst views the population report of cities in each district successfully
+
+EXTENSIONS
+1. Use sql query to produce data from the database tables - 'country' table and 'city' table
+2. Create Methods to get data from database and display information
+3. Display Report Correctly
+
+SUB-VARIATIONS
+None.
+
+SCHEDULE
+DUE DATE: Release 1.0
+======================================================
+
 <h3>USE CASE 12: Population Report of All Cities in the World</h3>
 <b>Goal in Context</b>
 As a data analyst, I want to view top N cities population in the world so that I can easily view top most populated cities around the world.
