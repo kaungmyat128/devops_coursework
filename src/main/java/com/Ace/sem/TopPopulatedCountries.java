@@ -97,12 +97,12 @@ public class TopPopulatedCountries {
             // Extract population of countries information and store into array list
             while (qry.next()) {
                 Country cp = new Country();
-                cp.Code = qry.getString("Code");
-                cp.Name = qry.getString("Name");
-                cp.Continent = qry.getString("Continent");
-                cp.Region = qry.getString("Region");
-                cp.Population = qry.getInt("Population");
-                cp.Capital = qry.getString("Capital");
+                cp.setCode(qry.getString("Code"));
+                cp.setName(qry.getString("Name"));
+                cp.setContinent(qry.getString("Continent"));
+                cp.setRegion(qry.getString("Region"));
+                cp.setPopulation(qry.getInt("Population"));
+                cp.setCapital(qry.getString("Capital"));
                 al.add(cp);
             }
             // return the array list

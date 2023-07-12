@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class City_report extends City {
+public class City_report {
 
     //Method to extract the data for cities in the world
     public ArrayList<City> get_city_world (Connection con){

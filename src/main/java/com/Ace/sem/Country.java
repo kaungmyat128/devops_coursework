@@ -7,34 +7,52 @@ import java.util.*;
      * Creates methods for displaying reports
      */
 public class Country {
-    /**
-     * City Code
-     */
-    public String Code;
-    /**
-     * City Name
-     */
-    public String Name;
+        // Declare Variables related to Country Information and Capital City Names
+        private String Code;
+        private String Name;
+        private String Continent;
+        private String Region;
+        private int Population;
+        private String Capital;
 
-    /**
-     * City Continent
-     */
-    public String Continent;
+        // Use Getter & Setter Method for each variables initialized in above
+        public String getCode() {
+            return Code;
+        }
+        public void setCode(String Code) {
+            this.Code = Code;
+        }
+        public String getName() {
+            return Name;
+        }
+        public void setName(String Name) {
+            this.Name = Name;
+        }
+        public String getContinent() {
+            return Continent;
+        }
+        public void setContinent(String Continent) {
+            this.Continent = Continent;
+        }
+        public String getRegion() {
+            return Region;
+        }
+        public void setRegion(String Region) {
+            this.Region = Region;
+        }
+        public int getPopulation() {
+            return Population;
+        }
+        public void setPopulation(int Population) {
+            this.Population = Population;
+        }
+        public String getCapital() {
+            return Capital;
+        }
+        public void setCapital(String Capital) {
+            this.Capital = Capital;
+        }
 
-    /**
-     * City Region
-     */
-    public String Region;
-
-    /**
-     * City Population
-     */
-    public int Population;
-
-    /**
-     * City Capital
-     */
-    public String Capital;
 
     //display all countries
     public void displayCountries(ArrayList<Country> countries_list)
@@ -49,7 +67,8 @@ public class Country {
         {
             String countries_info =
                     String.format("%-10s %-40s %-15s %-20s %-15s %-15s",
-                            cp.Code, cp.Name, cp.Continent, cp.Region, cp.Population, cp.Capital);
+                            cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
+                            cp.getPopulation(), cp.getCapital());
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -79,7 +98,8 @@ public class Country {
 
             String countries_info =
                     String.format("%-10s %-40s %-15s %-20s %-15s %-15s",
-                            cp.Code, cp.Name, cp.Continent, cp.Region, cp.Population, cp.Capital);
+                            cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
+                            cp.getPopulation(), cp.getCapital());
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -109,7 +129,8 @@ public class Country {
 
             String countries_info =
                     String.format("%-10s %-40s %-15s %-20s %-15s %-15s",
-                            cp.Code, cp.Name, cp.Continent, cp.Region, cp.Population, cp.Capital);
+                            cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
+                            cp.getPopulation(), cp.getCapital());
             System.out.println(countries_info);
         }
         System.out.println("============================================================");

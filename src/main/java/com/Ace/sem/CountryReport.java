@@ -18,7 +18,7 @@ public class CountryReport {
             // Create string for SQL statement
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, "
-                            +"country.Population, city.Name "
+                            +"country.Population, city.Name AS Capital "
                             + "FROM country JOIN city on city.ID = country.Capital "
                             + "ORDER BY Population DESC";
             // Execute SQL statement
@@ -27,18 +27,18 @@ public class CountryReport {
             ArrayList<Country> Countrypop = new ArrayList<>();
             while (rset.next()) {
                 Country cp = new Country();
-                cp.Code = rset.getString("country.Code");
-                cp.Name = rset.getString("country.Name");
-                cp.Continent = rset.getString("country.Continent");
-                cp.Region = rset.getString("country.Region");
-                cp.Population = rset.getInt("country.Population");
-                cp.Capital = rset.getString("city.Name");
+                cp.setCode(rset.getString("Code"));
+                cp.setName(rset.getString("Name"));
+                cp.setContinent(rset.getString("Continent"));
+                cp.setRegion(rset.getString("Region"));
+                cp.setPopulation(rset.getInt("Population"));
+                cp.setCapital(rset.getString("Capital"));
                 Countrypop.add(cp);
             }
             return Countrypop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get country population report");
             return null;
         }
     }
@@ -51,7 +51,7 @@ public class CountryReport {
             // Create string for SQL statement
             String strSelect =
                     "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
-                            + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital FROM country "
+                            + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS Capital FROM country "
                             + "INNER JOIN city ON country.Capital = city.ID) AS subquery "
                             + "ORDER BY Continent ASC, Population DESC";
             // Execute SQL statement
@@ -60,18 +60,18 @@ public class CountryReport {
             ArrayList<Country> Countrypop = new ArrayList<>();
             while (rset.next()) {
                 Country cp = new Country();
-                cp.Code = rset.getString("Code");
-                cp.Name = rset.getString("Name");
-                cp.Continent = rset.getString("Continent");
-                cp.Region = rset.getString("Region");
-                cp.Population = rset.getInt("Population");
-                cp.Capital = rset.getString("Capital");
+                cp.setCode(rset.getString("Code"));
+                cp.setName(rset.getString("Name"));
+                cp.setContinent(rset.getString("Continent"));
+                cp.setRegion(rset.getString("Region"));
+                cp.setPopulation(rset.getInt("Population"));
+                cp.setCapital(rset.getString("Capital"));
                 Countrypop.add(cp);
             }
             return Countrypop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get country population report");
             return null;
         }
     }
@@ -93,18 +93,18 @@ public class CountryReport {
             ArrayList<Country> Countrypop = new ArrayList<>();
             while (rset.next()) {
                 Country cp = new Country();
-                cp.Code = rset.getString("Code");
-                cp.Name = rset.getString("Name");
-                cp.Continent = rset.getString("Continent");
-                cp.Region = rset.getString("Region");
-                cp.Population = rset.getInt("Population");
-                cp.Capital = rset.getString("Capital");
+                cp.setCode(rset.getString("Code"));
+                cp.setName(rset.getString("Name"));
+                cp.setContinent(rset.getString("Continent"));
+                cp.setRegion(rset.getString("Region"));
+                cp.setPopulation(rset.getInt("Population"));
+                cp.setCapital(rset.getString("Capital"));
                 Countrypop.add(cp);
             }
             return Countrypop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get country population report");
             return null;
         }
     }
