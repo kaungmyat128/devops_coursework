@@ -1,7 +1,5 @@
 package com.Ace.sem;
 
-import com.mysql.cj.exceptions.CJTimeoutException;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -20,9 +18,9 @@ public class App {
         // Create new Country Object
         Country c = new Country();
         // Create new object with Country_report java Class
-        Country_report cr = new Country_report();
+        CountryReport cr = new CountryReport();
         // Create new object for top countries population Class Java
-        top_countries_population c2 = new top_countries_population();
+        TopCountriesPopulation c2 = new TopCountriesPopulation();
 
         // Create new object for City_report java Class
         City_report cityR = new City_report();
