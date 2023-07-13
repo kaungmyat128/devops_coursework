@@ -207,16 +207,18 @@ public class CityReport {
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each district
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
+                        + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
-                                + " AND District != " + " " + " ORDER BY District ASC, Population DESC";
+                                + " AND District != SPACE(1) ORDER BY District ASC, Population DESC";
             } else if (lim==0) {
                 // Create string for SQL statement with no limit - fetch All Cities Countries for each district
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
+                                + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "WHERE District != " + " " + " ORDER BY District ASC, Population DESC";
+                                + "WHERE District != SPACE(1) ORDER BY District ASC, Population DESC";
 
             }
             // Execute SQL statement
