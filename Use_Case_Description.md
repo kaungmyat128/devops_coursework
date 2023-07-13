@@ -6,7 +6,7 @@
 As a data analyst, I want to see report of all countries 
 - in the world 
 - in each continent
-- in each region 
+- in each region <br>
 ordered by largest to smallest populated countries so that I can easily know countries population based on this report.
 
 <b> Scope </b><br>
@@ -16,7 +16,9 @@ Company.
 Primary Task.
 
 <b> Preconditions </b><br>
-We need to produce all countries population report that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+We need to produce all countries population report 
+that contains each country information and Capital City Name of each country. 
+Available resource is world database that contains city and country tables.
 
 
 <b> Success End Condition </b><br>
@@ -58,7 +60,7 @@ DUE DATE: 14th of July, 2023
 As a data analyst, I want to view top N countries population 
 - in the world 
 - in each continent 
-- in each region
+- in each region <br>
 ordered by largest to smallest populated countries 
 so that I can easily view top most populated countries around the world
 
@@ -69,7 +71,9 @@ Company.
 Primary Task.
 
 <b> Preconditions </b> <br>
-We need to produce top N populated countries population report in the world that contains each country information and Capital City Name of each country. Database contains 'Country' table and 'City' table.
+We need to produce top N populated countries population report 
+that contains each country information and Capital City Name of each country. 
+Available resource is world database that contains city and country tables.
 
 <b> Success End Condition </b><br>
 Exactly N number of Countries will be returned. The report should display top N most populated Countries
@@ -86,7 +90,7 @@ Data Analyst
 When Data Analyst generates the report
 
 <b> MAIN SUCCESS SCENARIO </b> <br>
-Data Analyst views the population report of top N populated countries in the world successfully
+Data Analyst views the population report of top N populated countries successfully
 1. Use sql query to produce data from the database tables - 'country' table and 'city' table
 2. Create Methods to get data from database and display information
 3. Display Report Correctly
@@ -114,7 +118,7 @@ As a data analyst, I want to view population report of all cities
 - in each continent 
 - in each region
 - in each country 
-- in each district 
+- in each district  <br>
 which have to be ordered by largest to smallest populated cities
 so that I can easily know cities population around the world based on this report.
 
@@ -125,7 +129,9 @@ Company.
 Primary Task.
 
 <b> Preconditions</b><br>
-We need to produce cities population report in the world that contains information of each city and related country information. Database contains 'Country' table and 'City' table.
+We need to produce cities population report 
+that contains information of each city and related country information. 
+Available resource is world database that contains city and country tables.
 
 <b> Success End Condition</b><br>
 A report is available for Data Analyst to view population report of all cities in the world / in each continent / in each region / 
@@ -171,7 +177,7 @@ As a data analyst, I want to view top N cities population
 - in each continent 
 - in each region 
 - in each country 
-- in each district
+- in each district <br>
 ordered by largest to smallest populated cities
 so that I can easily view top most populated cities around the world.
 
@@ -182,7 +188,9 @@ Company
 Primary task
 
 <b>Preconditions</b><br>
-Available resource is world database with city and country tables.
+We need to produce top N most populated cities report
+that contains information of each city and related country information.
+Available resource is world database that contains city and country tables.
 
 <b>Success End Condition</b><br>
 Exactly N number of Cities will be returned. The report should display top N most populated Cities
@@ -227,7 +235,7 @@ due date - 14th of July, 2023
 As a data analyst, I want to view population report of Capital Cities of all countries 
 - in the world 
 - in each continent 
-- in each region
+- in each region <br>
 ordered by largest to smallest population
 so that I can easily know Capital Cities population based on this report.
 
@@ -238,6 +246,8 @@ Company
 Summary
 
 <b>Preconditions</b><br>
+We need to produce Capital Cities population report
+that contains information of Capital City of each country.
 Available resource is world database with city and country tables.
 
 <b>Success End Condition</b><br>
@@ -280,7 +290,7 @@ due date - 21st of July, 2023
 As a data analyst, I want to view top N Capital Cities population 
 - in the world
 - in each continent 
-- in each region
+- in each region <br>
 ordered by largest to smallest population
 so that I can easily view top most populated Capital Cities around the world.
 
@@ -291,10 +301,13 @@ Company
 Primary Task
 
 <b>Preconditions</b><br>
+We need to produce top N most populated Capital Cities population report
+that contains information of each city and related country information.
 Available resource is world database with city and country tables.
 
 <b>Success End Condition</b><br>
-Exactly N number of Capital Cities will be returned. The report should display top N most populated Capital Cities
+Exactly N number of Capital Cities will be returned. 
+The report should display top N most populated Capital Cities
 in the world / in each continent / in each region
 sorted by largest to smallest population.
 
@@ -334,7 +347,7 @@ due date - 21st of July, 2023
 As a data analyst, I want to view population of people living in the cities and not living in the cities 
 - in each continent 
 - in each region 
-- in each country
+- in each country <br>
 so that I can understand the distribution of population around urban and rural areas in different continents.
 
 <b>Scope</b><br>
@@ -344,6 +357,7 @@ Company
 Primary task
 
 <b>Preconditions</b><br>
+We need to produce report for people living in rual and urban regions.
 Available resource is world database with city and country tables.
 
 <b>Success End Condition</b><br>
@@ -390,7 +404,7 @@ As a data analyst, I want to see report of
 - population of each Region
 - population of each Country
 - population of each District
-- population of each City
+- population of each City <br>
 ordered by largest to smallest populated countries
 so that I can view population distribution of the world.
 
@@ -401,6 +415,7 @@ Company
 Primary task
 
 <b>Preconditions</b><br>
+We need to produce population reprot based on multiple categories.
 Available resource is world database with city and country tables.
 
 <b>Success End Condition</b><br>
@@ -437,7 +452,7 @@ due date - 21st of July, 2023
 
 ===============================================================
 
-<h3>USE CASE 32: Population Report Based on language</h3>
+<h3>USE CASE 9: Population Report Based on Different Languages</h3>
 
 <b> CHARACTERISTIC INFORMATION </b>
 
@@ -451,6 +466,7 @@ Company
 Summary
 
 <b>Preconditions</b><br>
+We need to produce population report based on different languages.
 Available resource is world database with city, country, and countrylanguage tables.
 
 <b>Success End Condition</b><br>
