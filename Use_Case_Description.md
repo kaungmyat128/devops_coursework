@@ -1309,7 +1309,7 @@ due date - 28th of July, 2023
 
 ===============================================================
 
-<h3>USE CASE 32: Population Report of People who speaks different languages</h3>
+<h3>USE CASE 32: Population Report Based on language</h3>
 <b>Goal in Context</b><br>
 As a data analyst, I want to see population of people who speak Chinese, English, Hindi, Spanish & Arabic Languages from greatest number to smallest, including the percentage of the world population so that I can compare the most used languages around the world.
 <b>Scope</b><br>
