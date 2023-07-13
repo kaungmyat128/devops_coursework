@@ -9,10 +9,11 @@ import java.util.Locale;
 
 /**
  * Creates methods to write sql queries and create arraylists of countries population
- * This Java Class File contains 7 java methods -
+ * This Java Class File contains 8 java methods -
  * get_countries(), get_countries_continent(),  get_countries_region() methods
  * store_into_arraylist() method
  * displayCountries(), displayCountries_continent() and displayCountries_region() methods
+ * human_readable_format() for formatting population
  * */
 // New Object of CountryReport Java Class will be used from the App.java.
 public class CountryReport {
@@ -29,13 +30,13 @@ public class CountryReport {
             Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
-                // Create string for SQL statement with no limit - fetch all queries
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries
                 strSelect =
                         "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
                                 + "FROM country INNER JOIN city ON country.Capital = city.ID "
                                 + "ORDER BY country.Population DESC LIMIT " + lim;
             } else if (lim==0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries
+                // Create string for SQL statement with no limit - fetch all queries
                 strSelect =
                         "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
                                 + "FROM country INNER JOIN city ON country.Capital = city.ID "
@@ -69,14 +70,14 @@ public class CountryReport {
             String strSelect = null;
             // Create string for SQL statement
             if (lim>0) {
-                // Create string for SQL statement with no limit - fetch Countries population for each continent
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS Capital FROM country "
                                 + "INNER JOIN city ON country.Capital = city.ID) AS subquery WHERE row_num <= " + lim
                                 + " ORDER BY Continent ASC, Population DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries for each continent
+                // Create string for SQL statement with no limit - fetch Countries population for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital FROM country "
@@ -110,14 +111,14 @@ public class CountryReport {
                 String strSelect = null;
                 // Create string for SQL statement
             if (lim>0) {
-                // Create string for SQL statement with no limit - fetch Countries population for each region
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries for each region
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
                                 + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
                                 + "WHERE row_num <= " + lim + " ORDER BY Region ASC, Population DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries for each region
+                // Create string for SQL statement with no limit - fetch Countries population for each region
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
@@ -209,7 +210,7 @@ public class CountryReport {
                 String countries_info =
                         String.format("%-10s %-40s %-15s %-27s %-15s %-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                cp.getPopulation(), cp.getCapital());
+                                human_readable_format(cp.getPopulation()), cp.getCapital());
                 System.out.println(countries_info);
             }
             System.out.println("============================================================");
@@ -240,13 +241,17 @@ public class CountryReport {
                 String countries_info =
                         String.format("%-10s %-40s %-15s %-27s %-15s %-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                cp.getPopulation(), cp.getCapital());
+                                human_readable_format(cp.getPopulation()), cp.getCapital());
                 System.out.println(countries_info);
             }
             System.out.println("============================================================");
         }
 
-        public String human_readable_format(int population){
+    /**
+     * human_readable_format method used to format the population numbers
+     * e.g. 3242344 => 3,242,344
+     */
+    public String human_readable_format(int population){
             NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
             String formattedCode = nf.format(population);
             return formattedCode;

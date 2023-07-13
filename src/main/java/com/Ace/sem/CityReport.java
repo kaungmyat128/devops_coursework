@@ -7,21 +7,28 @@ import java.util.ArrayList;
 
 public class CityReport {
 
-    //Method to extract the data for top 20 cities in the world
-    public ArrayList<City>
-    getWorldPopByCity(Connection con, int lim) {
+    // Create new object of CountryReport to use human_readable_format() method from country.java
+    CountryReport formatPopulation = new CountryReport();
+
+    /**
+     * getWorldPopByCity() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated countries in the world
+     * with descending order of population'
+     * Then return the data as array list.
+     * */
+    public ArrayList<City> getWorldPopByCity(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = null;
-            // Create string for SQL statement
             if (lim>0){
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities
                 strSelect =
                         "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
                                 + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
                                 + "ORDER BY Population DESC LIMIT "+ lim;
             } else if (lim==0) {
-
+                // Create string for SQL statement with no limit - fetch all queries
                 strSelect =
                         "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
                                 + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
@@ -47,21 +54,26 @@ public class CityReport {
         }
     }
 
-    //Method to extract the data for top 20 cities in Each Continent
-    public ArrayList<City>
-    getContinentPopByCity(Connection con,int lim) {
+    /**
+     * getCityPopByContinent() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated countries in each Continent
+     * with descending order of population'
+     * Then return the data as array list.
+     * */
+    public ArrayList<City> getCityPopByContinent(Connection con,int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = null;
-            // Create string for SQL statement
             if (lim>0){
-                 strSelect =
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each continent
+                strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY Continent ASC, Population DESC";
             } else if (lim == 0) {
+                // Create string for SQL statement with no limit - fetch Cities population for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
@@ -89,23 +101,28 @@ public class CityReport {
         }
     }
 
-    //Method to extract the data for top 20 cities in Each Region
-    public ArrayList<City>
-    getRegionPopByCity(Connection con, int lim) {
+    /**
+     * getCityPopByRegion() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated countries in each Region
+     * with descending order of population'
+     * Then return the data as array list.
+     * */
+    public ArrayList<City> getCityPopByRegion(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = null;
-            // Create string for SQL statement
             if (lim>0){
-                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each region
+                strSelect =
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY Region ASC ,Population DESC";
             } else if (lim==0) {
+                // Create string for SQL statement with no limit - fetch All Cities Countries for each continent
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "ORDER BY Region ASC ,Population DESC";
             }
@@ -131,23 +148,28 @@ public class CityReport {
         }
     }
 
-    //Method to extract the data for top 20 cities in Each Country
-    public ArrayList<City>
-    getCountryPopByCity(Connection con, int lim) {
+    /**
+     * getCityPopByCountry() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated countries in each Country
+     * with descending order of population'
+     * Then return the data as array list.
+     * */
+    public ArrayList<City> getCityPopByCountry(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = null;
-            // Create string for SQL statement
             if (lim>0){
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each country
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY CountryName ASC, Population DESC";
             } else if (lim==0) {
+                // Create string for SQL statement with no limit - fetch All Cities Countries for each continent
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "ORDER BY CountryName ASC, Population DESC";
             }
@@ -171,25 +193,30 @@ public class CityReport {
         }
     }
 
-    //Method to extract the data for top 20 cities in Each District
-    public ArrayList<City>
-    getDistrictPopByCity(Connection con, int lim) {
+    /**
+     * getCityPopByDistrict() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated countries in each District
+     * with descending order of population'
+     * Then return the data as array list.
+     * */    public ArrayList<City>
+    getCityPopByDistrict(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = null;
-            // Create string for SQL statement
             if (lim>0){
+                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each district
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
-                                + " ORDER BY District ASC, Population DESC";
+                                + " AND District != " + " " + " ORDER BY District ASC, Population DESC";
             } else if (lim==0) {
+                // Create string for SQL statement with no limit - fetch All Cities Countries for each district
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "ORDER BY District ASC, Population DESC";
+                                + "WHERE District != " + " " + " ORDER BY District ASC, Population DESC";
 
             }
             // Execute SQL statement
@@ -211,6 +238,9 @@ public class CityReport {
             return null;
         }
     }
+
+
+    // Display Cities Report using getter() method
     public void displayCities(ArrayList<City> cities_list)
     {
         // Print header
@@ -223,13 +253,14 @@ public class CityReport {
         {
             String countries_info =
                     String.format("%-40s %-30s %-30s %-20s",
-                            cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(), cityR.getPopulation());
+                            cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
+                            formatPopulation.human_readable_format(cityR.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
     }
 
-    //Method to Display Cities in Each Continent
+    //display cities report based on continents using getter() and setter() methods
     public void displayCityContinents(ArrayList<City> continent_list)
     {
         // Print header
@@ -250,13 +281,13 @@ public class CityReport {
             String continent_info =
                     String.format("%-40s %-30s %-30s %-30s %-20s",
                             cityR.getCityName(), cityR.getCountryName(), cityR.getContinents(),
-                            cityR.getDistrict(), cityR.getPopulation());
+                            cityR.getDistrict(), formatPopulation.human_readable_format(cityR.getPopulation()));
             System.out.println(continent_info);
         }
         System.out.println("============================================================");
     }
 
-    //Method to Display Cities in Each Region
+    //display cities report based on regions using getter() and setter() methods
     public void displayCityRegion(ArrayList<City> region_list)
     {
         // Print header
@@ -275,13 +306,13 @@ public class CityReport {
             String region_info =
                     String.format("%-40s %-30s %-30s %-30s %-20s",
                             cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
-                            cityR.getRegion(), cityR.getPopulation());
+                            cityR.getRegion(), formatPopulation.human_readable_format(cityR.getPopulation()));
             System.out.println(region_info);
         }
         System.out.println("============================================================");
     }
 
-    //Method to Display Cities in Each Country
+    //display cities report based on countries using getter() and setter() methods
     public void displayCityCountries(ArrayList<City> countries_list)
     {
         // Print header
@@ -299,13 +330,14 @@ public class CityReport {
             }
             String countries_info =
                     String.format("%-40s %-30s %-30s %-20s",
-                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(), cty.getPopulation());
+                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(),
+                            formatPopulation.human_readable_format(cty.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
     }
 
-    //Method to Display Cities in Each District
+    //display cities report based on districts using getter() and setter() methods
     public void displayCityDistrict(ArrayList<City> districts_list)
     {
         // Print header
@@ -322,7 +354,8 @@ public class CityReport {
             }
             String countries_info =
                     String.format("%-40s %-30s %-30s %-20s",
-                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(), cty.getPopulation());
+                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(),
+                            formatPopulation.human_readable_format(cty.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");

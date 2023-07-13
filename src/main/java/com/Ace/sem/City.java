@@ -1,51 +1,19 @@
 package com.Ace.sem;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-
+/**
+ * Declares variables to be used for cities related reports
+ * Creates methods for displaying reports
+ */
 public class City {
-    public static void main(String[] args) {
 
-    }
-    /**
-     * City ID
-     */
+    // Declare Variables related to City Information, Country Code, District, Population, Country & Region .
     private int ID;
-    /**
-     * City Name
-     */
     private String CityName;
-
-    /**
-     * City CountryCode
-     */
     private String CountryCode;
-
-    /**
-     * City District
-     */
     private String District;
-
-    /**
-     * City Population
-     */
     private int Population;
-
-    /**
-     * City's CountryName
-     */
     private String CountryName;
-
-    /**
-     * City Continents
-     */
     private String Continents;
-
-    /**
-     * City Region
-     */
     private String Region;
 
     // Getter method for ID
@@ -127,8 +95,6 @@ public class City {
     public void setRegion(String Region) {
         this.Region = Region;
     }
-
-    //Method to Display Cities in the world
 
 }
 
