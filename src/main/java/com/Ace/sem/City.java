@@ -7,7 +7,6 @@ package com.Ace.sem;
 public class City {
 
     // Declare Variables related to City Information, Country Code, District, Population, Country & Region .
-    private int ID;
     private String CityName;
     private String CountryCode;
     private String District;
@@ -15,16 +14,6 @@ public class City {
     private String CountryName;
     private String Continents;
     private String Region;
-
-    // Getter method for ID
-    public int getID() {
-        return ID;
-    }
-
-    // Setter method for ID
-    public void setID(int ID) {
-        this.ID = ID;
-    }
 
     // Getter method for CityName
     public String getCityName() {
