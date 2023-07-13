@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * Creates methods to write sql queries and create arraylists of countries population
@@ -176,7 +178,7 @@ public class CountryReport {
                 String countries_info =
                         String.format("%-10s %-40s %-15s %-27s %-15s %-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                cp.getPopulation(), cp.getCapital());
+                                human_readable_format(cp.getPopulation()), cp.getCapital());
                 System.out.println(countries_info);
             }
             System.out.println("============================================================");
@@ -242,5 +244,11 @@ public class CountryReport {
                 System.out.println(countries_info);
             }
             System.out.println("============================================================");
+        }
+
+        public String human_readable_format(int population){
+            NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
+            String formattedCode = nf.format(population);
+            return formattedCode;
         }
 }
