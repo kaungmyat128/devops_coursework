@@ -29,7 +29,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b><br>
-2nd Week of the Development
+When Data Analyst generates the report
 
 <b> MAIN SUCCESS SCENARIO </b><br>
 Data Analyst views the population report of all countries successfully
@@ -83,7 +83,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger </b><br>
-2nd Week of The Development, After Use Case 3
+When Data Analyst generates the report
 
 <b> MAIN SUCCESS SCENARIO </b> <br>
 Data Analyst views the population report of top N populated countries in the world successfully
@@ -138,7 +138,7 @@ No report is produced.
 Data Analyst
 
 <b> Trigger</b><br>
-2nd week of development, after use case 6
+When Data Analyst generates the report
 
 <b> MAIN SUCCESS SCENARIO</b><br>
 Data Analyst views the population report of cities successfully 
@@ -196,7 +196,7 @@ No list of cities will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-2nd week of development, after use case 11
+When Data Analyst generates the report
 
 <b>Main Success Scenario</b><br>
 Data analyst views the population report of cities successfully.
@@ -251,7 +251,7 @@ No list of Capital Cities report will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 16
+When Data Analyst generates the report
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of all capitals successfully.
@@ -305,7 +305,7 @@ No list of Capital Cities report will be produced
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 18 and 19.
+When Data Analyst generates the report
 
 <b>Main Success Scenario</b><br>
 Data analyst views population report of Top N populated capitals in the world successfully.
@@ -358,7 +358,7 @@ Population not categorized and failed to produce to report.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 21 and 22.
+When Data Analyst generates the report
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views rural and urban population report of each continent.
@@ -413,7 +413,7 @@ Population not categorized and failed to produce to report.
 Data Analyst
 
 <b>Trigger</b><br>
-3rd week of development, after use case 23.
+When Data Analyst generates the report
 
 <b>Main Success Scenario</b><br>
 Data Analyst successfully views Population Report of World, Continent, Region, Country, District and City will be produced.
@@ -463,7 +463,7 @@ Report not created.
 Data Analyst
 
 <b>Trigger</b><br>
-4th week of development, after use case 31.
+When Data Analyst generates the report
 
 <b>Main Success Scenario</b><br>
 Data analyst successful views language by people report
