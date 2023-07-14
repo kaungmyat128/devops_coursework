@@ -5,6 +5,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Creates methods to write sql queries and create arraylists of countries population
+ * This Java Class File contains 5 java methods that contains 2 parameters - database connection & int limit parameters -
+ * getCityPop(), getCityPopByContinent(), getCityPopByRegion() , getCityPopByCountry(), getCityPopByDistrict()
+ * This class also contains other 5 java methods that contains ArrayList Parameter to display results
+ * displayCities(), displayCityContinents(), displayCityRegion(), displayCityCountries() , displayCityDistrict()
+ * */
 public class CityReport {
 
     // Create new object of CountryReport to use human_readable_format() method from country.java
@@ -16,7 +23,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getWorldPopByCity(Connection con, int lim) {
+    public ArrayList<City> getCityPop(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -198,8 +205,7 @@ public class CityReport {
      * write sql query to produce 'ALL or Top N most populated countries in each District
      * with descending order of population'
      * Then return the data as array list.
-     * */    public ArrayList<City>
-    getCityPopByDistrict(Connection con, int lim) {
+     * */    public ArrayList<City> getCityPopByDistrict(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -242,7 +248,10 @@ public class CityReport {
     }
 
 
-    // Display Cities Report using getter() method
+    /** Display Cities Report using getter() method
+     *
+     * @param cities_list
+     */
     public void displayCities(ArrayList<City> cities_list)
     {
         // Print header
@@ -262,7 +271,10 @@ public class CityReport {
         System.out.println("============================================================");
     }
 
-    //display cities report based on continents using getter() and setter() methods
+    /** display cities report based on continents using getter() and setter() methods
+     * Use if condition to check whether current continent change and print out current continent as title
+     * @param continent_list
+     */
     public void displayCityContinents(ArrayList<City> continent_list)
     {
         // Print header
@@ -289,7 +301,10 @@ public class CityReport {
         System.out.println("============================================================");
     }
 
-    //display cities report based on regions using getter() and setter() methods
+    /** display cities report based on regions using getter() and setter() methods
+     * Use if condition to check whether current region change and print out current region as title
+     * @param region_list
+     */
     public void displayCityRegion(ArrayList<City> region_list)
     {
         // Print header
@@ -314,7 +329,10 @@ public class CityReport {
         System.out.println("============================================================");
     }
 
-    //display cities report based on countries using getter() and setter() methods
+    /** display cities report based on countries using getter() and setter() methods
+     * Use if condition to check whether current country change and print out current country as title
+     * @param countries_list
+     */
     public void displayCityCountries(ArrayList<City> countries_list)
     {
         // Print header
@@ -339,7 +357,10 @@ public class CityReport {
         System.out.println("============================================================");
     }
 
-    //display cities report based on districts using getter() and setter() methods
+    /** display cities report based on districts using getter() and setter() methods
+     * Use if condition to check whether current districts change and print out current districts as title
+     * @param districts_list
+     */
     public void displayCityDistrict(ArrayList<City> districts_list)
     {
         // Print header
