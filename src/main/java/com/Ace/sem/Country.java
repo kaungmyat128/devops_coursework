@@ -13,7 +13,7 @@ public class Country {
     private int Population;
     private String Capital;
 
-    // Use Getter & Setter Method for each variable initialized in above
+    // Use Encapsulation : Getter & Setter Method for each variable initialized in above
     public String getCode() {
         return Code;
     }

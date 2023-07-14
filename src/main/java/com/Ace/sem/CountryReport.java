@@ -165,8 +165,12 @@ public class CountryReport {
             return null;
         }
     }
-        // Display Countries Report using getter() method
-        public void displayCountries(ArrayList<Country> countries_list)
+
+    /** Display Countries Report using getter() method
+     *
+     * @param countries_list
+     */
+    public void displayCountries(ArrayList<Country> countries_list)
         {
             // Print header
             System.out.println("============================================================");
@@ -185,8 +189,11 @@ public class CountryReport {
             System.out.println("============================================================");
         }
 
-        //display countries report based on continents using getter() and setter() methods
-        public void displayCountries_Continent(ArrayList<Country> countries_list)
+    /** display countries report based on continents using getter() and setter() methods
+     * Use if condition to check whether current continent change and print out current continent as title
+     * @param countries_list
+     */
+    public void displayCountries_Continent(ArrayList<Country> countries_list)
         {
             // Print header
             System.out.println("============================================================");
@@ -216,8 +223,11 @@ public class CountryReport {
             System.out.println("============================================================");
         }
 
-        //display countries report based on regions using getter() and setter() methods
-        public void displayCountries_Region(ArrayList<Country> countries_list)
+    /** display countries report based on regions using getter() and setter() methods
+     * Use if condition to check whether current continent change and print out current region as title
+     * @param countries_list
+     */
+    public void displayCountries_Region(ArrayList<Country> countries_list)
         {
             // Print header
             System.out.println("============================================================");

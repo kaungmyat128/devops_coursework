@@ -66,7 +66,7 @@ public class App {
         //---------------All Cities Report---------------
 
         //Display All Cities Population in the world
-        ArrayList<City> TPCICity = cty.getWorldPopByCity(a.con, 0);
+        ArrayList<City> TPCICity = cty.getCityPop(a.con, 0);
         System.out.println("All Cities Population in the world");
         cty.displayCities(TPCICity);
 
@@ -93,7 +93,7 @@ public class App {
         //---------------Top Cities Report---------------
 
         //Display Top 10 Cities Population in the world
-        ArrayList<City> TPCICity1 = cty.getWorldPopByCity(a.con, 10);
+        ArrayList<City> TPCICity1 = cty.getCityPop(a.con, 10);
         System.out.println("Top 10 Cities Population in the world");
         cty.displayCities(TPCICity1);
 
@@ -120,7 +120,6 @@ public class App {
         // Disconnect from database
         a.disconnect();
     }
-
 
 
     /*
