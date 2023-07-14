@@ -14,6 +14,7 @@ User Stories
 - As a data analyst, I want to view population report of all countries in each region
   ordered by largest to smallest populated countries
   so that I can easily know countries population of any region that I want to see based on this report.
+
   ===========================================================================
 
 Epic 2 - As a data analyst, I want to see top N countries population report.
@@ -29,6 +30,7 @@ User Stories
 - As a data analyst, I want to view top N countries population in a region
   ordered by largest to smallest populated countries
   so that I can easily view top most populated countries in each region
+
   ===========================================================================
 
 Epic 3 - As a data analyst, I want to see cities populuation report
@@ -77,9 +79,10 @@ User Stories
 - As a data analyst, I want to view top N cities population in a district
   ordered by largest to smallest populated cities
   so that I can easily view top most populated countries in each district.
+
   =========================================================================
 
-Epic 5 - As a data analyst, I want to see Capital Cities populuation report.
+Epic 5 - As a data analyst, I want to see Capital Cities population report.
 - As a data analyst, I want to view population report of Capital Cities of all countries in the world
   ordered by largest to smallest populated countries
   so that I can easily know Capital Cities population based on this report.
@@ -121,9 +124,29 @@ User Stories
 - As a data analyst, I want to view population of people living in the cities and not living in the cities in each country
   so that I can understand the distribution of population around urban and rural areas in different countries.
 
+- As a data analyst, I want to view top N Capital Cities population in a continent
+  so that I can easily view top most populated countries in each continent
+
+- As a data analyst, I want to view top N Capital Cities population in a region
+  so that I can easily view top most populated countries in each region
+
+===========================================================================
+
+Epic 7 - As a data analyst, I want to see Population of People in Continent, Region & Each Country Report
+User Stories
+- As a data analyst, I want to view population of people living in the cities and not living in the cities in each continent
+  so that I can understand which language is the most popular in the cities of each continent.
+
+- As a data analyst, I want to view population of people living in the cities and not living in the cities in each region
+  so that I can understand which language is the most popular in the cities of each region.
+
+- As a data analyst, I want to view population of people living in the cities and not living in the cities in each country
+  so that I can understand which language is the most popular in the cities of each country.
+
 ===========================================================================
 
 Epic 8 - As a data analyst, I want to see Population of World, Continent, Region, Country, District and City
+User Stories
 - As a data analyst, I want to see population of the world
   ordered by largest to smallest populated countries
   so that I can view population distribution of the world.
@@ -149,7 +172,9 @@ Epic 8 - As a data analyst, I want to see Population of World, Continent, Region
   so that I can analyze population distribution of each city around the world.
 
 ===========================================================================
+
 Epic 9 - As a data analyst, I want to see Population of People who speak the following languages
+User Stories
 - As a data analyst, I want to see population of people
   who speak Chinese, English, Hindi, Spanish & Arabic Languages
   from greatest number to smallest, including the percentage of the world population
