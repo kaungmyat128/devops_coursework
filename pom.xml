@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- The root element of the POM -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- The model version of the POM -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- The project's group ID, artifact ID, and version -->
     <groupId>com.Ace.sem</groupId>
     <artifactId>devops</artifactId>
     <version>0.1.0.1</version>
+
+    <!-- The project's dependencies -->
     <dependencies>
         <dependency>
+            <!-- The group ID and artifact ID of the MySQL connector -->
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.18</version>
         </dependency>
     </dependencies>
+
+    <!-- The project's build configuration -->
     <build>
         <plugins>
             <plugin>
+                <!-- The group ID and artifact ID of the Maven Assembly Plugin -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
+                            <!-- The main class of the application -->
                             <mainClass>com.Ace.sem.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
+                        <!-- The descriptor reference for creating a JAR with dependencies -->
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                 </configuration>
@@ -43,9 +55,12 @@
         </plugins>
     </build>
 
+    <!-- The project's properties -->
     <properties>
+        <!-- The Java compiler source and target versions -->
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <!-- The project's source encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

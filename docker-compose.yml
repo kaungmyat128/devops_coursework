@@ -1,6 +1,6 @@
 version: '3'
 services:
-  # Application Dockerfile is in same folder which is .
+  # Application Dockerfile is in same folder which is . the current directory
   app:
     build: .
 
@@ -9,3 +9,5 @@ services:
     build: world-db/.
     command: --default-authentication-plugin=mysql_native_password
     restart: always
+    ports:
+    - "33060:3306"
