@@ -65,20 +65,20 @@ public class App {
 //
 //        //---------------All Cities Report---------------
 //
-//        //Display All Cities Population in the world
-//        ArrayList<City> TPCICity = cty.getCityPop(a.con, 0);
-//        System.out.println("All Cities Population in the world");
-//        cty.displayCities(TPCICity);
+        //Display All Cities Population in the world
+        ArrayList<City> TPCICity = cty.getCityPop(a.con, 0);
+        System.out.println("All Cities Population in the world");
+        cty.displayCities(TPCICity);
 //
 //        //Display All Population in Each Continent
 //        ArrayList<City> TPCIContinent = cty.getCityPopByContinent(a.con, 0);
 //        System.out.println("All Cities Population in the each Continent");
 //        cty.displayCityContinents(TPCIContinent);
 //
-        //Display All Cities Population in Each Region
-        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
-        System.out.println("All Cities Population in the each Region");
-        cty.displayCityRegion(TPCIRegion);
+//        //Display All Cities Population in Each Region
+//        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
+//        System.out.println("All Cities Population in the each Region");
+//        cty.displayCityRegion(TPCIRegion);
 //
 //        //Display All Cities Population in Each Country
 //        ArrayList<City> TPCICountry = cty.getCityPopByCountry(a.con, 0);

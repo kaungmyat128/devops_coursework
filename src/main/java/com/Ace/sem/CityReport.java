@@ -31,7 +31,12 @@ public class CityReport {
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities
                 strSelect =
-                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
+                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population, "
+                                + "ISNULL(city.District, '(blank)'), "
+                                + "ISNULL(city.District, '(blank)'), "
+                                + "CASE city.District WHEN 'null' then '(blank'), "
+                                + "CASE city.District WHEN NULL then '(blank'), "
+                                + "COALESCE(city.District, NULL, '(blank)' "
                                 + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
                                 + "ORDER BY Population DESC LIMIT "+ lim;
             } else if (lim==0) {
@@ -122,12 +127,7 @@ public class CityReport {
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each region
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population, "
-                                + "ISNULL(city.District, '(blank)'), "
-                                + "ISNULL(city.District, '(blank)'), "
-                                + "CASE city.District WHEN 'null' then '(blank'), "
-                                + "CASE city.District WHEN NULL then '(blank'), "
-                                + "COALESCE(city.District, NULL, '(blank)' "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY Region ASC ,Population DESC";
