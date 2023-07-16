@@ -32,9 +32,9 @@ public class App {
         //---------------All Country Report---------------
 
         // Display All Countries Population
-        ArrayList<Country> CPop1 = cr.get_countries(a.con, 0);
-        System.out.println("All Countries Population in the World");
-        cr.displayCountries(CPop1);
+//        ArrayList<Country> CPop1 = cr.get_countries(a.con, 0);
+//        System.out.println("All Countries Population in the World");
+//        cr.displayCountries(CPop1);
 
 //        // Display All Countries Population based on Each Continent
 //        ArrayList<Country> CPop2 = cr.get_countries_continent(a.con, 0);
@@ -75,10 +75,10 @@ public class App {
 //        System.out.println("All Cities Population in the each Continent");
 //        cty.displayCityContinents(TPCIContinent);
 //
-//        //Display All Cities Population in Each Region
-//        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
-//        System.out.println("All Cities Population in the each Region");
-//        cty.displayCityRegion(TPCIRegion);
+        //Display All Cities Population in Each Region
+        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
+        System.out.println("All Cities Population in the each Region");
+        cty.displayCityRegion(TPCIRegion);
 //
 //        //Display All Cities Population in Each Country
 //        ArrayList<City> TPCICountry = cty.getCityPopByCountry(a.con, 0);

@@ -258,12 +258,12 @@ public class CityReport {
 
         System.out.println("============================================================");
 
-        System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
+        System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
         // Loop over all cities population in the list
         for (City cityR : cities_list)
         {
             String countries_info =
-                    String.format("%-40s %-30s %-30s %-20s",
+                    String.format("%-40s |%-30s |%-30s |%-20s",
                             cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
                             formatPopulation.human_readable_format(cityR.getPopulation()));
             System.out.println(countries_info);
@@ -290,10 +290,10 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
                 System.out.println("===========================================");
                 currentContinent = cityR.getContinents();
-                System.out.println(String.format("%-40s %-30s %-30s %-30s %-20s", "City", "Country", "Continent", "District", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "Continent", "District", "Population"));
             }
             String continent_info =
-                    String.format("%-40s %-30s %-30s %-30s %-20s",
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             cityR.getCityName(), cityR.getCountryName(), cityR.getContinents(),
                             cityR.getDistrict(), formatPopulation.human_readable_format(cityR.getPopulation()));
             System.out.println(continent_info);
@@ -318,10 +318,10 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
                 System.out.println("===========================================");
                 currentRegion = cityR.getRegion();
-                System.out.println(String.format("%-40s %-30s %-30s %-30s %-20s", "City", "Country", "District", "Region", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
             }
             String region_info =
-                    String.format("%-40s %-30s %-30s %-30s %-20s",
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
                             cityR.getRegion(), formatPopulation.human_readable_format(cityR.getPopulation()));
             System.out.println(region_info);
@@ -346,10 +346,10 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                 System.out.println("===========================================");
                 currentCountry = cty.getCountryName();
-                System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             }
             String countries_info =
-                    String.format("%-40s %-30s %-30s %-20s",
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             cty.getCityName(), cty.getCountryName(), cty.getDistrict(),
                             formatPopulation.human_readable_format(cty.getPopulation()));
             System.out.println(countries_info);
@@ -373,10 +373,10 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                 System.out.println("===========================================");
                 currentDistrict = cty.getDistrict();
-                System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             }
             String countries_info =
-                    String.format("%-40s %-30s %-30s %-20s",
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             cty.getCityName(), cty.getCountryName(), cty.getDistrict(),
                             formatPopulation.human_readable_format(cty.getPopulation()));
             System.out.println(countries_info);
