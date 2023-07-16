@@ -124,6 +124,9 @@ public class CityReport {
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population, "
                                 + "ISNULL(city.District, '(blank)'), "
+                                + "ISNULL(city.District, '(blank)'), "
+                                + "CASE city.District WHEN 'null' then '(blank'), "
+                                + "CASE city.District WHEN NULL then '(blank'), "
                                 + "COALESCE(city.District, NULL, '(blank)' "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
