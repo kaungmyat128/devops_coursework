@@ -122,7 +122,7 @@ public class CityReport {
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each region
                 strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, ISNULL(city.District, '(blank)') AS District, country.Region AS Region, city.Population AS Population "
+                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, ISNULL(city.Name, '(blank)')AS CityName, country.Name AS CountryName, ISNULL(city.District, '(blank)') AS District, country.Region AS Region, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY Region ASC ,Population DESC";
