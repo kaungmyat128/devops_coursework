@@ -310,6 +310,7 @@ public class CityReport {
     public void displayCityRegion(ArrayList<City> region_list)
     {
         String DistrictName = null;
+        String CityName = null;
         // Print header
         System.out.println("============================================================");
         // Initialize Current Region variable
@@ -323,15 +324,30 @@ public class CityReport {
                 currentRegion = cityR.getRegion();
                 System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
             }
+            //checking null value and transforming them to blank in district
             if(cityR.getDistrict() == null) {
                 DistrictName = "blank";
             }
             else if(cityR.getDistrict() == "null"){
-                DistrictName = "blank";
+                DistrictName = "blankv2";
+            }
+            else{
+                DistrictName = cityR.getDistrict();
+            }
+
+
+            if(cityR.getCityName() == null) {
+                CityName = "blank";
+            }
+            else if(cityR.getCityName() == "null"){
+                CityName = "blankv2";
+            }
+            else{
+                CityName = cityR.getDistrict();
             }
             String region_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                            cityR.getCityName(), cityR.getCountryName(), DistrictName,
+                            CityName, cityR.getCountryName(), DistrictName,
                             cityR.getRegion(), formatPopulation.human_readable_format(cityR.getPopulation()));
             System.out.println(region_info);
         }
