@@ -182,9 +182,12 @@ public class CountryReport {
             {
                 String countries_info =
                         String.format("%-10s |%-25s |%-15s |%-27s |%-15s |%-15s",
-                                cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
+                                cp.getCode(),
+                                formatString(cp.getName(), 20),
+                                cp.getContinent(),
+                                formatString(cp.getRegion(), 20),
                                 human_readable_format(cp.getPopulation()), cp.getCapital());
-                System.out.println(formatString(countries_info, 20));
+                System.out.println(countries_info);
             }
             System.out.println("============================================================");
         }
