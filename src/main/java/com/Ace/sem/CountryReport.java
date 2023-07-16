@@ -176,15 +176,15 @@ public class CountryReport {
             System.out.println("============================================================");
             System.out.println("Countries sorted by population in the world ");
 
-            System.out.println(String.format("%-10s %-40s %-15s %-27s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+            System.out.println(String.format("%-10s |%-25s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
             // Loop over all countries population in the list
             for (Country cp : countries_list)
             {
                 String countries_info =
-                        String.format("%-10s %-40s %-15s %-27s %-15s %-15s",
+                        String.format("%-10s |%-25s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 human_readable_format(cp.getPopulation()), cp.getCapital());
-                System.out.println(countries_info);
+                System.out.println(formatString(countries_info, 20));
             }
             System.out.println("============================================================");
         }
@@ -266,4 +266,22 @@ public class CountryReport {
             String formattedCode = nf.format(population);
             return formattedCode;
         }
+
+    public static String formatString(String input, int maxLineLength) {
+        StringBuilder builder = new StringBuilder();
+
+        String[] words = input.split(" ");
+        int currentLineLength = 0;
+
+        for (String word : words) {
+            if (currentLineLength + word.length() > maxLineLength) {
+                builder.append(System.lineSeparator());
+                currentLineLength = 0;
+            }
+            builder.append(word).append(" ");
+            currentLineLength += word.length() + 1;
+        }
+
+        return builder.toString();
+    }
 }
