@@ -17,8 +17,6 @@ public class App {
         App a = new App();
 
         //------------Creating Object for Country Report------------
-        // Create new Country Object
-        Country c = new Country();
         // Create new object with Country_report java Class
         CountryReport cr = new CountryReport();
 
@@ -26,98 +24,117 @@ public class App {
         // Create new object for top populated cities Class Java
         CityReport cty = new CityReport();
 
+        //------------Creating Object for People Living in Cities & Not Living in Cities Report------------
+        // Create new object for top populated cities Class Java
+        RuralUrbanReport RUReport = new RuralUrbanReport();
+
         // Connect to database
         a.connect();
 
         //---------------All Country Report---------------
 
-        // Display All Countries Population
-        ArrayList<Country> CPop1 = cr.get_countries(a.con, 0);
-        System.out.println("All Countries Population in the World");
-        cr.displayCountries(CPop1);
+//        // Display All Countries Population
+//        ArrayList<Country> CPop1 = cr.getCountries(a.con, 0);
+//        System.out.println("All Countries Population in the World");
+//        cr.displayCountries(CPop1);
+//
+//        // Display All Countries Population based on Each Continent
+//        ArrayList<Country> CPop2 = cr.getCountriesContinent(a.con, 0);
+//        System.out.println("All Countries Population in the World categorized by Continents");
+//        cr.displayCountriesContinent(CPop2);
+//
+//        // Display All Countries Population based on Each Region
+//        ArrayList<Country> CPop3 = cr.getCountriesRegion(a.con, 0);
+//        System.out.println("All Countries Population in the World categorized by Regions");
+//        cr.displayCountriesRegion(CPop3);
+//
+//        //---------------Top Country Report---------------
+//
+//        // Display Top 10 Countries Population
+//        ArrayList<Country> CPop4 = cr.getCountries(a.con, 10);
+//        System.out.println("Top 10 Countries Population in the World");
+//        cr.displayCountries(CPop4);
+//
+//        // Display Top 10 Countries Population in Each Continent
+//        ArrayList<Country> CPop5 = cr.getCountriesContinent(a.con, 10);
+//        System.out.println("Top 10 Countries Population in Each Continent");
+//        cr.displayCountriesContinent(CPop5);
+//
+//        // Display Top 10 Countries Population in Each Region
+//        ArrayList<Country> CPop6 = cr.getCountriesRegion(a.con,10);
+//        System.out.println("Top 10 Countries Population in Each Region");
+//        cr.displayCountriesRegion(CPop6);
+//
+//        //---------------All Cities Report---------------
+//
+//        //Display All Cities Population in the world
+//        ArrayList<City> TPCICity = cty.getCityPop(a.con, 0);
+//        System.out.println("All Cities Population in the world");
+//        cty.displayCities(TPCICity);
+//
+//        //Display All Population in Each Continent
+//        ArrayList<City> TPCIContinent = cty.getCityPopByContinent(a.con, 0);
+//        System.out.println("All Cities Population in the each Continent");
+//        cty.displayCityContinents(TPCIContinent);
+//
+//        //Display All Cities Population in Each Region
+//        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
+//        System.out.println("All Cities Population in the each Region");
+//        cty.displayCityRegion(TPCIRegion);
+//
+//        //Display All Cities Population in Each Country
+//        ArrayList<City> TPCICountry = cty.getCityPopByCountry(a.con, 0);
+//        System.out.println("All Cities Population in the each Country");
+//        cty.displayCityCountries(TPCICountry);
+//
+//        //Display All Cities Population in Each District
+//        ArrayList<City> TPCIDistrict = cty.getCityPopByDistrict(a.con, 0);
+//        System.out.println("All Cities Population in the each District");
+//        cty.displayCityDistrict(TPCIDistrict);
+//
+//        //---------------Top Cities Report---------------
+//
+//        //Display Top 10 Cities Population in the world
+//        ArrayList<City> TPCICity1 = cty.getCityPop(a.con, 10);
+//        System.out.println("Top 10 Cities Population in the world");
+//        cty.displayCities(TPCICity1);
+//
+//        //Display Top 10 Cities Population in Each Continent
+//        ArrayList<City> TPCIContinent1 = cty.getCityPopByContinent(a.con, 10);
+//        System.out.println("Top 10 Cities Population in the each Continent");
+//        cty.displayCityContinents(TPCIContinent1);
+//
+//        //Display Top 10 Cities Population in Each Region
+//        ArrayList<City> TPCIRegion1 = cty.getCityPopByRegion(a.con, 10);
+//        System.out.println("Top 10 Cities Population in the each Region");
+//        cty.displayCityRegion(TPCIRegion1);
+//
+//        //Display Top 10 Cities Population in Each Country
+//        ArrayList<City> TPCICountry1 = cty.getCityPopByCountry(a.con, 10);
+//        System.out.println("Top 10 Cities Population in the each Country");
+//        cty.displayCityCountries(TPCICountry1);
+//
+//        //Display Top 5 Cities Population in Each District
+//        ArrayList<City> TPCIDistrict1 = cty.getCityPopByDistrict(a.con, 5);
+//        System.out.println("Top 5 Cities Population in the each District");
+//        cty.displayCityDistrict(TPCIDistrict1);
 
-        // Display All Countries Population based on Each Continent
-        ArrayList<Country> CPop2 = cr.get_countries_continent(a.con, 0);
-        System.out.println("All Countries Population in the World categorized by Continents");
-        cr.displayCountries_Continent(CPop2);
+        //Display Population report of people living in cities and not living in cities in each continent
+        ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
+        System.out.println("Population report of people living in cities and not living in cities in each continent");
+        RUReport.displayContinentPopulation(report1);
 
-        // Display All Countries Population based on Each Region
-        ArrayList<Country> CPop3 = cr.get_countries_region(a.con, 0);
-        System.out.println("All Countries Population in the World categorized by Regions");
-        cr.displayCountries_Region(CPop3);
+        //Display Population report of people living in cities and not living in cities in each region
+        ArrayList<City> report2 = RUReport.getRegionPopulation(a.con);
+        System.out.println("Population report of people living in cities and not living in cities in each region");
+        RUReport.displayRegionPopulation(report2);
 
-        //---------------Top Country Report---------------
+        //Display Population report of people living in cities and not living in cities in each country
+        ArrayList<City> report3 = RUReport.getCountryPopulation(a.con);
+        System.out.println("Population report of people living in cities and not living in cities in each country");
+        RUReport.displayCountryPopulation(report3);
 
-        // Display Top 10 Countries Population
-        ArrayList<Country> CPop4 = cr.get_countries(a.con, 10);
-        System.out.println("Top 10 Countries Population in the World");
-        cr.displayCountries(CPop4);
-
-        // Display Top 10 Countries Population in Each Continent
-        ArrayList<Country> CPop5 = cr.get_countries_continent(a.con, 10);
-        System.out.println("Top 10 Countries Population in Each Continent");
-        cr.displayCountries_Continent(CPop5);
-
-        // Display Top 10 Countries Population in Each Region
-        ArrayList<Country> CPop6 = cr.get_countries_region(a.con,10);
-        System.out.println("Top 10 Countries Population in Each Region");
-        cr.displayCountries_Region(CPop6);
-
-        //---------------All Cities Report---------------
-
-        //Display All Cities Population in the world
-        ArrayList<City> TPCICity = cty.getCityPop(a.con, 0);
-        System.out.println("All Cities Population in the world");
-        cty.displayCities(TPCICity);
-
-        //Display All Population in Each Continent
-        ArrayList<City> TPCIContinent = cty.getCityPopByContinent(a.con, 0);
-        System.out.println("All Cities Population in the each Continent");
-        cty.displayCityContinents(TPCIContinent);
-
-        //Display All Cities Population in Each Region
-        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
-        System.out.println("All Cities Population in the each Region");
-        cty.displayCityRegion(TPCIRegion);
-
-        //Display All Cities Population in Each Country
-        ArrayList<City> TPCICountry = cty.getCityPopByCountry(a.con, 0);
-        System.out.println("All Cities Population in the each Country");
-        cty.displayCityCountries(TPCICountry);
-
-        //Display All Cities Population in Each District
-        ArrayList<City> TPCIDistrict = cty.getCityPopByDistrict(a.con, 0);
-        System.out.println("All Cities Population in the each District");
-        cty.displayCityDistrict(TPCIDistrict);
-
-        //---------------Top Cities Report---------------
-
-        //Display Top 10 Cities Population in the world
-        ArrayList<City> TPCICity1 = cty.getCityPop(a.con, 10);
-        System.out.println("Top 10 Cities Population in the world");
-        cty.displayCities(TPCICity1);
-
-        //Display Top 10 Cities Population in Each Continent
-        ArrayList<City> TPCIContinent1 = cty.getCityPopByContinent(a.con, 10);
-        System.out.println("Top 10 Cities Population in the each Continent");
-        cty.displayCityContinents(TPCIContinent1);
-
-        //Display Top 10 Cities Population in Each Region
-        ArrayList<City> TPCIRegion1 = cty.getCityPopByRegion(a.con, 10);
-        System.out.println("Top 10 Cities Population in the each Region");
-        cty.displayCityRegion(TPCIRegion1);
-
-        //Display Top 10 Cities Population in Each Country
-        ArrayList<City> TPCICountry1 = cty.getCityPopByCountry(a.con, 10);
-        System.out.println("Top 10 Cities Population in the each Country");
-        cty.displayCityCountries(TPCICountry1);
-
-        //Display Top 5 Cities Population in Each District
-        ArrayList<City> TPCIDistrict1 = cty.getCityPopByDistrict(a.con, 5);
-        System.out.println("Top 5 Cities Population in the each District");
-        cty.displayCityDistrict(TPCIDistrict1);
-
-        // Disconnect from database
+         //Disconnect from database
         a.disconnect();
     }
 

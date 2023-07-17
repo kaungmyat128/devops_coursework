@@ -15,6 +15,10 @@ public class City {
     private String Continents;
     private String Region;
 
+    private long totalPopulation;
+    private long totalCitiesPopulation;
+    private long totalNotCitiesPopulation;
+
     // Getter method for CityName
     public String getCityName() {
         return CityName;
@@ -85,6 +89,34 @@ public class City {
         this.Region = Region;
     }
 
+    // Getter method for Total Population
+    public long getTotalPopulation() {
+        return totalPopulation;
+    }
+
+    // Setter method for Total Population
+    public void setTotalPopulation(long totalPopulation) {
+        this.totalPopulation = totalPopulation;
+    }
+
+    // Getter method for Total Population
+    public long getTotalCitiesPopulation() {
+        return totalCitiesPopulation;
+    }
+
+    // Setter method for Total Population
+    public void setTotalCitiesPopulation(long totalCitiesPopulation) {
+        this.totalCitiesPopulation = totalCitiesPopulation;
+    }
+    // Getter method for Total Population
+    public long getTotalNotCitiesPopulation() {
+        return totalNotCitiesPopulation;
+    }
+
+    // Setter method for Total Population
+    public void setTotalNotCitiesPopulation(long totalNotCitiesPopulation) {
+        this.totalNotCitiesPopulation = totalNotCitiesPopulation;
+    }
 }
 
 

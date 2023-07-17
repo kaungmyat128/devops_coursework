@@ -16,6 +16,8 @@ public class CityReport {
 
     // Create new object of CountryReport to use human_readable_format() method from country.java
     CountryReport formatPopulation = new CountryReport();
+    String CityName = null;
+    String DistrictName = null;
 
     /**
      * getWorldPopByCity() method contains connection parameters for database connection and limit parameter
@@ -258,14 +260,14 @@ public class CityReport {
 
         System.out.println("============================================================");
 
-        System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
+        System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
         // Loop over all cities population in the list
         for (City cityR : cities_list)
         {
             String countries_info =
-                    String.format("%-40s %-30s %-30s %-20s",
+                    String.format("%-40s |%-30s |%-30s |%-20s",
                             cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
-                            formatPopulation.human_readable_format(cityR.getPopulation()));
+                            formatPopulation.humanReadableFormat(cityR.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -290,12 +292,35 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
                 System.out.println("===========================================");
                 currentContinent = cityR.getContinents();
-                System.out.println(String.format("%-40s %-30s %-30s %-30s %-20s", "City", "Country", "Continent", "District", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "Continent", "District", "Population"));
             }
+
+            //checking null value and transforming them to blank in district
+            if(cityR.getDistrict() == null) {
+                DistrictName = "blank";
+            }
+            else if(cityR.getDistrict() == " "){
+                DistrictName = "blank";
+            }
+            else{
+                DistrictName = cityR.getDistrict();
+            }
+
+            //checking null values and transforming them to blank in city
+            if(cityR.getCityName() == null) {
+                CityName = "blank";
+            }
+            else if(cityR.getCityName() == " "){
+                CityName = "blank";
+            }
+            else{
+                CityName = cityR.getDistrict();
+            }
+
             String continent_info =
-                    String.format("%-40s %-30s %-30s %-30s %-20s",
-                            cityR.getCityName(), cityR.getCountryName(), cityR.getContinents(),
-                            cityR.getDistrict(), formatPopulation.human_readable_format(cityR.getPopulation()));
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                            CityName, cityR.getCountryName(), cityR.getContinents(),
+                            DistrictName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
             System.out.println(continent_info);
         }
         System.out.println("============================================================");
@@ -318,12 +343,33 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
                 System.out.println("===========================================");
                 currentRegion = cityR.getRegion();
-                System.out.println(String.format("%-40s %-30s %-30s %-30s %-20s", "City", "Country", "District", "Region", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
+            }
+            //checking null value and transforming them to blank in district
+            if(cityR.getDistrict() == null) {
+                DistrictName = "blank";
+            }
+            else if(cityR.getDistrict() == " "){
+                DistrictName = "blank";
+            }
+            else{
+                DistrictName = cityR.getDistrict();
+            }
+
+            //checking null values and transforming them to blank in city
+            if(cityR.getCityName() == null) {
+                CityName = "blank";
+            }
+            else if(cityR.getCityName() == " "){
+                CityName = "blank";
+            }
+            else{
+                CityName = cityR.getDistrict();
             }
             String region_info =
-                    String.format("%-40s %-30s %-30s %-30s %-20s",
-                            cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
-                            cityR.getRegion(), formatPopulation.human_readable_format(cityR.getPopulation()));
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                            CityName, cityR.getCountryName(), DistrictName,
+                            cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
             System.out.println(region_info);
         }
         System.out.println("============================================================");
@@ -346,12 +392,35 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                 System.out.println("===========================================");
                 currentCountry = cty.getCountryName();
-                System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             }
+
+            //checking null value and transforming them to blank in district
+            if(cty.getDistrict() == null) {
+                DistrictName = "blank";
+            }
+            else if(cty.getDistrict() == " "){
+                DistrictName = "blank";
+            }
+            else{
+                DistrictName = cty.getDistrict();
+            }
+
+            //checking null values and transforming them to blank in city
+            if(cty.getCityName() == null) {
+                CityName = "blank";
+            }
+            else if(cty.getCityName() == " "){
+                CityName = "blank";
+            }
+            else{
+                CityName = cty.getDistrict();
+            }
+
             String countries_info =
-                    String.format("%-40s %-30s %-30s %-20s",
-                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(),
-                            formatPopulation.human_readable_format(cty.getPopulation()));
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                            CityName, cty.getCountryName(), DistrictName,
+                            formatPopulation.humanReadableFormat(cty.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -373,12 +442,35 @@ public class CityReport {
                 System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                 System.out.println("===========================================");
                 currentDistrict = cty.getDistrict();
-                System.out.println(String.format("%-40s %-30s %-30s %-20s", "City", "Country", "District", "Population"));
+                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             }
+
+            //checking null value and transforming them to blank in district
+            if(cty.getDistrict() == null) {
+                DistrictName = "blank";
+            }
+            else if(cty.getDistrict() == " "){
+                DistrictName = "blank";
+            }
+            else{
+                DistrictName = cty.getDistrict();
+            }
+
+            //checking null values and transforming them to blank in city
+            if(cty.getCityName() == null) {
+                CityName = "blank";
+            }
+            else if(cty.getCityName() == " "){
+                CityName = "blank";
+            }
+            else{
+                CityName = cty.getDistrict();
+            }
+
             String countries_info =
-                    String.format("%-40s %-30s %-30s %-20s",
-                            cty.getCityName(), cty.getCountryName(), cty.getDistrict(),
-                            formatPopulation.human_readable_format(cty.getPopulation()));
+                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                            CityName, cty.getCountryName(), DistrictName,
+                            formatPopulation.humanReadableFormat(cty.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
