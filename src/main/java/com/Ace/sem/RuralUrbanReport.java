@@ -28,7 +28,16 @@ public class RuralUrbanReport {
             ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             ArrayList<City> RUContinentPopulation = new ArrayList<City>();
-            return storeIntoArraylist(RUContinentPopulation, query1);
+            // Extract population of countries information and store into array list
+            while (query1.next()) {
+                City RUPop = new City();
+                RUPop.setCountryName(query1.getString("Country"));
+                RUPop.setTotalPopulation(query1.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(query1.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(query1.getLong("Not_Cities_Population"));
+                RUContinentPopulation.add(RUPop);
+            }
+            return RUContinentPopulation;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -57,7 +66,16 @@ public class RuralUrbanReport {
             ResultSet query2 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             ArrayList<City> RURegionPopulation = new ArrayList<City>();
-            return storeIntoArraylist(RURegionPopulation, query2);
+            // Extract population of countries information and store into array list
+            while (query2.next()) {
+                City RUPop = new City();
+                RUPop.setCountryName(query2.getString("Country"));
+                RUPop.setTotalPopulation(query2.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(query2.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(query2.getLong("Not_Cities_Population"));
+                RURegionPopulation.add(RUPop);
+            }
+            return RURegionPopulation;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -83,36 +101,22 @@ public class RuralUrbanReport {
             ResultSet query3 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             ArrayList<City> RUCountryPopulation = new ArrayList<City>();
-            return storeIntoArraylist(RUCountryPopulation, query3);
-
+            // Extract population of countries information and store into array list
+            while (query3.next()) {
+                City RUPop = new City();
+                RUPop.setCountryName(query3.getString("Country"));
+                RUPop.setTotalPopulation(query3.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
+                RUCountryPopulation.add(RUPop);
+            }
+            return RUCountryPopulation;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each country");
             return null;
         }
     }
-
-
-    public ArrayList<City> storeIntoArraylist(ArrayList<City> al, ResultSet qry) {
-        try{
-            // Extract population of countries information and store into array list
-            while (qry.next()) {
-                City RUPop = new City();
-                RUPop.setCountryName(qry.getString("Country"));
-                RUPop.setTotalPopulation(qry.getLong("Total_Population"));
-                RUPop.setTotalCitiesPopulation(qry.getLong("Cities_Population"));
-                RUPop.setTotalNotCitiesPopulation(qry.getLong("Not_Cities_Population"));
-                al.add(RUPop);
-            }
-            return al;
-        }// Exception handling when any errors occur. Print out error type and error message and return null.
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of People living in cities and not living in cities ");
-            return null;
-        }
-    }
-
 
     public void displayContinentPopulation(ArrayList<City> arrList)
     {
