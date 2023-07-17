@@ -86,9 +86,9 @@ public class RuralUrbanReport {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement with no limit - fetch all queries
-            String strSelect = "SELECT country.Name, country.Population AS total_population , "
-                    + "SUM(city.Population) AS people_living_in_cities, "
-                    + "country.population - SUM(city.Population) AS people_not_living_in_cities "
+            String strSelect = "SELECT country.Name AS Country, SUM(country.Population) AS total_population , "
+                    + "SUM(city.Population) AS Cities_Population, "
+                    + "SUM(country.population) - SUM(city.Population) AS Not_Cities_Population "
                     + "FROM country "
                     + "JOIN city ON country.Code = city.CountryCode "
                     + "GROUP BY country.Name ORDER BY country.Name";
