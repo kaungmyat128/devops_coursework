@@ -7,9 +7,21 @@ import java.util.ArrayList;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+
+/**
+ * Creates methods to write sql queries and create arraylists of people living in cities & not living in cities
+ * This Java Class File contains 7 java methods -
+ * getContinentPopulation(), getRegionPopulation(),  getCountryPopulation() methods
+ * displayContinentPopulation(), displayRegionPopulation() and displayCountryPopulation() methods
+ * human_readable_format() for formatting population
+ * */
 public class RuralUrbanReport {
 
-    // The population of people, people living in cities, and people not living in cities in each continent.
+    /**
+     * getContinentPopulation() method contains connection parameters for database connection
+     * The population of people, people living in cities, and people not living in cities in each continent
+     * Then return the data as array list.
+     * */
     public ArrayList<City> getContinentPopulation(Connection con) {
         try {
             // Create an SQL statement
@@ -25,18 +37,20 @@ public class RuralUrbanReport {
                                 + "GROUP BY country.Continent ORDER BY country.Continent";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             ArrayList<City> RUContinentPopulation = new ArrayList<City>();
-            while (rset.next()) {
+            // Extract population of countries information and store into array list
+            while (query1.next()) {
                 City RUPop = new City();
-                RUPop.setContinents(rset.getString("Continent_Name"));
-                RUPop.setTotalPopulation(rset.getLong("Total_Population"));
-                RUPop.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
-                RUPop.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
+                RUPop.setContinents(query1.getString("Continent_Name"));
+                RUPop.setTotalPopulation(query1.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(query1.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(query1.getLong("Not_Cities_Population"));
                 RUContinentPopulation.add(RUPop);
             }
             return RUContinentPopulation;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each continent");
@@ -44,7 +58,11 @@ public class RuralUrbanReport {
         }
     }
 
-    // The population of people, people living in cities, and people not living in cities in each region.
+    /**
+     * getContinentPopulation() method contains connection parameters for database connection
+     * The population of people, people living in cities, and people not living in cities in each region
+     * Then return the data as array list.
+     * */
     public ArrayList<City> getRegionPopulation(Connection con) {
         try {
             // Create an SQL statement
@@ -61,18 +79,20 @@ public class RuralUrbanReport {
                     + "ORDER BY country.Region";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet query2 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             ArrayList<City> RURegionPopulation = new ArrayList<City>();
-            while (rset.next()) {
+            // Extract population of countries information and store into array list
+            while (query2.next()) {
                 City RUPop = new City();
-                RUPop.setRegion(rset.getString("Region"));
-                RUPop.setTotalPopulation(rset.getLong("Total_Population"));
-                RUPop.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
-                RUPop.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
+                RUPop.setRegion(query2.getString("Region"));
+                RUPop.setTotalPopulation(query2.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(query2.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(query2.getLong("Not_Cities_Population"));
                 RURegionPopulation.add(RUPop);
             }
             return RURegionPopulation;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each region");
@@ -80,8 +100,11 @@ public class RuralUrbanReport {
         }
     }
 
-    // The population of people, people living in cities, and people not living in cities in each country.
-    public ArrayList<City> getCountryPopulation(Connection con) {
+    /**
+     * getContinentPopulation() method contains connection parameters for database connection
+     * The population of people, people living in cities, and people not living in cities in each country
+     * Then return the data as array list.
+     * */    public ArrayList<City> getCountryPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -94,15 +117,16 @@ public class RuralUrbanReport {
                     + "GROUP BY country.Name ORDER BY country.Name";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet query3 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             ArrayList<City> RUCountryPopulation = new ArrayList<City>();
-            while (rset.next()) {
+            // Extract population of countries information and store into array list
+            while (query3.next()) {
                 City RUPop = new City();
-                RUPop.setCountryName(rset.getString("Country"));
-                RUPop.setTotalPopulation(rset.getLong("Total_Population"));
-                RUPop.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
-                RUPop.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
+                RUPop.setCountryName(query3.getString("Country"));
+                RUPop.setTotalPopulation(query3.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
                 RUCountryPopulation.add(RUPop);
             }
             return RUCountryPopulation;
@@ -114,6 +138,11 @@ public class RuralUrbanReport {
     }
 
 
+    /** Display Population of People living in cities and not living in cities in each continent
+     *  Report using getter() method
+     *
+     * @param arrList
+     */
     public void displayContinentPopulation(ArrayList<City> arrList)
     {
         // Print header
@@ -137,6 +166,11 @@ public class RuralUrbanReport {
         System.out.println("============================================================");
     }
 
+    /** Display Population of People living in cities and not living in cities in each region
+     *  Report using getter() method
+     *
+     * @param arrList
+     */
     public void displayRegionPopulation(ArrayList<City> arrList)
     {
         // Print header
@@ -161,6 +195,12 @@ public class RuralUrbanReport {
     }
 
 
+
+    /** Display Population of People living in cities and not living in cities in each country
+     *  Report using getter() method
+     *
+     * @param arrList
+     */
     public void displayCountryPopulation(ArrayList<City> arrList)
     {
         // Print header
@@ -184,7 +224,12 @@ public class RuralUrbanReport {
         System.out.println("============================================================");
     }
 
-
+    /**
+     * human_readable_format method used to format the population numbers for long variables
+     * e.g. 3242344 => 3,242,344
+     * @param population
+     * @return
+     */
     public String humanReadableFormat(long population){
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
         String formattedCode = nf.format(population);
