@@ -116,9 +116,34 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    //public ArrayList<Country> sumCouPop (Connection con){
+    public ArrayList<Country> sumCouPop (Connection con){
+        try {
 
-    //}
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement of population from each region
+            String strSelect =
+                    "SELECT Name, Population AS reg_pop FROM country " +
+                            "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet pop = stmt.executeQuery(strSelect);
+            ArrayList<Country> CountryPop = new ArrayList<>();
+
+            while (pop.next()) {
+                Country cp = new Country();
+                cp.setName(pop.getString("Name"));
+                cp.setGenPop(pop.getLong("reg_pop"));
+                CountryPop.add(cp);
+            }
+            return CountryPop;
+        }
+        // Exception handling when any errors occur. Print out error type and error message and return null.
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to return population of each country");
+            return null;
+        }
+    }
 
     /**
      * gathers data of total population from each district
@@ -258,10 +283,24 @@ public class SummaryReport {
      * Displays data gathered by sumCouPop
     // * @param reg_pop_list
      */
-    //public void displaySumCouPop(ArrayList<Country> reg_pop_list)
-    //{
+    public void displaySumCouPop(ArrayList<Country> cou_pop_list)
+    {
+        // Print header
+        System.out.println("============================================================");
 
-    //}
+        // Loop over all data in the list
+        for (Country cp : cou_pop_list)
+        {
+            // Formatting and printing data
+
+            String cou_pop_info =
+                    String.format("%-30s| %-30s",
+                            cp.getName(),
+                            humanReadableFormatLong(cp.getGenPop()));
+            System.out.println(cou_pop_info);
+        }
+        System.out.println("============================================================");
+    }
 
     /**
      * display data gathered by sumDistPop

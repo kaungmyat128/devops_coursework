@@ -172,10 +172,10 @@ public class App {
         System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
         sr.displaySumRegPop(popSumReg);
 
-//        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con);
-//        System.out.println("==========Population of the countries==========");
-//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-//        sr.displaySumCouPop(popSumCoun);
+        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con);
+        System.out.println("==========Population of the countries==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumCouPop(popSumCoun);
 
         ArrayList<City> popDistReg =  sr.sumDistPop(a.con);
         System.out.println("==========Population of the districts==========");
