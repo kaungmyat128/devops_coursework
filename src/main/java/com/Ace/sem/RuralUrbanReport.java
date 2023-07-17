@@ -9,8 +9,6 @@ import java.util.Locale;
 
 public class RuralUrbanReport {
 
-    // Create new object of CountryReport to use human_readable_format() method from country.java
-    CountryReport formatPopulation = new CountryReport();
     // The population of people, people living in cities, and people not living in cities in each continent.
     public ArrayList<City> getContinentPopulation(Connection con) {
         try {
@@ -56,11 +54,17 @@ public class RuralUrbanReport {
         {
             String continent_population =
                     String.format("%-40s | %-30s | %-30s | %-20s",
-                            c.getContinents(), c.getTotalPopulation(), c.getTotalCitiesPopulation(),
-                            c.getTotalNotCitiesPopulation());
+                            c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
+                            humanReadableFormat(c.getTotalCitiesPopulation()),
+                            humanReadableFormat(c.getTotalNotCitiesPopulation()));
             System.out.println(continent_population);
         }
         System.out.println("============================================================");
     }
 
+    public String humanReadableFormat(long population){
+        NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
+        String formattedCode = nf.format(population);
+        return formattedCode;
+    }
 }
