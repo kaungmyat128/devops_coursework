@@ -23,7 +23,7 @@ public class SummaryReport {
 
             while (pop.next()) {
                 Country cp = new Country();
-                cp.setWorldPop(pop.getString("world_pop"));
+                cp.setWorldPop(pop.getInt("world_pop"));
                 worldPop.add(cp);
             }
             return worldPop;
@@ -54,7 +54,7 @@ public class SummaryReport {
             String countries_info =
                     String.format("%-15s|%-20s",
                             "World Population",
-                            cr.humanReadableFormat(cp.getPopulation()));
+                            cr.humanReadableFormat(cp.getWorldPop()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
