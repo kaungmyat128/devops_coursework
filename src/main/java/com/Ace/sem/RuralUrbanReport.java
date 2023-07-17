@@ -123,11 +123,15 @@ public class RuralUrbanReport {
         // Loop over all cities population in the list
         for (City c : arrList)
         {
+            double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+            String s1 = String.format("%.2f",people_living_in_cities) + "%";
+            double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+            String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
             String continent_population =
-                    String.format("%-40s | %-30s | %-30s | %-20s",
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-20s ( %-5s )",
                             c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()),
-                            humanReadableFormat(c.getTotalNotCitiesPopulation()));
+                            humanReadableFormat(c.getTotalCitiesPopulation()), s1,
+                            humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
             System.out.println(continent_population);
         }
         System.out.println("============================================================");
@@ -142,12 +146,16 @@ public class RuralUrbanReport {
         // Loop over all cities population in the list
         for (City c : arrList)
         {
-            String region_population =
-                    String.format("%-40s | %-30s | %-30s | %-20s",
+            double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+            String s1 = String.format("%.2f",people_living_in_cities) + "%";
+            double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+            String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
+            String continent_population =
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-20s ( %-5s )",
                             c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()),
-                            humanReadableFormat(c.getTotalNotCitiesPopulation()));
-            System.out.println(region_population);
+                            humanReadableFormat(c.getTotalCitiesPopulation()), s1,
+                            humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
+            System.out.println(continent_population);
         }
         System.out.println("============================================================");
     }
@@ -162,12 +170,16 @@ public class RuralUrbanReport {
         // Loop over all cities population in the list
         for (City c : arrList)
         {
-            String country_population =
-                    String.format("%-40s | %-30s | %-30s | %-20s",
+            double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+            String s1 = String.format("%.2f",people_living_in_cities) + "%";
+            double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+            String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
+            String continent_population =
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-20s ( %-5s )",
                             c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()),
-                            humanReadableFormat(c.getTotalNotCitiesPopulation()));
-            System.out.println(country_population);
+                            humanReadableFormat(c.getTotalCitiesPopulation()), s1,
+                            humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
+            System.out.println(continent_population);
         }
         System.out.println("============================================================");
     }
