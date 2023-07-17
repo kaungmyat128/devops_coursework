@@ -62,7 +62,8 @@ public class RuralUrbanReport {
      * getContinentPopulation() method contains connection parameters for database connection
      * The population of people, people living in cities, and people not living in cities in each region
      * Then return the data as array list.
-     * */    public ArrayList<City> getRegionPopulation(Connection con) {
+     * */
+    public ArrayList<City> getRegionPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
