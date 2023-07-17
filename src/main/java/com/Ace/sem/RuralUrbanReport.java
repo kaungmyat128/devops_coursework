@@ -43,7 +43,7 @@ public class RuralUrbanReport {
             // Extract population of countries information and store into array list
             while (query1.next()) {
                 City RUPop = new City();
-                RUPop.setCountryName(query1.getString("Continent_Name"));
+                RUPop.setContinents(query1.getString("Continent_Name"));
                 RUPop.setTotalPopulation(query1.getLong("Total_Population"));
                 RUPop.setTotalCitiesPopulation(query1.getLong("Cities_Population"));
                 RUPop.setTotalNotCitiesPopulation(query1.getLong("Not_Cities_Population"));
@@ -62,7 +62,8 @@ public class RuralUrbanReport {
      * getContinentPopulation() method contains connection parameters for database connection
      * The population of people, people living in cities, and people not living in cities in each region
      * Then return the data as array list.
-     * */    public ArrayList<City> getRegionPopulation(Connection con) {
+     * */
+    public ArrayList<City> getRegionPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -84,7 +85,7 @@ public class RuralUrbanReport {
             // Extract population of countries information and store into array list
             while (query2.next()) {
                 City RUPop = new City();
-                RUPop.setCountryName(query2.getString("Region"));
+                RUPop.setRegion(query2.getString("Region"));
                 RUPop.setTotalPopulation(query2.getLong("Total_Population"));
                 RUPop.setTotalCitiesPopulation(query2.getLong("Cities_Population"));
                 RUPop.setTotalNotCitiesPopulation(query2.getLong("Not_Cities_Population"));

@@ -34,6 +34,9 @@ public class App {
         // Create new object for top populated cities Class Java
         RuralUrbanReport RUReport = new RuralUrbanReport();
 
+        //------------Creating Object for Language Report------------
+        countryLanguagesReport LanguageReport = new countryLanguagesReport();
+
         CapitalReport cpr = new CapitalReport();
 
         // Connect to database
@@ -187,7 +190,6 @@ public class App {
         System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
         sr.displaySumCityPop(popCityReg);
 
-        //Disconnect from database
         //Display Population report of people living in cities and not living in cities in each continent
         ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
         System.out.println("Population report of people living in cities and not living in cities in each continent");
@@ -202,6 +204,11 @@ public class App {
         ArrayList<City> report3 = RUReport.getCountryPopulation(a.con);
         System.out.println("Population report of people living in cities and not living in cities in each country");
         RUReport.displayCountryPopulation(report3);
+
+        // Display Language Population
+        ArrayList<Language> report4 = LanguageReport.getLanguagesReport(a.con);
+        System.out.println("Language Report : The number of people who speak Chinese, English, Hindi, Spanish and Arabic.");
+        LanguageReport.displayLanguagesPopulation(report4);
 
          //Disconnect from database
         a.disconnect();

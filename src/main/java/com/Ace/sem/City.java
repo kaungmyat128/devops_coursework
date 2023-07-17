@@ -16,7 +16,6 @@ public class City {
     private String CountryName;
     private String Continents;
     private String Region;
-
     private long totalPopulation;
     private long totalCitiesPopulation;
     private long totalNotCitiesPopulation;
