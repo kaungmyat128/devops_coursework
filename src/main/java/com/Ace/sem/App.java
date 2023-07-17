@@ -17,8 +17,6 @@ public class App {
         App a = new App();
 
         //------------Creating Object for Country Report------------
-        // Create new Country Object
-        Country c = new Country();
         // Create new object with Country_report java Class
         CountryReport cr = new CountryReport();
 
@@ -31,37 +29,37 @@ public class App {
 
         //---------------All Country Report---------------
 
-        // Display All Countries Population
-//        ArrayList<Country> CPop1 = cr.get_countries(a.con, 0);
+//        // Display All Countries Population
+//        ArrayList<Country> CPop1 = cr.getCountries(a.con, 0);
 //        System.out.println("All Countries Population in the World");
 //        cr.displayCountries(CPop1);
-
+//
 //        // Display All Countries Population based on Each Continent
-//        ArrayList<Country> CPop2 = cr.get_countries_continent(a.con, 0);
+//        ArrayList<Country> CPop2 = cr.getCountriesContinent(a.con, 0);
 //        System.out.println("All Countries Population in the World categorized by Continents");
-//        cr.displayCountries_Continent(CPop2);
+//        cr.displayCountriesContinent(CPop2);
 //
 //        // Display All Countries Population based on Each Region
-//        ArrayList<Country> CPop3 = cr.get_countries_region(a.con, 0);
+//        ArrayList<Country> CPop3 = cr.getCountriesRegion(a.con, 0);
 //        System.out.println("All Countries Population in the World categorized by Regions");
-//        cr.displayCountries_Region(CPop3);
+//        cr.displayCountriesRegion(CPop3);
 //
 //        //---------------Top Country Report---------------
 //
 //        // Display Top 10 Countries Population
-//        ArrayList<Country> CPop4 = cr.get_countries(a.con, 10);
+//        ArrayList<Country> CPop4 = cr.getCountries(a.con, 10);
 //        System.out.println("Top 10 Countries Population in the World");
 //        cr.displayCountries(CPop4);
 //
 //        // Display Top 10 Countries Population in Each Continent
-//        ArrayList<Country> CPop5 = cr.get_countries_continent(a.con, 10);
+//        ArrayList<Country> CPop5 = cr.getCountriesContinent(a.con, 10);
 //        System.out.println("Top 10 Countries Population in Each Continent");
-//        cr.displayCountries_Continent(CPop5);
+//        cr.displayCountriesContinent(CPop5);
 //
 //        // Display Top 10 Countries Population in Each Region
-//        ArrayList<Country> CPop6 = cr.get_countries_region(a.con,10);
+//        ArrayList<Country> CPop6 = cr.getCountriesRegion(a.con,10);
 //        System.out.println("Top 10 Countries Population in Each Region");
-//        cr.displayCountries_Region(CPop6);
+//        cr.displayCountriesRegion(CPop6);
 //
 //        //---------------All Cities Report---------------
 //
@@ -75,10 +73,10 @@ public class App {
 //        System.out.println("All Cities Population in the each Continent");
 //        cty.displayCityContinents(TPCIContinent);
 //
-        //Display All Cities Population in Each Region
-        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
-        System.out.println("All Cities Population in the each Region");
-        cty.displayCityRegion(TPCIRegion);
+//        //Display All Cities Population in Each Region
+//        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
+//        System.out.println("All Cities Population in the each Region");
+//        cty.displayCityRegion(TPCIRegion);
 //
 //        //Display All Cities Population in Each Country
 //        ArrayList<City> TPCICountry = cty.getCityPopByCountry(a.con, 0);
@@ -117,7 +115,7 @@ public class App {
 //        System.out.println("Top 5 Cities Population in the each District");
 //        cty.displayCityDistrict(TPCIDistrict1);
 
-        // Disconnect from database
+         //Disconnect from database
         a.disconnect();
     }
 

@@ -23,7 +23,7 @@ public class CountryReport {
      * write sql query to produce 'ALL or Top N most populated countries around the world'.
      * Then return the data as array list.
      * */
-    public ArrayList<Country> get_countries (Connection con, int lim){
+    public ArrayList<Country> getCountries (Connection con, int lim){
         try {
 
             // Create an SQL statement
@@ -46,7 +46,7 @@ public class CountryReport {
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather country data based on population
             ArrayList<Country> top_countries_population = new ArrayList<>();
-            return store_into_arraylist(top_countries_population, query1);
+            return storeIntoArraylist(top_countries_population, query1);
 
         }
         // Exception handling when any errors occur. Print out error type and error message and return null.
@@ -63,7 +63,7 @@ public class CountryReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<Country> get_countries_continent(Connection con, int lim) {
+    public ArrayList<Country> getCountriesContinent(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -88,7 +88,7 @@ public class CountryReport {
             ResultSet query2 = stmt.executeQuery(strSelect);
             // Creates array to gather populated country data based on each continent
             ArrayList<Country> top_countries_population = new ArrayList<>();
-            return store_into_arraylist(top_countries_population, query2);
+            return storeIntoArraylist(top_countries_population, query2);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -103,7 +103,7 @@ public class CountryReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<Country> get_countries_region(Connection con, int lim) {
+    public ArrayList<Country> getCountriesRegion(Connection con, int lim) {
         try {
 
                 // Create an SQL statement
@@ -129,7 +129,7 @@ public class CountryReport {
             ResultSet query3 = stmt.executeQuery(strSelect);
             // Creates array to gather countries population data based on each region
             ArrayList<Country> top_countries_population = new ArrayList<>();
-            return store_into_arraylist(top_countries_population, query3);
+            return storeIntoArraylist(top_countries_population, query3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country population report");
@@ -143,7 +143,7 @@ public class CountryReport {
      * This method is reused in get_countries(), get_countries_continent() and get_countries_region() methods
      * in order to store query results as array lists and return it.
      */
-    public ArrayList<Country> store_into_arraylist(ArrayList<Country> al, ResultSet qry) {
+    public ArrayList<Country> storeIntoArraylist(ArrayList<Country> al, ResultSet qry) {
         try{
             // Extract population of countries information and store into array list
             while (qry.next()) {
@@ -183,10 +183,10 @@ public class CountryReport {
                 String countries_info =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(),
-                                formatString(cp.getName(), 20),
+                                cp.getName(),
                                 cp.getContinent(),
-                                formatString(cp.getRegion(), 20),
-                                human_readable_format(cp.getPopulation()), cp.getCapital());
+                                cp.getRegion(),
+                                humanReadableFormat(cp.getPopulation()), cp.getCapital());
                 System.out.println(countries_info);
             }
             System.out.println("============================================================");
@@ -196,7 +196,7 @@ public class CountryReport {
      * Use if condition to check whether current continent change and print out current continent as title
      * @param countries_list
      */
-    public void displayCountries_Continent(ArrayList<Country> countries_list)
+    public void displayCountriesContinent(ArrayList<Country> countries_list)
         {
             // Print header
             System.out.println("============================================================");
@@ -220,7 +220,7 @@ public class CountryReport {
                 String countries_info =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                human_readable_format(cp.getPopulation()), cp.getCapital());
+                                humanReadableFormat(cp.getPopulation()), cp.getCapital());
                 System.out.println(countries_info);
             }
             System.out.println("============================================================");
@@ -230,7 +230,7 @@ public class CountryReport {
      * Use if condition to check whether current continent change and print out current region as title
      * @param countries_list
      */
-    public void displayCountries_Region(ArrayList<Country> countries_list)
+    public void displayCountriesRegion(ArrayList<Country> countries_list)
         {
             // Print header
             System.out.println("============================================================");
@@ -254,7 +254,7 @@ public class CountryReport {
                 String countries_info =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                human_readable_format(cp.getPopulation()), cp.getCapital());
+                                humanReadableFormat(cp.getPopulation()), cp.getCapital());
                 System.out.println(countries_info);
             }
             System.out.println("============================================================");
@@ -264,27 +264,9 @@ public class CountryReport {
      * human_readable_format method used to format the population numbers
      * e.g. 3242344 => 3,242,344
      */
-    public String human_readable_format(int population){
+    public String humanReadableFormat(int population){
             NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
             String formattedCode = nf.format(population);
             return formattedCode;
         }
-
-    public static String formatString(String input, int maxLineLength) {
-        StringBuilder builder = new StringBuilder();
-
-        String[] words = input.split(" ");
-        int currentLineLength = 0;
-
-        for (String word : words) {
-            if (currentLineLength + word.length() > maxLineLength) {
-                builder.append(System.lineSeparator());
-                currentLineLength = 0;
-            }
-            builder.append(word).append(" ");
-            currentLineLength += word.length() + 1;
-        }
-
-        return builder.toString();
-    }
 }
