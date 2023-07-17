@@ -267,7 +267,7 @@ public class CityReport {
             String countries_info =
                     String.format("%-40s |%-30s |%-30s |%-20s",
                             cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
-                            formatPopulation.human_readable_format(cityR.getPopulation()));
+                            formatPopulation.humanReadableFormat(cityR.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -320,7 +320,7 @@ public class CityReport {
             String continent_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             CityName, cityR.getCountryName(), cityR.getContinents(),
-                            DistrictName, formatPopulation.human_readable_format(cityR.getPopulation()));
+                            DistrictName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
             System.out.println(continent_info);
         }
         System.out.println("============================================================");
@@ -369,7 +369,7 @@ public class CityReport {
             String region_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             CityName, cityR.getCountryName(), DistrictName,
-                            cityR.getRegion(), formatPopulation.human_readable_format(cityR.getPopulation()));
+                            cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
             System.out.println(region_info);
         }
         System.out.println("============================================================");
@@ -420,7 +420,7 @@ public class CityReport {
             String countries_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             CityName, cty.getCountryName(), DistrictName,
-                            formatPopulation.human_readable_format(cty.getPopulation()));
+                            formatPopulation.humanReadableFormat(cty.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
@@ -470,7 +470,7 @@ public class CityReport {
             String countries_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             CityName, cty.getCountryName(), DistrictName,
-                            formatPopulation.human_readable_format(cty.getPopulation()));
+                            formatPopulation.humanReadableFormat(cty.getPopulation()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
