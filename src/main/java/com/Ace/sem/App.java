@@ -142,7 +142,7 @@ public class App {
         System.out.println("All Capital Population in each Continent");
         cpr.displayCapitalContinent(CapitalR3);
 
-        //Display top 10 Capital By Population in each continents
+        //Display top 10 Capital By Population in each continent
         ArrayList<City> CapitalR4 = cpr.getCapitalPopByContinent(a.con, 10);
         System.out.println("Top 10 Capital Population in each Continent");
         cpr.displayCapitalContinent(CapitalR4);
