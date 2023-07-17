@@ -33,9 +33,9 @@ public class RuralUrbanReport {
             while (rset.next()) {
                 City world = new City();
                 world.setContinents(rset.getString("Continent_Name"));
-                world.setTotalPopulation(rset.getInt("Total_Population"));
-                world.setTotalCitiesPopulation(rset.getInt("Cities_Population"));
-                world.setTotalNotCitiesPopulation(rset.getInt("Not_Cities_Population"));
+                world.setTotalPopulation(rset.getLong("Total_Population"));
+                world.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
+                world.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
                 RUContinentPopulation.add(world);
             }
             return RUContinentPopulation;
@@ -50,12 +50,12 @@ public class RuralUrbanReport {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "City", "Country", "District", "Population"));
         // Loop over all cities population in the list
         for (City c : arrList)
         {
             String continent_population =
-                    String.format("%-40s |%-30s |%-30s |%-20s",
+                    String.format("%-40s | %-30s | %-30s | %-20s",
                             c.getContinents(), c.getTotalPopulation(), c.getTotalCitiesPopulation(),
                             c.getTotalNotCitiesPopulation());
             System.out.println(continent_population);
