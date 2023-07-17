@@ -7,9 +7,21 @@ import java.util.ArrayList;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+
+/**
+ * Creates methods to write sql queries and create arraylists of people living in cities & not living in cities
+ * This Java Class File contains 7 java methods -
+ * getContinentPopulation(), getRegionPopulation(),  getCountryPopulation() methods
+ * displayContinentPopulation(), displayRegionPopulation() and displayCountryPopulation() methods
+ * human_readable_format() for formatting population
+ * */
 public class RuralUrbanReport {
 
-    // The population of people, people living in cities, and people not living in cities in each continent.
+    /**
+     * getContinentPopulation() method contains connection parameters for database connection
+     * The population of people, people living in cities, and people not living in cities in each continent
+     * Then return the data as array list.
+     * */
     public ArrayList<City> getContinentPopulation(Connection con) {
         try {
             // Create an SQL statement
@@ -46,8 +58,11 @@ public class RuralUrbanReport {
         }
     }
 
-    // The population of people, people living in cities, and people not living in cities in each region.
-    public ArrayList<City> getRegionPopulation(Connection con) {
+    /**
+     * getContinentPopulation() method contains connection parameters for database connection
+     * The population of people, people living in cities, and people not living in cities in each region
+     * Then return the data as array list.
+     * */    public ArrayList<City> getRegionPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -84,8 +99,11 @@ public class RuralUrbanReport {
         }
     }
 
-    // The population of people, people living in cities, and people not living in cities in each country.
-    public ArrayList<City> getCountryPopulation(Connection con) {
+    /**
+     * getContinentPopulation() method contains connection parameters for database connection
+     * The population of people, people living in cities, and people not living in cities in each country
+     * Then return the data as array list.
+     * */    public ArrayList<City> getCountryPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -118,6 +136,12 @@ public class RuralUrbanReport {
         }
     }
 
+
+    /** Display Population of People living in cities and not living in cities in each continent
+     *  Report using getter() method
+     *
+     * @param arrList
+     */
     public void displayContinentPopulation(ArrayList<City> arrList)
     {
         // Print header
@@ -141,6 +165,11 @@ public class RuralUrbanReport {
         System.out.println("============================================================");
     }
 
+    /** Display Population of People living in cities and not living in cities in each region
+     *  Report using getter() method
+     *
+     * @param arrList
+     */
     public void displayRegionPopulation(ArrayList<City> arrList)
     {
         // Print header
@@ -165,6 +194,12 @@ public class RuralUrbanReport {
     }
 
 
+
+    /** Display Population of People living in cities and not living in cities in each country
+     *  Report using getter() method
+     *
+     * @param arrList
+     */
     public void displayCountryPopulation(ArrayList<City> arrList)
     {
         // Print header
