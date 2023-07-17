@@ -126,7 +126,6 @@ public class SummaryReport {
             // Format and print of data
             System.out.println("Population of the entire world");
             System.out.println("===========================================");
-            System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
 
             String countries_info =
                     String.format("%-20s| %-20s",
@@ -150,10 +149,9 @@ public class SummaryReport {
         for (Country cp : cont_pop_list)
         {
             // Formatting and printing data
-            System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
 
             String countries_info =
-                    String.format("%-20s| %-20s",
+                    String.format("%-30s| %-30s",
                             cp.getContinent(),
                             humanReadableFormatLong(cp.getGenPop()));
             System.out.println(countries_info);
@@ -174,7 +172,6 @@ public class SummaryReport {
         for (Country cp : reg_pop_list)
         {
             // Formatting and printing data
-            System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
 
             String countries_info =
                     String.format("%-30s| %-30s",

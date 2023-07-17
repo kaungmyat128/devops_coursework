@@ -121,14 +121,17 @@ public class App {
 
         ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
         System.out.println("==========Population of the world==========");
+        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
         sr.displaySumWorldPop(popSumWorld);
 
         ArrayList<Country> popSumCont =  sr.sumContPop(a.con);
         System.out.println("==========Population of the continents==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
         sr.displaySumContPop(popSumCont);
 
         ArrayList<Country> popSumReg =  sr.sumRegPop(a.con);
         System.out.println("==========Population of the continents==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
         sr.displaySumRegPop(popSumReg);
 
         //Disconnect from database
