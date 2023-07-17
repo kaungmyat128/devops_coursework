@@ -53,7 +53,7 @@ public class SummaryReport {
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement of population all around the world
+            // Create string for SQL statement of population from each continent
             String strSelect =
                     "SELECT Continent, SUM(Population) AS cont_pop FROM country " +
                             "GROUP by Continent ORDER BY SUM(Population) DESC";
@@ -73,6 +73,40 @@ public class SummaryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each continent");
+            return null;
+        }
+    }
+
+    /**
+     * gathers data of total population from each region
+     * @param con
+     * @return
+     */
+    public ArrayList<Country> sumRegPop (Connection con){
+        try {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement of population from each region
+            String strSelect =
+                    "SELECT Region, SUM(Population) AS reg_pop FROM country " +
+                            "GROUP by Region ORDER BY SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet pop = stmt.executeQuery(strSelect);
+            ArrayList<Country> regPop = new ArrayList<>();
+
+            while (pop.next()) {
+                Country cp = new Country();
+                cp.setRegion(pop.getString("region"));
+                cp.setGenPop(pop.getLong("reg_pop"));
+                regPop.add(cp);
+            }
+            return regPop;
+        }
+        // Exception handling when any errors occur. Print out error type and error message and return null.
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to return population of each region");
             return null;
         }
     }
@@ -116,8 +150,6 @@ public class SummaryReport {
         for (Country cp : cont_pop_list)
         {
             // Formatting and printing data
-            System.out.println("Population of the continents");
-            System.out.println("===========================================");
             System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
 
             String countries_info =
@@ -128,6 +160,33 @@ public class SummaryReport {
         }
         System.out.println("============================================================");
     }
+
+    /**
+     * returns data gathered by sumRegPop
+     * @param reg_pop_list
+     */
+    public void displaySumRegPop(ArrayList<Country> reg_pop_list)
+    {
+        // Print header
+        System.out.println("============================================================");
+
+        // Loop over all data in the list
+        for (Country cp : reg_pop_list)
+        {
+            // Formatting and printing data
+            System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+
+            String countries_info =
+                    String.format("%-30s| %-30s",
+                            cp.getRegion(),
+                            humanReadableFormatLong(cp.getGenPop()));
+            System.out.println(countries_info);
+        }
+        System.out.println("============================================================");
+    }
+
+
+
 
 
 

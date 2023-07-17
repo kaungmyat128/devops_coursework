@@ -126,6 +126,11 @@ public class App {
         ArrayList<Country> popSumCont =  sr.sumContPop(a.con);
         System.out.println("==========Population of the continents==========");
         sr.displaySumContPop(popSumCont);
+
+        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con);
+        System.out.println("==========Population of the continents==========");
+        sr.displaySumRegPop(popSumReg);
+
         //Disconnect from database
         a.disconnect();
     }
