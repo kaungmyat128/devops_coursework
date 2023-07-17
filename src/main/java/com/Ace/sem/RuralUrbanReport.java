@@ -56,7 +56,8 @@ public class RuralUrbanReport {
         {
             String continent_population =
                     String.format("%-40s |%-30s |%-30s |%-20s",
-                            c.getContinents(), c.getTotalPopulation(), c.getTotalCitiesPopulation(), c.getTotalNotCitiesPopulation());
+                            c.getContinents(), c.getTotalPopulation(), c.getTotalCitiesPopulation(),
+                            c.getTotalNotCitiesPopulation());
             System.out.println(continent_population);
         }
         System.out.println("============================================================");

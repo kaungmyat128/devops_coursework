@@ -15,9 +15,9 @@ public class City {
     private String Continents;
     private String Region;
 
-    private int totalPopulation;
-    private int totalCitiesPopulation;
-    private int totalNotCitiesPopulation;
+    private long totalPopulation;
+    private long totalCitiesPopulation;
+    private long totalNotCitiesPopulation;
 
     // Getter method for CityName
     public String getCityName() {
@@ -95,7 +95,7 @@ public class City {
     }
 
     // Setter method for Total Population
-    public void setTotalPopulation(int totalPopulation) {
+    public void setTotalPopulation(long totalPopulation) {
         this.totalPopulation = totalPopulation;
     }
 
@@ -105,7 +105,7 @@ public class City {
     }
 
     // Setter method for Total Population
-    public void setTotalCitiesPopulation(int totalCitiesPopulation) {
+    public void setTotalCitiesPopulation(long totalCitiesPopulation) {
         this.totalCitiesPopulation = totalCitiesPopulation;
     }
     // Getter method for Total Population
@@ -114,7 +114,7 @@ public class City {
     }
 
     // Setter method for Total Population
-    public void setTotalNotCitiesPopulation(int totalNotCitiesPopulation) {
+    public void setTotalNotCitiesPopulation(long totalNotCitiesPopulation) {
         this.totalNotCitiesPopulation = totalNotCitiesPopulation;
     }
 }
