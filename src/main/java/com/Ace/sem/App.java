@@ -124,6 +124,16 @@ public class App {
         System.out.println("Population report of people living in cities and not living in cities in each continent");
         RUReport.displayContinentPopulation(report1);
 
+        //Display Population report of people living in cities and not living in cities in each region
+        ArrayList<City> report2 = RUReport.getRegionPopulation(a.con);
+        System.out.println("Population report of people living in cities and not living in cities in each region");
+        RUReport.displayRegionPopulation(report2);
+
+        //Display Population report of people living in cities and not living in cities in each country
+        ArrayList<City> report3 = RUReport.getCountryPopulation(a.con);
+        System.out.println("Population report of people living in cities and not living in cities in each country");
+        RUReport.displayCountryPopulation(report3);
+
          //Disconnect from database
         a.disconnect();
     }

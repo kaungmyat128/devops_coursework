@@ -29,12 +29,12 @@ public class RuralUrbanReport {
             // Create array list 'RUContinentPopulation' and add query result into array list
             ArrayList<City> RUContinentPopulation = new ArrayList<City>();
             while (rset.next()) {
-                City world = new City();
-                world.setContinents(rset.getString("Continent_Name"));
-                world.setTotalPopulation(rset.getLong("Total_Population"));
-                world.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
-                world.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
-                RUContinentPopulation.add(world);
+                City RUPop = new City();
+                RUPop.setContinents(rset.getString("Continent_Name"));
+                RUPop.setTotalPopulation(rset.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
+                RUContinentPopulation.add(RUPop);
             }
             return RUContinentPopulation;
         } catch (Exception e) {
@@ -44,13 +44,13 @@ public class RuralUrbanReport {
         }
     }
 
-    // The population of people, people living in cities, and people not living in cities in each continent.
+    // The population of people, people living in cities, and people not living in cities in each region.
     public ArrayList<City> getRegionPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement with no limit - fetch all queries
-            String strSelect = "SELECT country.Region AS Region_Name, SUM(country.Population) AS Total_Population, "
+            String strSelect = "SELECT country.Region AS Region, SUM(country.Population) AS Total_Population, "
                     + "SUM(city.cities_population) AS Cities_Population, "
                     + "SUM(country.Population - city.cities_population) AS Not_Cities_Population "
                     + "FROM country "
@@ -63,16 +63,16 @@ public class RuralUrbanReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
-            ArrayList<City> RUContinentPopulation = new ArrayList<City>();
+            ArrayList<City> RURegionPopulation = new ArrayList<City>();
             while (rset.next()) {
-                City world = new City();
-                world.setRegion(rset.getString("Region_Name"));
-                world.setTotalPopulation(rset.getLong("Total_Population"));
-                world.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
-                world.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
-                RUContinentPopulation.add(world);
+                City RUPop = new City();
+                RUPop.setRegion(rset.getString("Region"));
+                RUPop.setTotalPopulation(rset.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
+                RURegionPopulation.add(RUPop);
             }
-            return RUContinentPopulation;
+            return RURegionPopulation;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each region");
@@ -80,11 +80,46 @@ public class RuralUrbanReport {
         }
     }
 
+    // The population of people, people living in cities, and people not living in cities in each country.
+    public ArrayList<City> getCountryPopulation(Connection con) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement with no limit - fetch all queries
+            String strSelect = "SELECT country.Name, country.Population AS total_population , "
+                    + "SUM(city.Population) AS people_living_in_cities, "
+                    + "country.population - SUM(city.Population) AS people_not_living_in_cities "
+                    + "FROM country "
+                    + "JOIN city ON country.Code = city.CountryCode "
+                    + "GROUP BY country.Name ORDER BY country.Name";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Create array list 'RUContinentPopulation' and add query result into array list
+            ArrayList<City> RUCountryPopulation = new ArrayList<City>();
+            while (rset.next()) {
+                City RUPop = new City();
+                RUPop.setCountryName(rset.getString("Country"));
+                RUPop.setTotalPopulation(rset.getLong("Total_Population"));
+                RUPop.setTotalCitiesPopulation(rset.getLong("Cities_Population"));
+                RUPop.setTotalNotCitiesPopulation(rset.getLong("Not_Cities_Population"));
+                RUCountryPopulation.add(RUPop);
+            }
+            return RUCountryPopulation;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Population of People living in cities and not living in cities in each country");
+            return null;
+        }
+    }
+
+
     public void displayContinentPopulation(ArrayList<City> arrList)
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "City", "Country", "District", "Population"));
+        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "Continent", "Total Population",
+                "People Living in Cities", "People Not Living in Cities"));
         // Loop over all cities population in the list
         for (City c : arrList)
         {
@@ -102,19 +137,41 @@ public class RuralUrbanReport {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "City", "Country", "District", "Population"));
+        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "Region", "Total Population",
+                "People Living in Cities", "People Not Living in Cities"));
         // Loop over all cities population in the list
         for (City c : arrList)
         {
-            String continent_population =
+            String region_population =
                     String.format("%-40s | %-30s | %-30s | %-20s",
                             c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
                             humanReadableFormat(c.getTotalCitiesPopulation()),
                             humanReadableFormat(c.getTotalNotCitiesPopulation()));
-            System.out.println(continent_population);
+            System.out.println(region_population);
         }
         System.out.println("============================================================");
     }
+
+
+    public void displayCountryPopulation(ArrayList<City> arrList)
+    {
+        // Print header
+        System.out.println("============================================================");
+        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "Country", "Total Population",
+                "People Living in Cities", "People Not Living in Cities"));
+        // Loop over all cities population in the list
+        for (City c : arrList)
+        {
+            String country_population =
+                    String.format("%-40s | %-30s | %-30s | %-20s",
+                            c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
+                            humanReadableFormat(c.getTotalCitiesPopulation()),
+                            humanReadableFormat(c.getTotalNotCitiesPopulation()));
+            System.out.println(country_population);
+        }
+        System.out.println("============================================================");
+    }
+
 
     public String humanReadableFormat(long population){
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
