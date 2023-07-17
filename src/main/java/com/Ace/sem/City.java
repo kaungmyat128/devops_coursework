@@ -84,7 +84,6 @@ public class City {
     public void setRegion(String Region) {
         this.Region = Region;
     }
-
 }
 
 
