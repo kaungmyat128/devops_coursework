@@ -223,7 +223,12 @@ public class RuralUrbanReport {
         System.out.println("============================================================");
     }
 
-
+    /**
+     * human_readable_format method used to format the population numbers for long variables
+     * e.g. 3242344 => 3,242,344
+     * @param population
+     * @return
+     */
     public String humanReadableFormat(long population){
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
         String formattedCode = nf.format(population);
