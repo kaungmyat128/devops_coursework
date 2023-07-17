@@ -134,6 +134,11 @@ public class App {
         System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
         sr.displaySumRegPop(popSumReg);
 
+        ArrayList<City> popDistReg =  sr.sumDistPop(a.con);
+        System.out.println("==========Population of the districts==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumDistPop(popDistReg);
+
         //Disconnect from database
         a.disconnect();
     }

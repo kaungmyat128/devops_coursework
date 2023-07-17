@@ -112,6 +112,49 @@ public class SummaryReport {
     }
 
     /**
+     * gathers data of total population from each country
+     * @param con
+     * @return
+     */
+    //public ArrayList<Country> sumCouPop (Connection con){
+
+    //}
+
+    /**
+     * gathers data of total population from each district
+     * @param con
+     * @return
+     */
+    public ArrayList<City> sumDistPop (Connection con){
+        try {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement of population from each region
+            String strSelect =
+                    "SELECT District, SUM(Population) AS dist_pop FROM city " +
+                            "GROUP by District ORDER BY SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet pop = stmt.executeQuery(strSelect);
+            ArrayList<City> distPop = new ArrayList<>();
+
+            while (pop.next()) {
+                City ct = new City();
+                ct.setDistrict(pop.getString("District"));
+                ct.setGenPop(pop.getLong("dist_pop"));
+                distPop.add(ct);
+            }
+            return distPop;
+        }
+        // Exception handling when any errors occur. Print out error type and error message and return null.
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to return population of each district");
+            return null;
+        }
+    }
+
+    /**
      * returns the data gathered by sumWorldPop
      * @param pop_list
      */
@@ -127,11 +170,11 @@ public class SummaryReport {
             System.out.println("Population of the entire world");
             System.out.println("===========================================");
 
-            String countries_info =
+            String worldpop_info =
                     String.format("%-20s| %-20s",
                             "World Population",
                             humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(countries_info);
+            System.out.println(worldpop_info);
         }
         System.out.println("============================================================");
     }
@@ -150,11 +193,11 @@ public class SummaryReport {
         {
             // Formatting and printing data
 
-            String countries_info =
+            String contpop_info =
                     String.format("%-30s| %-30s",
                             cp.getContinent(),
                             humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(countries_info);
+            System.out.println(contpop_info);
         }
         System.out.println("============================================================");
     }
@@ -173,16 +216,46 @@ public class SummaryReport {
         {
             // Formatting and printing data
 
-            String countries_info =
+            String regpop_info =
                     String.format("%-30s| %-30s",
                             cp.getRegion(),
                             humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(countries_info);
+            System.out.println(regpop_info);
         }
         System.out.println("============================================================");
     }
 
+    /**
+     * Displays data gathered by sumCouPop
+    // * @param reg_pop_list
+     */
+    //public void displaySumCouPop(ArrayList<Country> reg_pop_list)
+    //{
 
+    //}
+
+    /**
+     * display data gathered by sumDistPop
+     * @param dist_pop_list
+     */
+    public void displaySumDistPop(ArrayList<City> dist_pop_list)
+    {
+        // Print header
+        System.out.println("============================================================");
+
+        // Loop over all data in the list
+        for (City ct : dist_pop_list)
+        {
+            // Formatting and printing data
+
+            String distpop_info =
+                    String.format("%-30s| %-30s",
+                            ct.getRegion(),
+                            humanReadableFormatLong(ct.getGenPop()));
+            System.out.println(distpop_info);
+        }
+        System.out.println("============================================================");
+    }
 
 
 
