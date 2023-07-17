@@ -127,7 +127,7 @@ public class App {
         //Display top 10 Capital By Population in the world
         ArrayList<City> CapitalR2 = cpr.getCapitalPopByWorld(a.con, 10);
         System.out.println("Top 10 City Population in the World");
-        cty.displayCityRegion(CapitalR2);
+        cpr.displayCapital(CapitalR2);
         // Disconnect from database
         a.disconnect();
     }

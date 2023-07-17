@@ -64,20 +64,20 @@ public class CapitalReport {
     public void displayCapital(ArrayList<City> capitalList)
     {
         // Print header
-        System.out.println("============================================================");
+        System.out.println("========================================================================================");
         System.out.println("Capital Cities sorted by population in the world ");
 
-        System.out.println(String.format("%-40s |%-40% |%-20%","CapitalName", "CountryName", "Population"));
+        System.out.println(String.format("%-40s |%-40s |%-20s","CapitalName", "CountryName", "Population"));
         // Loop over all countries population in the list
         for (City cpr : capitalList)
         {
             String countries_info =
-                    String.format("%-40s |%-40% |%-20%",
+                    String.format("%-40s |%-40s |%-20s",
                             cpr.getCityName(),
                             cpr.getCountryName(),
-                            formatPopulation.human_readable_format(cpr.getPopulation()));
+                            formatPopulation.humanReadableFormat(cpr.getPopulation()));
             System.out.println(countries_info);
         }
-        System.out.println("============================================================");
+        System.out.println("========================================================================================");
     }
 }
