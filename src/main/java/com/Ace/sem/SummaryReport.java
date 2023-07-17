@@ -16,7 +16,7 @@ public class SummaryReport {
             Statement stmt = con.createStatement();
             // Create string for SQL statement of population all around the world
             String strSelect =
-                    "SELECT SUM(population) FROM country AS world_pop";
+                    "SELECT SUM(population) AS world_pop FROM country";
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
             ArrayList<Country> worldPop = new ArrayList<>();
@@ -35,36 +35,6 @@ public class SummaryReport {
             return null;
         }
     }
-
-    /**
-     * store_into_arraylist() method has two parameters - former for arraylist<Country> and later for query result
-     * This method will assign  country information query results into the arrayList.
-     * This method is reused in get_countries(), get_countries_continent() and get_countries_region() methods
-     * in order to store query results as array lists and return it.
-     */
-    public ArrayList<Country> storeIntoArraylist(ArrayList<Country> al, ResultSet qry) {
-        try{
-            // Extract population of countries information and store into array list
-            while (qry.next()) {
-                Country cp = new Country();
-                cp.setCode(qry.getString("Code"));
-                cp.setName(qry.getString("Name"));
-                cp.setContinent(qry.getString("Continent"));
-                cp.setRegion(qry.getString("Region"));
-                cp.setPopulation(qry.getInt("Population"));
-                cp.setCapital(qry.getString("Capital"));
-                al.add(cp);
-            }
-            // return the array list
-            return al;
-        }// Exception handling when any errors occur. Print out error type and error message and return null.
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population in each continent");
-            return null;
-        }
-    }
-
 
     public void displayWorldPop(ArrayList<Country> countries_list)
     {
