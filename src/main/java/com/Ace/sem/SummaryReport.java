@@ -199,11 +199,11 @@ public class SummaryReport {
             System.out.println("Population of the entire world");
             System.out.println("===========================================");
 
-            String worldpop_info =
+            String world_pop_info =
                     String.format("%-20s| %-20s",
                             "World Population",
                             humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(worldpop_info);
+            System.out.println(world_pop_info);
         }
         System.out.println("============================================================");
     }
@@ -222,11 +222,11 @@ public class SummaryReport {
         {
             // Formatting and printing data
 
-            String contpop_info =
+            String cont_pop_info =
                     String.format("%-30s| %-30s",
                             cp.getContinent(),
                             humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(contpop_info);
+            System.out.println(cont_pop_info);
         }
         System.out.println("============================================================");
     }
@@ -245,11 +245,11 @@ public class SummaryReport {
         {
             // Formatting and printing data
 
-            String regpop_info =
+            String reg_pop_info =
                     String.format("%-30s| %-30s",
                             cp.getRegion(),
                             humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(regpop_info);
+            System.out.println(reg_pop_info);
         }
         System.out.println("============================================================");
     }
@@ -277,11 +277,11 @@ public class SummaryReport {
         {
             // Formatting and printing data
 
-            String distpop_info =
+            String dist_pop_info =
                     String.format("%-30s| %-30s",
                             ct.getDistrict(),
                             humanReadableFormatLong(ct.getGenPop()));
-            System.out.println(distpop_info);
+            System.out.println(dist_pop_info);
         }
         System.out.println("============================================================");
     }
@@ -300,24 +300,21 @@ public class SummaryReport {
         {
             // Formatting and printing data
 
-            String citypop_info =
+            String city_pop_info =
                     String.format("%-30s| %-30s",
                             ct.getCityName(),
                             humanReadableFormatLong(ct.getPopulation()));
-            System.out.println(citypop_info);
+            System.out.println(city_pop_info);
         }
         System.out.println("============================================================");
     }
 
-
-
-
-
-
-
-
-
-
+    /**
+     * human_readable_format method used to format the population numbers for long variables
+     * e.g. 3242344 => 3,242,344
+     * @param population
+     * @return
+     */
     public String humanReadableFormatLong(long population){
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
         String formattedCode = nf.format(population);
