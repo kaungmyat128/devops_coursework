@@ -24,6 +24,10 @@ public class App {
         // Create new object for top populated cities Class Java
         CityReport cty = new CityReport();
 
+        //------------Creating Object for People Living in Cities & Not Living in Cities Report------------
+        // Create new object for top populated cities Class Java
+        RuralUrbanReport RUReport = new RuralUrbanReport();
+
         // Connect to database
         a.connect();
 
@@ -114,6 +118,11 @@ public class App {
 //        ArrayList<City> TPCIDistrict1 = cty.getCityPopByDistrict(a.con, 5);
 //        System.out.println("Top 5 Cities Population in the each District");
 //        cty.displayCityDistrict(TPCIDistrict1);
+
+        //Display Population report of people living in cities and not living in cities in each continent
+        ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
+        System.out.println("Population report of people living in cities and not living in cities in each continent");
+        RUReport.displayContinentPopulation(report1);
 
          //Disconnect from database
         a.disconnect();
