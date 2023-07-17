@@ -121,13 +121,33 @@ public class App {
 
         //Display All Capital Population in the world
         ArrayList<City> CapitalR1 = cpr.getCapitalPopByWorld(a.con, 0);
-        System.out.println("All Cities Population in the World");
+        System.out.println("All Capital Population in the World");
         cpr.displayCapital(CapitalR1);
 
         //Display top 10 Capital By Population in the world
         ArrayList<City> CapitalR2 = cpr.getCapitalPopByWorld(a.con, 10);
-        System.out.println("Top 10 City Population in the World");
+        System.out.println("Top 10 Capital Population in the World");
         cpr.displayCapital(CapitalR2);
+
+        //Display All Capital Population for each Continent
+        ArrayList<City> CapitalR3 = cpr.getCapitalPopByContinent(a.con, 0);
+        System.out.println("All Capital Population in each Continent");
+        cpr.displayCapitalContinent(CapitalR3);
+
+        //Display top 10 Capital By Population in each continents
+        ArrayList<City> CapitalR4 = cpr.getCapitalPopByContinent(a.con, 10);
+        System.out.println("Top 10 Capital Population in each Continent");
+        cpr.displayCapitalContinent(CapitalR4);
+
+        //Display All Capital Population for each region
+        ArrayList<City> CapitalR5 = cpr.getCapitalPopByRegion(a.con, 0);
+        System.out.println("All Capital Population in each Region");
+        cpr.displayCapitalContinent(CapitalR5);
+
+        //Display top 10 Capital By Population each Region
+        ArrayList<City> CapitalR6 = cpr.getCapitalPopByRegion(a.con, 10);
+        System.out.println("Top 10 Capital Population in each Region");
+        cpr.displayCapitalRegion(CapitalR6);
         // Disconnect from database
         a.disconnect();
     }
