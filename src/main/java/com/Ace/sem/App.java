@@ -17,6 +17,8 @@ public class App {
         App a = new App();
 
         //------------Creating Object for Country Report------------
+        // Create new Country Object
+        Country c = new Country();
         // Create new object with Country_report java Class
         CountryReport cr = new CountryReport();
 
@@ -24,46 +26,52 @@ public class App {
         // Create new object for top populated cities Class Java
         CityReport cty = new CityReport();
 
+        //------------Creating Object for Summary Report------------
+        // Create new object for SummaryReport Class Java
+        SummaryReport sr = new SummaryReport();
+
         //------------Creating Object for People Living in Cities & Not Living in Cities Report------------
         // Create new object for top populated cities Class Java
         RuralUrbanReport RUReport = new RuralUrbanReport();
+
+        CapitalReport cpr = new CapitalReport();
 
         // Connect to database
         a.connect();
 
         //---------------All Country Report---------------
 
-//        // Display All Countries Population
-//        ArrayList<Country> CPop1 = cr.getCountries(a.con, 0);
+        // Display All Countries Population
+//        ArrayList<Country> CPop1 = cr.get_countries(a.con, 0);
 //        System.out.println("All Countries Population in the World");
 //        cr.displayCountries(CPop1);
-//
+
 //        // Display All Countries Population based on Each Continent
-//        ArrayList<Country> CPop2 = cr.getCountriesContinent(a.con, 0);
+//        ArrayList<Country> CPop2 = cr.get_countries_continent(a.con, 0);
 //        System.out.println("All Countries Population in the World categorized by Continents");
-//        cr.displayCountriesContinent(CPop2);
+//        cr.displayCountries_Continent(CPop2);
 //
 //        // Display All Countries Population based on Each Region
-//        ArrayList<Country> CPop3 = cr.getCountriesRegion(a.con, 0);
+//        ArrayList<Country> CPop3 = cr.get_countries_region(a.con, 0);
 //        System.out.println("All Countries Population in the World categorized by Regions");
-//        cr.displayCountriesRegion(CPop3);
+//        cr.displayCountries_Region(CPop3);
 //
 //        //---------------Top Country Report---------------
 //
 //        // Display Top 10 Countries Population
-//        ArrayList<Country> CPop4 = cr.getCountries(a.con, 10);
+//        ArrayList<Country> CPop4 = cr.get_countries(a.con, 10);
 //        System.out.println("Top 10 Countries Population in the World");
 //        cr.displayCountries(CPop4);
 //
 //        // Display Top 10 Countries Population in Each Continent
-//        ArrayList<Country> CPop5 = cr.getCountriesContinent(a.con, 10);
+//        ArrayList<Country> CPop5 = cr.get_countries_continent(a.con, 10);
 //        System.out.println("Top 10 Countries Population in Each Continent");
-//        cr.displayCountriesContinent(CPop5);
+//        cr.displayCountries_Continent(CPop5);
 //
 //        // Display Top 10 Countries Population in Each Region
-//        ArrayList<Country> CPop6 = cr.getCountriesRegion(a.con,10);
+//        ArrayList<Country> CPop6 = cr.get_countries_region(a.con,10);
 //        System.out.println("Top 10 Countries Population in Each Region");
-//        cr.displayCountriesRegion(CPop6);
+//        cr.displayCountries_Region(CPop6);
 //
 //        //---------------All Cities Report---------------
 //
@@ -119,6 +127,67 @@ public class App {
 //        System.out.println("Top 5 Cities Population in the each District");
 //        cty.displayCityDistrict(TPCIDistrict1);
 
+        //Display All Capital Population in the world
+        ArrayList<City> CapitalR1 = cpr.getCapitalPopByWorld(a.con, 0);
+        System.out.println("All Capital Population in the World");
+        cpr.displayCapital(CapitalR1);
+
+        //Display top 10 Capital By Population in the world
+        ArrayList<City> CapitalR2 = cpr.getCapitalPopByWorld(a.con, 10);
+        System.out.println("Top 10 Capital Population in the World");
+        cpr.displayCapital(CapitalR2);
+
+        //Display All Capital Population for each Continent
+        ArrayList<City> CapitalR3 = cpr.getCapitalPopByContinent(a.con, 0);
+        System.out.println("All Capital Population in each Continent");
+        cpr.displayCapitalContinent(CapitalR3);
+
+        //Display top 10 Capital By Population in each continent
+        ArrayList<City> CapitalR4 = cpr.getCapitalPopByContinent(a.con, 10);
+        System.out.println("Top 10 Capital Population in each Continent");
+        cpr.displayCapitalContinent(CapitalR4);
+
+        //Display All Capital Population for each region
+        ArrayList<City> CapitalR5 = cpr.getCapitalPopByRegion(a.con, 0);
+        System.out.println("All Capital Population in each Region");
+        cpr.displayCapitalContinent(CapitalR5);
+
+        //Display top 10 Capital By Population each Region
+        ArrayList<City> CapitalR6 = cpr.getCapitalPopByRegion(a.con, 10);
+        System.out.println("Top 10 Capital Population in each Region");
+        cpr.displayCapitalRegion(CapitalR6);
+        // Disconnect from database
+        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
+        System.out.println("==========Population of the world==========");
+        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
+        sr.displaySumWorldPop(popSumWorld);
+
+        ArrayList<Country> popSumCont =  sr.sumContPop(a.con);
+        System.out.println("==========Population of the continents==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumContPop(popSumCont);
+
+        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con);
+        System.out.println("==========Population of the regions==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumRegPop(popSumReg);
+
+        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con);
+        System.out.println("==========Population of the countries==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumCouPop(popSumCoun);
+
+        ArrayList<City> popDistReg =  sr.sumDistPop(a.con);
+        System.out.println("==========Population of the districts==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumDistPop(popDistReg);
+
+        ArrayList<City> popCityReg =  sr.sumCityPop(a.con);
+        System.out.println("==========Population of the cities==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumCityPop(popCityReg);
+
+        //Disconnect from database
         //Display Population report of people living in cities and not living in cities in each continent
         ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
         System.out.println("Population report of people living in cities and not living in cities in each continent");
