@@ -1,4 +1,5 @@
 package com.Ace.sem;
+import java.text.NumberFormat;
 import java.util.*;
 import java.sql.*;
 /**
@@ -23,7 +24,7 @@ public class SummaryReport {
 
             while (pop.next()) {
                 Country cp = new Country();
-                cp.setWorldPop(pop.getInt("world_pop"));
+                cp.setWorldPop(pop.getLong("world_pop"));
                 worldPop.add(cp);
             }
             return worldPop;
@@ -54,10 +55,26 @@ public class SummaryReport {
             String countries_info =
                     String.format("%-15s|%-20s",
                             "World Population",
-                            cr.humanReadableFormat(cp.getWorldPop()));
+                            humanReadableFormatLong(cp.getWorldPop()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public String humanReadableFormatLong(long population){
+        NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
+        String formattedCode = nf.format(population);
+        return formattedCode;
     }
 
 }
