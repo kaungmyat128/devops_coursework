@@ -24,6 +24,10 @@ public class App {
         // Create new object for top populated cities Class Java
         CityReport cty = new CityReport();
 
+        //------------Creating Object for Summary Report------------
+        // Create new object for SummaryReport Class Java
+        SummaryReport sr = new SummaryReport();
+
         // Connect to database
         a.connect();
 
@@ -115,6 +119,9 @@ public class App {
 //        System.out.println("Top 5 Cities Population in the each District");
 //        cty.displayCityDistrict(TPCIDistrict1);
 
+        ArrayList<Country> popWorld =  sr.worldPop(a.con);
+        System.out.println("==========Population of the world==========");
+        sr.displayWorldPop(popWorld);
          //Disconnect from database
         a.disconnect();
     }
