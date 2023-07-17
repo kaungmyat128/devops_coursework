@@ -119,10 +119,16 @@ public class App {
 //        System.out.println("Top 5 Cities Population in the each District");
 //        cty.displayCityDistrict(TPCIDistrict1);
 
-        ArrayList<Country> popWorld =  sr.worldPop(a.con);
+        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
         System.out.println("==========Population of the world==========");
-        sr.displayWorldPop(popWorld);
+        sr.displaySumWorldPop(popSumWorld);
          //Disconnect from database
+        a.disconnect();
+
+        ArrayList<Country> popSumCont =  sr.sumContPop(a.con);
+        System.out.println("==========Population of the continents==========");
+        sr.displaySumContPop(popSumCont);
+        //Disconnect from database
         a.disconnect();
     }
 

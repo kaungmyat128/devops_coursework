@@ -7,7 +7,7 @@ package com.Ace.sem;
 public class Country {
     // Declare Variables related to Country Information and Capital City Names
 
-    private long worldPop;
+    private long genPop;
     private String Code;
     private String Name;
     private String Continent;
@@ -16,12 +16,12 @@ public class Country {
     private String Capital;
 
     // Use Encapsulation : Getter & Setter Method for each variable initialized in above
-    public long getWorldPop() {
-        return worldPop;
+    public long getGenPop() {
+        return genPop;
     }
 
-    public void setWorldPop(long worldPop) {
-        this.worldPop = worldPop;
+    public void setGenPop(long genPop) {
+        this.genPop = genPop;
     }
 
     public String getCode() {

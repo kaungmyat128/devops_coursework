@@ -10,7 +10,13 @@ import java.sql.*;
 public class SummaryReport {
 
     CountryReport cr = new CountryReport();
-    public ArrayList<Country> worldPop (Connection con){
+
+    /**
+     * gathers the population of the entire world
+     * @param con
+     * @return
+     */
+    public ArrayList<Country> sumWorldPop (Connection con){
         try {
 
             // Create an SQL statement
@@ -24,7 +30,7 @@ public class SummaryReport {
 
             while (pop.next()) {
                 Country cp = new Country();
-                cp.setWorldPop(pop.getLong("world_pop"));
+                cp.setGenPop(pop.getLong("world_pop"));
                 worldPop.add(cp);
             }
             return worldPop;
@@ -37,31 +43,91 @@ public class SummaryReport {
         }
     }
 
-    public void displayWorldPop(ArrayList<Country> countries_list)
+    /**
+     * gather the population of each continent
+     * @param con
+     * @return
+     */
+    public ArrayList<Country> sumContPop (Connection con){
+        try {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement of population all around the world
+            String strSelect =
+                    "SELECT Continent, SUM(Population) AS cont_pop FROM country " +
+                            "GROUP by Continent ORDER BY SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet pop = stmt.executeQuery(strSelect);
+            ArrayList<Country> contPop = new ArrayList<>();
+
+            while (pop.next()) {
+                Country cp = new Country();
+                cp.setContinent(pop.getString("continent"));
+                cp.setGenPop(pop.getLong("cont_pop"));
+                contPop.add(cp);
+            }
+            return contPop;
+        }
+        // Exception handling when any errors occur. Print out error type and error message and return null.
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to return population of each continent");
+            return null;
+        }
+    }
+
+    /**
+     * returns the data gathered by sumWorldPop
+     * @param pop_list
+     */
+    public void displaySumWorldPop(ArrayList<Country> pop_list)
     {
         // Print header
         System.out.println("============================================================");
 
-        // Loop over all countries population in the list
-        for (Country cp : countries_list)
+        // Loop over all data in the list
+        for (Country cp : pop_list)
         {
-            // Check the current continent changed or not
-
-            // Print the continent header
+            // Format and print of data
             System.out.println("Population of the entire world");
             System.out.println("===========================================");
-            System.out.println(String.format("%-15s|%-20s", "Location", "Population"));
+            System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
 
             String countries_info =
-                    String.format("%-15s|%-20s",
+                    String.format("%-20s| %-20s",
                             "World Population",
-                            humanReadableFormatLong(cp.getWorldPop()));
+                            humanReadableFormatLong(cp.getGenPop()));
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
     }
 
+    /**
+     * returns the data gathered by sumContPop
+     * @param cont_pop_list
+     */
+    public void displaySumContPop(ArrayList<Country> cont_pop_list)
+    {
+        // Print header
+        System.out.println("============================================================");
 
+        // Loop over all data in the list
+        for (Country cp : cont_pop_list)
+        {
+            // Formatting and printing data
+            System.out.println("Population of the continents");
+            System.out.println("===========================================");
+            System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
+
+            String countries_info =
+                    String.format("%-20s| %-20s",
+                            cp.getContinent(),
+                            humanReadableFormatLong(cp.getGenPop()));
+            System.out.println(countries_info);
+        }
+        System.out.println("============================================================");
+    }
 
 
 
