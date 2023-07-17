@@ -118,7 +118,7 @@ public class RuralUrbanReport {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "Continent", "Total Population",
+        System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Continent", "Total Population",
                 "People Living in Cities", "People Not Living in Cities"));
         // Loop over all cities population in the list
         for (City c : arrList)
@@ -128,7 +128,7 @@ public class RuralUrbanReport {
             double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
             String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
             String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-10s | %-20s ( %-5s )",
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-15s | %-20s ( %-5s )",
                             c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
                             humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                             humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
@@ -141,7 +141,7 @@ public class RuralUrbanReport {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "Region", "Total Population",
+        System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Region", "Total Population",
                 "People Living in Cities", "People Not Living in Cities"));
         // Loop over all cities population in the list
         for (City c : arrList)
@@ -151,7 +151,7 @@ public class RuralUrbanReport {
             double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
             String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
             String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-10s | %-20s ( %-5s )",
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-15s | %-20s ( %-5s )",
                             c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
                             humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                             humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
@@ -165,7 +165,7 @@ public class RuralUrbanReport {
     {
         // Print header
         System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "Country", "Total Population",
+        System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Country", "Total Population",
                 "People Living in Cities", "People Not Living in Cities"));
         // Loop over all cities population in the list
         for (City c : arrList)
@@ -175,7 +175,7 @@ public class RuralUrbanReport {
             double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
             String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
             String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-10s | %-20s ( %-5s )",
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-15s | %-20s ( %-5s )",
                             c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
                             humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                             humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
