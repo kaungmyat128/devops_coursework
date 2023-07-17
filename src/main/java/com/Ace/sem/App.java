@@ -190,7 +190,6 @@ public class App {
         System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
         sr.displaySumCityPop(popCityReg);
 
-        //Disconnect from database
         //Display Population report of people living in cities and not living in cities in each continent
         ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
         System.out.println("Population report of people living in cities and not living in cities in each continent");
