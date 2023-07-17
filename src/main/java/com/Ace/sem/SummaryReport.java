@@ -16,7 +16,7 @@ public class SummaryReport {
             Statement stmt = con.createStatement();
             // Create string for SQL statement of population all around the world
             String strSelect =
-                    "SELECT SUM(population) AS world_pop FROM country";
+                    "SELECT SUM(Population) AS world_pop FROM country";
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
             ArrayList<Country> worldPop = new ArrayList<>();
