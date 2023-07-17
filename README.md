@@ -24,9 +24,9 @@ The system will be using the world database.
 
 | Name               | Matriculaiton Number | Role          |
 |--------------------|----------------------|---------------|
-| Kaung Myat         | 40614801             | Member        |
 | Kaung Khant Hein   | 40614799             | Scrum Master  |
 | May Phyu Sin Thant | 40614797             | Product Owner |
+| Kaung Myat         | 40614801             | Member        |
 | Zwe Htut Htay Lwin | 40614802             | Member        |
 | Hein Thaw Zin      | 40501814             | Member        |
 
@@ -50,6 +50,13 @@ The system will be using the world database.
 - [X] Kanban/Project Board being used.
 - [X] Sprint Boards being used.
 - [X] Full use cases defined.
-- [X] Use case diagram created.
+- [X] Use case diagram created. Use case diagram can be seen [here](https://github.com/kaungmyat128/devops_coursework/blob/develop/Use_Case_Diagram.png).
+
+
+<h2>Code Review 3</h2>
+
+- [X] Suitable unit tests defined.
+- [X] Suitable integration tests defined.
+- [X] Tests running on GitHub Actions
 
 
