@@ -90,7 +90,7 @@ public class City {
     }
 
     // Getter method for Total Population
-    public int getTotalPopulation() {
+    public long getTotalPopulation() {
         return totalPopulation;
     }
 
@@ -100,7 +100,7 @@ public class City {
     }
 
     // Getter method for Total Population
-    public int getTotalCitiesPopulation() {
+    public long getTotalCitiesPopulation() {
         return totalCitiesPopulation;
     }
 
@@ -109,7 +109,7 @@ public class City {
         this.totalCitiesPopulation = totalCitiesPopulation;
     }
     // Getter method for Total Population
-    public int getTotalNotCitiesPopulation() {
+    public long getTotalNotCitiesPopulation() {
         return totalNotCitiesPopulation;
     }
 
