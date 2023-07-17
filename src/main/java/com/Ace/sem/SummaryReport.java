@@ -130,7 +130,7 @@ public class SummaryReport {
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement of population from each region
+            // Create string for SQL statement of population from each district
             String strSelect =
                     "SELECT District, SUM(Population) AS dist_pop FROM city " +
                             "GROUP by District ORDER BY SUM(Population) DESC";
@@ -145,6 +145,35 @@ public class SummaryReport {
                 distPop.add(ct);
             }
             return distPop;
+        }
+        // Exception handling when any errors occur. Print out error type and error message and return null.
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to return population of each district");
+            return null;
+        }
+    }
+
+    public ArrayList<City> sumCityPop (Connection con){
+        try {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement of population from each city
+            String strSelect =
+                    "SELECT Name, Population FROM city " +
+                            "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet pop = stmt.executeQuery(strSelect);
+            ArrayList<City> cityPop = new ArrayList<>();
+
+            while (pop.next()) {
+                City ct = new City();
+                ct.setCityName(pop.getString("Name"));
+                ct.setPopulation(pop.getInt("Population"));
+                cityPop.add(ct);
+            }
+            return cityPop;
         }
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
@@ -250,9 +279,32 @@ public class SummaryReport {
 
             String distpop_info =
                     String.format("%-30s| %-30s",
-                            ct.getRegion(),
+                            ct.getDistrict(),
                             humanReadableFormatLong(ct.getGenPop()));
             System.out.println(distpop_info);
+        }
+        System.out.println("============================================================");
+    }
+
+    /**
+     * display data gathered by sumCityPop
+     * @param city_pop_list
+     */
+    public void displaySumCityPop(ArrayList<City> city_pop_list)
+    {
+        // Print header
+        System.out.println("============================================================");
+
+        // Loop over all data in the list
+        for (City ct : city_pop_list)
+        {
+            // Formatting and printing data
+
+            String citypop_info =
+                    String.format("%-30s| %-30s",
+                            ct.getCityName(),
+                            humanReadableFormatLong(ct.getPopulation()));
+            System.out.println(citypop_info);
         }
         System.out.println("============================================================");
     }
