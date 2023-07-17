@@ -128,9 +128,9 @@ public class RuralUrbanReport {
             double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
             String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
             String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-20s ( %-5s )",
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-10s | %-20s ( %-5s )",
                             c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()), s1,
+                            humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                             humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
             System.out.println(continent_population);
         }
@@ -151,9 +151,9 @@ public class RuralUrbanReport {
             double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
             String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
             String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-20s ( %-5s )",
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-10s | %-20s ( %-5s )",
                             c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()), s1,
+                            humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                             humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
             System.out.println(continent_population);
         }
@@ -175,9 +175,9 @@ public class RuralUrbanReport {
             double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
             String s2 = String.format("%.2f",people_not_living_in_cities) + "%";
             String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-20s ( %-5s )",
+                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-10s | %-20s ( %-5s )",
                             c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()), s1,
+                            humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                             humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
             System.out.println(continent_population);
         }
