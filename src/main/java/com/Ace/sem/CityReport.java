@@ -296,26 +296,8 @@ public class CityReport {
             }
 
             //checking null value and transforming them to blank in district
-            if(cityR.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cityR.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cityR.getDistrict();
-            }
-
-            //checking null values and transforming them to blank in city
-            if(cityR.getCityName() == null) {
-                CityName = "blank";
-            }
-            else if(cityR.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cityR.getDistrict();
-            }
+            DistrictName = nullChecker(cityR.getDistrict());
+            CityName = nullChecker(cityR.getCityName());
 
             String continent_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
@@ -324,6 +306,16 @@ public class CityReport {
             System.out.println(continent_info);
         }
         System.out.println("============================================================");
+    }
+
+
+    public String nullChecker(String checkElement){
+        if(checkElement == null || checkElement == " "){
+            return "-";
+        }
+        else{
+            return checkElement;
+        }
     }
 
     /** display cities report based on regions using getter() and setter() methods

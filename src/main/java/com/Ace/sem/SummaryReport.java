@@ -221,16 +221,13 @@ public class SummaryReport {
         for (Country cp : pop_list)
         {
             // Format and print of data
-            System.out.println("Population of the entire world");
-            System.out.println("===========================================");
-
             String world_pop_info =
                     String.format("%-20s| %-20s",
                             "World Population",
                             humanReadableFormatLong(cp.getGenPop()));
             System.out.println(world_pop_info);
         }
-        System.out.println("============================================================");
+        System.out.println("");
     }
 
     /**
@@ -253,7 +250,7 @@ public class SummaryReport {
                             humanReadableFormatLong(cp.getGenPop()));
             System.out.println(cont_pop_info);
         }
-        System.out.println("============================================================");
+        System.out.println("");
     }
 
     /**
@@ -276,7 +273,7 @@ public class SummaryReport {
                             humanReadableFormatLong(cp.getGenPop()));
             System.out.println(reg_pop_info);
         }
-        System.out.println("============================================================");
+        System.out.println("");
     }
 
     /**
@@ -299,7 +296,7 @@ public class SummaryReport {
                             humanReadableFormatLong(cp.getGenPop()));
             System.out.println(cou_pop_info);
         }
-        System.out.println("============================================================");
+        System.out.println("");
     }
 
     /**
@@ -322,7 +319,7 @@ public class SummaryReport {
                             humanReadableFormatLong(ct.getGenPop()));
             System.out.println(dist_pop_info);
         }
-        System.out.println("============================================================");
+        System.out.println("");
     }
 
     /**
@@ -345,7 +342,7 @@ public class SummaryReport {
                             humanReadableFormatLong(ct.getPopulation()));
             System.out.println(city_pop_info);
         }
-        System.out.println("============================================================");
+        System.out.println("");
     }
 
     /**

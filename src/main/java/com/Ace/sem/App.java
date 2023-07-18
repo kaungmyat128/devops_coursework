@@ -83,10 +83,10 @@ public class App {
 //        System.out.println("All Cities Population in the world");
 //        cty.displayCities(TPCICity);
 //
-//        //Display All Population in Each Continent
-//        ArrayList<City> TPCIContinent = cty.getCityPopByContinent(a.con, 0);
-//        System.out.println("All Cities Population in the each Continent");
-//        cty.displayCityContinents(TPCIContinent);
+        //Display All Population in Each Continent
+        ArrayList<City> TPCIContinent = cty.getCityPopByContinent(a.con, 0);
+        System.out.println("All Cities Population in the each Continent");
+        cty.displayCityContinents(TPCIContinent);
 //
 //        //Display All Cities Population in Each Region
 //        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
@@ -131,35 +131,36 @@ public class App {
 //        cty.displayCityDistrict(TPCIDistrict1);
 
         //Display All Capital Population in the world
-        ArrayList<City> CapitalR1 = cpr.getCapitalPopByWorld(a.con, 0);
-        System.out.println("All Capital Population in the World");
-        cpr.displayCapital(CapitalR1);
+//        ArrayList<City> CapitalR1 = cpr.getCapitalPopByWorld(a.con, 0);
+//        System.out.println("All Capital Population in the World");
+//        cpr.displayCapital(CapitalR1);
+//
+//        //Display top 10 Capital By Population in the world
+//        ArrayList<City> CapitalR2 = cpr.getCapitalPopByWorld(a.con, 10);
+//        System.out.println("Top 10 Capital Population in the World");
+//        cpr.displayCapital(CapitalR2);
+//
+//        //Display All Capital Population for each Continent
+//        ArrayList<City> CapitalR3 = cpr.getCapitalPopByContinent(a.con, 0);
+//        System.out.println("All Capital Population in each Continent");
+//        cpr.displayCapitalContinent(CapitalR3);
+//
+//        //Display top 10 Capital By Population in each continent
+//        ArrayList<City> CapitalR4 = cpr.getCapitalPopByContinent(a.con, 10);
+//        System.out.println("Top 10 Capital Population in each Continent");
+//        cpr.displayCapitalContinent(CapitalR4);
+//
+//        //Display All Capital Population for each region
+//        ArrayList<City> CapitalR5 = cpr.getCapitalPopByRegion(a.con, 0);
+//        System.out.println("All Capital Population in each Region");
+//        cpr.displayCapitalContinent(CapitalR5);
+//
+//        //Display top 10 Capital By Population each Region
+//        ArrayList<City> CapitalR6 = cpr.getCapitalPopByRegion(a.con, 10);
+//        System.out.println("Top 10 Capital Population in each Region");
+//        cpr.displayCapitalRegion(CapitalR6);
 
-        //Display top 10 Capital By Population in the world
-        ArrayList<City> CapitalR2 = cpr.getCapitalPopByWorld(a.con, 10);
-        System.out.println("Top 10 Capital Population in the World");
-        cpr.displayCapital(CapitalR2);
-
-        //Display All Capital Population for each Continent
-        ArrayList<City> CapitalR3 = cpr.getCapitalPopByContinent(a.con, 0);
-        System.out.println("All Capital Population in each Continent");
-        cpr.displayCapitalContinent(CapitalR3);
-
-        //Display top 10 Capital By Population in each continent
-        ArrayList<City> CapitalR4 = cpr.getCapitalPopByContinent(a.con, 10);
-        System.out.println("Top 10 Capital Population in each Continent");
-        cpr.displayCapitalContinent(CapitalR4);
-
-        //Display All Capital Population for each region
-        ArrayList<City> CapitalR5 = cpr.getCapitalPopByRegion(a.con, 0);
-        System.out.println("All Capital Population in each Region");
-        cpr.displayCapitalContinent(CapitalR5);
-
-        //Display top 10 Capital By Population each Region
-        ArrayList<City> CapitalR6 = cpr.getCapitalPopByRegion(a.con, 10);
-        System.out.println("Top 10 Capital Population in each Region");
-        cpr.displayCapitalRegion(CapitalR6);
-        // Disconnect from database
+//        //Summary reports
         ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
         System.out.println("==========Population of the world==========");
         System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
@@ -169,46 +170,46 @@ public class App {
         System.out.println("==========Population of the continents==========");
         System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
         sr.displaySumContPop(popSumCont);
-
-        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con);
-        System.out.println("==========Population of the regions==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-        sr.displaySumRegPop(popSumReg);
-
-        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con);
-        System.out.println("==========Population of the countries==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-        sr.displaySumCouPop(popSumCoun);
-
-        ArrayList<City> popDistReg =  sr.sumDistPop(a.con);
-        System.out.println("==========Population of the districts==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-        sr.displaySumDistPop(popDistReg);
-
-        ArrayList<City> popCityReg =  sr.sumCityPop(a.con);
-        System.out.println("==========Population of the cities==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-        sr.displaySumCityPop(popCityReg);
-
-        //Display Population report of people living in cities and not living in cities in each continent
-        ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
-        System.out.println("Population report of people living in cities and not living in cities in each continent");
-        RUReport.displayContinentPopulation(report1);
-
-        //Display Population report of people living in cities and not living in cities in each region
-        ArrayList<City> report2 = RUReport.getRegionPopulation(a.con);
-        System.out.println("Population report of people living in cities and not living in cities in each region");
-        RUReport.displayRegionPopulation(report2);
-
-        //Display Population report of people living in cities and not living in cities in each country
-        ArrayList<City> report3 = RUReport.getCountryPopulation(a.con);
-        System.out.println("Population report of people living in cities and not living in cities in each country");
-        RUReport.displayCountryPopulation(report3);
-
-        // Display Language Population
-        ArrayList<Language> report4 = LanguageReport.getLanguagesReport(a.con);
-        System.out.println("Language Report : The number of people who speak Chinese, English, Hindi, Spanish and Arabic.");
-        LanguageReport.displayLanguagesPopulation(report4);
+//
+//        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con);
+//        System.out.println("==========Population of the regions==========");
+//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+//        sr.displaySumRegPop(popSumReg);
+//
+//        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con);
+//        System.out.println("==========Population of the countries==========");
+//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+//        sr.displaySumCouPop(popSumCoun);
+//
+//        ArrayList<City> popDistReg =  sr.sumDistPop(a.con);
+//        System.out.println("==========Population of the districts==========");
+//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+//        sr.displaySumDistPop(popDistReg);
+//
+//        ArrayList<City> popCityReg =  sr.sumCityPop(a.con);
+//        System.out.println("==========Population of the cities==========");
+//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+//        sr.displaySumCityPop(popCityReg);
+//
+//        //Display Population report of people living in cities and not living in cities in each continent
+//        ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
+//        System.out.println("Population report of people living in cities and not living in cities in each continent");
+//        RUReport.displayContinentPopulation(report1);
+//
+//        //Display Population report of people living in cities and not living in cities in each region
+//        ArrayList<City> report2 = RUReport.getRegionPopulation(a.con);
+//        System.out.println("Population report of people living in cities and not living in cities in each region");
+//        RUReport.displayRegionPopulation(report2);
+//
+//        //Display Population report of people living in cities and not living in cities in each country
+//        ArrayList<City> report3 = RUReport.getCountryPopulation(a.con);
+//        System.out.println("Population report of people living in cities and not living in cities in each country");
+//        RUReport.displayCountryPopulation(report3);
+//
+//        // Display Language Population
+//        ArrayList<Language> report4 = LanguageReport.getLanguagesReport(a.con);
+//        System.out.println("Language Report : The number of people who speak Chinese, English, Hindi, Spanish and Arabic.");
+//        LanguageReport.displayLanguagesPopulation(report4);
 
          //Disconnect from database
         a.disconnect();
