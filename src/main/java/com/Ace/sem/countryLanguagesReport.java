@@ -57,20 +57,25 @@ public class countryLanguagesReport {
      */
     public void displayLanguagesPopulation(ArrayList<Language> arrList)
     {
-        // Print header
-        System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s", "Language", "Total Population of People who Speak This Language"));
-        // Loop over all cities population in the list
-        for (Language l : arrList)
-        {
-            String percent = String.format("%05.2f",l.getPercentage()) + "%";
-            String language_population =
-                    String.format("%-40s | %-20s ( %-5s )",
-                            l.getLanguage(), humanReadableFormat(l.getTotal_Population()),
-                            percent);
-            System.out.println(language_population);
+        try{
+            // Print header
+            System.out.println("============================================================");
+            System.out.println(String.format("%-40s | %-30s", "Language", "Total Population of People who Speak This Language"));
+            // Loop over all cities population in the list
+            for (Language l : arrList)
+            {
+                String percent = String.format("%05.2f",l.getPercentage()) + "%";
+                String language_population =
+                        String.format("%-40s | %-20s ( %-5s )",
+                                l.getLanguage(), humanReadableFormat(l.getTotal_Population()),
+                                percent);
+                System.out.println(language_population);
+            }
+            System.out.println("============================================================");
+        }catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Language Population Report Found.");
         }
-        System.out.println("============================================================");
     }
 
 

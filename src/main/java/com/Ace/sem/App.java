@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class App {
     // Connection to MySQL database.
-    private Connection con = null;
+    public Connection con = null;
 
     public static void main(String[] args) {
         // Create new Application Object
@@ -236,7 +236,9 @@ public class App {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                // con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                // Connect to database in localhost
+                con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
