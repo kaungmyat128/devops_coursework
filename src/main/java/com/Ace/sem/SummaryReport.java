@@ -44,11 +44,12 @@ public class SummaryReport {
     }
 
     /**
-     * gather the population of each continent
+     * gather the population of given amount of continents ( 1 continent )
+     * @param topLimit
      * @param con
      * @return
      */
-    public ArrayList<Country> sumContPop (Connection con){
+    public ArrayList<Country> sumContPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -56,7 +57,7 @@ public class SummaryReport {
             // Create string for SQL statement of population from each continent
             String strSelect =
                     "SELECT Continent, SUM(Population) AS cont_pop FROM country " +
-                            "GROUP by Continent ORDER BY SUM(Population) DESC";
+                            "GROUP by Continent ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
             ArrayList<Country> contPop = new ArrayList<>();
@@ -78,11 +79,12 @@ public class SummaryReport {
     }
 
     /**
-     * gathers data of total population from each region
+     * gather population from given regions (1 region)
+     * @param topLimit
      * @param con
      * @return
      */
-    public ArrayList<Country> sumRegPop (Connection con){
+    public ArrayList<Country> sumRegPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -90,7 +92,7 @@ public class SummaryReport {
             // Create string for SQL statement of population from each region
             String strSelect =
                     "SELECT Region, SUM(Population) AS reg_pop FROM country " +
-                            "GROUP by Region ORDER BY SUM(Population) DESC";
+                            "GROUP by Region ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
             ArrayList<Country> regPop = new ArrayList<>();
@@ -112,11 +114,12 @@ public class SummaryReport {
     }
 
     /**
-     * gathers data of total population from each country
+     * gathers data of total population given number of countries ( 1 country)
+     * @param topLimit
      * @param con
      * @return
      */
-    public ArrayList<Country> sumCouPop (Connection con){
+    public ArrayList<Country> sumCouPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -124,7 +127,7 @@ public class SummaryReport {
             // Create string for SQL statement of population from each region
             String strSelect =
                     "SELECT Name, Population AS reg_pop FROM country " +
-                            "ORDER BY Population DESC";
+                            "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
             ArrayList<Country> CountryPop = new ArrayList<>();
@@ -146,11 +149,12 @@ public class SummaryReport {
     }
 
     /**
-     * gathers data of total population from each district
+     * gathers data of total population of given amount of districts (1 district)
+     * @param  topLimit
      * @param con
      * @return
      */
-    public ArrayList<City> sumDistPop (Connection con){
+    public ArrayList<City> sumDistPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -158,7 +162,7 @@ public class SummaryReport {
             // Create string for SQL statement of population from each district
             String strSelect =
                     "SELECT District, SUM(Population) AS dist_pop FROM city " +
-                            "GROUP by District ORDER BY SUM(Population) DESC";
+                            "GROUP by District ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
             ArrayList<City> distPop = new ArrayList<>();
@@ -174,12 +178,18 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each district");
+            System.out.println("Failed to return population of district");
             return null;
         }
     }
 
-    public ArrayList<City> sumCityPop (Connection con){
+    /**
+     * gathers population data of given amount of cities (1 city)
+     * @param con
+     * @param topLimit
+     * @return
+     */
+    public ArrayList<City> sumCityPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -187,7 +197,7 @@ public class SummaryReport {
             // Create string for SQL statement of population from each city
             String strSelect =
                     "SELECT Name, Population FROM city " +
-                            "ORDER BY Population DESC";
+                            "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
             ArrayList<City> cityPop = new ArrayList<>();
@@ -203,7 +213,7 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each district");
+            System.out.println("Failed to return population the city");
             return null;
         }
     }
