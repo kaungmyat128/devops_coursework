@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Creates methods to write sql queries and create arraylists of countries population
+ * Creates methods to write sql queries and create arraylists of cities population
  * This Java Class File contains 5 java methods that contains 2 parameters - database connection & int limit parameters -
  * getCityPop(), getCityPopByContinent(), getCityPopByRegion() , getCityPopByCountry(), getCityPopByDistrict()
  * This class also contains other 5 java methods that contains ArrayList Parameter to display results
@@ -20,8 +20,8 @@ public class CityReport {
     String DistrictName = null;
 
     /**
-     * getWorldPopByCity() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in the world
+     * getCityPop() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated cities in the world
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -65,7 +65,7 @@ public class CityReport {
 
     /**
      * getCityPopByContinent() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each Continent
+     * write sql query to produce 'ALL or Top N most populated cities in each Continent
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -112,7 +112,7 @@ public class CityReport {
 
     /**
      * getCityPopByRegion() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each Region
+     * write sql query to produce 'ALL or Top N most populated cities in each Region
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -159,7 +159,7 @@ public class CityReport {
 
     /**
      * getCityPopByCountry() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each Country
+     * write sql query to produce 'ALL or Top N most populated cities in each Country
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -204,7 +204,7 @@ public class CityReport {
 
     /**
      * getCityPopByDistrict() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each District
+     * write sql query to produce 'ALL or Top N most populated cities in each District
      * with descending order of population'
      * Then return the data as array list.
      * */    public ArrayList<City> getCityPopByDistrict(Connection con, int lim) {

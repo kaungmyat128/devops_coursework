@@ -7,9 +7,15 @@ import java.util.ArrayList;
 
 public class CapitalReport {
 
-    // Create new object of CountryReport to use human_readable_format() method from country.java
+
+    // To use the human_readable_format() method from country.java in this new object is created
     CountryReport formatPopulation = new CountryReport();
 
+    /**
+     * getCapitalPopByWorld() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated Capital cities around the world'.
+     * Then return the data as array list.
+     * */
     public ArrayList<City> getCapitalPopByWorld (Connection con,int lim){
         try{
             // Create an SQL statement
@@ -30,7 +36,7 @@ public class CapitalReport {
             }
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
-            //creates array to gather country data based on population
+            //creates array to gather Capital Cities data based on population
             ArrayList<City> CapitalPop = new ArrayList<>();
             return CapitalArrList(CapitalPop, query1);
 
@@ -38,11 +44,17 @@ public class CapitalReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population around the world");
+            System.out.println("Failed to return Capital Cities population around the world");
             return null;
         }
     }
 
+    /**
+     * getCapitalPopByContinent() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated Capital Cities based on each continent
+     * with descending order of population'
+     * Then return the data as array list.
+     * */
     public ArrayList<City> getCapitalPopByContinent (Connection con,int lim){
         try{
             // Create an SQL statement
@@ -66,7 +78,7 @@ public class CapitalReport {
             }
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
-            //creates array to gather country data based on population
+            //creates array to gather Capital Cities data based on population
             ArrayList<City> CapitalPop = new ArrayList<>();
             return CapitalArrList(CapitalPop, query1);
 
@@ -74,10 +86,17 @@ public class CapitalReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population around the world");
+            System.out.println("Failed to return Capital Cities population for each continent");
             return null;
         }
     }
+
+    /**
+     * getCapitalPopByRegion() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated Capital Cities based on each region
+     * with descending order of population'
+     * Then return the data as array list.
+     * */
     public ArrayList<City> getCapitalPopByRegion (Connection con,int lim){
         try{
             // Create an SQL statement
@@ -101,7 +120,7 @@ public class CapitalReport {
             }
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
-            //creates array to gather country data based on population
+            //creates array to gather Capital Cities data based on population
             ArrayList<City> CapitalPop = new ArrayList<>();
             return CapitalArrList(CapitalPop, query1);
 
@@ -109,10 +128,16 @@ public class CapitalReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population around the world");
+            System.out.println("Failed to return Capital Cities population around each Region");
             return null;
         }
     }
+    /**
+     * CapitalArrList() method has two parameters - former for arraylist<City> and later for query result
+     * This method will assign  City information query results into the arrayList.
+     * This method is reused in getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion() methods
+     * in order to store query results as array lists and return it.
+     */
     public ArrayList<City> CapitalArrList(ArrayList<City> ar, ResultSet qry) {
         try {
             // Extract population of countries information and store into array list
@@ -130,10 +155,14 @@ public class CapitalReport {
         }// Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population in each continent");
+            System.out.println("Failed to return Capital Cities population");
             return null;
         }
     }
+    /** Display Capital Cities Report using getter() method
+     *
+     * @param capitalList
+     */
     public void displayCapital(ArrayList<City> capitalList)
     {
         // Print header
@@ -155,6 +184,11 @@ public class CapitalReport {
         }
         System.out.println("========================================================================================");
     }
+
+    /** Display Capital Cities Report using getter() method
+     *
+     * @param capitalList
+     */
     public void displayCapitalContinent(ArrayList<City> capitalList)
     {
         // Print header
@@ -187,6 +221,10 @@ public class CapitalReport {
         }
         System.out.println("============================================================");
     }
+    /** Display Capital Cities Report using getter() method
+     *
+     * @param capitalList
+     */
     public void displayCapitalRegion(ArrayList<City> capitalList) {
         // Print header
         System.out.println("========================================================================================");
