@@ -77,6 +77,9 @@ public class MyTest
             countryReport.getCountries(app.con, 3);
             countryReport.getCountriesContinent(app.con, 3);
             countryReport.getCountriesRegion(app.con, 3);
+            countryReport.getCountries(app.con, 0);
+            countryReport.getCountriesContinent(app.con, 0);
+            countryReport.getCountriesRegion(app.con, 0);
             countryReport.humanReadableFormat(1000);
 
         }catch (Exception e) {
@@ -137,6 +140,11 @@ public class MyTest
             cityReport.getCityPopByContinent(app.con, 3);
             cityReport.getCityPopByRegion(app.con, 3);
             cityReport.getCityPopByCountry(app.con, 3);
+            cityReport.getCityPop(app.con, 0);
+            cityReport.getCityPopByDistrict(app.con, 0);
+            cityReport.getCityPopByContinent(app.con, 0);
+            cityReport.getCityPopByRegion(app.con, 0);
+            cityReport.getCityPopByCountry(app.con, 0);
 
         }catch (Exception e) {
             System.out.println(e.getMessage());
