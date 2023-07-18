@@ -168,27 +168,27 @@ public class App {
 
         ArrayList<Country> popSumCont =  sr.sumContPop(a.con, 1);
         System.out.println("==========Population of most populated continent==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        System.out.println(String.format("%-30s| %-30s", "Continent", "Population"));
         sr.displaySumContPop(popSumCont);
 
         ArrayList<Country> popSumReg =  sr.sumRegPop(a.con, 1);
         System.out.println("==========Population of most populated region==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        System.out.println(String.format("%-30s| %-30s", "Region", "Population"));
         sr.displaySumRegPop(popSumReg);
 
         ArrayList<Country> popSumCoun = sr.sumCouPop(a.con,1 );
         System.out.println("==========Population of most populated country==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        System.out.println(String.format("%-30s| %-30s", "Country", "Population"));
         sr.displaySumCouPop(popSumCoun);
 
         ArrayList<City> popDistReg =  sr.sumDistPop(a.con, 1);
         System.out.println("==========Population of most populated district==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        System.out.println(String.format("%-30s| %-30s", "District", "Population"));
         sr.displaySumDistPop(popDistReg);
 
         ArrayList<City> popCityReg =  sr.sumCityPop(a.con, 1);
         System.out.println("==========Population of most populated city==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        System.out.println(String.format("%-30s| %-30s", "City", "Population"));
         sr.displaySumCityPop(popCityReg);
 //
 //        //Display Population report of people living in cities and not living in cities in each continent
