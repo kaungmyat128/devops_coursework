@@ -224,9 +224,6 @@ public class SummaryReport {
      */
     public void displaySumWorldPop(ArrayList<Country> pop_list)
     {
-        // Print header
-        System.out.println("============================================================");
-
         // Loop over all data in the list
         for (Country cp : pop_list)
         {
@@ -246,9 +243,6 @@ public class SummaryReport {
      */
     public void displaySumContPop(ArrayList<Country> cont_pop_list)
     {
-        // Print header
-        System.out.println("============================================================");
-
         // Loop over all data in the list
         for (Country cp : cont_pop_list)
         {
@@ -269,9 +263,6 @@ public class SummaryReport {
      */
     public void displaySumRegPop(ArrayList<Country> reg_pop_list)
     {
-        // Print header
-        System.out.println("============================================================");
-
         // Loop over all data in the list
         for (Country cp : reg_pop_list)
         {
@@ -292,9 +283,6 @@ public class SummaryReport {
      */
     public void displaySumCouPop(ArrayList<Country> cou_pop_list)
     {
-        // Print header
-        System.out.println("============================================================");
-
         // Loop over all data in the list
         for (Country cp : cou_pop_list)
         {
@@ -315,9 +303,6 @@ public class SummaryReport {
      */
     public void displaySumDistPop(ArrayList<City> dist_pop_list)
     {
-        // Print header
-        System.out.println("============================================================");
-
         // Loop over all data in the list
         for (City ct : dist_pop_list)
         {
@@ -338,9 +323,6 @@ public class SummaryReport {
      */
     public void displaySumCityPop(ArrayList<City> city_pop_list)
     {
-        // Print header
-        System.out.println("============================================================");
-
         // Loop over all data in the list
         for (City ct : city_pop_list)
         {
