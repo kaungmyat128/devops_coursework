@@ -160,36 +160,36 @@ public class App {
 //        System.out.println("Top 10 Capital Population in each Region");
 //        cpr.displayCapitalRegion(CapitalR6);
 
-//        //Summary reports
-//        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
-//        System.out.println("==========Population of the world==========");
-//        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
-//        sr.displaySumWorldPop(popSumWorld);
-//
-//        ArrayList<Country> popSumCont =  sr.sumContPop(a.con);
-//        System.out.println("==========Population of the continents==========");
-//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-//        sr.displaySumContPop(popSumCont);
-//
-//        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con);
-//        System.out.println("==========Population of the regions==========");
-//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-//        sr.displaySumRegPop(popSumReg);
-//
-//        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con);
-//        System.out.println("==========Population of the countries==========");
-//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-//        sr.displaySumCouPop(popSumCoun);
-//
-//        ArrayList<City> popDistReg =  sr.sumDistPop(a.con);
-//        System.out.println("==========Population of the districts==========");
-//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-//        sr.displaySumDistPop(popDistReg);
-//
-//        ArrayList<City> popCityReg =  sr.sumCityPop(a.con);
-//        System.out.println("==========Population of the cities==========");
-//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-//        sr.displaySumCityPop(popCityReg);
+        //Summary reports
+        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
+        System.out.println("==========Population of the world==========");
+        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
+        sr.displaySumWorldPop(popSumWorld);
+
+        ArrayList<Country> popSumCont =  sr.sumContPop(a.con, 1);
+        System.out.println("==========Population of most populated continent==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumContPop(popSumCont);
+
+        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con, 1);
+        System.out.println("==========Population of most populated region==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumRegPop(popSumReg);
+
+        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con,1 );
+        System.out.println("==========Population of most populated country==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumCouPop(popSumCoun);
+
+        ArrayList<City> popDistReg =  sr.sumDistPop(a.con, 1);
+        System.out.println("==========Population of most populated district==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumDistPop(popDistReg);
+
+        ArrayList<City> popCityReg =  sr.sumCityPop(a.con, 1);
+        System.out.println("==========Population of most populated city==========");
+        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+        sr.displaySumCityPop(popCityReg);
 //
 //        //Display Population report of people living in cities and not living in cities in each continent
 //        ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
