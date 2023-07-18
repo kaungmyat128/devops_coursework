@@ -83,10 +83,10 @@ public class App {
 //        System.out.println("All Cities Population in the world");
 //        cty.displayCities(TPCICity);
 //
-        //Display All Population in Each Continent
-        ArrayList<City> TPCIContinent = cty.getCityPopByContinent(a.con, 0);
-        System.out.println("All Cities Population in the each Continent");
-        cty.displayCityContinents(TPCIContinent);
+//        //Display All Population in Each Continent
+//        ArrayList<City> TPCIContinent = cty.getCityPopByContinent(a.con, 0);
+//        System.out.println("All Cities Population in the each Continent");
+//        cty.displayCityContinents(TPCIContinent);
 //
 //        //Display All Cities Population in Each Region
 //        ArrayList<City> TPCIRegion = cty.getCityPopByRegion(a.con, 0);
@@ -161,15 +161,15 @@ public class App {
 //        cpr.displayCapitalRegion(CapitalR6);
 
 //        //Summary reports
-        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
-        System.out.println("==========Population of the world==========");
-        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
-        sr.displaySumWorldPop(popSumWorld);
-
-        ArrayList<Country> popSumCont =  sr.sumContPop(a.con);
-        System.out.println("==========Population of the continents==========");
-        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
-        sr.displaySumContPop(popSumCont);
+//        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
+//        System.out.println("==========Population of the world==========");
+//        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
+//        sr.displaySumWorldPop(popSumWorld);
+//
+//        ArrayList<Country> popSumCont =  sr.sumContPop(a.con);
+//        System.out.println("==========Population of the continents==========");
+//        System.out.println(String.format("%-30s| %-30s", "Location", "Population"));
+//        sr.displaySumContPop(popSumCont);
 //
 //        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con);
 //        System.out.println("==========Population of the regions==========");

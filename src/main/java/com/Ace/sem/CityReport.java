@@ -308,16 +308,6 @@ public class CityReport {
         System.out.println("============================================================");
     }
 
-
-    public String nullChecker(String checkElement){
-        if(checkElement == null || checkElement == " "){
-            return "-";
-        }
-        else{
-            return checkElement;
-        }
-    }
-
     /** display cities report based on regions using getter() and setter() methods
      * Use if condition to check whether current region change and print out current region as title
      * @param region_list
@@ -338,26 +328,9 @@ public class CityReport {
                 System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
             }
             //checking null value and transforming them to blank in district
-            if(cityR.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cityR.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cityR.getDistrict();
-            }
+            DistrictName = nullChecker(cityR.getDistrict());
+            CityName = nullChecker(cityR.getCityName());
 
-            //checking null values and transforming them to blank in city
-            if(cityR.getCityName() == null) {
-                CityName = "blank";
-            }
-            else if(cityR.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cityR.getDistrict();
-            }
             String region_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                             CityName, cityR.getCountryName(), DistrictName,
@@ -388,26 +361,8 @@ public class CityReport {
             }
 
             //checking null value and transforming them to blank in district
-            if(cty.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cty.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cty.getDistrict();
-            }
-
-            //checking null values and transforming them to blank in city
-            if(cty.getCityName() == null) {
-                CityName = "blank";
-            }
-            else if(cty.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cty.getDistrict();
-            }
+            DistrictName = nullChecker(cty.getDistrict());
+            CityName = nullChecker(cty.getCityName());
 
             String countries_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
@@ -438,26 +393,8 @@ public class CityReport {
             }
 
             //checking null value and transforming them to blank in district
-            if(cty.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cty.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cty.getDistrict();
-            }
-
-            //checking null values and transforming them to blank in city
-            if(cty.getCityName() == null) {
-                CityName = "blank";
-            }
-            else if(cty.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cty.getDistrict();
-            }
+            DistrictName = nullChecker(cty.getDistrict());
+            CityName = nullChecker(cty.getCityName());
 
             String countries_info =
                     String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
@@ -466,5 +403,21 @@ public class CityReport {
             System.out.println(countries_info);
         }
         System.out.println("============================================================");
+    }
+
+    /**
+     * checks if given value is null or blank
+     * return "-" if TRUE
+     * return given value if FALSE
+     * @param checkElement
+     * @return
+     */
+    public String nullChecker(String checkElement){
+        if(checkElement == null || checkElement == " "){
+            return "-";
+        }
+        else{
+            return checkElement;
+        }
     }
 }
