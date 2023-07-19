@@ -125,28 +125,20 @@ public class MyTest
     void displayCities()     {
         try{
             ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCityName("Yangon");
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setDistrict("Yangon");
-            ct.setPopulation(5434678);
-            city.add(ct);
+            City ct1 = new City();
+            ct1.setCityName("Yangon");
+            ct1.setCountryName("Myanmar");
+            ct1.setContinents("Asia");
+            ct1.setRegion("Southeast Asia");
+            ct1.setDistrict("Yangon");
+            ct1.setPopulation(5434678);
+            city.add(ct1);
             cityReport.displayCities(city);
             cityReport.displayCityContinents(city);
             cityReport.displayCityCountries(city);
             cityReport.displayCityRegion(city);
             cityReport.displayCityDistrict(city);
             cityReport.nullChecker("Not Null");
-
-            String strSelect =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
-                            + "FROM country INNER JOIN city ON country.Capital = city.ID "
-                            + "ORDER BY country.Population DESC LIMIT 5";
-
-            Statement stmt = app.con.createStatement();
-            ResultSet qry = stmt.executeQuery(strSelect);
             cityReport.getCityPop(app.con, 3);
             cityReport.getCityPopByDistrict(app.con, 3);
             cityReport.getCityPopByContinent(app.con, 3);
@@ -241,9 +233,9 @@ public class MyTest
             ct.setRegion("Southeast Asia");
             ct.setPopulation(5434678);
             city.add(ct);
-            capitalReport.displayCapital(null);
-            capitalReport.displayCapitalContinent(null);
-            capitalReport.displayCapitalRegion(null);
+            capitalReport.displayCapital(city);
+            capitalReport.displayCapitalContinent(city);
+            capitalReport.displayCapitalRegion(city);
 
             String strSelect =
                     "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
@@ -379,9 +371,5 @@ public class MyTest
         }
 
     }
-
-
-
-    //app.disconnect();
 
 }
