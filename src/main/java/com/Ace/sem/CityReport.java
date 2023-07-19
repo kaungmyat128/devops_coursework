@@ -424,7 +424,7 @@ public class CityReport {
             System.out.println();
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Countries Data found for each district.");
+            System.out.println("Nothing to display : No City Data found for each district.");
         }
 
     }

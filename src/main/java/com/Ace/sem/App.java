@@ -160,36 +160,36 @@ public class App {
 //        System.out.println("Top 10 Capital Population in each Region");
 //        cpr.displayCapitalRegion(CapitalR6);
 
-        //Summary reports
-        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
-        System.out.println("==========Population of the world==========");
-        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
-        sr.displaySumWorldPop(popSumWorld);
-
-        ArrayList<Country> popSumCont =  sr.sumContPop(a.con, 1);
-        System.out.println("==========Population of most populated continent==========");
-        System.out.println(String.format("%-30s| %-30s", "Continent", "Population"));
-        sr.displaySumContPop(popSumCont);
-
-        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con, 1);
-        System.out.println("==========Population of most populated region==========");
-        System.out.println(String.format("%-30s| %-30s", "Region", "Population"));
-        sr.displaySumRegPop(popSumReg);
-
-        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con,1 );
-        System.out.println("==========Population of most populated country==========");
-        System.out.println(String.format("%-30s| %-30s", "Country", "Population"));
-        sr.displaySumCouPop(popSumCoun);
-
-        ArrayList<City> popDistReg =  sr.sumDistPop(a.con, 1);
-        System.out.println("==========Population of most populated district==========");
-        System.out.println(String.format("%-30s| %-30s", "District", "Population"));
-        sr.displaySumDistPop(popDistReg);
-
-        ArrayList<City> popCityReg =  sr.sumCityPop(a.con, 1);
-        System.out.println("==========Population of most populated city==========");
-        System.out.println(String.format("%-30s| %-30s", "City", "Population"));
-        sr.displaySumCityPop(popCityReg);
+//        //Summary reports
+//        ArrayList<Country> popSumWorld =  sr.sumWorldPop(a.con);
+//        System.out.println("==========Population of the world==========");
+//        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
+//        sr.displaySumWorldPop(popSumWorld);
+//
+//        ArrayList<Country> popSumCont =  sr.sumContPop(a.con, 1);
+//        System.out.println("==========Population of most populated continent==========");
+//        System.out.println(String.format("%-30s| %-30s", "Continent", "Population"));
+//        sr.displaySumContPop(popSumCont);
+//
+//        ArrayList<Country> popSumReg =  sr.sumRegPop(a.con, 1);
+//        System.out.println("==========Population of most populated region==========");
+//        System.out.println(String.format("%-30s| %-30s", "Region", "Population"));
+//        sr.displaySumRegPop(popSumReg);
+//
+//        ArrayList<Country> popSumCoun = sr.sumCouPop(a.con,1 );
+//        System.out.println("==========Population of most populated country==========");
+//        System.out.println(String.format("%-30s| %-30s", "Country", "Population"));
+//        sr.displaySumCouPop(popSumCoun);
+//
+//        ArrayList<City> popDistReg =  sr.sumDistPop(a.con, 1);
+//        System.out.println("==========Population of most populated district==========");
+//        System.out.println(String.format("%-30s| %-30s", "District", "Population"));
+//        sr.displaySumDistPop(popDistReg);
+//
+//        ArrayList<City> popCityReg =  sr.sumCityPop(a.con, 1);
+//        System.out.println("==========Population of most populated city==========");
+//        System.out.println(String.format("%-30s| %-30s", "City", "Population"));
+//        sr.displaySumCityPop(popCityReg);
 //
 //        //Display Population report of people living in cities and not living in cities in each continent
 //        ArrayList<City> report1 = RUReport.getContinentPopulation(a.con);
@@ -236,9 +236,9 @@ public class App {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                // con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 // Connect to database in localhost
-                // con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {

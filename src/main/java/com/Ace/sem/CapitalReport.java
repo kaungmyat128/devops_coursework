@@ -165,24 +165,30 @@ public class CapitalReport {
      */
     public void displayCapital(ArrayList<City> capitalList)
     {
-        // Print header
-        System.out.println("========================================================================================");
-        System.out.println("Capital Cities sorted by population in the world ");
+        try{
+            // Print header
+            System.out.println("========================================================================================");
+            System.out.println("Capital Cities sorted by population in the world ");
 
-        System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s","CapitalName", "CountryName", "Continent", "Region", "Population"));
-        // Loop over all countries population in the list
-        for (City cpr : capitalList)
-        {
-            String countries_info =
-                    String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
-                            cpr.getCityName(),
-                            cpr.getCountryName(),
-                            cpr.getContinents(),
-                            cpr.getRegion(),
-                            formatPopulation.humanReadableFormat(cpr.getPopulation()));
-            System.out.println(countries_info);
+            System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s","CapitalName", "CountryName", "Continent", "Region", "Population"));
+            // Loop over all countries population in the list
+            for (City cpr : capitalList)
+            {
+                String countries_info =
+                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                                cpr.getCityName(),
+                                cpr.getCountryName(),
+                                cpr.getContinents(),
+                                cpr.getRegion(),
+                                formatPopulation.humanReadableFormat(cpr.getPopulation()));
+                System.out.println(countries_info);
+            }
+            System.out.println("========================================================================================");
         }
-        System.out.println("========================================================================================");
+        catch (Exception e) {
+        //System.out.println(e.getMessage());
+        System.out.println("Nothing to display : No Capital data can be extracted.");
+        }
     }
 
     /** Display Capital Cities Report using getter() method
@@ -191,68 +197,80 @@ public class CapitalReport {
      */
     public void displayCapitalContinent(ArrayList<City> capitalList)
     {
-        // Print header
-        System.out.println("========================================================================================");
+        try{
+            // Print header
+            System.out.println("========================================================================================");
 
-        // Initialize Current Continent variable
-        String currentContinent = null;
+            // Initialize Current Continent variable
+            String currentContinent = null;
 
-        // Loop over all countries population in the list
-        for (City cpr : capitalList)
-        {
-            // Check the current continent changed or not
-            if (!cpr.getContinents().equals(currentContinent)) {
-                // Print the continent header
-                System.out.println("\n Capitals sorted by Population in " + cpr.getContinents() + " Continent");
-                System.out.println("===========================================");
-                currentContinent = cpr.getContinents();
-                System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
+            // Loop over all countries population in the list
+            for (City cpr : capitalList)
+            {
+                // Check the current continent changed or not
+                if (!cpr.getContinents().equals(currentContinent)) {
+                    // Print the continent header
+                    System.out.println("\n Capitals sorted by Population in " + cpr.getContinents() + " Continent");
+                    System.out.println("===========================================");
+                    currentContinent = cpr.getContinents();
+                    System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
+                }
+
+                String capitals_info =
+                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                                cpr.getCityName(),
+                                cpr.getCountryName(),
+                                cpr.getContinents(),
+                                cpr.getRegion(),
+                                formatPopulation.humanReadableFormat(cpr.getPopulation()));
+                System.out.println(capitals_info);
             }
+            System.out.println("============================================================");
 
-            String capitals_info =
-                    String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
-                            cpr.getCityName(),
-                            cpr.getCountryName(),
-                            cpr.getContinents(),
-                            cpr.getRegion(),
-                            formatPopulation.humanReadableFormat(cpr.getPopulation()));
-            System.out.println(capitals_info);
         }
-        System.out.println("============================================================");
+        catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Capital data from continents can be extracted.");
+        }
     }
     /** Display Capital Cities Report using getter() method
      *
      * @param capitalList
      */
     public void displayCapitalRegion(ArrayList<City> capitalList) {
-        // Print header
-        System.out.println("========================================================================================");
+        try {
+            // Print header
+            System.out.println("========================================================================================");
 
-        // Initialize Current Region variable
-        String currentRegion = null;
+            // Initialize Current Region variable
+            String currentRegion = null;
 
-        // Loop over all countries population in the list
-        for (City cpr : capitalList) {
-            // Check the current Region changed or not
-            if (!cpr.getRegion().equals(currentRegion)) {
-                // Print the continent header
-                System.out.println("\n Capitals sorted by Population in " + cpr.getRegion() + " Region");
-                System.out.println("===========================================");
-                currentRegion = cpr.getRegion();
-                System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
+            // Loop over all countries population in the list
+            for (City cpr : capitalList) {
+                // Check the current Region changed or not
+                if (!cpr.getRegion().equals(currentRegion)) {
+                    // Print the continent header
+                    System.out.println("\n Capitals sorted by Population in " + cpr.getRegion() + " Region");
+                    System.out.println("===========================================");
+                    currentRegion = cpr.getRegion();
+                    System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
+                }
+
+                String capitals_info =
+                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                                cpr.getCityName(),
+                                cpr.getCountryName(),
+                                cpr.getContinents(),
+                                cpr.getRegion(),
+                                formatPopulation.humanReadableFormat(cpr.getPopulation()));
+                System.out.println(capitals_info);
             }
-
-            String capitals_info =
-                    String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
-                            cpr.getCityName(),
-                            cpr.getCountryName(),
-                            cpr.getContinents(),
-                            cpr.getRegion(),
-                            formatPopulation.humanReadableFormat(cpr.getPopulation()));
-            System.out.println(capitals_info);
+            System.out.println("============================================================");
+        } catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Capital data from regions can be extracted.");
         }
-        System.out.println("============================================================");
     }
 }

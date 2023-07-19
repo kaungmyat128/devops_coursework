@@ -19,6 +19,8 @@ public class MyTest
     static CountryReport countryReport;
     static CityReport cityReport;
     static countryLanguagesReport languagesReport;
+    static SummaryReport summaryReport;
+    static CapitalReport capitalReport;
     static App app;
 
     @BeforeAll
@@ -192,6 +194,136 @@ public class MyTest
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * capital city testing starts here
+     */
+    @Test
+    void displayCapitalNull() {
+        capitalReport.displayCapital(null);
+        capitalReport.displayCapitalContinent(null);
+        capitalReport.displayCapitalRegion(null);
+        capitalReport.CapitalArrList(null, null);
+    }
+    @Test
+    void displayCapitalsTestContainsNull()
+    {
+        ArrayList<City> city = new ArrayList<>();
+        city.add(null);
+        ResultSet qry = null;
+        capitalReport.displayCapital(city);
+        capitalReport.displayCapitalContinent(city);
+        capitalReport.displayCapitalRegion(city);
+        capitalReport.CapitalArrList(city, qry);
+    }
+
+    @Test
+    void displayCapitals()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+            City ct = new City();
+            ct.setCityName("Yangon");
+            ct.setCountryName("Myanmar");
+            ct.setContinents("Asia");
+            ct.setRegion("Southeast Asia");
+            ct.setPopulation(5434678);
+            city.add(ct);
+            capitalReport.displayCapital(null);
+            capitalReport.displayCapitalContinent(null);
+            capitalReport.displayCapitalRegion(null);
+
+            String strSelect =
+                    "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                            "FROM `city` JOIN country ON country.Capital = city.ID " +
+                            "ORDER BY city.Population DESC";
+
+            Statement stmt = app.con.createStatement();
+            ResultSet qry = stmt.executeQuery(strSelect);
+            capitalReport.CapitalArrList(city, qry);
+            capitalReport.getCapitalPopByWorld(app.con, 3);
+            capitalReport.getCapitalPopByContinent(app.con, 3);
+            capitalReport.getCapitalPopByRegion(app.con, 3);
+            capitalReport.getCapitalPopByWorld(app.con, 0);
+            capitalReport.getCapitalPopByContinent(app.con, 0);
+            capitalReport.getCapitalPopByRegion(app.con, 0);
+
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+    /**
+     * Summary report testing starts here
+     */
+    @Test
+    void displaySummaryNull() {
+        summaryReport.displaySumWorldPop(null);
+        summaryReport.displaySumContPop(null);
+        summaryReport.displaySumRegPop(null);
+        summaryReport.displaySumCouPop(null);
+        summaryReport.displaySumDistPop(null);
+        summaryReport.displaySumCityPop(null);
+    }
+
+    @Test
+    void displaySummaryTestContainsNull()
+    {
+        ArrayList<Country> couSum = new ArrayList<>();
+        ArrayList<City> citySum = new ArrayList<>();
+        couSum.add(null);
+        citySum.add(null);
+        ResultSet qry = null;
+        summaryReport.displaySumWorldPop(couSum);
+        summaryReport.displaySumContPop(couSum);
+        summaryReport.displaySumRegPop(couSum);
+        summaryReport.displaySumCouPop(couSum);
+        summaryReport.displaySumDistPop(citySum);
+        summaryReport.displaySumCityPop(citySum);
+        summaryReport.humanReadableFormatLong(0);
+    }
+
+    @Test
+    void displaySummary()
+    {
+        try{
+            ArrayList<Country> couSum = new ArrayList<>();
+            ArrayList<City> citySum = new ArrayList<>();
+            Country c = new Country();
+            c.setName("Myanmar");
+            c.setContinent("Asia");
+            c.setRegion("Southeast Asia");
+            c.setPopulation(54593833);
+            c.setCapital("Yangon");
+            couSum.add(c);
+
+            City ci = new City();
+            ci.setCityName("Yangon");
+            ci.setDistrict("Yangon-D");
+            summaryReport.displaySumWorldPop(couSum);
+            summaryReport.displaySumContPop(couSum);
+            summaryReport.displaySumRegPop(couSum);
+            summaryReport.displaySumCouPop(couSum);
+            summaryReport.displaySumDistPop(citySum);
+            summaryReport.displaySumCityPop(citySum);
+
+            summaryReport.sumWorldPop(app.con);
+            summaryReport.sumContPop(app.con, 1);
+            summaryReport.sumRegPop(app.con, 1);
+            summaryReport.sumCouPop(app.con, 1);
+            summaryReport.sumDistPop(app.con, 1);
+            summaryReport.sumCityPop(app.con, 1);
+            countryReport.humanReadableFormat(1000);
+
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+
+
     //app.disconnect();
 
 }

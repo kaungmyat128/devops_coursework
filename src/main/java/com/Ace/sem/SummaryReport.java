@@ -224,17 +224,23 @@ public class SummaryReport {
      */
     public void displaySumWorldPop(ArrayList<Country> pop_list)
     {
-        // Loop over all data in the list
-        for (Country cp : pop_list)
-        {
-            // Format and print of data
-            String world_pop_info =
-                    String.format("%-20s| %-20s",
-                            "World Population",
-                            humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(world_pop_info);
+        try{
+            // Loop over all data in the list
+            for (Country cp : pop_list)
+            {
+                // Format and print of data
+                String world_pop_info =
+                        String.format("%-20s| %-20s",
+                                "World Population",
+                                humanReadableFormatLong(cp.getGenPop()));
+                System.out.println(world_pop_info);
+            }
+            System.out.println("");
         }
-        System.out.println("");
+        catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : World Population cannot be extracted");
+        }
     }
 
     /**
@@ -243,18 +249,24 @@ public class SummaryReport {
      */
     public void displaySumContPop(ArrayList<Country> cont_pop_list)
     {
-        // Loop over all data in the list
-        for (Country cp : cont_pop_list)
-        {
-            // Formatting and printing data
+        try{
+            // Loop over all data in the list
+            for (Country cp : cont_pop_list)
+            {
+                // Formatting and printing data
 
-            String cont_pop_info =
-                    String.format("%-30s| %-30s",
-                            cp.getContinent(),
-                            humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(cont_pop_info);
+                String cont_pop_info =
+                        String.format("%-30s| %-30s",
+                                cp.getContinent(),
+                                humanReadableFormatLong(cp.getGenPop()));
+                System.out.println(cont_pop_info);
+            }
+            System.out.println("");
         }
-        System.out.println("");
+        catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : Continent Population cannot be extracted");
+        }
     }
 
     /**
@@ -263,18 +275,24 @@ public class SummaryReport {
      */
     public void displaySumRegPop(ArrayList<Country> reg_pop_list)
     {
-        // Loop over all data in the list
-        for (Country cp : reg_pop_list)
-        {
-            // Formatting and printing data
+        try{
+            // Loop over all data in the list
+            for (Country cp : reg_pop_list)
+            {
+                // Formatting and printing data
 
-            String reg_pop_info =
-                    String.format("%-30s| %-30s",
-                            cp.getRegion(),
-                            humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(reg_pop_info);
+                String reg_pop_info =
+                        String.format("%-30s| %-30s",
+                                cp.getRegion(),
+                                humanReadableFormatLong(cp.getGenPop()));
+                System.out.println(reg_pop_info);
+            }
+            System.out.println("");
         }
-        System.out.println("");
+        catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : Region Population cannot be extracted");
+        }
     }
 
     /**
@@ -283,18 +301,24 @@ public class SummaryReport {
      */
     public void displaySumCouPop(ArrayList<Country> cou_pop_list)
     {
-        // Loop over all data in the list
-        for (Country cp : cou_pop_list)
-        {
-            // Formatting and printing data
+        try {
+            // Loop over all data in the list
+            for (Country cp : cou_pop_list)
+            {
+                // Formatting and printing data
 
-            String cou_pop_info =
-                    String.format("%-30s| %-30s",
-                            cp.getName(),
-                            humanReadableFormatLong(cp.getGenPop()));
-            System.out.println(cou_pop_info);
+                String cou_pop_info =
+                        String.format("%-30s| %-30s",
+                                cp.getName(),
+                                humanReadableFormatLong(cp.getGenPop()));
+                System.out.println(cou_pop_info);
+            }
+            System.out.println("");
         }
-        System.out.println("");
+        catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : Country Population cannot be extracted");
+        }
     }
 
     /**
@@ -303,18 +327,25 @@ public class SummaryReport {
      */
     public void displaySumDistPop(ArrayList<City> dist_pop_list)
     {
-        // Loop over all data in the list
-        for (City ct : dist_pop_list)
-        {
-            // Formatting and printing data
+        try{
+            // Loop over all data in the list
+            for (City ct : dist_pop_list)
+            {
+                // Formatting and printing data
 
-            String dist_pop_info =
-                    String.format("%-30s| %-30s",
-                            ct.getDistrict(),
-                            humanReadableFormatLong(ct.getGenPop()));
-            System.out.println(dist_pop_info);
+                String dist_pop_info =
+                        String.format("%-30s| %-30s",
+                                ct.getDistrict(),
+                                humanReadableFormatLong(ct.getGenPop()));
+                System.out.println(dist_pop_info);
+            }
+            System.out.println("");
+
         }
-        System.out.println("");
+        catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : District Population cannot be extracted");
+        }
     }
 
     /**
@@ -323,18 +354,25 @@ public class SummaryReport {
      */
     public void displaySumCityPop(ArrayList<City> city_pop_list)
     {
-        // Loop over all data in the list
-        for (City ct : city_pop_list)
-        {
-            // Formatting and printing data
+        try{
+            // Loop over all data in the list
+            for (City ct : city_pop_list)
+            {
+                // Formatting and printing data
 
-            String city_pop_info =
-                    String.format("%-30s| %-30s",
-                            ct.getCityName(),
-                            humanReadableFormatLong(ct.getPopulation()));
-            System.out.println(city_pop_info);
+                String city_pop_info =
+                        String.format("%-30s| %-30s",
+                                ct.getCityName(),
+                                humanReadableFormatLong(ct.getPopulation()));
+                System.out.println(city_pop_info);
+            }
+            System.out.println("");
+
         }
-        System.out.println("");
+        catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : City Population cannot be extracted");
+        }
     }
 
     /**
