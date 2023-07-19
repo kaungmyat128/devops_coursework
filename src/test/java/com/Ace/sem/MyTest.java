@@ -21,6 +21,7 @@ public class MyTest
     static countryLanguagesReport languagesReport;
     static SummaryReport summaryReport;
     static CapitalReport capitalReport;
+    static RuralUrbanReport ruReport;
     static App app;
 
     @BeforeAll
@@ -34,6 +35,9 @@ public class MyTest
         languagesReport = new countryLanguagesReport();
     }
 
+    /**
+     * country report starts here
+     */
     @Test
     void displayCountriesNull() {
         countryReport.displayCountries(null);
@@ -90,6 +94,9 @@ public class MyTest
 
     }
 
+    /**
+     * city reports start here
+     */
     @Test
     void displayCitiesNull() {
         cityReport.displayCities(null);
@@ -153,6 +160,9 @@ public class MyTest
         }
     }
 
+    /**
+     * language report starts here
+     */
     @Test
     void displayLanguageReportNull()
     {
@@ -252,6 +262,51 @@ public class MyTest
         }
     }
 
+    /**
+     * Rural and Urban report testing starts here
+     */
+    @Test
+    void displayRuralUrbanNull() {
+        ruReport.displayContinentPopulation(null);
+        ruReport.displayRegionPopulation(null);
+        ruReport.displayCountryPopulation(null);
+    }
+    @Test
+    void displayRuralUrbanTestContainsNull()
+    {
+        ArrayList<City> city = new ArrayList<>();
+        city.add(null);
+        ruReport.displayContinentPopulation(city);
+        ruReport.displayRegionPopulation(city);
+        ruReport.displayCountryPopulation(city);
+        ruReport.humanReadableFormat(0);
+    }
+    @Test
+    void displayRuralUrbanPop()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+            City ct = new City();
+            ct.setCountryName("Myanmar");
+            ct.setContinents("Asia");
+            ct.setRegion("Southeast Asia");
+            ct.setTotalCitiesPopulation(2200000);
+            ct.setTotalNotCitiesPopulation(3000000);
+            ct.setTotalPopulation(5200000);
+            city.add(ct);
+            ruReport.displayContinentPopulation(city);
+            ruReport.displayRegionPopulation(city);
+            ruReport.displayCountryPopulation(city);
+            ruReport.humanReadableFormat(1000000000);
+
+            ruReport.getContinentPopulation(app.con);
+            ruReport.getRegionPopulation(app.con);
+            ruReport.getCountryPopulation(app.con);
+
+
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
     /**
