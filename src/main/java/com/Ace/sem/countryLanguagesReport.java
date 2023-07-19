@@ -45,7 +45,7 @@ public class countryLanguagesReport {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of People living in cities and not living in cities in each continent");
+            System.out.println("Failed to get Population of People who speaks different kind of languages [language report]");
             return null;
         }
     }
@@ -74,7 +74,7 @@ public class countryLanguagesReport {
             System.out.println("============================================================");
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Language Population Report Found.");
+            System.out.println("Nothing to display : No Language Population Report Found.[language report]");
         }
     }
 

@@ -38,7 +38,7 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population around the world");
+            System.out.println("Failed to return population around the world [summary report]");
             return null;
         }
     }
@@ -73,7 +73,7 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each continent");
+            System.out.println("Failed to return population of each continent [summary report]");
             return null;
         }
     }
@@ -108,7 +108,7 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each region");
+            System.out.println("Failed to return population of each region [summary report]");
             return null;
         }
     }
@@ -143,7 +143,7 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each country");
+            System.out.println("Failed to return population of each country [summary report]");
             return null;
         }
     }
@@ -178,7 +178,7 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population of district");
+            System.out.println("Failed to return population of district [summary report]");
             return null;
         }
     }
@@ -213,7 +213,7 @@ public class SummaryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return population the city");
+            System.out.println("Failed to return population the city [summary report]");
             return null;
         }
     }
@@ -239,7 +239,7 @@ public class SummaryReport {
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : World Population cannot be extracted");
+            System.out.println("Nothing to display : World Population cannot be extracted [summary report]");
         }
     }
 
@@ -265,7 +265,7 @@ public class SummaryReport {
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : Continent Population cannot be extracted");
+            System.out.println("Nothing to display : Continent Population cannot be extracted [summary report]");
         }
     }
 
@@ -291,7 +291,7 @@ public class SummaryReport {
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : Region Population cannot be extracted");
+            System.out.println("Nothing to display : Region Population cannot be extracted [summary report]");
         }
     }
 
@@ -317,7 +317,7 @@ public class SummaryReport {
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : Country Population cannot be extracted");
+            System.out.println("Nothing to display : Country Population cannot be extracted [summary report]");
         }
     }
 
@@ -344,7 +344,7 @@ public class SummaryReport {
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : District Population cannot be extracted");
+            System.out.println("Nothing to display : District Population cannot be extracted [summary report]");
         }
     }
 
@@ -371,7 +371,7 @@ public class SummaryReport {
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : City Population cannot be extracted");
+            System.out.println("Nothing to display : City Population cannot be extracted [summary report]");
         }
     }
 

@@ -44,7 +44,7 @@ public class CapitalReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population around the world");
+            System.out.println("Failed to return Capital Cities population around the world [capital report]");
             return null;
         }
     }
@@ -86,7 +86,7 @@ public class CapitalReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population for each continent");
+            System.out.println("Failed to return Capital Cities population for each continent [capital report]");
             return null;
         }
     }
@@ -128,7 +128,7 @@ public class CapitalReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population around each Region");
+            System.out.println("Failed to return Capital Cities population around each Region [capital report]");
             return null;
         }
     }
@@ -155,7 +155,7 @@ public class CapitalReport {
         }// Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population");
+            System.out.println("Failed to return Capital Cities population [capital report]");
             return null;
         }
     }
@@ -187,7 +187,7 @@ public class CapitalReport {
         }
         catch (Exception e) {
         //System.out.println(e.getMessage());
-        System.out.println("Nothing to display : No Capital data can be extracted.");
+        System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
     }
 
@@ -231,7 +231,7 @@ public class CapitalReport {
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Capital data from continents can be extracted.");
+            System.out.println("Nothing to display : No Capital data from continents can be extracted. [capital report]");
         }
     }
     /** Display Capital Cities Report using getter() method
@@ -270,7 +270,7 @@ public class CapitalReport {
             System.out.println("============================================================");
         } catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Capital data from regions can be extracted.");
+            System.out.println("Nothing to display : No Capital data from regions can be extracted.[capital report]");
         }
     }
 }

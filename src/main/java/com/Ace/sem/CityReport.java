@@ -58,7 +58,7 @@ public class CityReport {
             return worldPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by World");
+            System.out.println("Failed to get Population of City by World [city report]");
             return null;
         }
     }
@@ -105,7 +105,7 @@ public class CityReport {
             return continentPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Continent");
+            System.out.println("Failed to get Population of City by Continent [city report]");
             return null;
         }
     }
@@ -152,7 +152,7 @@ public class CityReport {
             return regionPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Region");
+            System.out.println("Failed to get Population of City by Region [city report]");
             return null;
         }
     }
@@ -197,7 +197,7 @@ public class CityReport {
             return countryPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Country");
+            System.out.println("Failed to get Population of City by Country [city report]");
             return null;
         }
     }
@@ -245,7 +245,7 @@ public class CityReport {
             return districtPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City By District");
+            System.out.println("Failed to get Population of City By District [city report]");
             return null;
         }
     }
@@ -273,7 +273,7 @@ public class CityReport {
             System.out.println();
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found.");
+            System.out.println("Nothing to display : No Cities Data found. [city report]");
         }
     }
 
@@ -312,7 +312,7 @@ public class CityReport {
             System.out.println();
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found for Each Continent.");
+            System.out.println("Nothing to display : No Cities Data found for Each Continent. [city report]");
         }
 
     }
@@ -349,7 +349,7 @@ public class CityReport {
             System.out.println();
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found for each Region.");
+            System.out.println("Nothing to display : No Cities Data found for each Region. [city report]");
         }
 
     }
@@ -387,7 +387,7 @@ public class CityReport {
             System.out.println();
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found for each country.");
+            System.out.println("Nothing to display : No Cities Data found for each country. [city report]");
         }
 
     }
@@ -424,7 +424,7 @@ public class CityReport {
             System.out.println();
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No City Data found for each district.");
+            System.out.println("Nothing to display : No City Data found for each district. [city report]");
         }
 
     }

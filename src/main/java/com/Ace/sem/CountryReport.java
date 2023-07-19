@@ -52,7 +52,7 @@ public class CountryReport {
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population around the world");
+            System.out.println("Failed to return countries population around the world [country report]");
             return null;
         }
     }
@@ -92,7 +92,7 @@ public class CountryReport {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country population report");
+            System.out.println("Failed to get country population report [country report]");
             return null;
         }
     }
@@ -132,7 +132,7 @@ public class CountryReport {
             return storeIntoArraylist(top_countries_population, query3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country population report");
+            System.out.println("Failed to get country population report [country report]");
             return null;
         }
     }
@@ -161,7 +161,7 @@ public class CountryReport {
         }// Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population");
+            System.out.println("Failed to return countries population [country report]");
             return null;
         }
     }
@@ -193,7 +193,7 @@ public class CountryReport {
             }
             catch (Exception e) {
                 //System.out.println(e.getMessage());
-                System.out.println("Nothing to display : No Countries Data found.");
+                System.out.println("Nothing to display : No Countries Data found. [country report]");
             }
         }
 
@@ -231,7 +231,7 @@ public class CountryReport {
             System.out.println();
         }  catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Countries Data found for each continent.");
+            System.out.println("Nothing to display : No Countries Data found for each continent. [country report]");
         }
     }
 
@@ -269,7 +269,7 @@ public class CountryReport {
             System.out.println();
         }catch (Exception e) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Countries Data found for each Region.");
+            System.out.println("Nothing to display : No Countries Data found for each Region. [country report]");
         }
     }
 
