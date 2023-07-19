@@ -33,6 +33,9 @@ public class MyTest
         countryReport = new CountryReport();
         cityReport = new CityReport();
         languagesReport = new countryLanguagesReport();
+        summaryReport = new SummaryReport();
+        capitalReport = new CapitalReport();
+        ruReport = new RuralUrbanReport();
     }
 
     /**
