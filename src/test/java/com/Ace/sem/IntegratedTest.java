@@ -618,9 +618,9 @@ void get_displayCitiesContinent()     {
             assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
         }
     }
-    @AfterAll
-    static void disconnect(){
-        app.disconnect();
-    }
+//    @AfterAll
+//    static void disconnect(){
+//        app.disconnect();
+//    }
 
 }
