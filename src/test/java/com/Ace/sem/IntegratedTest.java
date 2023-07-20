@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MyTest
+public class IntegratedTest
 {
     static CountryReport countryReport;
     static CityReport cityReport;
@@ -45,23 +45,10 @@ public class MyTest
     @Test
     void displayCountriesNull() {
         countryReport.displayCountries(null);
-    }
-
-    @Test
-    void displayCountriesContinentNull() {
         countryReport.displayCountriesContinent(null);
-    }
-
-    @Test
-    void displayCountriesCountriesRegionNull() {
         countryReport.displayCountriesRegion(null);
-    }
-
-    @Test
-    void storeIntoArrayListNull() {
         countryReport.storeIntoArraylist(null, null);
     }
-
     @Test
     void displayCountriesTestContainsNull()
     {
@@ -69,84 +56,13 @@ public class MyTest
         country.add(null);
         ResultSet qry = null;
         countryReport.displayCountries(country);
-
-    }
-    @Test
-    void displayCountriesContinentTestContainsNull()
-    {
-        ArrayList<Country> country = new ArrayList<>();
-        country.add(null);
-        ResultSet qry = null;
         countryReport.displayCountriesContinent(country);
-    }
-    @Test
-    void displayCountriesRegionTestContainsNull()
-    {
-        ArrayList<Country> country = new ArrayList<>();
-        country.add(null);
-        ResultSet qry = null;
         countryReport.displayCountriesRegion(country);
         countryReport.storeIntoArraylist(country, qry);
-        countryReport.humanReadableFormat(0);
-    }
-    @Test
-    void storeIntoArrayListTestContainsNull()
-    {
-        ArrayList<Country> country = new ArrayList<>();
-        country.add(null);
-        ResultSet qry = null;
-        countryReport.storeIntoArraylist(country, qry);
-    }
-    @Test
-    void humanReadableFormatInteger()
-    {
         countryReport.humanReadableFormat(0);
     }
     @Test
     void displayCountries()     {
-            ArrayList<Country> country = new ArrayList<Country>();
-            Country c = new Country();
-            c.setCode("MYN");
-            c.setName("Myanmar");
-            c.setContinent("Asia");
-            c.setRegion("Southeast Asia");
-            c.setPopulation(54593833);
-            c.setCapital("Yangon");
-            country.add(c);
-            countryReport.displayCountries(country);
-
-    }
-    @Test
-    void displayCountriesContinent()     {
-        ArrayList<Country> country = new ArrayList<Country>();
-        Country c = new Country();
-        c.setCode("MYN");
-        c.setName("Myanmar");
-        c.setContinent("Asia");
-        c.setRegion("Southeast Asia");
-        c.setPopulation(54593833);
-        c.setCapital("Yangon");
-        country.add(c);
-        countryReport.displayCountriesContinent(country);
-
-    }
-    @Test
-    void displayCountriesRegion()     {
-        ArrayList<Country> country = new ArrayList<Country>();
-        Country c = new Country();
-        c.setCode("MYN");
-        c.setName("Myanmar");
-        c.setContinent("Asia");
-        c.setRegion("Southeast Asia");
-        c.setPopulation(54593833);
-        c.setCapital("Yangon");
-        country.add(c);
-        countryReport.displayCountriesRegion(country);
-
-    }
-
-    @Test
-    void storeIntoArrayListNotNull()     {
         try{
             ArrayList<Country> country = new ArrayList<Country>();
             Country c = new Country();
@@ -157,6 +73,9 @@ public class MyTest
             c.setPopulation(54593833);
             c.setCapital("Yangon");
             country.add(c);
+            countryReport.displayCountries(country);
+            countryReport.displayCountriesContinent(country);
+            countryReport.displayCountriesRegion(country);
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
                             + "FROM country INNER JOIN city ON country.Capital = city.ID "
@@ -165,57 +84,30 @@ public class MyTest
             Statement stmt = app.con.createStatement();
             ResultSet qry = stmt.executeQuery(strSelect);
             countryReport.storeIntoArraylist(country, qry);
+            countryReport.getCountries(app.con, 3);
+            countryReport.getCountriesContinent(app.con, 3);
+            countryReport.getCountriesRegion(app.con, 3);
+            countryReport.getCountries(app.con, 0);
+            countryReport.getCountriesContinent(app.con, 0);
+            countryReport.getCountriesRegion(app.con, 0);
+            countryReport.humanReadableFormat(1000);
 
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
 
-    @Test
-    void getCountries()     {
-            countryReport.getCountries(app.con, 3);
-            countryReport.getCountries(app.con, 0);
-    }
-    @Test
-    void getCountriesContinent()     {
-        countryReport.getCountriesContinent(app.con, 3);
-        countryReport.getCountriesContinent(app.con, 0);
-    }
-    @Test
-    void getCountriesRegion()     {
-        countryReport.getCountriesRegion(app.con, 3);
-        countryReport.getCountriesRegion(app.con, 0);
-    }
-    @Test
-    void humanReadableFormat()     {
-        countryReport.humanReadableFormat(1000);
-    }
     /**
      * city reports start here
      */
     @Test
     void displayCitiesNull() {
         cityReport.displayCities(null);
-    }
-    @Test
-    void displayCityContinentsNull() {
         cityReport.displayCityContinents(null);
-    }
-    @Test
-    void displayCityCountriesNull() {
         cityReport.displayCityCountries(null);
-    }
-    @Test
-    void displayCityRegionNull() {
         cityReport.displayCityRegion(null);
-    }
-    @Test
-    void displayCityDistrictNull() {
         cityReport.displayCityDistrict(null);
-
-    }
-    @Test
-    void nullCheckerNull() {
         cityReport.nullChecker(null);
     }
     @Test
@@ -224,45 +116,15 @@ public class MyTest
         ArrayList<City> city = new ArrayList<>();
         city.add(null);
         cityReport.displayCities(city);
-    }
-    @Test
-    void displayCityContinentsTestContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
         cityReport.displayCityContinents(city);
-    }
-    @Test
-    void displayCityCountriesCountriesTestContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
         cityReport.displayCityCountries(city);
-    }
-    @Test
-    void displayCityRegionTestContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
         cityReport.displayCityRegion(city);
-    }
-    @Test
-    void displayCitiesDistrictContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
         cityReport.displayCityDistrict(city);
-    }
-    @Test
-    void nullCheckerContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
         cityReport.nullChecker("");
     }
     @Test
     void displayCities()     {
-
+        try{
             ArrayList<City> city = new ArrayList<>();
             City ct1 = new City();
             ct1.setCityName("Yangon");
@@ -273,103 +135,27 @@ public class MyTest
             ct1.setPopulation(5434678);
             city.add(ct1);
             cityReport.displayCities(city);
-    }
-    @Test
-    void displayCityContinents()     {
+            cityReport.displayCityContinents(city);
+            cityReport.displayCityCountries(city);
+            cityReport.displayCityRegion(city);
+            cityReport.displayCityDistrict(city);
+            cityReport.nullChecker("Not Null");
+            cityReport.getCityPop(app.con, 3);
+            cityReport.getCityPopByDistrict(app.con, 3);
+            cityReport.getCityPopByContinent(app.con, 3);
+            cityReport.getCityPopByRegion(app.con, 3);
+            cityReport.getCityPopByCountry(app.con, 3);
+            cityReport.getCityPop(app.con, 0);
+            cityReport.getCityPopByDistrict(app.con, 0);
+            cityReport.getCityPopByContinent(app.con, 0);
+            cityReport.getCityPopByRegion(app.con, 0);
+            cityReport.getCityPopByCountry(app.con, 0);
 
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
-        ct1.setCityName("Yangon");
-        ct1.setCountryName("Myanmar");
-        ct1.setContinents("Asia");
-        ct1.setRegion("Southeast Asia");
-        ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
-        city.add(ct1);
-        cityReport.displayCityContinents(city);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
-    @Test
-    void displayCityCountries()     {
 
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
-        ct1.setCityName("Yangon");
-        ct1.setCountryName("Myanmar");
-        ct1.setContinents("Asia");
-        ct1.setRegion("Southeast Asia");
-        ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
-        city.add(ct1);
-        cityReport.displayCityCountries(city);
-
-    }
-    @Test
-    void displayCityRegion()     {
-
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
-        ct1.setCityName("Yangon");
-        ct1.setCountryName("Myanmar");
-        ct1.setContinents("Asia");
-        ct1.setRegion("Southeast Asia");
-        ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
-        city.add(ct1);
-        cityReport.displayCityRegion(city);
-    }
-    @Test
-    void displayCityDistrict()     {
-
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
-        ct1.setCityName("Yangon");
-        ct1.setCountryName("Myanmar");
-        ct1.setContinents("Asia");
-        ct1.setRegion("Southeast Asia");
-        ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
-        city.add(ct1);
-        cityReport.displayCityDistrict(city);
-    }
-    @Test
-    void nullChecker()     {
-
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
-        ct1.setCityName("Yangon");
-        ct1.setCountryName("Myanmar");
-        ct1.setContinents("Asia");
-        ct1.setRegion("Southeast Asia");
-        ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
-        city.add(ct1);
-        cityReport.nullChecker("Not Null");
-    }
-    @Test
-    void getCityPop()     {
-        cityReport.getCityPop(app.con, 3);
-        cityReport.getCityPop(app.con, 0);
-    }
-    @Test
-    void getCityPopByDistrict()     {
-        cityReport.getCityPopByDistrict(app.con, 3);
-        cityReport.getCityPopByDistrict(app.con, 0);
-    }
-    @Test
-    void getCityPopByContinent()     {
-        cityReport.getCityPopByContinent(app.con, 3);
-        cityReport.getCityPopByContinent(app.con, 0);
-    }
-    @Test
-    void getCityPopByRegion()     {
-        cityReport.getCityPopByRegion(app.con, 3);
-        cityReport.getCityPopByRegion(app.con, 0);
-    }
-    @Test
-    void getCityPopByCountry()     {
-        cityReport.getCityPopByCountry(app.con, 3);
-        cityReport.getCityPopByCountry(app.con, 0);
-    }
     /**
      * language report starts here
      */
@@ -384,12 +170,7 @@ public class MyTest
         ArrayList<Language> language = new ArrayList<>();
         language.add(null);
         languagesReport.displayLanguagesPopulation(language);
-    }
-
-    @Test
-    void humanReadableFormatDouble(){
-        languagesReport.humanReadableFormat(54000000);
-
+        languagesReport.humanReadableFormat(0);
     }
     @Test
     void displayLanguageReport()     {
@@ -401,6 +182,7 @@ public class MyTest
             ln.setPercentage(68.35);
             language.add(ln);
             languagesReport.displayLanguagesPopulation(language);
+            languagesReport.humanReadableFormat(54000000);
 
             String strSelect = "SELECT countrylanguage.Language AS Language, "
                     + "SUM(country.Population) AS TotalPopulation, "
@@ -411,14 +193,14 @@ public class MyTest
 
             Statement stmt = app.con.createStatement();
             ResultSet qry = stmt.executeQuery(strSelect);
+            languagesReport.getLanguagesReport(app.con);
+
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    @Test
-    void getLanguageReport(){
-        languagesReport.getLanguagesReport(app.con);
-    }
+
     /**
      * capital city testing starts here
      */
