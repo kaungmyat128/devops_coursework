@@ -279,7 +279,6 @@ public class IntegratedTest
     }
     @Test
     void displayRuralUrbanPop()     {
-        try{
             ArrayList<City> city = new ArrayList<>();
             City ct = new City();
             ct.setCountryName("Myanmar");
@@ -297,11 +296,6 @@ public class IntegratedTest
             ruReport.getContinentPopulation(app.con);
             ruReport.getRegionPopulation(app.con);
             ruReport.getCountryPopulation(app.con);
-
-
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
 
@@ -325,7 +319,6 @@ public class IntegratedTest
         ArrayList<City> citySum = new ArrayList<>();
         couSum.add(null);
         citySum.add(null);
-        ResultSet qry = null;
         summaryReport.displaySumWorldPop(couSum);
         summaryReport.displaySumContPop(couSum);
         summaryReport.displaySumRegPop(couSum);
@@ -338,7 +331,6 @@ public class IntegratedTest
     @Test
     void displaySummary()
     {
-        try{
             ArrayList<Country> couSum = new ArrayList<>();
             ArrayList<City> citySum = new ArrayList<>();
             Country c = new Country();
@@ -370,11 +362,6 @@ public class IntegratedTest
             summaryReport.sumDistPop(app.con, 1);
             summaryReport.sumCityPop(app.con, 1);
             countryReport.humanReadableFormat(1000);
-
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
     }
 
     @AfterAll

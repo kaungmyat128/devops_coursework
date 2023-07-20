@@ -1,21 +1,14 @@
 package com.Ace.sem;
 
-import com.mysql.cj.protocol.Resultset;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
-import java.lang.invoke.LambdaConversionException;
-import java.sql.*;
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-public class MyTest
+public class unitTesting
 {
     static CountryReport countryReport;
     static CityReport cityReport;
@@ -67,7 +60,6 @@ public class MyTest
     {
         ArrayList<Country> country = new ArrayList<>();
         country.add(null);
-        ResultSet qry = null;
         countryReport.displayCountries(country);
 
     }
@@ -76,7 +68,6 @@ public class MyTest
     {
         ArrayList<Country> country = new ArrayList<>();
         country.add(null);
-        ResultSet qry = null;
         countryReport.displayCountriesContinent(country);
     }
     @Test
@@ -84,10 +75,8 @@ public class MyTest
     {
         ArrayList<Country> country = new ArrayList<>();
         country.add(null);
-        ResultSet qry = null;
         countryReport.displayCountriesRegion(country);
-        countryReport.storeIntoArraylist(country, qry);
-        countryReport.humanReadableFormat(0);
+
     }
     @Test
     void storeIntoArrayListTestContainsNull()
@@ -256,9 +245,8 @@ public class MyTest
     @Test
     void nullCheckerContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
-        cityReport.nullChecker("");
+        String nullString = null;
+        cityReport.nullChecker(nullString);
     }
     @Test
     void displayCities()     {
@@ -333,18 +321,9 @@ public class MyTest
     }
     @Test
     void nullChecker()     {
-
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
-        ct1.setCityName("Yangon");
-        ct1.setCountryName("Myanmar");
-        ct1.setContinents("Asia");
-        ct1.setRegion("Southeast Asia");
-        ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
-        city.add(ct1);
         cityReport.nullChecker("Not Null");
     }
+
     @Test
     void getCityPop()     {
         cityReport.getCityPop(app.con, 3);
@@ -393,7 +372,6 @@ public class MyTest
     }
     @Test
     void displayLanguageReport()     {
-        try{
             ArrayList<Language> language = new ArrayList<>();
             Language ln = new Language();
             ln.setLanguage("Burmese");
@@ -401,49 +379,68 @@ public class MyTest
             ln.setPercentage(68.35);
             language.add(ln);
             languagesReport.displayLanguagesPopulation(language);
-
-            String strSelect = "SELECT countrylanguage.Language AS Language, "
-                    + "SUM(country.Population) AS TotalPopulation, "
-                    + "(SUM(country.Population) / (SELECT SUM(country.Population) FROM country)) * 100 AS Percentage "
-                    + "FROM countrylanguage JOIN country ON countrylanguage.CountryCode = country.Code "
-                    + "WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') "
-                    + "GROUP BY Language ORDER BY TotalPopulation DESC";
-
-            Statement stmt = app.con.createStatement();
-            ResultSet qry = stmt.executeQuery(strSelect);
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
     @Test
     void getLanguageReport(){
         languagesReport.getLanguagesReport(app.con);
     }
+
     /**
      * capital city testing starts here
      */
     @Test
     void displayCapitalNull() {
         capitalReport.displayCapital(null);
+    }
+
+    @Test
+    void displayCaptialContinentNull(){
         capitalReport.displayCapitalContinent(null);
+    }
+
+    @Test
+    void displayCaptialRegionNull(){;
         capitalReport.displayCapitalRegion(null);
+    }
+
+    @Test
+    void arraylistCapitalNull(){
         capitalReport.CapitalArrList(null, null);
     }
+
     @Test
     void displayCapitalsTestContainsNull()
     {
         ArrayList<City> city = new ArrayList<>();
         city.add(null);
-        ResultSet qry = null;
         capitalReport.displayCapital(city);
+    }
+
+    @Test
+    void displayCapitalsContTestContainsNull()
+    {
+        ArrayList<City> city = new ArrayList<>();
+        city.add(null);
         capitalReport.displayCapitalContinent(city);
+    }
+    @Test
+    void displayCapitalsRegTestContainsNull()
+    {
+        ArrayList<City> city = new ArrayList<>();
+        city.add(null);
         capitalReport.displayCapitalRegion(city);
+    }
+    @Test
+    void arrayListCapitalTestContainsNull()
+    {
+        ArrayList<City> city = new ArrayList<>();
+        city.add(null);
+        ResultSet qry = null;
         capitalReport.CapitalArrList(city, qry);
     }
 
     @Test
     void displayCapitals()     {
-        try{
             ArrayList<City> city = new ArrayList<>();
             City ct = new City();
             ct.setCityName("Yangon");
@@ -453,9 +450,45 @@ public class MyTest
             ct.setPopulation(5434678);
             city.add(ct);
             capitalReport.displayCapital(city);
-            capitalReport.displayCapitalContinent(city);
-            capitalReport.displayCapitalRegion(city);
+    }
 
+    @Test
+    void displayCapitalsCont()     {
+            ArrayList<City> city = new ArrayList<>();
+            City ct = new City();
+            ct.setCityName("Yangon");
+            ct.setCountryName("Myanmar");
+            ct.setContinents("Asia");
+            ct.setRegion("Southeast Asia");
+            ct.setPopulation(5434678);
+            city.add(ct);
+            capitalReport.displayCapitalContinent(city);
+        }
+
+    @Test
+    void displayCapitalsReg()     {
+            ArrayList<City> city = new ArrayList<>();
+            City ct = new City();
+            ct.setCityName("Yangon");
+            ct.setCountryName("Myanmar");
+            ct.setContinents("Asia");
+            ct.setRegion("Southeast Asia");
+            ct.setPopulation(5434678);
+            city.add(ct);
+            capitalReport.displayCapitalRegion(city);
+        }
+
+    @Test
+    void arrayListCapitals()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+            City ct = new City();
+            ct.setCityName("Yangon");
+            ct.setCountryName("Myanmar");
+            ct.setContinents("Asia");
+            ct.setRegion("Southeast Asia");
+            ct.setPopulation(5434678);
+            city.add(ct);
             String strSelect =
                     "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
                             "FROM `city` JOIN country ON country.Capital = city.ID " +
@@ -464,135 +497,311 @@ public class MyTest
             Statement stmt = app.con.createStatement();
             ResultSet qry = stmt.executeQuery(strSelect);
             capitalReport.CapitalArrList(city, qry);
-            capitalReport.getCapitalPopByWorld(app.con, 3);
-            capitalReport.getCapitalPopByContinent(app.con, 3);
-            capitalReport.getCapitalPopByRegion(app.con, 3);
-            capitalReport.getCapitalPopByWorld(app.con, 0);
-            capitalReport.getCapitalPopByContinent(app.con, 0);
-            capitalReport.getCapitalPopByRegion(app.con, 0);
 
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    void getCapital()     {
+        capitalReport.getCapitalPopByWorld(app.con, 3);
+        capitalReport.getCapitalPopByWorld(app.con, 0);
+    }
+
+    @Test
+    void getCapitalCont()     {
+        capitalReport.getCapitalPopByContinent(app.con, 3);
+        capitalReport.getCapitalPopByContinent(app.con, 0);
+    }
+
+    @Test
+    void getCapitalReg()     {
+        capitalReport.getCapitalPopByRegion(app.con, 3);
+        capitalReport.getCapitalPopByRegion(app.con, 0);
     }
 
     /**
      * Rural and Urban report testing starts here
      */
     @Test
-    void displayRuralUrbanNull() {
+    void displayRuralUrbanContNull() {
         ruReport.displayContinentPopulation(null);
+    }
+    @Test
+    void displayRuralUrbanRegNull() {
         ruReport.displayRegionPopulation(null);
+    }
+    @Test
+    void displayRuralUrbanCouNull() {
         ruReport.displayCountryPopulation(null);
     }
     @Test
-    void displayRuralUrbanTestContainsNull()
+    void displayRuralUrbanContTestContainsNull()
     {
         ArrayList<City> city = new ArrayList<>();
         city.add(null);
         ruReport.displayContinentPopulation(city);
-        ruReport.displayRegionPopulation(city);
-        ruReport.displayCountryPopulation(city);
-        ruReport.humanReadableFormat(0);
     }
     @Test
-    void displayRuralUrbanPop()     {
-        try{
-            ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setTotalCitiesPopulation(2200000);
-            ct.setTotalNotCitiesPopulation(3000000);
-            ct.setTotalPopulation(5200000);
-            city.add(ct);
-            ruReport.displayContinentPopulation(city);
-            ruReport.displayRegionPopulation(city);
-            ruReport.displayCountryPopulation(city);
-            ruReport.humanReadableFormat(1000000000);
-
-            ruReport.getContinentPopulation(app.con);
-            ruReport.getRegionPopulation(app.con);
-            ruReport.getCountryPopulation(app.con);
-
-
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    void displayRuralUrbanRegTestContainsNull()
+    {
+        ArrayList<City> city = new ArrayList<>();
+        city.add(null);
+        ruReport.displayRegionPopulation(city);
     }
+    @Test
+    void displayRuralUrbanCouTestContainsNull()
+    {
+        ArrayList<City> city = new ArrayList<>();
+        city.add(null);
+        ruReport.displayCountryPopulation(city);
+    }
+    @Test
+    void humanReadableFormatofRUzero()
+    {
+        ruReport.humanReadableFormat(0);
+    }
+
+    @Test
+    void humanReadableFormatofRU()
+    {
+
+        ruReport.humanReadableFormat(1000000000);
+    }
+
+    @Test
+    void displayRuralUrbanContPop() {
+        ArrayList<City> city = new ArrayList<>();
+        City ct = new City();
+        ct.setCountryName("Myanmar");
+        ct.setContinents("Asia");
+        ct.setRegion("Southeast Asia");
+        ct.setTotalCitiesPopulation(2200000);
+        ct.setTotalNotCitiesPopulation(3000000);
+        ct.setTotalPopulation(5200000);
+        city.add(ct);
+        ruReport.displayContinentPopulation(city);
+    }
+
+    @Test
+    void displayRuralUrbanRegPop()     {
+        ArrayList<City> city = new ArrayList<>();
+        City ct = new City();
+        ct.setCountryName("Myanmar");
+        ct.setContinents("Asia");
+        ct.setRegion("Southeast Asia");
+        ct.setTotalCitiesPopulation(2200000);
+        ct.setTotalNotCitiesPopulation(3000000);
+        ct.setTotalPopulation(5200000);
+        city.add(ct);
+        ruReport.displayRegionPopulation(city);
+    }
+
+    @Test
+    void displayRuralUrbanCouPop()     {
+        ArrayList<City> city = new ArrayList<>();
+        City ct = new City();
+        ct.setCountryName("Myanmar");
+        ct.setContinents("Asia");
+        ct.setRegion("Southeast Asia");
+        ct.setTotalCitiesPopulation(2200000);
+        ct.setTotalNotCitiesPopulation(3000000);
+        ct.setTotalPopulation(5200000);
+        city.add(ct);
+        ruReport.displayCountryPopulation(city);
+
+    }
+
+    @Test
+    void getRuralUrbanContop() {
+        ruReport.getContinentPopulation(app.con);
+    }
+
+    @Test
+    void getRuralUrbanRegtop() {
+        ruReport.getRegionPopulation(app.con);
+    }
+
+    @Test
+    void getRuralUrbanCoutop() {
+        ruReport.getCountryPopulation(app.con);
+    }
+
 
 
     /**
      * Summary report testing starts here
      */
     @Test
-    void displaySummaryNull() {
+    void displaySummaryWorldNull() {
         summaryReport.displaySumWorldPop(null);
+    }
+    @Test
+    void displaySummaryContNull() {
         summaryReport.displaySumContPop(null);
+    }
+    @Test
+    void displaySummaryRegNull() {
         summaryReport.displaySumRegPop(null);
+    }
+    @Test
+    void displaySummaryCouNull() {
         summaryReport.displaySumCouPop(null);
+    }
+    @Test
+    void displaySummaryDistNull() {
         summaryReport.displaySumDistPop(null);
+    }
+    @Test
+    void displaySummaryCityNull() {
         summaryReport.displaySumCityPop(null);
     }
 
     @Test
-    void displaySummaryTestContainsNull()
-    {
-        ArrayList<Country> couSum = new ArrayList<>();
-        ArrayList<City> citySum = new ArrayList<>();
-        couSum.add(null);
-        citySum.add(null);
-        ResultSet qry = null;
-        summaryReport.displaySumWorldPop(couSum);
-        summaryReport.displaySumContPop(couSum);
-        summaryReport.displaySumRegPop(couSum);
-        summaryReport.displaySumCouPop(couSum);
-        summaryReport.displaySumDistPop(citySum);
-        summaryReport.displaySumCityPop(citySum);
+    void humanRedable() {
+
         summaryReport.humanReadableFormatLong(0);
+        countryReport.humanReadableFormat(1000);
     }
 
     @Test
-    void displaySummary()
+    void displaySummaryWorldTestContainsNull()
     {
-        try{
+        ArrayList<Country> couSum = new ArrayList<>();
+        couSum.add(null);
+        summaryReport.displaySumWorldPop(couSum);
+    }
+
+    @Test
+    void displaySummaryContTestContainsNull() {
+        ArrayList<Country> couSum = new ArrayList<>();
+        couSum.add(null);
+        summaryReport.displaySumContPop(couSum);
+    }
+    @Test
+    void displaySummaryRegTestContainsNull()
+    {
+        ArrayList<Country> couSum = new ArrayList<>();
+        couSum.add(null);
+        summaryReport.displaySumRegPop(couSum);
+    }
+
+    @Test
+    void displaySummaryCouTestContainsNull()
+    {
+        ArrayList<Country> couSum = new ArrayList<>();
+        couSum.add(null);
+        summaryReport.displaySumCouPop(couSum);
+    }
+
+    @Test
+    void displaySummaryDistTestContainsNull()
+    {
+        ArrayList<City> citySum = new ArrayList<>();
+        citySum.add(null);
+        summaryReport.displaySumDistPop(citySum);
+    }
+
+    @Test
+    void displaySummaryCityTestContainsNull()
+    {
+        ArrayList<City> citySum = new ArrayList<>();
+        citySum.add(null);
+        summaryReport.displaySumCityPop(citySum);
+    }
+
+
+    @Test
+    void displaySummaryWorld()
+    {
             ArrayList<Country> couSum = new ArrayList<>();
-            ArrayList<City> citySum = new ArrayList<>();
             Country c = new Country();
-            c.setName("Myanmar");
-            c.setContinent("Asia");
-            c.setRegion("Southeast Asia");
-            c.setPopulation(54593833);
-            c.setCapital("Yangon");
-            c.setGenPop(1000000);
+            c.setGenPop(600000000);
             couSum.add(c);
 
-            City ci = new City();
-            ci.setCityName("Yangon");
-            ci.setDistrict("Yangon-D");
-            ci.setGenPop(10000);
-            ci.setPopulation(453467000);
-            citySum.add(ci);
             summaryReport.displaySumWorldPop(couSum);
-            summaryReport.displaySumContPop(couSum);
-            summaryReport.displaySumRegPop(couSum);
-            summaryReport.displaySumCouPop(couSum);
-            summaryReport.displaySumDistPop(citySum);
-            summaryReport.displaySumCityPop(citySum);
+    }
 
-            summaryReport.sumWorldPop(app.con);
-            summaryReport.sumContPop(app.con, 1);
-            summaryReport.sumRegPop(app.con, 1);
-            summaryReport.sumCouPop(app.con, 1);
-            summaryReport.sumDistPop(app.con, 1);
-            summaryReport.sumCityPop(app.con, 1);
-            countryReport.humanReadableFormat(1000);
+    @Test
+    void displaySummaryCont()
+    {
+        ArrayList<Country> couSum = new ArrayList<>();
+        Country c = new Country();
+        c.setContinent("Asia");
+        c.setGenPop(50000000);
+        couSum.add(c);
 
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
+        summaryReport.displaySumContPop(couSum);
+    }
+    @Test
+    void displaySummaryReg()
+    {
+        ArrayList<Country> couSum = new ArrayList<>();
+        Country c = new Country();
+        c.setRegion("Southeast Asia");
+        c.setGenPop(10000000);
+        couSum.add(c);
+
+        summaryReport.displaySumRegPop(couSum);
+    }
+    @Test
+    void displaySummaryCou()
+    {
+        ArrayList<Country> couSum = new ArrayList<>();
+        Country c = new Country();
+        c.setName("Timor");
+        c.setGenPop(50000);
+        couSum.add(c);
+
+        summaryReport.displaySumCouPop(couSum);
+    }
+    @Test
+    void displaySummaryDist()
+    {
+        ArrayList<City> citySum = new ArrayList<>();
+        City c = new City();
+        c.setCityName("Fife");
+        c.setGenPop(100000);
+        citySum.add(c);
+
+        summaryReport.displaySumDistPop(citySum);
+    }
+    @Test
+    void displaySummaryCity()
+    {
+        ArrayList<City> citySum = new ArrayList<>();
+        City c = new City();
+        c.setCityName("Auchtermuchty");
+        c.setPopulation(50000);
+        citySum.add(c);
+
+        summaryReport.displaySumCityPop(citySum);
+    }
+
+    @Test
+    void getSummaryWorld() {
+        summaryReport.sumWorldPop(app.con);
+    }
+    @Test
+    void getSummaryCont() {
+        summaryReport.sumContPop(app.con, 1);
+    }
+    @Test
+    void getSummaryReg() {
+        summaryReport.sumRegPop(app.con, 1);
+    }
+    @Test
+    void getSummaryCou() {
+        summaryReport.sumCouPop(app.con, 1);
+    }
+    @Test
+    void getSummaryDist() {
+        summaryReport.sumDistPop(app.con, 1);
         }
-
+    @Test
+    void getSummaryCity() {
+        summaryReport.sumCityPop(app.con, 1);
     }
 
     @AfterAll
