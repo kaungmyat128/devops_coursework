@@ -39,43 +39,31 @@ public class IntegratedTest
         ruReport = new RuralUrbanReport();
     }
 
+    // Helper method to check if the column is present (not null or not empty)
+    private boolean columnPresentString (String columnValue){
+        return columnValue != null || columnValue.isEmpty();
+    }
+    // Helper method to check if the column is present (not null or not empty)
+    private boolean columnPresentInt (int columnValue) {
+        return columnValue >= 0;
+    }
+    // Helper method to check if the column is present (not null or not empty)
+    private boolean columnPresentLong (long columnValue) {
+        return columnValue >= 0;
+    }
+
+    // Helper method to check if the column is present (not null or not empty)
+    private boolean columnPresentDouble (double columnValue) {
+        return columnValue >= 0;
+    }
     /**
      * country report starts here
      */
     @Test
-    void displayCountriesNull() {
-        countryReport.displayCountries(null);
-        countryReport.displayCountriesContinent(null);
-        countryReport.displayCountriesRegion(null);
-        countryReport.storeIntoArraylist(null, null);
-    }
-    @Test
-    void displayCountriesTestContainsNull()
-    {
-        ArrayList<Country> country = new ArrayList<>();
-        country.add(null);
-        ResultSet qry = null;
-        countryReport.displayCountries(country);
-        countryReport.displayCountriesContinent(country);
-        countryReport.displayCountriesRegion(country);
-        countryReport.storeIntoArraylist(country, qry);
-        countryReport.humanReadableFormat(0);
-    }
-    @Test
-    void displayCountries()     {
-        try{
+    void get_displayCountries() {
+        try {
             ArrayList<Country> country = new ArrayList<Country>();
-            Country c = new Country();
-            c.setCode("MYN");
-            c.setName("Myanmar");
-            c.setContinent("Asia");
-            c.setRegion("Southeast Asia");
-            c.setPopulation(54593833);
-            c.setCapital("Yangon");
-            country.add(c);
-            countryReport.displayCountries(country);
-            countryReport.displayCountriesContinent(country);
-            countryReport.displayCountriesRegion(country);
+
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
                             + "FROM country INNER JOIN city ON country.Capital = city.ID "
@@ -84,118 +72,281 @@ public class IntegratedTest
             Statement stmt = app.con.createStatement();
             ResultSet qry = stmt.executeQuery(strSelect);
             countryReport.storeIntoArraylist(country, qry);
-            countryReport.getCountries(app.con, 3);
-            countryReport.getCountriesContinent(app.con, 3);
-            countryReport.getCountriesRegion(app.con, 3);
-            countryReport.getCountries(app.con, 0);
-            countryReport.getCountriesContinent(app.con, 0);
-            countryReport.getCountriesRegion(app.con, 0);
-            countryReport.humanReadableFormat(1000);
 
+            // Retrieve all countries report with limit
+            country = countryReport.getCountries(app.con, 3);
+            // Test for not null data
+            assertNotNull(country, "The ArrayList of countries should not be null.");
+            // Test for correct numbers of query results.
+            assertEquals(3, country.size(), "The method should return 3 countries as specified by the limit.");
+            countryReport.displayCountries(country);
+
+            // Retrieve all countries report without limit
+            country = countryReport.getCountries(app.con, 0);
+            // Test for not null data
+            assertNotNull(country, "The ArrayList of countries should not be null.");
+            assertFalse(country.isEmpty(), "The ArrayList of countries should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (Country c : country) {
+            assertTrue(columnPresentString(c.getCode()), "Country code should be present.");
+            assertTrue(columnPresentString(c.getName()), "Country name should be present.");
+            assertTrue(columnPresentString(c.getContinent()), "Country continent should be present.");
+            assertTrue(columnPresentString(c.getRegion()), "Country region should be present.");
+            assertTrue(columnPresentInt(c.getPopulation()), "Country population should be present.");
+            assertTrue(columnPresentString(c.getCapital()), "Country capital should be present.");
+            assertTrue(columnPresentLong(c.getGenPop()), "Country capital should be present.");
+            }
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 
+    @Test
+    void get_displayCountriesContinent() {
+        try {
+            ArrayList<Country> country = new ArrayList<Country>();
+
+            country = countryReport.getCountriesContinent(app.con, 3);
+            // Test for not null data
+            assertNotNull(country, "The ArrayList of countries should not be null.");
+            // Test for correct numbers of query results. Limit - 3 for each continent.
+            // So total queries result will be ( 3 * 6 ) = 18
+            assertEquals(18, country.size(), "The method should return 3 countries as specified by the limit.");
+            countryReport.displayCountriesContinent(country);
+
+            // Retrieve all countries continent report without limit
+            country = countryReport.getCountriesContinent(app.con, 0);
+            // Test for not null data
+            assertNotNull(country, "The ArrayList of countries should not be null.");
+            assertFalse(country.isEmpty(), "The ArrayList of countries should not be empty.");
+
+
+            // Test for correct numbers of column names (presence of columns)
+            for (Country c : country) {
+                assertTrue(columnPresentString(c.getCode()), "Country code should be present.");
+                assertTrue(columnPresentString(c.getName()), "Country name should be present.");
+                assertTrue(columnPresentString(c.getContinent()), "Country continent should be present.");
+                assertTrue(columnPresentString(c.getRegion()), "Country region should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "Country population should be present.");
+                assertTrue(columnPresentString(c.getCapital()), "Country capital should be present.");
+                assertTrue(columnPresentLong(c.getGenPop()), "Country capital should be present.");
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    @Test
+    void get_displayCountriesRegion() {
+        try {
+            ArrayList<Country> country = new ArrayList<Country>();
+
+            country = countryReport.getCountriesRegion(app.con, 3);
+            // Test for not null data
+            assertNotNull(country, "The ArrayList of countries should not be null.");
+            // Test for correct numbers of query results. Limit - 3 for each region.
+            // So total queries result will be 72
+            assertEquals(72, country.size(), "The method should return 3 countries as specified by the limit.");
+            countryReport.displayCountriesRegion(country);
+
+            // Retrieve all countries region report without limit
+            country = countryReport.getCountries(app.con, 0);
+            // Test for not null data
+            assertNotNull(country, "The ArrayList of countries should not be null.");
+            assertFalse(country.isEmpty(), "The ArrayList of countries should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (Country c : country) {
+                assertTrue(columnPresentString(c.getCode()), "Country code should be present.");
+                assertTrue(columnPresentString(c.getName()), "Country name should be present.");
+                assertTrue(columnPresentString(c.getContinent()), "Country continent should be present.");
+                assertTrue(columnPresentString(c.getRegion()), "Country region should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "Country population should be present.");
+                assertTrue(columnPresentString(c.getCapital()), "Country capital should be present.");
+                assertTrue(columnPresentLong(c.getGenPop()), "Country capital should be present.");
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     /**
      * city reports start here
      */
+
     @Test
-    void displayCitiesNull() {
-        cityReport.displayCities(null);
-        cityReport.displayCityContinents(null);
-        cityReport.displayCityCountries(null);
-        cityReport.displayCityRegion(null);
-        cityReport.displayCityDistrict(null);
-        cityReport.nullChecker(null);
-    }
-    @Test
-    void displayCitiesTestContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
-        cityReport.displayCities(city);
-        cityReport.displayCityContinents(city);
-        cityReport.displayCityCountries(city);
-        cityReport.displayCityRegion(city);
-        cityReport.displayCityDistrict(city);
-        cityReport.nullChecker("");
-    }
-    @Test
-    void displayCities()     {
+    void get_displayCities()     {
         try{
             ArrayList<City> city = new ArrayList<>();
-            City ct1 = new City();
-            ct1.setCityName("Yangon");
-            ct1.setCountryName("Myanmar");
-            ct1.setContinents("Asia");
-            ct1.setRegion("Southeast Asia");
-            ct1.setDistrict("Yangon");
-            ct1.setPopulation(5434678);
-            city.add(ct1);
-            cityReport.displayCities(city);
-            cityReport.displayCityContinents(city);
-            cityReport.displayCityCountries(city);
-            cityReport.displayCityRegion(city);
-            cityReport.displayCityDistrict(city);
-            cityReport.nullChecker("Not Null");
-            cityReport.getCityPop(app.con, 3);
-            cityReport.getCityPopByDistrict(app.con, 3);
-            cityReport.getCityPopByContinent(app.con, 3);
-            cityReport.getCityPopByRegion(app.con, 3);
-            cityReport.getCityPopByCountry(app.con, 3);
-            cityReport.getCityPop(app.con, 0);
-            cityReport.getCityPopByDistrict(app.con, 0);
-            cityReport.getCityPopByContinent(app.con, 0);
-            cityReport.getCityPopByRegion(app.con, 0);
-            cityReport.getCityPopByCountry(app.con, 0);
 
+            city = cityReport.getCityPop(app.con, 3);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            // Test for correct numbers of query results
+            assertEquals(3, city.size(), "The method should return 3 cities as specified by the limit.");
+            cityReport.displayCities(city);
+
+            // Retrieve all countries region report without limit
+            city = cityReport.getCityPop(app.con, 0);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getCityName()), "City Name should be present.");
+                assertTrue(columnPresentString(c.getCountryName()), "City name should be present.");
+                assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
+            }
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
+@Test
+void get_displayCitiesContinent()     {
+    try{
+        ArrayList<City> city = new ArrayList<>();
+
+        city = cityReport.getCityPopByContinent(app.con, 3);
+        // Test for not null data
+        assertNotNull(city, "The ArrayList of cities should not be null.");
+        // Test for correct numbers of query results. Limit - 3 cities report for each continent.
+        // So total queries result will be ( 3 * 7 ) = 21
+        assertEquals(21, city.size(), "The method should return 3 * 7 continents = 21 results  as specified by the limit.");
+        cityReport.displayCityContinents(city);
+
+        // Retrieve all countries region report without limit
+        city = cityReport.getCityPopByContinent(app.con, 0);
+        // Test for not null data
+        assertNotNull(city, "The ArrayList of cities should not be null.");
+        assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+        // Test for correct numbers of column names (presence of columns)
+        for (City c : city) {
+            assertTrue(columnPresentString(c.getCityName()), "City Name should be present.");
+            assertTrue(columnPresentString(c.getCountryName()), "City name should be present.");
+            assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
+            assertTrue(columnPresentString(c.getContinents()), "Continent should be present.");
+            assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
+        }
+    }catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
+}
+
+    @Test
+    void get_displayCitiesRegion()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+
+            city = cityReport.getCityPopByRegion(app.con, 3);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            // Test for correct numbers of query results. Limit - 3 for each region.
+            // So total queries result will be 73
+            assertEquals(73, city.size(), "The method should return 3 cities (total 73 results ) as specified by the limit.");
+            cityReport.displayCityRegion(city);
+
+            // Retrieve all countries region report without limit
+            city = cityReport.getCityPopByRegion(app.con, 0);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getCityName()), "City Name should be present.");
+                assertTrue(columnPresentString(c.getCountryName()), "City name should be present.");
+                assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
+                assertTrue(columnPresentString(c.getRegion()), "Continent should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    @Test
+    void get_displayCitiesCountry()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+
+            city = cityReport.getCityPopByCountry(app.con, 3);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            // Test for correct numbers of query results. Limit - 3 for each country.
+            // So total queries result will be 501
+            assertEquals(501, city.size(), "The method should return 3 cities (total 501 results ) as specified by the limit.");
+            cityReport.displayCityCountries(city);
+
+            // Retrieve all countries region report without limit
+            city = cityReport.getCityPopByCountry(app.con, 0);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getCityName()), "City Name should be present.");
+                assertTrue(columnPresentString(c.getCountryName()), "City name should be present.");
+                assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void get_displayCitiesDistrict()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+
+            city = cityReport.getCityPopByDistrict(app.con, 3);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            // Test for correct numbers of query results. Limit - 3 cities report for each district.
+            // So total queries result will be 2261
+            assertEquals(2261, city.size(), "The method should return 3 cities ( total 2261 results ) as specified by the limit.");
+            cityReport.displayCityDistrict(city);
+
+            // Retrieve all countries region report without limit
+            city = cityReport.getCityPopByDistrict(app.con, 0);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getCityName()), "City Name should be present.");
+                assertTrue(columnPresentString(c.getCountryName()), "City name should be present.");
+                assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     /**
      * language report starts here
      */
     @Test
-    void displayLanguageReportNull()
-    {
-        languagesReport.displayLanguagesPopulation(null);
-    }
-    @Test
-    void displayLanguageReportContainsNull()
-    {
-        ArrayList<Language> language = new ArrayList<>();
-        language.add(null);
-        languagesReport.displayLanguagesPopulation(language);
-        languagesReport.humanReadableFormat(0);
-    }
-    @Test
-    void displayLanguageReport()     {
+    void get_displayLanguageReport()     {
         try{
             ArrayList<Language> language = new ArrayList<>();
-            Language ln = new Language();
-            ln.setLanguage("Burmese");
-            ln.setTotal_Population(54000000);
-            ln.setPercentage(68.35);
-            language.add(ln);
+            language = languagesReport.getLanguagesReport(app.con);
+            // Test for not null data
+            assertNotNull(language, "The ArrayList of cities should not be null.");
+            // Test for correct numbers of query results. Expected exactly 5 total results
+            assertEquals(5, language.size(), "The method should return 5 query results for langauge report");
             languagesReport.displayLanguagesPopulation(language);
-            languagesReport.humanReadableFormat(54000000);
 
-            String strSelect = "SELECT countrylanguage.Language AS Language, "
-                    + "SUM(country.Population) AS TotalPopulation, "
-                    + "(SUM(country.Population) / (SELECT SUM(country.Population) FROM country)) * 100 AS Percentage "
-                    + "FROM countrylanguage JOIN country ON countrylanguage.CountryCode = country.Code "
-                    + "WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') "
-                    + "GROUP BY Language ORDER BY TotalPopulation DESC";
-
-            Statement stmt = app.con.createStatement();
-            ResultSet qry = stmt.executeQuery(strSelect);
-            languagesReport.getLanguagesReport(app.con);
-
-
+            // Test for correct numbers of column names (presence of columns)
+            for (Language l : language) {
+                assertTrue(columnPresentString(l.getLanguage()), "City Name should be present.");
+                assertTrue(columnPresentLong(l.getTotal_Population()), "City name should be present.");
+                assertTrue(columnPresentDouble(l.getPercentage()), "Region should be present.");
+            }
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -205,53 +356,96 @@ public class IntegratedTest
      * capital city testing starts here
      */
     @Test
-    void displayCapitalNull() {
-        capitalReport.displayCapital(null);
-        capitalReport.displayCapitalContinent(null);
-        capitalReport.displayCapitalRegion(null);
-        capitalReport.CapitalArrList(null, null);
-    }
-    @Test
-    void displayCapitalsTestContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
-        ResultSet qry = null;
-        capitalReport.displayCapital(city);
-        capitalReport.displayCapitalContinent(city);
-        capitalReport.displayCapitalRegion(city);
-        capitalReport.CapitalArrList(city, qry);
-    }
-
-    @Test
-    void displayCapitals()     {
+    void get_displayCapitals()     {
         try{
             ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCityName("Yangon");
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setPopulation(5434678);
-            city.add(ct);
+
+            city = capitalReport.getCapitalPopByWorld(app.con, 3);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            // Test for correct numbers of query results. Limit - 3 cities report
+            assertEquals(3, city.size(), "The method should return 3 cities as specified by the limit.");
             capitalReport.displayCapital(city);
+
+            // Retrieve all countries region report without limit
+            city = capitalReport.getCapitalPopByWorld(app.con, 0);
+
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of cities should not be null.");
+            assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getCityName()), "City Name should be present.");
+                assertTrue(columnPresentString(c.getCountryName()), "City name should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
+            }
+
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void get_displayCapitalsByContinent()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+
+            city = capitalReport.getCapitalPopByContinent(app.con, 3);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of Capital cities should not be null.");
+            // Test for correct numbers of query results. Limit - 3 cities report for each continent.
+            // So total queries result will be 3 * 7 continents  = 21
+            assertEquals(21, city.size(), "The method should return 3 cities (total 21 results ) as specified by the limit.");
             capitalReport.displayCapitalContinent(city);
+
+            // Retrieve all countries region report without limit
+            city = capitalReport.getCapitalPopByContinent(app.con, 0);
+
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of capital cities should not be null.");
+            assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getCityName()), "Capital City Name should be present.");
+                assertTrue(columnPresentString(c.getCountryName()), "Capital City name should be present.");
+                assertTrue(columnPresentString(c.getContinents()), "Continent name should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "Capital City population should be present.");
+            }
+
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void get_displayCapitalsByRegion()     {
+        try{
+            ArrayList<City> city = new ArrayList<>();
+
+            city = capitalReport.getCapitalPopByRegion(app.con, 3);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of Capital cities should not be null.");
+            // Test for correct numbers of query results. Limit - 3 cities report for each region.
+            // So total queries result will be 72
+            assertEquals(72, city.size(), "The method should return 3 cities ( total 72 results ) as specified by the limit.");
             capitalReport.displayCapitalRegion(city);
 
-            String strSelect =
-                    "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                            "FROM `city` JOIN country ON country.Capital = city.ID " +
-                            "ORDER BY city.Population DESC";
+            // Retrieve all countries region report without limit
+            city = capitalReport.getCapitalPopByRegion(app.con, 0);
 
-            Statement stmt = app.con.createStatement();
-            ResultSet qry = stmt.executeQuery(strSelect);
-            capitalReport.CapitalArrList(city, qry);
-            capitalReport.getCapitalPopByWorld(app.con, 3);
-            capitalReport.getCapitalPopByContinent(app.con, 3);
-            capitalReport.getCapitalPopByRegion(app.con, 3);
-            capitalReport.getCapitalPopByWorld(app.con, 0);
-            capitalReport.getCapitalPopByContinent(app.con, 0);
-            capitalReport.getCapitalPopByRegion(app.con, 0);
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of capital cities should not be null.");
+            assertFalse(city.isEmpty(), "The ArrayList of cities should not be empty.");
+
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getCityName()), "Capital City Name should be present.");
+                assertTrue(columnPresentString(c.getCountryName()), "Capital City name should be present.");
+                assertTrue(columnPresentString(c.getRegion()), "Region should be present.");
+                assertTrue(columnPresentInt(c.getPopulation()), "Capital City population should be present.");
+            }
 
         }catch (Exception e) {
             System.out.println(e.getMessage());
@@ -261,41 +455,66 @@ public class IntegratedTest
     /**
      * Rural and Urban report testing starts here
      */
-    @Test
-    void displayRuralUrbanNull() {
-        ruReport.displayContinentPopulation(null);
-        ruReport.displayRegionPopulation(null);
-        ruReport.displayCountryPopulation(null);
-    }
-    @Test
-    void displayRuralUrbanTestContainsNull()
-    {
-        ArrayList<City> city = new ArrayList<>();
-        city.add(null);
-        ruReport.displayContinentPopulation(city);
-        ruReport.displayRegionPopulation(city);
-        ruReport.displayCountryPopulation(city);
-        ruReport.humanReadableFormat(0);
-    }
-    @Test
-    void displayRuralUrbanPop()     {
-            ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setTotalCitiesPopulation(2200000);
-            ct.setTotalNotCitiesPopulation(3000000);
-            ct.setTotalPopulation(5200000);
-            city.add(ct);
-            ruReport.displayContinentPopulation(city);
-            ruReport.displayRegionPopulation(city);
-            ruReport.displayCountryPopulation(city);
-            ruReport.humanReadableFormat(1000000000);
 
-            ruReport.getContinentPopulation(app.con);
-            ruReport.getRegionPopulation(app.con);
-            ruReport.getCountryPopulation(app.con);
+    @Test
+    void get_displayRuralUrbanByContinent()     {
+            ArrayList<City> city = new ArrayList<>();
+            city = ruReport.getContinentPopulation(app.con);
+
+            // Test for not null data
+            assertNotNull(city, "The ArrayList of Rural & Urban Report should not be null.");
+            // Test for correct numbers of query results.
+            // So total queries result will be 6 because there are 6 continents . Antarctica Continent is not displayed.
+            assertEquals(6, city.size(), "The method should return 7 continents Rural Urban population report");
+            ruReport.displayContinentPopulation(city);
+            // Test for correct numbers of column names (presence of columns)
+            for (City c : city) {
+                assertTrue(columnPresentString(c.getContinents()), "Continent name should be present.");
+                assertTrue(columnPresentLong(c.getTotalPopulation()), "Total Population of each continent should be present.");
+                assertTrue(columnPresentLong(c.getTotalCitiesPopulation()), "Total Cities Population Population  should be present.");
+                assertTrue(columnPresentLong(c.getTotalNotCitiesPopulation()), "Total NOT Cities Population Population  should be present.");
+
+            }
+    }
+
+    @Test
+    void get_displayRuralUrbanByRegion()     {
+        ArrayList<City> city = new ArrayList<>();
+        city = ruReport.getRegionPopulation(app.con);
+
+        // Test for not null data
+        assertNotNull(city, "The ArrayList of Rural & Urban Report should not be null.");
+        // Test for correct numbers of query results.
+        // So total queries result will be 7 because there are 7 regions
+        assertEquals(23, city.size(), "The method should return 7 regions Rural Urban population report");
+        ruReport.displayRegionPopulation(city);
+        // Test for correct numbers of column names (presence of columns)
+        for (City c : city) {
+            assertTrue(columnPresentString(c.getRegion()), "Region name should be present.");
+            assertTrue(columnPresentLong(c.getTotalPopulation()), "Total Population of each region should be present.");
+            assertTrue(columnPresentLong(c.getTotalCitiesPopulation()), "Total Cities Population Population  should be present.");
+            assertTrue(columnPresentLong(c.getTotalNotCitiesPopulation()), "Total NOT Cities Population Population  should be present.");
+
+        }
+    }
+
+    @Test
+    void get_displayRuralUrbanCountry()     {
+        ArrayList<City> city = new ArrayList<>();
+        city = ruReport.getCountryPopulation(app.con);
+
+        // Test for not null data
+        assertNotNull(city, "The ArrayList of Rural & Urban Report should not be null.");
+        // Test for correct numbers of query results.
+        // So total queries result will be 7 because there are 7 continents
+        assertEquals(232, city.size(), "The method should return 7 countries Rural Urban population report");
+        ruReport.displayCountryPopulation(city);
+        // Test for correct numbers of column names (presence of columns)
+        for (City c : city) {
+            assertTrue(columnPresentString(c.getCountryName()), "Country name should be present.");
+            assertTrue(columnPresentLong(c.getTotalPopulation()), "Total Population of each Country should be present.");
+            assertTrue(columnPresentLong(c.getTotalCitiesPopulation()), "Total Cities Population Population  should be present.");
+        }
     }
 
 
@@ -303,67 +522,102 @@ public class IntegratedTest
      * Summary report testing starts here
      */
     @Test
-    void displaySummaryNull() {
-        summaryReport.displaySumWorldPop(null);
-        summaryReport.displaySumContPop(null);
-        summaryReport.displaySumRegPop(null);
-        summaryReport.displaySumCouPop(null);
-        summaryReport.displaySumDistPop(null);
-        summaryReport.displaySumCityPop(null);
+    void get_displaySummary()
+    {
+        ArrayList<Country> summary = new ArrayList<>();
+        summary = summaryReport.sumWorldPop(app.con);
+
+        // Test for not null data
+        assertNotNull(summary, "The ArrayList of summary Report should not be null.");
+        // Test for correct numbers of query results.
+        assertEquals(1, summary.size(), "The method should return 7 countries Rural Urban population report");
+        summaryReport.displaySumWorldPop(summary);
+        // Test for correct numbers of column names (presence of columns)
+        for (Country c : summary) {
+            assertTrue(columnPresentLong(c.getGenPop()), "Country name should be present.");
+        }
     }
 
     @Test
-    void displaySummaryTestContainsNull()
+    void get_displaySummaryContinent()
     {
-        ArrayList<Country> couSum = new ArrayList<>();
-        ArrayList<City> citySum = new ArrayList<>();
-        couSum.add(null);
-        citySum.add(null);
-        summaryReport.displaySumWorldPop(couSum);
-        summaryReport.displaySumContPop(couSum);
-        summaryReport.displaySumRegPop(couSum);
-        summaryReport.displaySumCouPop(couSum);
-        summaryReport.displaySumDistPop(citySum);
-        summaryReport.displaySumCityPop(citySum);
-        summaryReport.humanReadableFormatLong(0);
-    }
+        ArrayList<Country> summary = new ArrayList<>();
+        summary = summaryReport.sumContPop(app.con, 1);
 
+        // Test for not null data
+        assertNotNull(summary, "The ArrayList of summary Report should not be null.");
+        // Test for correct numbers of query results.
+        assertEquals(1, summary.size(), "The method should return summary report of a continent");
+        summaryReport.displaySumContPop(summary);
+        // Test for correct numbers of column names (presence of columns)
+        for (Country c : summary) {
+            assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
+        }
+    }
     @Test
-    void displaySummary()
+    void get_displaySummaryRegion()
     {
-            ArrayList<Country> couSum = new ArrayList<>();
-            ArrayList<City> citySum = new ArrayList<>();
-            Country c = new Country();
-            c.setName("Myanmar");
-            c.setContinent("Asia");
-            c.setRegion("Southeast Asia");
-            c.setPopulation(54593833);
-            c.setCapital("Yangon");
-            c.setGenPop(1000000);
-            couSum.add(c);
+        ArrayList<Country> summary = new ArrayList<>();
+        summary = summaryReport.sumRegPop(app.con, 1);
 
-            City ci = new City();
-            ci.setCityName("Yangon");
-            ci.setDistrict("Yangon-D");
-            ci.setGenPop(10000);
-            ci.setPopulation(453467000);
-            citySum.add(ci);
-            summaryReport.displaySumWorldPop(couSum);
-            summaryReport.displaySumContPop(couSum);
-            summaryReport.displaySumRegPop(couSum);
-            summaryReport.displaySumCouPop(couSum);
-            summaryReport.displaySumDistPop(citySum);
-            summaryReport.displaySumCityPop(citySum);
-
-            summaryReport.sumWorldPop(app.con);
-            summaryReport.sumContPop(app.con, 1);
-            summaryReport.sumRegPop(app.con, 1);
-            summaryReport.sumCouPop(app.con, 1);
-            summaryReport.sumDistPop(app.con, 1);
-            summaryReport.sumCityPop(app.con, 1);
-            countryReport.humanReadableFormat(1000);
+        // Test for not null data
+        assertNotNull(summary, "The ArrayList of summary Report should not be null.");
+        // Test for correct numbers of query results.
+        assertEquals(1, summary.size(), "The method should return summary report of a region");
+        summaryReport.displaySumRegPop(summary);
+        // Test for correct numbers of column names (presence of columns)
+        for (Country c : summary) {
+            assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
+        }
     }
+    @Test
+    void get_displaySummaryCountry()
+    {
+        ArrayList<Country> summary = new ArrayList<>();
+        summary = summaryReport.sumCouPop(app.con, 1);
 
+        // Test for not null data
+        assertNotNull(summary, "The ArrayList of summary Report should not be null.");
+        // Test for correct numbers of query results.
+        assertEquals(1, summary.size(), "The method should return summary report of a country");
+        summaryReport.displaySumCouPop(summary);
+        // Test for correct numbers of column names (presence of columns)
+        for (Country c : summary) {
+            assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
+        }
+    }
+    @Test
+    void get_displaySummaryDistrict()
+    {
+        ArrayList<City> summary = new ArrayList<>();
+        summary = summaryReport.sumDistPop(app.con, 1);
+
+        // Test for not null data
+        assertNotNull(summary, "The ArrayList of summary Report should not be null.");
+        // Test for correct numbers of query results.
+        assertEquals(1, summary.size(), "The method should return summary report of a district");
+        summaryReport.displaySumDistPop(summary);
+        // Test for correct numbers of column names (presence of columns)
+        for (City c : summary) {
+            assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
+        }
+    }
+    @Test
+    void get_displaySummaryCity()
+    {
+        ArrayList<City> summary = new ArrayList<>();
+        summary = summaryReport.sumCityPop(app.con, 1);
+
+        // Test for not null data
+        assertNotNull(summary, "The ArrayList of summary Report should not be null.");
+        // Test for correct numbers of query results.
+        assertEquals(1, summary.size(), "The method should return summary report of a city");
+        summaryReport.displaySumCityPop(summary);
+        // Test for correct numbers of column names (presence of columns)
+        for (City c : summary) {
+            assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
+        }
+    }
     @AfterAll
     static void disconnect(){
         app.disconnect();

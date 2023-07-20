@@ -282,4 +282,5 @@ public class CountryReport {
             String formattedCode = nf.format(population);
             return formattedCode;
         }
+
 }

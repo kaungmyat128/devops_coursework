@@ -190,6 +190,9 @@ public class RuralUrbanReport {
                 String s1 = String.format("%05.2f",people_living_in_cities) + "%";
                 double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
                 String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
+
+
+
                 String continent_population =
                         String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
                                 c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
@@ -251,4 +254,6 @@ public class RuralUrbanReport {
         String formattedCode = nf.format(population);
         return formattedCode;
     }
+
+
 }
