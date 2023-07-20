@@ -1,6 +1,7 @@
 package com.Ace.sem;
 
 import com.mysql.cj.protocol.Resultset;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -346,11 +347,15 @@ public class MyTest
             c.setRegion("Southeast Asia");
             c.setPopulation(54593833);
             c.setCapital("Yangon");
+            c.setGenPop(1000000);
             couSum.add(c);
 
             City ci = new City();
             ci.setCityName("Yangon");
             ci.setDistrict("Yangon-D");
+            ci.setGenPop(10000);
+            ci.setPopulation(453467000);
+            citySum.add(ci);
             summaryReport.displaySumWorldPop(couSum);
             summaryReport.displaySumContPop(couSum);
             summaryReport.displaySumRegPop(couSum);
@@ -370,6 +375,11 @@ public class MyTest
             System.out.println(e.getMessage());
         }
 
+    }
+
+    @AfterAll
+    static void disconnect(){
+        app.disconnect();
     }
 
 }

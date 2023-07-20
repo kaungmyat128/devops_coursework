@@ -47,16 +47,6 @@ public class City {
         this.District = District;
     }
 
-    // Getter method for CountryCode
-    public String getCountryCode() {
-        return CountryCode;
-    }
-
-    // Setter method for CountryCode
-    public void setCountryCode(String CountryCode) {
-        this.CountryCode = CountryCode;
-    }
-
     // Getter method for Population
     public int getPopulation() {
         return Population;
