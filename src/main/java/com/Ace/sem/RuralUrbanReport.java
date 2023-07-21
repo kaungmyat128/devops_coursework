@@ -34,7 +34,7 @@ public class RuralUrbanReport {
                                 + "FROM country "
                                 + "JOIN ( SELECT city.CountryCode , SUM(city.Population) AS Total_Cities_Population "
                                 + "FROM city GROUP BY city.CountryCode ) AS city ON country.code = city.CountryCode "
-                                + "GROUP BY country.Continent ORDER BY country.Continent";
+                                + "GROUP BY country.Continent ORDER BY Total_Population DESC";
 
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
@@ -53,7 +53,7 @@ public class RuralUrbanReport {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of People living in cities and not living in cities in each continent");
+            System.out.println("Failed to get Population of People living in cities and not living in cities in each continent [Rural]");
             return null;
         }
     }
@@ -76,7 +76,7 @@ public class RuralUrbanReport {
                     + "FROM city GROUP BY city.CountryCode ) AS city "
                     + "ON city.CountryCode = country.Code "
                     + "GROUP BY country.region "
-                    + "ORDER BY country.Region";
+                    + "ORDER BY Total_Population DESC";
 
             // Execute SQL statement
             ResultSet query2 = stmt.executeQuery(strSelect);
@@ -95,7 +95,7 @@ public class RuralUrbanReport {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of People living in cities and not living in cities in each region");
+            System.out.println("Failed to get Population of People living in cities and not living in cities in each region [Rural]");
             return null;
         }
     }
@@ -114,7 +114,7 @@ public class RuralUrbanReport {
                     + "SUM(country.population) - SUM(city.Population) AS Not_Cities_Population "
                     + "FROM country "
                     + "JOIN city ON country.Code = city.CountryCode "
-                    + "GROUP BY country.Name ORDER BY country.Name";
+                    + "GROUP BY country.Name ORDER BY total_population DESC";
 
             // Execute SQL statement
             ResultSet query3 = stmt.executeQuery(strSelect);
@@ -132,7 +132,7 @@ public class RuralUrbanReport {
             return RUCountryPopulation;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of People living in cities and not living in cities in each country");
+            System.out.println("Failed to get Population of People living in cities and not living in cities in each country [Rural]");
             return null;
         }
     }
@@ -145,25 +145,30 @@ public class RuralUrbanReport {
      */
     public void displayContinentPopulation(ArrayList<City> arrList)
     {
-        // Print header
-        System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Continent", "Total Population",
-                "People Living in Cities", "People Not Living in Cities"));
-        // Loop over all cities population in the list
-        for (City c : arrList)
-        {
-            double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
-            String s1 = String.format("%05.2f",people_living_in_cities) + "%";
-            double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
-            String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
-            String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
-                            c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
-                            humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
-            System.out.println(continent_population);
+        try{
+            // Print header
+            System.out.println("============================================================");
+            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Continent", "Total Population",
+                    "People Living in Cities", "People Not Living in Cities"));
+            // Loop over all cities population in the list
+            for (City c : arrList)
+            {
+                double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s1 = String.format("%05.2f",people_living_in_cities) + "%";
+                double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
+                String continent_population =
+                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
+                                c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
+                                humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
+                                humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
+                System.out.println(continent_population);
+            }
+            System.out.println("============================================================");
         }
-        System.out.println("============================================================");
+        catch (Exception e){
+            System.out.println("Nothing to display: Rural Urban population of continent failed to extract [Rural]");
+        }
     }
 
     /** Display Population of People living in cities and not living in cities in each region
@@ -173,25 +178,34 @@ public class RuralUrbanReport {
      */
     public void displayRegionPopulation(ArrayList<City> arrList)
     {
-        // Print header
-        System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Region", "Total Population",
-                "People Living in Cities", "People Not Living in Cities"));
-        // Loop over all cities population in the list
-        for (City c : arrList)
-        {
-            double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
-            String s1 = String.format("%05.2f",people_living_in_cities) + "%";
-            double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
-            String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
-            String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
-                            c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
-                            humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
-            System.out.println(continent_population);
+        try {
+            // Print header
+            System.out.println("============================================================");
+            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Region", "Total Population",
+                    "People Living in Cities", "People Not Living in Cities"));
+            // Loop over all cities population in the list
+            for (City c : arrList)
+            {
+                double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s1 = String.format("%05.2f",people_living_in_cities) + "%";
+                double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
+
+
+
+                String continent_population =
+                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
+                                c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
+                                humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
+                                humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
+                System.out.println(continent_population);
+            }
+            System.out.println("============================================================");
+
         }
-        System.out.println("============================================================");
+        catch (Exception e){
+            System.out.println("Nothing to display: Rural Urban population of regions failed to extract [Rural]");
+        }
     }
 
 
@@ -203,25 +217,30 @@ public class RuralUrbanReport {
      */
     public void displayCountryPopulation(ArrayList<City> arrList)
     {
-        // Print header
-        System.out.println("============================================================");
-        System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Country", "Total Population",
-                "People Living in Cities", "People Not Living in Cities"));
-        // Loop over all cities population in the list
-        for (City c : arrList)
-        {
-            double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
-            String s1 = String.format("%05.2f",people_living_in_cities) + "%";
-            double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
-            String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
-            String continent_population =
-                    String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
-                            c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
-                            humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
-                            humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
-            System.out.println(continent_population);
+        try{
+            // Print header
+            System.out.println("============================================================");
+            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Country", "Total Population",
+                    "People Living in Cities", "People Not Living in Cities"));
+            // Loop over all cities population in the list
+            for (City c : arrList)
+            {
+                double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s1 = String.format("%05.2f",people_living_in_cities) + "%";
+                double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
+                String continent_population =
+                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
+                                c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
+                                humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
+                                humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
+                System.out.println(continent_population);
+            }
+            System.out.println("============================================================");
         }
-        System.out.println("============================================================");
+        catch (Exception e){
+            System.out.println("Nothing to display: Rural Urban population of countries failed to extract [Rural]");
+        }
     }
 
     /**
@@ -235,4 +254,6 @@ public class RuralUrbanReport {
         String formattedCode = nf.format(population);
         return formattedCode;
     }
+
+
 }

@@ -10,3 +10,8 @@ COPY *.sql /tmp/
 COPY world.sql /docker-entrypoint-initdb.d
 # Set the root password
 ENV MYSQL_ROOT_PASSWORD example
+
+#FROM openjdk:latest
+#COPY ./target/seMethods.jar /tmp
+#WORKDIR /tmp
+#ENTRYPOINT ["java", "-jar", "seMethods.jar", "db:3306", "30000"]
