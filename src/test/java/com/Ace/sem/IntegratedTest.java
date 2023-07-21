@@ -15,6 +15,10 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * this class is created for the purpose of integrated testing
+ * includes all of the methods except some catch phrases
+ */
 public class IntegratedTest
 {
     static CountryReport countryReport;
@@ -25,6 +29,10 @@ public class IntegratedTest
     static RuralUrbanReport ruReport;
     static App app;
 
+    /**
+     * creating objects for every class that needs to be tested
+     * the objects will be used in testing methods
+     */
     @BeforeAll
     static void init()
     {
@@ -58,6 +66,8 @@ public class IntegratedTest
     }
     /**
      * country report starts here
+     * this method checks if the country data is gathered correctly or not
+     * also checks if the given value matches gathered data or not
      */
     @Test
     void get_displayCountries() {
@@ -111,6 +121,10 @@ public class IntegratedTest
         }
     }
 
+    /**
+     * this method checks if the country data is gathered correctly or not for each continents
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayCountriesContinent() {
         try {
@@ -153,6 +167,10 @@ public class IntegratedTest
             System.out.println(e.getMessage());
         }
     }
+    /**
+     * this method checks if the country data is gathered correctly or not for each region
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayCountriesRegion() {
         try {
@@ -197,6 +215,8 @@ public class IntegratedTest
     }
     /**
      * city reports start here
+     * this method checks if the city data is gathered correctly or not
+     * also checks if the given value matches gathered data or not
      */
 
     @Test
@@ -237,7 +257,11 @@ public class IntegratedTest
         }
     }
 
-@Test
+    /**
+     * this method checks if the city data is gathered correctly or not based on continents
+     * also checks if the given value matches gathered data or not
+     */
+    @Test
 void get_displayCitiesContinent()     {
     try{
         ArrayList<City> city = new ArrayList<>();
@@ -276,6 +300,10 @@ void get_displayCitiesContinent()     {
     }
 }
 
+    /**
+     * this method checks if the city data is gathered correctly or not based on regions
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayCitiesRegion()     {
         try{
@@ -314,6 +342,11 @@ void get_displayCitiesContinent()     {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * this method checks if the city data is gathered correctly or not based on countries
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayCitiesCountry()     {
         try{
@@ -351,6 +384,10 @@ void get_displayCitiesContinent()     {
         }
     }
 
+    /**
+     * this method checks if the city data is gathered correctly or not based on districts
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayCitiesDistrict()     {
         try{
@@ -389,6 +426,8 @@ void get_displayCitiesContinent()     {
     }
     /**
      * language report starts here
+     * gathers language data based on population
+     * checks if the returned value matches desired value
      */
     @Test
     void get_displayLanguageReport()     {
@@ -419,6 +458,9 @@ void get_displayCitiesContinent()     {
 
     /**
      * capital city testing starts here
+     * this method checks if the capital city data is gathered correctly or not
+     * also checks if the given value matches gathered data or not
+     *
      */
     @Test
     void get_displayCapitals()     {
@@ -457,6 +499,10 @@ void get_displayCitiesContinent()     {
         }
     }
 
+    /**
+     * this method checks if the capital city data is gathered correctly or not based on continents
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayCapitalsByContinent()     {
         try{
@@ -497,7 +543,10 @@ void get_displayCitiesContinent()     {
             System.out.println(e.getMessage());
         }
     }
-
+    /**
+     * this method checks if the capital city data is gathered correctly or not based on region
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayCapitalsByRegion()     {
         try{
@@ -540,8 +589,11 @@ void get_displayCitiesContinent()     {
         }
     }
 
+
     /**
      * Rural and Urban report testing starts here
+     * this method checks if the population data is gathered correctly or not based on continent
+     * also checks if the given value matches gathered data or not
      */
 
     @Test
@@ -571,6 +623,10 @@ void get_displayCitiesContinent()     {
 
     }
 
+    /**
+     * this method checks if the population data is gathered correctly or not based on region
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayRuralUrbanByRegion()     {
         ArrayList<City> city = new ArrayList<>();
@@ -598,6 +654,10 @@ void get_displayCitiesContinent()     {
 
     }
 
+    /**
+     * this method checks if the population data is gathered correctly or not based on country
+     * also checks if the given value matches gathered data or not
+     */
     @Test
     void get_displayRuralUrbanCountry()     {
         ArrayList<City> city = new ArrayList<>();
@@ -626,6 +686,7 @@ void get_displayCitiesContinent()     {
 
     /**
      * Summary report testing starts here
+     * gathers world population and check if it equals the desired amount
      */
     @Test
     void get_displaySummary()
@@ -647,6 +708,9 @@ void get_displayCitiesContinent()     {
 
     }
 
+    /**
+     * gathers continent population and check if it equals the desired amount
+     */
     @Test
     void get_displaySummaryContinent()
     {
@@ -667,6 +731,9 @@ void get_displayCitiesContinent()     {
         assertEquals(summary.get(0).getGenPop(),  3705025700L, "Summary report of continent population is not true.");
 
     }
+    /**
+     * gathers region population and check if it equals the desired amount
+     */
     @Test
     void get_displaySummaryRegion()
     {
@@ -687,6 +754,9 @@ void get_displayCitiesContinent()     {
         assertEquals(summary.get(0).getGenPop(),  1507328000L, "Summary report of continent population is not true.");
 
     }
+    /**
+     * gathers country population and check if it equals the desired amount
+     */
     @Test
     void get_displaySummaryCountry()
     {
@@ -707,6 +777,10 @@ void get_displayCitiesContinent()     {
         assertEquals(summary.get(0).getGenPop(),  1277558000L, "Summary report of country population is not true.");
 
     }
+
+    /**
+     * gathers district population and check if it equals the desired amount
+     */
     @Test
     void get_displaySummaryDistrict()
     {
@@ -727,6 +801,10 @@ void get_displayCitiesContinent()     {
         assertEquals(summary.get(0).getGenPop(),  26316966, "Summary report of continent population is not true.");
 
     }
+
+    /**
+     * gathers city population and check if it equals the desired amount
+     */
     @Test
     void get_displaySummaryCity()
     {
@@ -747,6 +825,10 @@ void get_displayCitiesContinent()     {
         assertEquals(summary.get(0).getPopulation(),  10500000, "Summary report of continent population is not true.");
 
     }
+
+    /**
+     * test if connection can be closed if all other tests are done
+     */
     @AfterAll
     static void disconnect(){
         app.disconnect();

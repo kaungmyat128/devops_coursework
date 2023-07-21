@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * the class created for the purpose of unit testing
+ * all the individual methods are included
+ */
 public class unitTesting
 {
     static CountryReport countryReport;
@@ -18,6 +22,9 @@ public class unitTesting
     static RuralUrbanReport ruReport;
     static App app;
 
+    /**
+     * created objects to be reused in the testing
+     */
     @BeforeAll
     static void init()
     {
@@ -34,27 +41,40 @@ public class unitTesting
 
     /**
      * country report starts here
+     * checks the response of display country if it is null
      */
     @Test
     void displayCountriesNull() {
         countryReport.displayCountries(null);
     }
 
+    /**
+     * checks the response of display country based on continent if it is null
+     */
     @Test
     void displayCountriesContinentNull() {
         countryReport.displayCountriesContinent(null);
     }
 
+    /**
+     * checks the response of display country based on region if it is null
+     */
     @Test
     void displayCountriesCountriesRegionNull() {
         countryReport.displayCountriesRegion(null);
     }
 
+    /**
+     * checks the response if null value is stored in arraylist
+     */
     @Test
     void storeIntoArrayListNull() {
         countryReport.storeIntoArraylist(null, null);
     }
 
+    /**
+     * checks the response of display country if arraylist is null
+     */
     @Test
     void displayCountriesTestContainsNull()
     {
@@ -63,6 +83,10 @@ public class unitTesting
         countryReport.displayCountries(country);
 
     }
+
+    /**
+     * checks the response of display country based on continent if arraylist is null
+     */
     @Test
     void displayCountriesContinentTestContainsNull()
     {
@@ -70,6 +94,10 @@ public class unitTesting
         country.add(null);
         countryReport.displayCountriesContinent(country);
     }
+
+    /**
+     * checks the response of display country based on region if arraylist is null
+     */
     @Test
     void displayCountriesRegionTestContainsNull()
     {
@@ -78,6 +106,10 @@ public class unitTesting
         countryReport.displayCountriesRegion(country);
 
     }
+
+    /**
+     * checks the response if null value is stored in arraylist
+     */
     @Test
     void storeIntoArrayListTestContainsNull()
     {
@@ -86,11 +118,18 @@ public class unitTesting
         ResultSet qry = null;
         countryReport.storeIntoArraylist(country, qry);
     }
+    /**
+     * checks if the human readable format method of int works
+     */
     @Test
     void humanReadableFormatInteger()
     {
         countryReport.humanReadableFormat(0);
     }
+
+    /**
+     * checks if the display country method works based on give parameters
+     */
     @Test
     void displayCountries()     {
             ArrayList<Country> country = new ArrayList<Country>();
@@ -105,6 +144,10 @@ public class unitTesting
             countryReport.displayCountries(country);
 
     }
+
+    /**
+     * checks if the display country based on continent method works based on give parameters
+     */
     @Test
     void displayCountriesContinent()     {
         ArrayList<Country> country = new ArrayList<Country>();
@@ -119,6 +162,9 @@ public class unitTesting
         countryReport.displayCountriesContinent(country);
 
     }
+    /**
+     * checks if the display country based on region method works based on give parameters
+     */
     @Test
     void displayCountriesRegion()     {
         ArrayList<Country> country = new ArrayList<Country>();
@@ -134,6 +180,9 @@ public class unitTesting
 
     }
 
+    /**
+     * checks if storing into arraylist works
+     */
     @Test
     void storeIntoArrayListNotNull()     {
         try{
@@ -160,6 +209,9 @@ public class unitTesting
         }
     }
 
+    /**
+     * checks if country data based on different categories can be gathered with and without limit
+     */
     @Test
     void getCountries()     {
             countryReport.getCountries(app.con, 3);
@@ -175,12 +227,17 @@ public class unitTesting
         countryReport.getCountriesRegion(app.con, 3);
         countryReport.getCountriesRegion(app.con, 0);
     }
+
+    /**
+     * checks if human readable format works.
+     */
     @Test
     void humanReadableFormat()     {
         countryReport.humanReadableFormat(1000);
     }
     /**
      * city reports start here
+     * checks the response of display city methods if the intput is null
      */
     @Test
     void displayCitiesNull() {
@@ -203,10 +260,18 @@ public class unitTesting
         cityReport.displayCityDistrict(null);
 
     }
+
+    /**
+     * the method that converts null or space to -, checking that method
+     */
     @Test
     void nullCheckerNull() {
         cityReport.nullChecker(null);
     }
+
+    /**
+     * checks reponse of display city methods if the give array is null
+     */
     @Test
     void displayCitiesTestContainsNull()
     {
@@ -242,12 +307,20 @@ public class unitTesting
         city.add(null);
         cityReport.displayCityDistrict(city);
     }
+
+    /**
+     * check the response of nullchecker if the input string is null
+     */
     @Test
     void nullCheckerContainsNull()
     {
         String nullString = null;
         cityReport.nullChecker(nullString);
     }
+
+    /**
+     * testing display city based on multiple categories with given parameters
+     */
     @Test
     void displayCities()     {
 
@@ -319,11 +392,19 @@ public class unitTesting
         city.add(ct1);
         cityReport.displayCityDistrict(city);
     }
+
+    /**
+     * testing null checker with actual values
+     */
     @Test
     void nullChecker()     {
         cityReport.nullChecker("Not Null");
     }
 
+    /**
+     * testing if the city population data can be gathered based on multiple categories
+     * with or without limit
+     */
     @Test
     void getCityPop()     {
         cityReport.getCityPop(app.con, 3);
@@ -351,12 +432,17 @@ public class unitTesting
     }
     /**
      * language report starts here
+     * display language with null data
      */
     @Test
     void displayLanguageReportNull()
     {
         languagesReport.displayLanguagesPopulation(null);
     }
+
+    /**
+     * display language with null arraylist
+     */
     @Test
     void displayLanguageReportContainsNull()
     {
@@ -365,11 +451,18 @@ public class unitTesting
         languagesReport.displayLanguagesPopulation(language);
     }
 
+    /**
+     * testing converter
+     */
     @Test
     void humanReadableFormatDouble(){
         languagesReport.humanReadableFormat(54000000);
 
     }
+
+    /**
+     * display langauge report based on give parameters
+     */
     @Test
     void displayLanguageReport()     {
             ArrayList<Language> language = new ArrayList<>();
@@ -380,6 +473,10 @@ public class unitTesting
             language.add(ln);
             languagesReport.displayLanguagesPopulation(language);
     }
+
+    /**
+     * checks if langauge data can be gathered
+     */
     @Test
     void getLanguageReport(){
         languagesReport.getLanguagesReport(app.con);
@@ -387,6 +484,7 @@ public class unitTesting
 
     /**
      * capital city testing starts here
+     * testing the response of capital display methods with the null give data
      */
     @Test
     void displayCapitalNull() {
@@ -403,11 +501,17 @@ public class unitTesting
         capitalReport.displayCapitalRegion(null);
     }
 
+    /**
+     * storing null data in arraylist
+     */
     @Test
     void arraylistCapitalNull(){
         capitalReport.CapitalArrList(null, null);
     }
 
+    /**
+     * testing the response of capital display methods with the null give arraylist
+     */
     @Test
     void displayCapitalsTestContainsNull()
     {
@@ -430,6 +534,9 @@ public class unitTesting
         city.add(null);
         capitalReport.displayCapitalRegion(city);
     }
+    /**
+     * storing null data in arraylist
+     */
     @Test
     void arrayListCapitalTestContainsNull()
     {
@@ -439,6 +546,9 @@ public class unitTesting
         capitalReport.CapitalArrList(city, qry);
     }
 
+    /**
+     * displaying given values in capital display methods
+     */
     @Test
     void displayCapitals()     {
             ArrayList<City> city = new ArrayList<>();
@@ -478,6 +588,9 @@ public class unitTesting
             capitalReport.displayCapitalRegion(city);
         }
 
+    /**
+     * storing actual values in arraylists
+     */
     @Test
     void arrayListCapitals()     {
         try{
@@ -503,6 +616,10 @@ public class unitTesting
         }
     }
 
+    /**
+     * checks if capital data can be gathered based on multiple categories
+     * with or without limit
+     */
     @Test
     void getCapital()     {
         capitalReport.getCapitalPopByWorld(app.con, 3);
@@ -523,6 +640,7 @@ public class unitTesting
 
     /**
      * Rural and Urban report testing starts here
+     * checks the response of display of rural and urban population data if it is null
      */
     @Test
     void displayRuralUrbanContNull() {
@@ -536,6 +654,10 @@ public class unitTesting
     void displayRuralUrbanCouNull() {
         ruReport.displayCountryPopulation(null);
     }
+
+    /**
+     * checks the response of display of rural and urban population data if arraylist is null
+     */
     @Test
     void displayRuralUrbanContTestContainsNull()
     {
@@ -557,12 +679,19 @@ public class unitTesting
         city.add(null);
         ruReport.displayCountryPopulation(city);
     }
+
+    /**
+     * human readable format converter if it is given zero
+     */
     @Test
     void humanReadableFormatofRUzero()
     {
         ruReport.humanReadableFormat(0);
     }
 
+    /**
+     * human readable format converter if it is given actual value
+     */
     @Test
     void humanReadableFormatofRU()
     {
@@ -570,6 +699,9 @@ public class unitTesting
         ruReport.humanReadableFormat(1000000000);
     }
 
+    /**
+     * display rural and urban based on actual data
+     */
     @Test
     void displayRuralUrbanContPop() {
         ArrayList<City> city = new ArrayList<>();
@@ -613,6 +745,9 @@ public class unitTesting
 
     }
 
+    /**
+     * gather rural and urban data based on multiple categories
+     */
     @Test
     void getRuralUrbanContop() {
         ruReport.getContinentPopulation(app.con);
@@ -632,6 +767,7 @@ public class unitTesting
 
     /**
      * Summary report testing starts here
+     * display method is tested given null values
      */
     @Test
     void displaySummaryWorldNull() {
@@ -665,6 +801,9 @@ public class unitTesting
         countryReport.humanReadableFormat(1000);
     }
 
+    /**
+     * display method is tested given null arrays
+     */
     @Test
     void displaySummaryWorldTestContainsNull()
     {
@@ -711,7 +850,9 @@ public class unitTesting
         summaryReport.displaySumCityPop(citySum);
     }
 
-
+    /**
+     * display method is tested given actual values
+     */
     @Test
     void displaySummaryWorld()
     {
@@ -779,6 +920,9 @@ public class unitTesting
         summaryReport.displaySumCityPop(citySum);
     }
 
+    /**
+     * tested get methods to see if data can be gathered
+     */
     @Test
     void getSummaryWorld() {
         summaryReport.sumWorldPop(app.con);
