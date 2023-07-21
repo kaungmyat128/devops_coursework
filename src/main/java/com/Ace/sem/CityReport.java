@@ -371,7 +371,7 @@ public class CityReport {
                     System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                     System.out.println("===========================================");
                     currentCountry = cty.getCountryName();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -379,7 +379,7 @@ public class CityReport {
                 CityName = nullChecker(cty.getCityName());
 
                 String countries_info =
-                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                        String.format("%-40s |%-30s |%-30s |%-20s",
                                 CityName, cty.getCountryName(), DistrictName,
                                 formatPopulation.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countries_info);
@@ -408,7 +408,7 @@ public class CityReport {
                     System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                     System.out.println("===========================================");
                     currentDistrict = cty.getDistrict();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -416,7 +416,7 @@ public class CityReport {
                 CityName = nullChecker(cty.getCityName());
 
                 String countries_info =
-                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                        String.format("%-40s |%-30s |%-30s |%-20s",
                                 CityName, cty.getCountryName(), DistrictName,
                                 formatPopulation.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countries_info);
