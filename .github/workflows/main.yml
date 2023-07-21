@@ -52,7 +52,7 @@ jobs:
          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           directory: ./target/site/jacoco
-          flags: Integration Tests # optional
+          flags: Integration_Tests # optional
           verbose: true # optional (default = false)
 
   build:
