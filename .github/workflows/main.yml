@@ -18,12 +18,12 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: |
-#          docker build -t database ./world-db
-#          docker run --name world -dp 33060:3306 database
+          docker build -t database ./world-db
+          docker run --name world -dp 33060:3306 database
           mvn -Dtest=com.Ace.sem.unitTesting test
-#          docker stop world
-#          docker rm world
-#          docker image rm database
+          docker stop world
+          docker rm world
+          docker image rm database
 
   IntegrationTests:
     name: Integration Tests
