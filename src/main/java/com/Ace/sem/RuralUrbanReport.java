@@ -34,7 +34,7 @@ public class RuralUrbanReport {
                                 + "FROM country "
                                 + "JOIN ( SELECT city.CountryCode , SUM(city.Population) AS Total_Cities_Population "
                                 + "FROM city GROUP BY city.CountryCode ) AS city ON country.code = city.CountryCode "
-                                + "GROUP BY country.Continent ORDER BY country.Continent";
+                                + "GROUP BY country.Continent ORDER BY Total_Population DESC";
 
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
@@ -76,7 +76,7 @@ public class RuralUrbanReport {
                     + "FROM city GROUP BY city.CountryCode ) AS city "
                     + "ON city.CountryCode = country.Code "
                     + "GROUP BY country.region "
-                    + "ORDER BY country.Region";
+                    + "ORDER BY Total_Population DESC";
 
             // Execute SQL statement
             ResultSet query2 = stmt.executeQuery(strSelect);
@@ -114,7 +114,7 @@ public class RuralUrbanReport {
                     + "SUM(country.population) - SUM(city.Population) AS Not_Cities_Population "
                     + "FROM country "
                     + "JOIN city ON country.Code = city.CountryCode "
-                    + "GROUP BY country.Name ORDER BY country.Name";
+                    + "GROUP BY country.Name ORDER BY total_population DESC";
 
             // Execute SQL statement
             ResultSet query3 = stmt.executeQuery(strSelect);

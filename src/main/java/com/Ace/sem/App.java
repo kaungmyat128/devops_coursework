@@ -229,20 +229,22 @@ public class App {
             System.exit(-1);
         }
 
-        int retries = 20;
+        int retries = 10;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-               //con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
-                if (i%2 == 0) {
-                    // Connect to database in localhost
-                    con = DriverManager.getConnection("jdbc:mysql://db:3306/world", "root", "example");
-                } else{
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "example");
-                }
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world", "root", "example");
+                // Connect to database in localhost
+                //con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
+
+//                if (i%2 == 0) {
+//                    con = DriverManager.getConnection("jdbc:mysql://db:3306/world", "root", "example");
+//                } else{
+//                    con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
+//                }
                System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {

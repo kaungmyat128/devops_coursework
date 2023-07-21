@@ -97,6 +97,15 @@ public class IntegratedTest
             assertTrue(columnPresentString(c.getCapital()), "Country capital should be present.");
             assertTrue(columnPresentLong(c.getGenPop()), "Country capital should be present.");
             }
+            // Check The first entry of country report data is True as Expected.
+            assertEquals(country.get(0).getCode(), "CHN", "First Entry Country Report - Country Code is not true.");
+            assertEquals(country.get(0).getName(), "China", "First Entry Country Report - Country Name is not true.");
+            assertEquals(country.get(0).getContinent(), "Asia", "First Entry Country Report - Continent Name is not true.");
+            assertEquals(country.get(0).getRegion(), "Eastern Asia", "First Entry Country Report - Region Name is not true.");
+            assertEquals(country.get(0).getPopulation(), 1277558000, "First Entry Country Report - Population is not true.");
+            assertEquals(country.get(0).getCapital(), "Peking", "First Entry Country Report - Capital City is not true.");
+
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -132,6 +141,14 @@ public class IntegratedTest
                 assertTrue(columnPresentString(c.getCapital()), "Country capital should be present.");
                 assertTrue(columnPresentLong(c.getGenPop()), "Country capital should be present.");
             }
+            // Check The first entry of country report data is True as Expected.
+            assertEquals(country.get(0).getCode(), "CHN", "First Entry Country Report - Country Code is not true.");
+            assertEquals(country.get(0).getName(), "China", "First Entry Country Report - Country Name is not true.");
+            assertEquals(country.get(0).getContinent(), "Asia", "First Entry Country Report - Continent Name is not true.");
+            assertEquals(country.get(0).getRegion(), "Eastern Asia", "First Entry Country Report - Region Name is not true.");
+            assertEquals(country.get(0).getPopulation(), 1277558000, "First Entry Country Report - Population is not true.");
+            assertEquals(country.get(0).getCapital(), "Peking", "First Entry Country Report - Capital City is not true.");
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -139,24 +156,24 @@ public class IntegratedTest
     @Test
     void get_displayCountriesRegion() {
         try {
-            ArrayList<Country> country = new ArrayList<Country>();
+            ArrayList<Country> country1 = new ArrayList<Country>();
 
-            country = countryReport.getCountriesRegion(app.con, 3);
+            country1 = countryReport.getCountriesRegion(app.con, 3);
             // Test for not null data
-            assertNotNull(country, "The ArrayList of countries should not be null.");
+            assertNotNull(country1, "The ArrayList of countries should not be null.");
             // Test for correct numbers of query results. Limit - 3 for each region.
             // So total queries result will be 72
-            assertEquals(72, country.size(), "The method should return 3 countries as specified by the limit.");
-            countryReport.displayCountriesRegion(country);
+            assertEquals(72, country1.size(), "The method should return 3 countries as specified by the limit.");
+            countryReport.displayCountriesRegion(country1);
 
             // Retrieve all countries region report without limit
-            country = countryReport.getCountries(app.con, 0);
+            country1 = countryReport.getCountriesRegion(app.con, 0);
             // Test for not null data
-            assertNotNull(country, "The ArrayList of countries should not be null.");
-            assertFalse(country.isEmpty(), "The ArrayList of countries should not be empty.");
+            assertNotNull(country1, "The ArrayList of countries should not be null.");
+            assertFalse(country1.isEmpty(), "The ArrayList of countries should not be empty.");
 
             // Test for correct numbers of column names (presence of columns)
-            for (Country c : country) {
+            for (Country c : country1) {
                 assertTrue(columnPresentString(c.getCode()), "Country code should be present.");
                 assertTrue(columnPresentString(c.getName()), "Country name should be present.");
                 assertTrue(columnPresentString(c.getContinent()), "Country continent should be present.");
@@ -165,6 +182,15 @@ public class IntegratedTest
                 assertTrue(columnPresentString(c.getCapital()), "Country capital should be present.");
                 assertTrue(columnPresentLong(c.getGenPop()), "Country capital should be present.");
             }
+
+            // Check The first entry of country report data by Region is True as Expected.
+            assertEquals(country1.get(0).getCode(), "SGS", "First Entry Country Report - Country Code is not true.");
+            assertEquals(country1.get(0).getName(), "South Georgia and the South Sandwich Islands", "First Entry Country Report - Country Name is not true.");
+            assertEquals(country1.get(0).getContinent(), "Antarctica", "First Entry Country Report - Continent Name is not true.");
+            assertEquals(country1.get(0).getRegion(), "Antarctica", "First Entry Country Report - Region Name is not true.");
+            assertEquals(country1.get(0).getPopulation(), 0, "First Entry Country Report - Population is not true.");
+            assertEquals(country1.get(0).getCapital(), null, "First Entry Country Report - Capital City is not true.");
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -198,6 +224,14 @@ public class IntegratedTest
                 assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
                 assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
             }
+
+            // Check The first entry of country report data by Region is True as Expected.
+            assertEquals(city.get(0).getCityName(), "Mumbai (Bombay)", "First Entry City Report - City Name is not true.");
+            assertEquals(city.get(0).getCountryName(), "India", "First Entry City Report - Country Name is not true.");
+            assertEquals(city.get(0).getDistrict(), "Maharashtra", "First Entry City Report - Districit Name is not true.");
+            assertEquals(city.get(0).getPopulation(), 10500000, "First Entry City Report - Population is not true.");
+
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -230,6 +264,13 @@ void get_displayCitiesContinent()     {
             assertTrue(columnPresentString(c.getContinents()), "Continent should be present.");
             assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
         }
+        // Check The first entry of country report data by Region is True as Expected.
+        assertEquals(city.get(0).getCityName(), "Mumbai (Bombay)", "First Entry City Report - City Name is not true.");
+        assertEquals(city.get(0).getCountryName(), "India", "First Entry City Report - Country Name is not true.");
+        assertEquals(city.get(0).getContinents(), "Asia", "First Entry City Report - Continent Name is not true.");
+        assertEquals(city.get(0).getDistrict(), "Maharashtra", "First Entry City Report - District Name is not true.");
+        assertEquals(city.get(0).getPopulation(), 10500000, "First Entry City Report - Population is not true.");
+
     }catch (Exception e) {
         System.out.println(e.getMessage());
     }
@@ -262,6 +303,13 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentString(c.getRegion()), "Continent should be present.");
                 assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
             }
+            // Check The first entry of country report data by Region is True as Expected.
+            assertEquals(city.get(0).getCityName(), "city", "First Entry City Report - City Name is not true.");
+            assertEquals(city.get(0).getCountryName(), "Bouvet Island", "First Entry City Report - Country Name is not true.");
+            assertEquals(city.get(0).getDistrict(), "-", "First Entry City Report - District  Name is not true.");
+            assertEquals(city.get(0).getRegion(), "Antarctica", "First Entry Country Report - Region Name is not true.");
+            assertEquals(city.get(0).getPopulation(), 10500000, "First Entry Country Report - Population is not true.");
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -292,6 +340,12 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
                 assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
             }
+            // Check The first entry of country report data by Region is True as Expected.
+            assertEquals(city.get(0).getCityName(), "Kabul", "First Entry City Report - City Name is not true.");
+            assertEquals(city.get(0).getCountryName(), "Afghanistan", "First Entry City Report - Country Name is not true.");
+            assertEquals(city.get(0).getDistrict(), "Kabol", "First Entry City Report - District  Name is not true.");
+            assertEquals(city.get(0).getPopulation(), 1780000 , "First Entry City Report - Population is not true.");
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -323,6 +377,12 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentString(c.getDistrict()), "Region should be present.");
                 assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
             }
+            // Check The first entry of country report data by Region is True as Expected.
+            assertEquals(city.get(0).getCityName(), "Taiping", "First Entry City Report - City Name is not true.");
+            assertEquals(city.get(0).getCountryName(), "Taiwan", "First Entry City Report - Country Name is not true.");
+            assertEquals(city.get(0).getDistrict(), "", "First Entry City Report - District  Name is not true.");
+            assertEquals(city.get(0).getPopulation(), 165524 , "First Entry Country Report - Population is not true.");
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -347,6 +407,11 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentLong(l.getTotal_Population()), "City name should be present.");
                 assertTrue(columnPresentDouble(l.getPercentage()), "Region should be present.");
             }
+            // Check The first entry of country report data is True as Expected.
+            assertEquals(language.get(0).getLanguage(), "Chinese", "First Entry Language Report - Language is not true.");
+            assertEquals(language.get(0).getTotal_Population(), 1968265500, "First Entry Language Report - total population is not true.");
+            assertEquals(language.get(0).getPercentage(), 32.3794, "First Entry Language Report - percentage is not true.");
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -381,6 +446,12 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentInt(c.getPopulation()), "City population should be present.");
             }
 
+            // Check The first entry of country report data is True as Expected.
+            assertEquals(city.get(0).getCityName(), "Seoul", "First Entry Capital City Report - Capital City Name is not true.");
+            assertEquals(city.get(0).getCountryName(), "South Korea", "First Entry Capital City  Report - Country Name is not true.");
+            assertEquals(city.get(0).getContinents(), "Asia", "First Entry Capital City Report - continent name is not true.");
+            assertEquals(city.get(0).getRegion(), "Eastern Asia", "First Entry Capital City  Report - Region Name is not true.");
+            assertEquals(city.get(0).getPopulation(), 9981619, "First Entry Capital City Report - population is not true.");
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -413,6 +484,14 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentString(c.getContinents()), "Continent name should be present.");
                 assertTrue(columnPresentInt(c.getPopulation()), "Capital City population should be present.");
             }
+
+            // Check The first entry of country report data is True as Expected.
+            assertEquals(city.get(0).getCityName(), "Seoul", "First Entry Capital City Report - Capital City Name is not true.");
+            assertEquals(city.get(0).getCountryName(), "South Korea", "First Entry Capital City  Report - Country Name is not true.");
+            assertEquals(city.get(0).getContinents(), "Asia", "First Entry Capital City Report - continent name is not true.");
+            assertEquals(city.get(0).getRegion(), "Eastern Asia", "First Entry Capital City  Report - Region Name is not true.");
+            assertEquals(city.get(0).getPopulation(), 9981619, "First Entry Capital City Report - population is not true.");
+
 
         }catch (Exception e) {
             System.out.println(e.getMessage());
@@ -447,6 +526,15 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentInt(c.getPopulation()), "Capital City population should be present.");
             }
 
+            // Check The first entry of country report data is True as Expected.
+            assertEquals(city.get(0).getCityName(), null, "First Entry Capital City Report - Capital City Name is not true.");
+            assertEquals(city.get(0).getCountryName(), "Bouvet Island", "First Entry Capital City  Report - Country Name is not true.");
+            assertEquals(city.get(0).getContinents(), "Antarctica", "First Entry Capital City Report - continent name is not true.");
+            assertEquals(city.get(0).getRegion(), "Antarctica", "First Entry Capital City  Report - Region Name is not true.");
+            assertEquals(city.get(0).getPopulation(), 0, "First Entry Capital City Report - population is not true.");
+
+
+
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -475,6 +563,12 @@ void get_displayCitiesContinent()     {
                 assertTrue(columnPresentLong(c.getTotalNotCitiesPopulation()), "Total NOT Cities Population Population  should be present.");
 
             }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(city.get(0).getContinents(), "Asia", "First Entry Rural Urban Report - continent name is not true.");
+        assertEquals(city.get(0).getTotalPopulation(),  3705025700L, "First Entry Capital City Report - population is not true.");
+        assertEquals(city.get(0).getTotalCitiesPopulation(), 697604103 , "First Entry Rural Urban Report - continent name is not true.");
+        assertEquals(city.get(0).getTotalNotCitiesPopulation(),  3007421597L , "First Entry Capital City Report - population is not true.");
+
     }
 
     @Test
@@ -496,6 +590,12 @@ void get_displayCitiesContinent()     {
             assertTrue(columnPresentLong(c.getTotalNotCitiesPopulation()), "Total NOT Cities Population Population  should be present.");
 
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(city.get(0).getRegion(), "Eastern Asia", "First Entry Rural Urban Report - region name is not true.");
+        assertEquals(city.get(0).getTotalPopulation(),  1507328000L, "First Entry Capital City Report - population is not true.");
+        assertEquals(city.get(0).getTotalCitiesPopulation(), 317476534, "First Entry Rural Urban Report - continent name is not true.");
+        assertEquals(city.get(0).getTotalNotCitiesPopulation(),  1189851466 , "First Entry Capital City Report - population is not true.");
+
     }
 
     @Test
@@ -515,6 +615,12 @@ void get_displayCitiesContinent()     {
             assertTrue(columnPresentLong(c.getTotalPopulation()), "Total Population of each Country should be present.");
             assertTrue(columnPresentLong(c.getTotalCitiesPopulation()), "Total Cities Population Population  should be present.");
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(city.get(0).getCountryName(), "China", "First Entry Rural Urban Report - country name is not true.");
+        assertEquals(city.get(0).getTotalPopulation(),  463753554000L, "First Entry Capital City Report - population is not true.");
+        assertEquals(city.get(0).getTotalCitiesPopulation(), 175953614, "First Entry Rural Urban Report - continent name is not true.");
+        assertEquals(city.get(0).getTotalNotCitiesPopulation(),  463577600386L , "First Entry Capital City Report - population is not true.");
+
     }
 
 
@@ -536,6 +642,9 @@ void get_displayCitiesContinent()     {
         for (Country c : summary) {
             assertTrue(columnPresentLong(c.getGenPop()), "Country name should be present.");
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(summary.get(0).getGenPop(), 6078749450L, "Summary report of world population is not true.");
+
     }
 
     @Test
@@ -553,6 +662,10 @@ void get_displayCitiesContinent()     {
         for (Country c : summary) {
             assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(summary.get(0).getContinent(),  "Asia", "Summary report of continent population is not true.");
+        assertEquals(summary.get(0).getGenPop(),  3705025700L, "Summary report of continent population is not true.");
+
     }
     @Test
     void get_displaySummaryRegion()
@@ -569,6 +682,10 @@ void get_displayCitiesContinent()     {
         for (Country c : summary) {
             assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(summary.get(0).getRegion(),  "Eastern Asia", "Summary report of continent population is not true.");
+        assertEquals(summary.get(0).getGenPop(),  1507328000L, "Summary report of continent population is not true.");
+
     }
     @Test
     void get_displaySummaryCountry()
@@ -585,6 +702,10 @@ void get_displayCitiesContinent()     {
         for (Country c : summary) {
             assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(summary.get(0).getName(),  "China", "Summary report of Country population is not true.");
+        assertEquals(summary.get(0).getGenPop(),  1277558000L, "Summary report of country population is not true.");
+
     }
     @Test
     void get_displaySummaryDistrict()
@@ -601,6 +722,10 @@ void get_displayCitiesContinent()     {
         for (City c : summary) {
             assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(summary.get(0).getDistrict(),  "São Paulo", "Summary report of district population is not true.");
+        assertEquals(summary.get(0).getGenPop(),  26316966, "Summary report of continent population is not true.");
+
     }
     @Test
     void get_displaySummaryCity()
@@ -617,10 +742,14 @@ void get_displayCitiesContinent()     {
         for (City c : summary) {
             assertTrue(columnPresentLong(c.getGenPop()), "Total Population should be present.");
         }
+        // Check The first entry of country report data is True as Expected.
+        assertEquals(summary.get(0).getCityName(),  "Mumbai (Bombay)", "Summary report of city population is not true.");
+        assertEquals(summary.get(0).getPopulation(),  10500000, "Summary report of continent population is not true.");
+
     }
-//    @AfterAll
-//    static void disconnect(){
-//        app.disconnect();
-//    }
+    @AfterAll
+    static void disconnect(){
+        app.disconnect();
+    }
 
 }

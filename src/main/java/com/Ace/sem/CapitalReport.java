@@ -258,9 +258,10 @@ public class CapitalReport {
 
                 }
 
+                String CapitalCity = nullChecker(cpr.getCityName());
                 String capitals_info =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
-                                cpr.getCityName(),
+                                CapitalCity,
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
                                 cpr.getRegion(),
@@ -271,6 +272,14 @@ public class CapitalReport {
         } catch (Exception e) {
             //System.out.println(e.getMessage());
             System.out.println("Nothing to display : No Capital data from regions can be extracted.[capital report]");
+        }
+    }
+    public String nullChecker(String checkElement){
+        if(checkElement == null || checkElement == " " || checkElement == ""){
+            return "-";
+        }
+        else{
+            return checkElement;
         }
     }
 }
