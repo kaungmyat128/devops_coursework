@@ -437,7 +437,7 @@ public class CityReport {
      * @return
      */
     public String nullChecker(String checkElement){
-        if(checkElement == null || checkElement == " "){
+        if(checkElement == null || checkElement == " " || checkElement == ""){
             return "-";
         }
         else{
