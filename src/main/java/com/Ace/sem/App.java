@@ -229,7 +229,7 @@ public class App {
             System.exit(-1);
         }
 
-        int retries = 20;
+        int retries = 10;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
             try {
