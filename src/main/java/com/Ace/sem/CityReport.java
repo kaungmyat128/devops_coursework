@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Creates methods to write sql queries and create arraylists of countries population
+ * Creates methods to write sql queries and create arraylists of cities population
  * This Java Class File contains 5 java methods that contains 2 parameters - database connection & int limit parameters -
  * getCityPop(), getCityPopByContinent(), getCityPopByRegion() , getCityPopByCountry(), getCityPopByDistrict()
  * This class also contains other 5 java methods that contains ArrayList Parameter to display results
@@ -20,8 +20,8 @@ public class CityReport {
     String DistrictName = null;
 
     /**
-     * getWorldPopByCity() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in the world
+     * getCityPop() method contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated cities in the world
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -58,14 +58,14 @@ public class CityReport {
             return worldPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by World");
+            System.out.println("Failed to get Population of City by World [city report]");
             return null;
         }
     }
 
     /**
      * getCityPopByContinent() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each Continent
+     * write sql query to produce 'ALL or Top N most populated cities in each Continent
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -105,14 +105,14 @@ public class CityReport {
             return continentPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Continent");
+            System.out.println("Failed to get Population of City by Continent [city report]");
             return null;
         }
     }
 
     /**
      * getCityPopByRegion() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each Region
+     * write sql query to produce 'ALL or Top N most populated cities in each Region
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -152,14 +152,14 @@ public class CityReport {
             return regionPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Region");
+            System.out.println("Failed to get Population of City by Region [city report]");
             return null;
         }
     }
 
     /**
      * getCityPopByCountry() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each Country
+     * write sql query to produce 'ALL or Top N most populated cities in each Country
      * with descending order of population'
      * Then return the data as array list.
      * */
@@ -197,17 +197,18 @@ public class CityReport {
             return countryPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Country");
+            System.out.println("Failed to get Population of City by Country [city report]");
             return null;
         }
     }
 
     /**
      * getCityPopByDistrict() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries in each District
+     * write sql query to produce 'ALL or Top N most populated cities in each District
      * with descending order of population'
      * Then return the data as array list.
-     * */    public ArrayList<City> getCityPopByDistrict(Connection con, int lim) {
+     * */
+    public ArrayList<City> getCityPopByDistrict(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -244,7 +245,7 @@ public class CityReport {
             return districtPop;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City By District");
+            System.out.println("Failed to get Population of City By District [city report]");
             return null;
         }
     }
@@ -254,225 +255,193 @@ public class CityReport {
      *
      * @param cities_list
      */
-    public void displayCities(ArrayList<City> cities_list)
-    {
-        // Print header
+    public void displayCities(ArrayList<City> cities_list) {
+        try{
+            // Print header
+            System.out.println("============================================================");
 
-        System.out.println("============================================================");
-
-        System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
-        // Loop over all cities population in the list
-        for (City cityR : cities_list)
-        {
-            String countries_info =
-                    String.format("%-40s |%-30s |%-30s |%-20s",
-                            cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
-                            formatPopulation.humanReadableFormat(cityR.getPopulation()));
-            System.out.println(countries_info);
+            System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+            // Loop over all cities population in the list
+            for (City cityR : cities_list)
+            {
+                String countries_info =
+                        String.format("%-40s |%-30s |%-30s |%-20s",
+                                cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
+                                formatPopulation.humanReadableFormat(cityR.getPopulation()));
+                System.out.println(countries_info);
+            }
+            System.out.println();
+        }catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Cities Data found. [city report]");
         }
-        System.out.println("============================================================");
     }
 
     /** display cities report based on continents using getter() and setter() methods
      * Use if condition to check whether current continent change and print out current continent as title
      * @param continent_list
      */
-    public void displayCityContinents(ArrayList<City> continent_list)
-    {
-        // Print header
-        System.out.println("============================================================");
+    public void displayCityContinents(ArrayList<City> continent_list) {
+        try{
+            // Print header
+            System.out.println("============================================================");
 
-        // Initialize Current Continent variable
-        String currentContinent = null;
+            // Initialize Current Continent variable
+            String currentContinent = null;
 
-        // Loop over all continents and cities population in the list
-        for (City cityR : continent_list)
-        {
-            if(!cityR.getContinents().equals(currentContinent)){
-                System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
-                System.out.println("===========================================");
-                currentContinent = cityR.getContinents();
-                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "Continent", "District", "Population"));
-            }
+            // Loop over all continents and cities population in the list
+            for (City cityR : continent_list)
+            {
+                if(!cityR.getContinents().equals(currentContinent)){
+                    System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
+                    System.out.println("===========================================");
+                    currentContinent = cityR.getContinents();
+                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "Continent", "District", "Population"));
+                }
 
-            //checking null value and transforming them to blank in district
-            if(cityR.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cityR.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cityR.getDistrict();
-            }
+                //checking null value and transforming them to blank in district
+                DistrictName = nullChecker(cityR.getDistrict());
+                CityName = nullChecker(cityR.getCityName());
 
-            //checking null values and transforming them to blank in city
-            if(cityR.getCityName() == null) {
-                CityName = "blank";
+                String continent_info =
+                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                                CityName, cityR.getCountryName(), cityR.getContinents(),
+                                DistrictName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
+                System.out.println(continent_info);
             }
-            else if(cityR.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cityR.getDistrict();
-            }
-
-            String continent_info =
-                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                            CityName, cityR.getCountryName(), cityR.getContinents(),
-                            DistrictName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
-            System.out.println(continent_info);
+            System.out.println();
+        }catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Cities Data found for Each Continent. [city report]");
         }
-        System.out.println("============================================================");
+
     }
 
     /** display cities report based on regions using getter() and setter() methods
      * Use if condition to check whether current region change and print out current region as title
      * @param region_list
      */
-    public void displayCityRegion(ArrayList<City> region_list)
-    {
-        // Print header
-        System.out.println("============================================================");
-        // Initialize Current Region variable
-        String currentRegion = null;
+    public void displayCityRegion(ArrayList<City> region_list)     {
+        try{
+            // Print header
+            System.out.println("============================================================");
+            // Initialize Current Region variable
+            String currentRegion = null;
 
-        // Loop over all region population in the list
-        for (City cityR : region_list){
-            if(!cityR.getRegion().equals(currentRegion)){
-                System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
-                System.out.println("===========================================");
-                currentRegion = cityR.getRegion();
-                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
-            }
-            //checking null value and transforming them to blank in district
-            if(cityR.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cityR.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cityR.getDistrict();
-            }
+            // Loop over all region population in the list
+            for (City cityR : region_list){
+                if(!cityR.getRegion().equals(currentRegion)){
+                    System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
+                    System.out.println("===========================================");
+                    currentRegion = cityR.getRegion();
+                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
+                }
+                //checking null value and transforming them to blank in district
+                DistrictName = nullChecker(cityR.getDistrict());
+                CityName = nullChecker(cityR.getCityName());
 
-            //checking null values and transforming them to blank in city
-            if(cityR.getCityName() == null) {
-                CityName = "blank";
+                String region_info =
+                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                                CityName, cityR.getCountryName(), DistrictName,
+                                cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
+                System.out.println(region_info);
             }
-            else if(cityR.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cityR.getDistrict();
-            }
-            String region_info =
-                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                            CityName, cityR.getCountryName(), DistrictName,
-                            cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
-            System.out.println(region_info);
+            System.out.println();
+        }catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Cities Data found for each Region. [city report]");
         }
-        System.out.println("============================================================");
+
     }
 
     /** display cities report based on countries using getter() and setter() methods
      * Use if condition to check whether current country change and print out current country as title
      * @param countries_list
      */
-    public void displayCityCountries(ArrayList<City> countries_list)
-    {
-        // Print header
-        System.out.println("============================================================");
-        // Initialize Current Country variable
-        String currentCountry = null;
+    public void displayCityCountries(ArrayList<City> countries_list)     {
+        try{
+            // Print header
+            System.out.println("============================================================");
+            // Initialize Current Country variable
+            String currentCountry = null;
 
-        // Loop over all countries population in the list
-        for (City cty : countries_list){
-            if (!cty.getCountryName().equals(currentCountry)){
-                System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
-                System.out.println("===========================================");
-                currentCountry = cty.getCountryName();
-                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
-            }
+            // Loop over all countries population in the list
+            for (City cty : countries_list){
+                if (!cty.getCountryName().equals(currentCountry)){
+                    System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
+                    System.out.println("===========================================");
+                    currentCountry = cty.getCountryName();
+                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                }
 
-            //checking null value and transforming them to blank in district
-            if(cty.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cty.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cty.getDistrict();
-            }
+                //checking null value and transforming them to blank in district
+                DistrictName = nullChecker(cty.getDistrict());
+                CityName = nullChecker(cty.getCityName());
 
-            //checking null values and transforming them to blank in city
-            if(cty.getCityName() == null) {
-                CityName = "blank";
+                String countries_info =
+                        String.format("%-40s |%-30s |%-30s |%-20s",
+                                CityName, cty.getCountryName(), DistrictName,
+                                formatPopulation.humanReadableFormat(cty.getPopulation()));
+                System.out.println(countries_info);
             }
-            else if(cty.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cty.getDistrict();
-            }
-
-            String countries_info =
-                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                            CityName, cty.getCountryName(), DistrictName,
-                            formatPopulation.humanReadableFormat(cty.getPopulation()));
-            System.out.println(countries_info);
+            System.out.println();
+        }catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Cities Data found for each country. [city report]");
         }
-        System.out.println("============================================================");
+
     }
 
     /** display cities report based on districts using getter() and setter() methods
      * Use if condition to check whether current districts change and print out current districts as title
      * @param districts_list
      */
-    public void displayCityDistrict(ArrayList<City> districts_list)
-    {
-        // Print header
-        System.out.println("============================================================");
-        // Initialize Current Country variable
-        String currentDistrict = null;
+    public void displayCityDistrict(ArrayList<City> districts_list)     {
+        try {
+            // Print header
+            System.out.println("============================================================");
+            // Initialize Current Country variable
+            String currentDistrict = null;
 
-        for (City cty : districts_list){
-            if (!cty.getDistrict().equals(currentDistrict)){
-                System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
-                System.out.println("===========================================");
-                currentDistrict = cty.getDistrict();
-                System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
-            }
+            for (City cty : districts_list){
+                if (!cty.getDistrict().equals(currentDistrict)){
+                    System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
+                    System.out.println("===========================================");
+                    currentDistrict = cty.getDistrict();
+                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                }
 
-            //checking null value and transforming them to blank in district
-            if(cty.getDistrict() == null) {
-                DistrictName = "blank";
-            }
-            else if(cty.getDistrict() == " "){
-                DistrictName = "blank";
-            }
-            else{
-                DistrictName = cty.getDistrict();
-            }
+                //checking null value and transforming them to blank in district
+                DistrictName = nullChecker(cty.getDistrict());
+                CityName = nullChecker(cty.getCityName());
 
-            //checking null values and transforming them to blank in city
-            if(cty.getCityName() == null) {
-                CityName = "blank";
+                String countries_info =
+                        String.format("%-40s |%-30s |%-30s |%-20s",
+                                CityName, cty.getCountryName(), DistrictName,
+                                formatPopulation.humanReadableFormat(cty.getPopulation()));
+                System.out.println(countries_info);
             }
-            else if(cty.getCityName() == " "){
-                CityName = "blank";
-            }
-            else{
-                CityName = cty.getDistrict();
-            }
-
-            String countries_info =
-                    String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                            CityName, cty.getCountryName(), DistrictName,
-                            formatPopulation.humanReadableFormat(cty.getPopulation()));
-            System.out.println(countries_info);
+            System.out.println();
+        }catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No City Data found for each district. [city report]");
         }
-        System.out.println("============================================================");
+
+    }
+
+    /**
+     * checks if given value is null or blank
+     * return "-" if TRUE
+     * return given value if FALSE
+     * @param checkElement
+     * @return
+     */
+    public String nullChecker(String checkElement){
+        if(checkElement == null || checkElement == " " || checkElement == ""){
+            return "-";
+        }
+        else{
+            return checkElement;
+        }
     }
 }
