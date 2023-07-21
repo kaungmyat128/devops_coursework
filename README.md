@@ -4,10 +4,12 @@
 
 <br>This is a coursework repository for the Devops Subject [Group 3]
 
-<br>Master Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
-<br>Develop Build Status: ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
+<br><b>Master Build Status:  </b>![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
+<br><b>Develop Build Status: </b> ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
 <br><b>License Status: </b> [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
+<br><b>Code Coverage:</b>[![codecov](https://codecov.io/github/kaungmyat128/devops_coursework/branch/hotfix/graph/badge.svg?token=H47J5ZLWRO)](https://codecov.io/github/kaungmyat128/devops_coursework)
 <br><b>Release Status:</b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
+
 
 &emsp; We are working for the organization that require reporting on world population information.
 We have been ask to implement the new system which can easily access to the information of the population.
