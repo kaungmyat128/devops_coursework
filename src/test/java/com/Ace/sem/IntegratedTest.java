@@ -409,8 +409,8 @@ void get_displayCitiesContinent()     {
             }
             // Check The first entry of country report data is True as Expected.
             assertEquals(language.get(0).getLanguage(), "Chinese", "First Entry Language Report - Language is not true.");
-            assertEquals(language.get(0).getTotal_Population(), 1968265500, "First Entry Language Report - total population is not true.");
-            assertEquals(language.get(0).getPercentage(), 32.3794, "First Entry Language Report - percentage is not true.");
+            assertEquals(language.get(0).getTotal_Population(), 1191843539, "First Entry Language Report - total population is not true.");
+            assertEquals(language.get(0).getPercentage(), 19.6067225, "First Entry Language Report - percentage is not true.");
 
         }catch (Exception e) {
             System.out.println(e.getMessage());

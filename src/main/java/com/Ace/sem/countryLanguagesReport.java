@@ -21,7 +21,7 @@ public class countryLanguagesReport {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement with no limit - fetch all queries
-            String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS World_Population FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
+            String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
 
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
@@ -32,7 +32,7 @@ public class countryLanguagesReport {
             while (query1.next()) {
                 Language languagePop = new Language();
                 languagePop.setLanguage(query1.getString("Language"));
-                languagePop.setTotal_Population(query1.getLong("TotalPopulation"));
+                languagePop.setTotal_Population(query1.getLong("Total_Population"));
                 languagePop.setPercentage(query1.getDouble("Percentage"));
                 LanguagePopulation.add(languagePop);
             }
