@@ -21,12 +21,7 @@ public class countryLanguagesReport {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement with no limit - fetch all queries
-            String strSelect = "SELECT countrylanguage.Language AS Language, "
-                    + "SUM(country.Population) AS TotalPopulation, "
-                    + "(SUM(country.Population) / (SELECT SUM(country.Population) FROM country)) * 100 AS Percentage "
-                    + "FROM countrylanguage JOIN country ON countrylanguage.CountryCode = country.Code "
-                    + "WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') "
-                    + "GROUP BY Language ORDER BY TotalPopulation DESC";
+            String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS World_Population FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
 
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
