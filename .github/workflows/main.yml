@@ -34,7 +34,7 @@ jobs:
           distribution: 'adopt'
       - name: Integration Tests
         run: |
-          docker build -t database .\world-db\
+          docker build -t database ./world-db
           docker run --name world -dp 33060:3306 database
           mvn -Dtest=com.Ace.sem.IntegratedTest test
           docker stop world
