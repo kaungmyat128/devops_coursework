@@ -241,7 +241,7 @@ public class App {
                     // Connect to database in localhost
                     con = DriverManager.getConnection("jdbc:mysql://db:3306/world", "root", "example");
                 } else{
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "example");
+                    con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
                 }
                System.out.println("Successfully connected");
                 break;
