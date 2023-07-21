@@ -237,9 +237,13 @@ public class App {
                 Thread.sleep(30000);
                 // Connect to database
                //con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
-                // Connect to database in localhost
-               con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
-                System.out.println("Successfully connected");
+                if (i%2 == 0) {
+                    // Connect to database in localhost
+                    con = DriverManager.getConnection("jdbc:mysql://db:3306/world", "root", "example");
+                } else{
+                    con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "example");
+                }
+               System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
