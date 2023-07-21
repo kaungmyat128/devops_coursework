@@ -40,14 +40,7 @@ jobs:
 #          docker stop world
 #          docker rm world
 #          docker image rm database
-name: Integration Tests
 
-on:
-  push:
-    branches:
-      - main
-
-jobs:
   integration-tests:
     name: Integration Tests
     runs-on: ubuntu-20.04
