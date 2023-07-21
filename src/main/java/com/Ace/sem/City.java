@@ -7,6 +7,8 @@ package com.Ace.sem;
 public class City {
 
     // Declare Variables related to City Information, Country Code, District, Population, Country & Region .
+
+    private long genPop;
     private String CityName;
     private String CountryCode;
     private String District;
@@ -14,7 +16,17 @@ public class City {
     private String CountryName;
     private String Continents;
     private String Region;
+    private long totalPopulation;
+    private long totalCitiesPopulation;
+    private long totalNotCitiesPopulation;
 
+    public long getGenPop() {
+        return genPop;
+    }
+
+    public void setGenPop(long genPop) {
+        this.genPop = genPop;
+    }
     // Getter method for CityName
     public String getCityName() {
         return CityName;
@@ -33,16 +45,6 @@ public class City {
     // Setter method for District
     public void setDistrict(String District) {
         this.District = District;
-    }
-
-    // Getter method for CountryCode
-    public String getCountryCode() {
-        return CountryCode;
-    }
-
-    // Setter method for CountryCode
-    public void setCountryCode(String CountryCode) {
-        this.CountryCode = CountryCode;
     }
 
     // Getter method for Population
@@ -85,6 +87,34 @@ public class City {
         this.Region = Region;
     }
 
+    // Getter method for Total Population
+    public long getTotalPopulation() {
+        return totalPopulation;
+    }
+
+    // Setter method for Total Population
+    public void setTotalPopulation(long totalPopulation) {
+        this.totalPopulation = totalPopulation;
+    }
+
+    // Getter method for Total Population
+    public long getTotalCitiesPopulation() {
+        return totalCitiesPopulation;
+    }
+
+    // Setter method for Total Population
+    public void setTotalCitiesPopulation(long totalCitiesPopulation) {
+        this.totalCitiesPopulation = totalCitiesPopulation;
+    }
+    // Getter method for Total Population
+    public long getTotalNotCitiesPopulation() {
+        return totalNotCitiesPopulation;
+    }
+
+    // Setter method for Total Population
+    public void setTotalNotCitiesPopulation(long totalNotCitiesPopulation) {
+        this.totalNotCitiesPopulation = totalNotCitiesPopulation;
+    }
 }
 
 
