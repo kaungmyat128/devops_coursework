@@ -18,16 +18,16 @@ public class SummaryReport {
         try {
 
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             // Create string for SQL statement of population all around the world
             String strSelect =
                     "SELECT SUM(Population) AS world_pop FROM country";
             // Execute SQL statement
-            ResultSet pop = stmt.executeQuery(strSelect);
-            List<Country> worldPop = new ArrayList<>();
+            final ResultSet pop = stmt.executeQuery(strSelect);
+            final List<Country> worldPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cou = new Country();
+                final Country cou = new Country();
                 cou.setGenPop(pop.getLong("world_pop"));
                 worldPop.add(cou);
             }
@@ -51,17 +51,17 @@ public class SummaryReport {
         try {
 
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             // Create string for SQL statement of population from each continent
-            String strSelect =
+            final String strSelect =
                     "SELECT Continent, SUM(Population) AS cont_pop FROM country " +
                             "GROUP by Continent ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
-            ResultSet pop = stmt.executeQuery(strSelect);
-            List<Country> contPop = new ArrayList<>();
+            final ResultSet pop = stmt.executeQuery(strSelect);
+            final List<Country> contPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cou = new Country();
+                final Country cou = new Country();
                 cou.setContinent(pop.getString("continent"));
                 cou.setGenPop(pop.getLong("cont_pop"));
                 contPop.add(cou);
@@ -86,17 +86,17 @@ public class SummaryReport {
         try {
 
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             // Create string for SQL statement of population from each region
-            String strSelect =
+            final String strSelect =
                     "SELECT Region, SUM(Population) AS reg_pop FROM country " +
                             "GROUP by Region ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
-            ResultSet pop = stmt.executeQuery(strSelect);
-            List<Country> regPop = new ArrayList<>();
+            final ResultSet pop = stmt.executeQuery(strSelect);
+            final List<Country> regPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cou = new Country();
+                final Country cou = new Country();
                 cou.setRegion(pop.getString("region"));
                 cou.setGenPop(pop.getLong("reg_pop"));
                 regPop.add(cou);
@@ -121,17 +121,17 @@ public class SummaryReport {
         try {
 
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             // Create string for SQL statement of population from each region
-            String strSelect =
+            final String strSelect =
                     "SELECT Name, Population AS reg_pop FROM country " +
                             "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
-            ResultSet pop = stmt.executeQuery(strSelect);
-            List<Country> countryPop = new ArrayList<>();
+            final ResultSet pop = stmt.executeQuery(strSelect);
+            final List<Country> countryPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cou = new Country();
+                final Country cou = new Country();
                 cou.setName(pop.getString("Name"));
                 cou.setGenPop(pop.getLong("reg_pop"));
                 countryPop.add(cou);
@@ -156,17 +156,17 @@ public class SummaryReport {
         try {
 
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             // Create string for SQL statement of population from each district
-            String strSelect =
+            final String strSelect =
                     "SELECT District, SUM(Population) AS dist_pop FROM city " +
                             "GROUP by District ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
-            ResultSet pop = stmt.executeQuery(strSelect);
-            ArrayList<City> distPop = new ArrayList<>();
+            final ResultSet pop = stmt.executeQuery(strSelect);
+            final ArrayList<City> distPop = new ArrayList<>();
 
             while (pop.next()) {
-                City cty = new City();
+                final City cty = new City();
                 cty.setDistrict(pop.getString("District"));
                 cty.setGenPop(pop.getLong("dist_pop"));
                 distPop.add(cty);
@@ -191,17 +191,17 @@ public class SummaryReport {
         try {
 
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             // Create string for SQL statement of population from each city
-            String strSelect =
+            final String strSelect =
                     "SELECT Name, Population FROM city " +
                             "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
-            ResultSet pop = stmt.executeQuery(strSelect);
-            ArrayList<City> cityPop = new ArrayList<>();
+            final ResultSet pop = stmt.executeQuery(strSelect);
+            final ArrayList<City> cityPop = new ArrayList<>();
 
             while (pop.next()) {
-                City cty = new City();
+                final City cty = new City();
                 cty.setCityName(pop.getString("Name"));
                 cty.setPopulation(pop.getInt("Population"));
                 cityPop.add(cty);
@@ -224,10 +224,10 @@ public class SummaryReport {
     {
         try{
             // Loop over all data in the list
-            for (Country cp : popList)
+            for (final Country cp : popList)
             {
                 // Format and print of data
-                String worldPopInfo =
+                final String worldPopInfo =
                         String.format("%-20s| %-20s",
                                 "World Population",
                                 humanReadableFormatLong(cp.getGenPop()));
@@ -249,11 +249,11 @@ public class SummaryReport {
     {
         try{
             // Loop over all data in the list
-            for (Country cp : continentsList)
+            for (final Country cp : continentsList)
             {
                 // Formatting and printing data
 
-                String contPopInfo =
+                final String contPopInfo =
                         String.format("%-30s| %-30s",
                                 cp.getContinent(),
                                 humanReadableFormatLong(cp.getGenPop()));
@@ -275,11 +275,11 @@ public class SummaryReport {
     {
         try{
             // Loop over all data in the list
-            for (Country cp : regionList)
+            for (final Country cp : regionList)
             {
                 // Formatting and printing data
 
-                String regPopInfo =
+                final String regPopInfo =
                         String.format("%-30s| %-30s",
                                 cp.getRegion(),
                                 humanReadableFormatLong(cp.getGenPop()));
@@ -301,11 +301,11 @@ public class SummaryReport {
     {
         try {
             // Loop over all data in the list
-            for (Country cp : contriesList)
+            for (final Country cp : contriesList)
             {
                 // Formatting and printing data
 
-                String couPopInfo =
+                final String couPopInfo =
                         String.format("%-30s| %-30s",
                                 cp.getName(),
                                 humanReadableFormatLong(cp.getGenPop()));
@@ -327,11 +327,11 @@ public class SummaryReport {
     {
         try{
             // Loop over all data in the list
-            for (City ct : districtsList)
+            for (final City ct : districtsList)
             {
                 // Formatting and printing data
 
-                String distPopInfo =
+                final String distPopInfo =
                         String.format("%-30s| %-30s",
                                 ct.getDistrict(),
                                 humanReadableFormatLong(ct.getGenPop()));
@@ -354,11 +354,11 @@ public class SummaryReport {
     {
         try{
             // Loop over all data in the list
-            for (City ct : citiesList)
+            for (final City ct : citiesList)
             {
                 // Formatting and printing data
 
-                String cityPopInfo =
+                final String cityPopInfo =
                         String.format("%-30s| %-30s",
                                 ct.getCityName(),
                                 humanReadableFormatLong(ct.getPopulation()));
@@ -380,7 +380,7 @@ public class SummaryReport {
      * @return
      */
     public String humanReadableFormatLong(final long population){
-        NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
+        final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
         return numf.format(population);
     }
 

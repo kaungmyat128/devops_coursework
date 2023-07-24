@@ -20,18 +20,18 @@ public class CountryLanguagesReport {
     public List<Language> getLanguagesReport(final Connection con) {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             // Create string for SQL statement with no limit - fetch all queries
             String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
 
             // Execute SQL statement
-            ResultSet query1 = stmt.executeQuery(strSelect);
+            final ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list and add query result into array list
-            List<Language> lanPop = new ArrayList();
+            final List<Language> lanPop = new ArrayList();
 
             // Extract population of countries information and store into array list
             while (query1.next()) {
-                Language languagePop = new Language();
+                final Language languagePop = new Language();
                 languagePop.setLanguage(query1.getString("Language"));
                 languagePop.setTotalPopulation(query1.getLong("Total_Population"));
                 languagePop.setPercentage(query1.getDouble("Percentage"));
@@ -58,10 +58,10 @@ public class CountryLanguagesReport {
             System.out.println("============================================================");
             System.out.println(String.format("%-40s | %-30s", "Language", "Total Population of People who Speak This Language"));
             // Loop over all cities population in the list
-            for (Language l : arrList)
+            for (final Language l : arrList)
             {
-                String percent = String.format("%05.2f",l.getPercentage()) + "%";
-                String lanPop =
+                final String percent = String.format("%05.2f",l.getPercentage()) + "%";
+                final String lanPop =
                         String.format("%-40s | %-20s ( %-5s )",
                                 l.getLanguage(), humanReadableFormat(l.getTotalPopulation()),
                                 percent);
@@ -82,7 +82,7 @@ public class CountryLanguagesReport {
      * @return
      */
     public String humanReadableFormat(final long population){
-        NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
+        final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
         return numf.format(population);
     }
 }

@@ -29,7 +29,7 @@ public class CountryReport {
         try {
 
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries
@@ -45,9 +45,9 @@ public class CountryReport {
                                 + "ORDER BY country.Population DESC";
             }
             // Execute SQL statement
-            ResultSet query1 = stmt.executeQuery(strSelect);
+            final ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather country data based on population
-            List<Country> topCounPop = new ArrayList<>();
+            final List<Country> topCounPop = new ArrayList<>();
             return storeIntoArraylist(topCounPop, query1);
 
         }
@@ -68,7 +68,7 @@ public class CountryReport {
     public List<Country> getCountriesContinent( final Connection con, final int lim) {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             // Create string for SQL statement
             if (lim>0) {
@@ -87,9 +87,9 @@ public class CountryReport {
                                 + "ORDER BY Continent ASC, Population DESC";
             }
             // Execute SQL statement
-            ResultSet query2 = stmt.executeQuery(strSelect);
+            final ResultSet query2 = stmt.executeQuery(strSelect);
             // Creates array to gather populated country data based on each continent
-            List<Country> topCounPop = new ArrayList<>();
+            final List<Country> topCounPop = new ArrayList<>();
             return storeIntoArraylist(topCounPop, query2);
 
         } catch (Exception e) {
@@ -109,7 +109,7 @@ public class CountryReport {
         try {
 
                 // Create an SQL statement
-                Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
                 String strSelect = null;
                 // Create string for SQL statement
             if (lim>0) {
@@ -128,9 +128,9 @@ public class CountryReport {
                                 + "ORDER BY Region ASC, Population DESC";
             }
             // Execute SQL statement
-            ResultSet query3 = stmt.executeQuery(strSelect);
+            final ResultSet query3 = stmt.executeQuery(strSelect);
             // Creates array to gather countries population data based on each region
-            List<Country> topCounPop = new ArrayList<>();
+            final List<Country> topCounPop = new ArrayList<>();
             return storeIntoArraylist(topCounPop, query3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -149,7 +149,7 @@ public class CountryReport {
         try{
             // Extract population of countries information and store into array list
             while (qry.next()) {
-                Country cou = new Country();
+                final Country cou = new Country();
                 cou.setCode(qry.getString("Code"));
                 cou.setName(qry.getString("Name"));
                 cou.setContinent(qry.getString("Continent"));
@@ -180,10 +180,10 @@ public class CountryReport {
 
                 System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
                 // Loop over all countries population in the list
-                for (Country cp : countriesList)
+                for (final Country cp : countriesList)
                 {
                     capital = nullChecker(cp.getCapital());
-                    String countriesInfo =
+                    final String countriesInfo =
                             String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                     cp.getCode(),
                                     cp.getName(),
@@ -213,7 +213,7 @@ public class CountryReport {
             String currentContinent = null;
 
             // Loop over all countries population in the list
-            for (Country cp : countriesList)
+            for (final Country cp : countriesList)
             {
                 capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
@@ -226,7 +226,7 @@ public class CountryReport {
 
                 }
 
-                String countriesInfo =
+                final String countriesInfo =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 humanReadableFormat(cp.getPopulation()), cp.getCapital());
@@ -252,7 +252,7 @@ public class CountryReport {
             String currentRegion = null;
 
             // Loop over all countries population in the list
-            for (Country cp : countriesList)
+            for (final Country cp : countriesList)
             {
                 capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
@@ -265,7 +265,7 @@ public class CountryReport {
 
                 }
 
-                String countriesInfo =
+                final String countriesInfo =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 humanReadableFormat(cp.getPopulation()), capital);
@@ -283,7 +283,7 @@ public class CountryReport {
      * e.g. 3242344 => 3,242,344
      */
     public static String humanReadableFormat(final int population){
-            NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
+        final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
             return numf.format(population);
         }
 

@@ -27,7 +27,7 @@ public class CityReport {
     public List<City> getCityPop(final Connection con, final int lim) {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities
@@ -43,11 +43,11 @@ public class CityReport {
                                 + "ORDER BY Population DESC";
             }
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information from database
-            List<City> worldPop = new ArrayList();
+            final List<City> worldPop = new ArrayList();
             while (rset.next()) {
-                City world = new City();
+                final City world = new City();
                 world.setCityName(rset.getString("CityName"));
                 world.setCountryName(rset.getString("CountryName"));
                 world.setDistrict(rset.getString("District"));
@@ -71,7 +71,7 @@ public class CityReport {
     public List<City> getCityPopByContinent(final Connection con, final int lim) {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each continent
@@ -89,11 +89,11 @@ public class CityReport {
             }
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Continent from Database
-            List<City> continentPop = new ArrayList();
+            final List<City> continentPop = new ArrayList();
             while (rset.next()) {
-                City continent = new City();
+                final City continent = new City();
                 continent.setCityName(rset.getString("CityName"));
                 continent.setCountryName(rset.getString("CountryName"));
                 continent.setDistrict(rset.getString("District"));
@@ -118,7 +118,7 @@ public class CityReport {
     public List<City> getCityPopByRegion(final Connection con, final int lim) {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each region
@@ -136,11 +136,11 @@ public class CityReport {
             }
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Region From Database
-            List<City> regionPop = new ArrayList();
+            final List<City> regionPop = new ArrayList();
             while (rset.next()) {
-                City region = new City();
+                final City region = new City();
                 region.setCityName(rset.getString("CityName"));
                 region.setCountryName(rset.getString("CountryName"));
                 region.setDistrict(rset.getString("District"));
@@ -165,7 +165,7 @@ public class CityReport {
     public List<City> getCityPopByCountry(final Connection con, final int lim) {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each country
@@ -182,11 +182,11 @@ public class CityReport {
                                 + "ORDER BY CountryName ASC, Population DESC";
             }
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each country From Database
-            List<City> countryPop = new ArrayList();
+            final List<City> countryPop = new ArrayList();
             while (rset.next()) {
-                City country = new City();
+                final City country = new City();
                 country.setCityName(rset.getString("CityName"));
                 country.setCountryName(rset.getString("CountryName"));
                 country.setDistrict(rset.getString("District"));
@@ -210,7 +210,7 @@ public class CityReport {
     public List<City> getCityPopByDistrict(final Connection con, final int lim) {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each district
@@ -230,11 +230,11 @@ public class CityReport {
 
             }
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each District From Database
-            List<City> districtPop = new ArrayList();
+            final List<City> districtPop = new ArrayList();
             while (rset.next()) {
-                City district = new City();
+                final City district = new City();
                 district.setCityName(rset.getString("CityName"));
                 district.setCountryName(rset.getString("CountryName"));
                 district.setDistrict(rset.getString("District"));
@@ -261,9 +261,9 @@ public class CityReport {
 
             System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             // Loop over all cities population in the list
-            for (City cityR : citiesList)
+            for (final City cityR : citiesList)
             {
-                String countriesInfo =
+                final String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
                                 CountryReport.humanReadableFormat(cityR.getPopulation()));
@@ -289,7 +289,7 @@ public class CityReport {
             String currentContinent = null;
 
             // Loop over all continents and cities population in the list
-            for (City cityR : continentList)
+            for (final City cityR : continentList)
             {
                 if(!cityR.getContinents().equals(currentContinent)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
@@ -302,7 +302,7 @@ public class CityReport {
                 districtName = nullChecker(cityR.getDistrict());
                 cityName = nullChecker(cityR.getCityName());
 
-                String continentInfo =
+                final String continentInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                                 cityName, cityR.getCountryName(), cityR.getContinents(),
                                 districtName, CountryReport.humanReadableFormat(cityR.getPopulation()));
@@ -328,7 +328,7 @@ public class CityReport {
             String currentRegion = null;
 
             // Loop over all region population in the list
-            for (City cityR : regionList){
+            for (final City cityR : regionList){
                 if(!cityR.getRegion().equals(currentRegion)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
                     System.out.println("===========================================");
@@ -339,7 +339,7 @@ public class CityReport {
                 districtName = nullChecker(cityR.getDistrict());
                 cityName = nullChecker(cityR.getCityName());
 
-                String regionInfo =
+                final String regionInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                                 cityName, cityR.getCountryName(), districtName,
                                 cityR.getRegion(), CountryReport.humanReadableFormat(cityR.getPopulation()));
@@ -365,7 +365,7 @@ public class CityReport {
             String currentCountry = null;
 
             // Loop over all countries population in the list
-            for (City cty : countriesList){
+            for (final City cty : countriesList){
                 if (!cty.getCountryName().equals(currentCountry)){
                     System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                     System.out.println("===========================================");
@@ -377,7 +377,7 @@ public class CityReport {
                 districtName = nullChecker(cty.getDistrict());
                 cityName = nullChecker(cty.getCityName());
 
-                String countriesInfo =
+                final String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));
@@ -402,7 +402,7 @@ public class CityReport {
             // Initialize Current Country variable
             String currentDistrict = null;
 
-            for (City cty : districtsList){
+            for (final City cty : districtsList){
                 if (!cty.getDistrict().equals(currentDistrict)){
                     System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                     System.out.println("===========================================");
@@ -414,7 +414,7 @@ public class CityReport {
                 districtName = nullChecker(cty.getDistrict());
                 cityName = nullChecker(cty.getCityName());
 
-                String countriesInfo =
+                final String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));

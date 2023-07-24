@@ -18,7 +18,7 @@ public class CapitalReport {
     public List<City> getCapitalPopByWorld (final Connection con,final int lim){
         try{
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Capital City
@@ -34,9 +34,9 @@ public class CapitalReport {
                                 "ORDER BY city.Population DESC";
             }
             // Execute SQL statement
-            ResultSet query1 = stmt.executeQuery(strSelect);
+            final ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            List<City> capitalPop = new ArrayList<>();
+            final List<City> capitalPop = new ArrayList<>();
             return capitalArrList(capitalPop, query1);
 
         }
@@ -57,7 +57,7 @@ public class CapitalReport {
     public List<City> getCapitalPopByContinent (final Connection con,final int lim){
         try{
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Capital City
@@ -76,9 +76,9 @@ public class CapitalReport {
                                 "ORDER BY Continent ASC, CapitalPop DESC";
             }
             // Execute SQL statement
-            ResultSet query1 = stmt.executeQuery(strSelect);
+            final ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            List<City> capitalPop = new ArrayList<>();
+            final List<City> capitalPop = new ArrayList<>();
             return capitalArrList(capitalPop, query1);
 
         }
@@ -99,7 +99,7 @@ public class CapitalReport {
     public List<City> getCapitalPopByRegion (final Connection con,final int lim){
         try{
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
                 // Create string for SQL statement with limit 'N' - fetch Top N Populated Capital City
@@ -118,9 +118,9 @@ public class CapitalReport {
                                 "ORDER BY Region ASC, CapitalPop DESC";
             }
             // Execute SQL statement
-            ResultSet query1 = stmt.executeQuery(strSelect);
+            final ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            List<City> capitalPop = new ArrayList<>();
+            final List<City> capitalPop = new ArrayList<>();
             return capitalArrList(capitalPop, query1);
 
         }
@@ -141,7 +141,7 @@ public class CapitalReport {
         try {
             // Extract population of countries information and store into array list
             while (qry.next()) {
-                City cty = new City();
+                final City cty = new City();
                 cty.setCityName(qry.getString("CapitalName"));
                 cty.setCountryName(qry.getString("CountryName"));
                 cty.setContinents(qry.getString("Continent"));
@@ -171,9 +171,9 @@ public class CapitalReport {
 
             System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s","CapitalName", "CountryName", "Continent", "Region", "Population"));
             // Loop over all countries population in the list
-            for (City cpr : capitalList)
+            for (final City cpr : capitalList)
             {
-                String countriesInfo =
+                final String countriesInfo =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
                                 cpr.getCityName(),
                                 cpr.getCountryName(),
@@ -204,7 +204,7 @@ public class CapitalReport {
             String currentContinent = null;
 
             // Loop over all countries population in the list
-            for (City cpr : capitalList)
+            for (final City cpr : capitalList)
             {
                 // Check the current continent changed or not
                 if (!cpr.getContinents().equals(currentContinent)) {
@@ -216,8 +216,8 @@ public class CapitalReport {
 
                 }
 
-                String capitalCity = nullChecker(cpr.getCityName());
-                String capitalsInfo =
+                final String capitalCity = nullChecker(cpr.getCityName());
+                final String capitalsInfo =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
                                 capitalCity,
                                 cpr.getCountryName(),
@@ -247,7 +247,7 @@ public class CapitalReport {
             String currentRegion = null;
 
             // Loop over all countries population in the list
-            for (City cpr : capitalList) {
+            for (final City cpr : capitalList) {
                 // Check the current Region changed or not
                 if (!cpr.getRegion().equals(currentRegion)) {
                     // Print the continent header
@@ -258,8 +258,8 @@ public class CapitalReport {
 
                 }
 
-                String capitalCity = nullChecker(cpr.getCityName());
-                String capitalsInfo =
+                final String capitalCity = nullChecker(cpr.getCityName());
+                final String capitalsInfo =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
                                 capitalCity,
                                 cpr.getCountryName(),

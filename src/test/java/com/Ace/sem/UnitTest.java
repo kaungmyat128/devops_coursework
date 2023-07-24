@@ -78,7 +78,7 @@ public class UnitTest
     @Test
     void displayCountriesTestContainsNull()
     {
-        ArrayList<Country> country = new ArrayList<>();
+        final ArrayList<Country> country = new ArrayList<>();
         country.add(null);
         countryReport.displayCountries(country);
 
@@ -90,7 +90,7 @@ public class UnitTest
     @Test
     void displayCountriesContinentTestContainsNull()
     {
-        ArrayList<Country> country = new ArrayList<>();
+        final ArrayList<Country> country = new ArrayList<>();
         country.add(null);
         countryReport.displayCountriesContinent(country);
     }
@@ -101,7 +101,7 @@ public class UnitTest
     @Test
     void displayCountriesRegionTestContainsNull()
     {
-        ArrayList<Country> country = new ArrayList<>();
+        final ArrayList<Country> country = new ArrayList<>();
         country.add(null);
         countryReport.displayCountriesRegion(country);
 
@@ -113,7 +113,7 @@ public class UnitTest
     @Test
     void storeIntoArrayListTestContainsNull()
     {
-        ArrayList<Country> country = new ArrayList<>();
+        final ArrayList<Country> country = new ArrayList<>();
         country.add(null);
         ResultSet qry = null;
         countryReport.storeIntoArraylist(country, qry);
@@ -132,8 +132,8 @@ public class UnitTest
      */
     @Test
     void displayCountries()     {
-            ArrayList<Country> country = new ArrayList();
-            Country cou = new Country();
+            final ArrayList<Country> country = new ArrayList();
+            final Country cou = new Country();
             cou.setCode("MYN");
             cou.setName("Myanmar");
             cou.setContinent("Asia");
@@ -150,8 +150,8 @@ public class UnitTest
      */
     @Test
     void displayCountriesContinent()     {
-        ArrayList<Country> country = new ArrayList();
-        Country cou = new Country();
+        final ArrayList<Country> country = new ArrayList();
+        final Country cou = new Country();
         cou.setCode("MYN");
         cou.setName("Myanmar");
         cou.setContinent("Asia");
@@ -167,8 +167,8 @@ public class UnitTest
      */
     @Test
     void displayCountriesRegion()     {
-        ArrayList<Country> country = new ArrayList();
-        Country cou = new Country();
+        final ArrayList<Country> country = new ArrayList();
+        final Country cou = new Country();
         cou.setCode("MYN");
         cou.setName("Myanmar");
         cou.setContinent("Asia");
@@ -186,8 +186,8 @@ public class UnitTest
     @Test
     void storeIntoArrayListNotNull()     {
         try{
-            ArrayList<Country> country = new ArrayList();
-            Country cou = new Country();
+            final ArrayList<Country> country = new ArrayList();
+            final Country cou = new Country();
             cou.setCode("MYN");
             cou.setName("Myanmar");
             cou.setContinent("Asia");
@@ -195,13 +195,13 @@ public class UnitTest
             cou.setPopulation(54_593_833);
             cou.setCapital("Yangon");
             country.add(cou);
-            String strSelect =
+            final String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
                             + "FROM country INNER JOIN city ON country.Capital = city.ID "
                             + "ORDER BY country.Population DESC LIMIT 5";
 
-            Statement stmt = app.con.createStatement();
-            ResultSet qry = stmt.executeQuery(strSelect);
+            final Statement stmt = app.con.createStatement();
+            final ResultSet qry = stmt.executeQuery(strSelect);
             countryReport.storeIntoArraylist(country, qry);
 
         }catch (Exception e) {
@@ -275,35 +275,35 @@ public class UnitTest
     @Test
     void displayCitiesTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         cityReport.displayCities(city);
     }
     @Test
     void displayCityContinentsTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         cityReport.displayCityContinents(city);
     }
     @Test
     void displayCityCountriesCountriesTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         cityReport.displayCityCountries(city);
     }
     @Test
     void displayCityRegionTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         cityReport.displayCityRegion(city);
     }
     @Test
     void displayCitiesDistrictContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         cityReport.displayCityDistrict(city);
     }
@@ -324,8 +324,8 @@ public class UnitTest
     @Test
     void displayCities()     {
 
-            ArrayList<City> city = new ArrayList<>();
-            City ct1 = new City();
+            final ArrayList<City> city = new ArrayList<>();
+            final City ct1 = new City();
             ct1.setCityName("Yangon");
             ct1.setCountryName("Myanmar");
             ct1.setContinents("Asia");
@@ -338,8 +338,8 @@ public class UnitTest
     @Test
     void displayCityContinents()     {
 
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
+        final ArrayList<City> city = new ArrayList<>();
+        final City ct1 = new City();
         ct1.setCityName("Yangon");
         ct1.setCountryName("Myanmar");
         ct1.setContinents("Asia");
@@ -352,8 +352,8 @@ public class UnitTest
     @Test
     void displayCityCountries()     {
 
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
+        final ArrayList<City> city = new ArrayList<>();
+        final City ct1 = new City();
         ct1.setCityName("Yangon");
         ct1.setCountryName("Myanmar");
         ct1.setContinents("Asia");
@@ -367,8 +367,8 @@ public class UnitTest
     @Test
     void displayCityRegion()     {
 
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
+        final ArrayList<City> city = new ArrayList<>();
+        final City ct1 = new City();
         ct1.setCityName("Yangon");
         ct1.setCountryName("Myanmar");
         ct1.setContinents("Asia");
@@ -381,8 +381,8 @@ public class UnitTest
     @Test
     void displayCityDistrict()     {
 
-        ArrayList<City> city = new ArrayList<>();
-        City ct1 = new City();
+        final ArrayList<City> city = new ArrayList<>();
+        final City ct1 = new City();
         ct1.setCityName("Yangon");
         ct1.setCountryName("Myanmar");
         ct1.setContinents("Asia");
@@ -446,7 +446,7 @@ public class UnitTest
     @Test
     void displayLanguageReportContainsNull()
     {
-        ArrayList<Language> language = new ArrayList<>();
+        final ArrayList<Language> language = new ArrayList<>();
         language.add(null);
         languagesReport.displayLanguagesPopulation(language);
     }
@@ -465,8 +465,8 @@ public class UnitTest
      */
     @Test
     void displayLanguageReport()     {
-            ArrayList<Language> language = new ArrayList<>();
-            Language lan = new Language();
+            final ArrayList<Language> language = new ArrayList<>();
+            final Language lan = new Language();
             lan.setLanguage("Burmese");
             lan.setTotalPopulation(54_000_000);
             lan.setPercentage(68.35);
@@ -515,7 +515,7 @@ public class UnitTest
     @Test
     void displayCapitalsTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         capitalReport.displayCapital(city);
     }
@@ -523,14 +523,14 @@ public class UnitTest
     @Test
     void displayCapitalsContTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         capitalReport.displayCapitalContinent(city);
     }
     @Test
     void displayCapitalsRegTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         capitalReport.displayCapitalRegion(city);
     }
@@ -540,7 +540,7 @@ public class UnitTest
     @Test
     void arrayListCapitalTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         ResultSet qry = null;
         capitalReport.capitalArrList(city, qry);
@@ -551,8 +551,8 @@ public class UnitTest
      */
     @Test
     void displayCapitals()     {
-            ArrayList<City> city = new ArrayList<>();
-            City cty = new City();
+            final ArrayList<City> city = new ArrayList<>();
+            final City cty = new City();
             cty.setCityName("Yangon");
             cty.setCountryName("Myanmar");
             cty.setContinents("Asia");
@@ -564,8 +564,8 @@ public class UnitTest
 
     @Test
     void displayCapitalsCont()     {
-            ArrayList<City> city = new ArrayList<>();
-            City cty = new City();
+            final ArrayList<City> city = new ArrayList<>();
+            final City cty = new City();
             cty.setCityName("Yangon");
             cty.setCountryName("Myanmar");
             cty.setContinents("Asia");
@@ -577,8 +577,8 @@ public class UnitTest
 
     @Test
     void displayCapitalsReg()     {
-            ArrayList<City> city = new ArrayList<>();
-            City cty = new City();
+            final ArrayList<City> city = new ArrayList<>();
+            final City cty = new City();
             cty.setCityName("Yangon");
             cty.setCountryName("Myanmar");
             cty.setContinents("Asia");
@@ -594,21 +594,21 @@ public class UnitTest
     @Test
     void arrayListCapitals()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
-            City cty = new City();
+            final ArrayList<City> city = new ArrayList<>();
+            final City cty = new City();
             cty.setCityName("Yangon");
             cty.setCountryName("Myanmar");
             cty.setContinents("Asia");
             cty.setRegion("Southeast Asia");
             cty.setPopulation(5_434_678);
             city.add(cty);
-            String strSelect =
+            final String strSelect =
                     "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
                             "FROM `city` JOIN country ON country.Capital = city.ID " +
                             "ORDER BY city.Population DESC";
 
-            Statement stmt = app.con.createStatement();
-            ResultSet qry = stmt.executeQuery(strSelect);
+            final Statement stmt = app.con.createStatement();
+            final ResultSet qry = stmt.executeQuery(strSelect);
             capitalReport.capitalArrList(city, qry);
 
         }catch (Exception e) {
@@ -661,21 +661,21 @@ public class UnitTest
     @Test
     void displayRuralUrbanContTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         ruReport.displayContinentPopulation(city);
     }
     @Test
     void displayRuralUrbanRegTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         ruReport.displayRegionPopulation(city);
     }
     @Test
     void displayRuralUrbanCouTestContainsNull()
     {
-        ArrayList<City> city = new ArrayList<>();
+        final ArrayList<City> city = new ArrayList<>();
         city.add(null);
         ruReport.displayCountryPopulation(city);
     }
@@ -704,8 +704,8 @@ public class UnitTest
      */
     @Test
     void displayRuralUrbanContPop() {
-        ArrayList<City> city = new ArrayList<>();
-        City cty = new City();
+        final ArrayList<City> city = new ArrayList<>();
+        final City cty = new City();
         cty.setCountryName("Myanmar");
         cty.setContinents("Asia");
         cty.setRegion("Southeast Asia");
@@ -718,8 +718,8 @@ public class UnitTest
 
     @Test
     void displayRuralUrbanRegPop()     {
-        ArrayList<City> city = new ArrayList<>();
-        City cty = new City();
+        final ArrayList<City> city = new ArrayList<>();
+        final City cty = new City();
         cty.setCountryName("Myanmar");
         cty.setContinents("Asia");
         cty.setRegion("Southeast Asia");
@@ -732,8 +732,8 @@ public class UnitTest
 
     @Test
     void displayRuralUrbanCouPop()     {
-        ArrayList<City> city = new ArrayList<>();
-        City cty = new City();
+        final ArrayList<City> city = new ArrayList<>();
+        final City cty = new City();
         cty.setCountryName("Myanmar");
         cty.setContinents("Asia");
         cty.setRegion("Southeast Asia");
@@ -807,21 +807,21 @@ public class UnitTest
     @Test
     void displaySummaryWorldTestContainsNull()
     {
-        ArrayList<Country> couSum = new ArrayList<>();
+        final ArrayList<Country> couSum = new ArrayList<>();
         couSum.add(null);
         summaryReport.displaySumWorldPop(couSum);
     }
 
     @Test
     void displaySummaryContTestContainsNull() {
-        ArrayList<Country> couSum = new ArrayList<>();
+        final ArrayList<Country> couSum = new ArrayList<>();
         couSum.add(null);
         summaryReport.displaySumContPop(couSum);
     }
     @Test
     void displaySummaryRegTestContainsNull()
     {
-        ArrayList<Country> couSum = new ArrayList<>();
+        final ArrayList<Country> couSum = new ArrayList<>();
         couSum.add(null);
         summaryReport.displaySumRegPop(couSum);
     }
@@ -829,7 +829,7 @@ public class UnitTest
     @Test
     void displaySummaryCouTestContainsNull()
     {
-        ArrayList<Country> couSum = new ArrayList<>();
+        final ArrayList<Country> couSum = new ArrayList<>();
         couSum.add(null);
         summaryReport.displaySumCouPop(couSum);
     }
@@ -837,7 +837,7 @@ public class UnitTest
     @Test
     void displaySummaryDistTestContainsNull()
     {
-        ArrayList<City> citySum = new ArrayList<>();
+        final ArrayList<City> citySum = new ArrayList<>();
         citySum.add(null);
         summaryReport.displaySumDistPop(citySum);
     }
@@ -845,7 +845,7 @@ public class UnitTest
     @Test
     void displaySummaryCityTestContainsNull()
     {
-        ArrayList<City> citySum = new ArrayList<>();
+        final ArrayList<City> citySum = new ArrayList<>();
         citySum.add(null);
         summaryReport.displaySumCityPop(citySum);
     }
@@ -856,8 +856,8 @@ public class UnitTest
     @Test
     void displaySummaryWorld()
     {
-            ArrayList<Country> couSum = new ArrayList<>();
-            Country cou = new Country();
+            final ArrayList<Country> couSum = new ArrayList<>();
+            final Country cou = new Country();
             cou.setGenPop(600_000_000);
             couSum.add(cou);
 
@@ -867,8 +867,8 @@ public class UnitTest
     @Test
     void displaySummaryCont()
     {
-        ArrayList<Country> couSum = new ArrayList<>();
-        Country cou = new Country();
+        final ArrayList<Country> couSum = new ArrayList<>();
+        final Country cou = new Country();
         cou.setContinent("Asia");
         cou.setGenPop(50_000_000);
         couSum.add(cou);
@@ -878,8 +878,8 @@ public class UnitTest
     @Test
     void displaySummaryReg()
     {
-        ArrayList<Country> couSum = new ArrayList<>();
-        Country cou = new Country();
+        final ArrayList<Country> couSum = new ArrayList<>();
+        final Country cou = new Country();
         cou.setRegion("Southeast Asia");
         cou.setGenPop(10_000_000);
         couSum.add(cou);
@@ -889,8 +889,8 @@ public class UnitTest
     @Test
     void displaySummaryCou()
     {
-        ArrayList<Country> couSum = new ArrayList<>();
-        Country cou = new Country();
+        final ArrayList<Country> couSum = new ArrayList<>();
+        final Country cou = new Country();
         cou.setName("Timor");
         cou.setGenPop(50_000);
         couSum.add(cou);
@@ -900,8 +900,8 @@ public class UnitTest
     @Test
     void displaySummaryDist()
     {
-        ArrayList<City> citySum = new ArrayList<>();
-        City cty = new City();
+        final ArrayList<City> citySum = new ArrayList<>();
+        final City cty = new City();
         cty.setCityName("Fife");
         cty.setGenPop(100_000);
         citySum.add(cty);
@@ -911,8 +911,8 @@ public class UnitTest
     @Test
     void displaySummaryCity()
     {
-        ArrayList<City> citySum = new ArrayList<>();
-        City cty = new City();
+        final ArrayList<City> citySum = new ArrayList<>();
+        final City cty = new City();
         cty.setCityName("Auchtermuchty");
         cty.setPopulation(50_000);
         citySum.add(cty);
