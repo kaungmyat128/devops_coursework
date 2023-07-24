@@ -67,6 +67,10 @@ public class App {
 
         // Display Top 10 Countries Population
         ArrayList<Country> CPop4 = cr.getCountries(a.con, 10);
+        log.info("Top 10 Countries Population in the World");
+        log.warning("Top 10 Countries Population in the World");
+        log.severe("Top 10 Countries Population in the World");
+        log.fine("Top 10 Countries Population in the World");
         print("Top 10 Countries Population in the World");
         cr.displayCountries(CPop4);
 
