@@ -8,12 +8,10 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.List;
 /**
- * Creates methods to write sql queries and create arraylists of countries population
+ * Creates methods to write sql queries and
+ * create arraylists of countries population
  * This Java Class File contains 8 java methods -
- * get_countries(), get_countries_continent(),  get_countries_region() methods
- * store_into_arraylist() method
- * displayCountries(), displayCountries_continent() and displayCountries_region() methods
- * human_readable_format() for formatting population
+ * for gathering data and displaying them
  * */
 // New Object of CountryReport Java Class will be used from the App.java.
 public class CountryReport {
@@ -21,8 +19,9 @@ public class CountryReport {
     /* default */ String capital = null;
 
     /**
-     * get_countries() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries around the world'.
+     * connection parameters for database connection and limit parameter
+     * write sql query to produce
+     * 'ALL or Top N most populated countries around the world'.
      * Then return the data as array list.
      * */
     public List<Country> getCountries (final Connection con, final int lim){
@@ -32,7 +31,8 @@ public class CountryReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Countries
                 strSelect =
                         "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
                                 + "FROM country INNER JOIN city ON country.Capital = city.ID "
@@ -51,7 +51,8 @@ public class CountryReport {
             return storeIntoArraylist(topCounPop, query1);
 
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return countries population around the world [country report]");
@@ -60,9 +61,9 @@ public class CountryReport {
     }
 
     /**
-     * get_countries_continent() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries based on each continent
-     * with descending order of population'
+     * contains database connection parameters and limit parameter
+     * write sql query to produce 'ALL or Top N most populated countries
+     * based on each continent with descending order of population'
      * Then return the data as array list.
      * */
     public List<Country> getCountriesContinent( final Connection con, final int lim) {
@@ -72,14 +73,16 @@ public class CountryReport {
             String strSelect = null;
             // Create string for SQL statement
             if (lim>0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries for each continent
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Countries for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS Capital FROM country "
                                 + "INNER JOIN city ON country.Capital = city.ID) AS subquery WHERE row_num <= " + lim
                                 + " ORDER BY Continent ASC, Population DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch Countries population for each continent
+                // Create string for SQL statement with no limit
+                // - fetch Countries population for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital FROM country "
@@ -100,9 +103,9 @@ public class CountryReport {
     }
 
     /**
-     * get_countries_region() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated countries based on each region
-     * with descending order of population'
+     * contains database connection parameters and limit parameter
+     * write sql query to produce 'ALL or Top N most populated countries
+     * based on each region with descending order of population'
      * Then return the data as array list.
      * */
     public List<Country> getCountriesRegion(final Connection con, final int lim) {
@@ -113,14 +116,16 @@ public class CountryReport {
                 String strSelect = null;
                 // Create string for SQL statement
             if (lim>0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Countries for each region
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Countries for each region
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
                                 + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
                                 + "WHERE row_num <= " + lim + " ORDER BY Region ASC, Population DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch Countries population for each region
+                // Create string for SQL statement with no limit
+                // - fetch Countries population for each region
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
                                 + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
@@ -140,9 +145,9 @@ public class CountryReport {
     }
 
     /**
-     * store_into_arraylist() method has two parameters - former for arraylist<Country> and later for query result
-     * This method will assign  country information query results into the arrayList.
-     * This method is reused in get_countries(), get_countries_continent() and get_countries_region() methods
+     * two parameters - arraylist<Country> and query result
+     * assign country information query results into the arrayList.
+     * reused in multiple methods
      * in order to store query results as array lists and return it.
      */
     public List<Country> storeIntoArraylist(final List<Country> arl, final ResultSet qry) {
@@ -160,7 +165,8 @@ public class CountryReport {
             }
             // return the array list
             return arl;
-        }// Exception handling when any errors occur. Print out error type and error message and return null.
+        }// Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return countries population [country report]");
@@ -200,8 +206,9 @@ public class CountryReport {
             }
         }
 
-    /** display countries report based on continents using getter() and setter() methods
-     * Use if condition to check whether current continent change and print out current continent as title
+    /** display countries report based on continents
+     * Use if condition to check whether current continent change
+     * and print out current continent as title
      * @param countriesList
      */
     public void displayCountriesContinent(final List<Country> countriesList) {
@@ -240,7 +247,8 @@ public class CountryReport {
     }
 
     /** display countries report based on regions using getter() and setter() methods
-     * Use if condition to check whether current continent change and print out current region as title
+     * Use if condition to check whether current continent change
+     * and print out current region as title
      * @param countriesList
      */
     public void displayCountriesRegion(final List<Country> countriesList) {

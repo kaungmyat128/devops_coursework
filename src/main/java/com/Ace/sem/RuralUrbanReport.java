@@ -9,17 +9,17 @@ import java.util.Locale;
 import java.util.List;
 
 /**
- * Creates methods to write sql queries and create arraylists of people living in cities & not living in cities
- * This Java Class File contains 7 java methods -
- * getContinentPopulation(), getRegionPopulation(),  getCountryPopulation() methods
- * displayContinentPopulation(), displayRegionPopulation() and displayCountryPopulation() methods
- * human_readable_format() for formatting population
+ * Creates methods to write sql queries and
+ * create arraylists of people living in cities & not living in cities
+ * contains 7 java methods for gathering data
+ * and displaying them
  * */
 public class RuralUrbanReport {
 
     /**
-     * getContinentPopulation() method contains connection parameters for database connection
-     * The population of people, people living in cities, and people not living in cities in each continent
+     * contains connection parameters for database connection
+     * The population of people, people living in cities,
+     * and people not living in cities in each continent
      * Then return the data as array list.
      * */
     public List<City> getContinentPopulation(final Connection con) {
@@ -59,8 +59,9 @@ public class RuralUrbanReport {
     }
 
     /**
-     * getContinentPopulation() method contains connection parameters for database connection
-     * The population of people, people living in cities, and people not living in cities in each region
+     * contains connection parameters for database connection
+     * The population of people, people living in cities,
+     * and people not living in cities in each region
      * Then return the data as array list.
      * */
     public List<City> getRegionPopulation(final Connection con) {
@@ -101,8 +102,9 @@ public class RuralUrbanReport {
     }
 
     /**
-     * getContinentPopulation() method contains connection parameters for database connection
-     * The population of people, people living in cities, and people not living in cities in each country
+     * contains connection parameters for database connection
+     * The population of people, people living in cities,
+     * and people not living in cities in each country
      * Then return the data as array list.
      * */    public List<City> getCountryPopulation(final Connection con) {
         try {
@@ -138,9 +140,9 @@ public class RuralUrbanReport {
     }
 
 
-    /** Display Population of People living in cities and not living in cities in each continent
+    /** Display Population of People living in cities
+     *  and not living in cities in each continent
      *  Report using getter() method
-     *
      * @param arrList
      */
     public void displayContinentPopulation(final List<City> arrList)
@@ -171,9 +173,9 @@ public class RuralUrbanReport {
         }
     }
 
-    /** Display Population of People living in cities and not living in cities in each region
+    /** Display Population of People living in cities
+     *  and not living in cities in each region
      *  Report using getter() method
-     *
      * @param arrList
      */
     public void displayRegionPopulation(final List<City> arrList)
@@ -208,9 +210,9 @@ public class RuralUrbanReport {
 
 
 
-    /** Display Population of People living in cities and not living in cities in each country
+    /** Display Population of People living in cities
+     *  and not living in cities in each country
      *  Report using getter() method
-     *
      * @param arrList
      */
     public void displayCountryPopulation(final List<City> arrList)
@@ -242,10 +244,9 @@ public class RuralUrbanReport {
     }
 
     /**
-     * human_readable_format method used to format the population numbers for long variables
+     * human_readable_format method used to format
+     * the population numbers for long variables
      * e.g. 3242344 => 3,242,344
-     * @param population
-     * @return
      */
     public String humanReadableFormat(final long population){
         final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));

@@ -33,7 +33,8 @@ public class SummaryReport {
             }
             return worldPop;
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population around the world [summary report]");
@@ -68,7 +69,8 @@ public class SummaryReport {
             }
             return contPop;
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each continent [summary report]");
@@ -102,7 +104,8 @@ public class SummaryReport {
             }
             return regPop;
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each region [summary report]");
@@ -137,7 +140,8 @@ public class SummaryReport {
             }
             return countryPop;
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each country [summary report]");
@@ -172,7 +176,8 @@ public class SummaryReport {
             }
             return distPop;
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of district [summary report]");
@@ -207,7 +212,8 @@ public class SummaryReport {
             }
             return cityPop;
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population the city [summary report]");
@@ -373,10 +379,9 @@ public class SummaryReport {
     }
 
     /**
-     * human_readable_format method used to format the population numbers for long variables
+     * human_readable_format method used to
+     * format the population numbers for long variables
      * e.g. 3242344 => 3,242,344
-     * @param population
-     * @return
      */
     public String humanReadableFormatLong(final long population){
         final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));

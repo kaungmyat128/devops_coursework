@@ -146,7 +146,8 @@ public class UnitTest
     }
 
     /**
-     * checks if the display country based on continent method works based on give parameters
+     * checks if the display country based on continent method
+     * works based on give parameters
      */
     @Test
     void displayCountriesContinent()     {
@@ -163,7 +164,8 @@ public class UnitTest
 
     }
     /**
-     * checks if the display country based on region method works based on give parameters
+     * checks if the display country based on region
+     * method works based on give parameters
      */
     @Test
     void displayCountriesRegion()     {
@@ -210,7 +212,8 @@ public class UnitTest
     }
 
     /**
-     * checks if country data based on different categories can be gathered with and without limit
+     * checks if country data based on different categories
+     * can be gathered with and without limit
      */
     @Test
     void countriesFetch()     {
@@ -402,7 +405,8 @@ public class UnitTest
     }
 
     /**
-     * testing if the city population data can be gathered based on multiple categories
+     * testing if the city population data can be
+     * gathered based on multiple categories
      * with or without limit
      */
     @Test
@@ -656,7 +660,8 @@ public class UnitTest
     }
 
     /**
-     * checks the response of display of rural and urban population data if arraylist is null
+     * checks the response of display of
+     * rural and urban population data if arraylist is null
      */
     @Test
     void displayRuralUrbanContTestContainsNull()

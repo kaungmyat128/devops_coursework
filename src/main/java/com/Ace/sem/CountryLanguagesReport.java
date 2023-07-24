@@ -11,8 +11,8 @@ import java.util.List;
 public class CountryLanguagesReport {
 
     /**
-     * getLanguagesReport() method contains connection parameters for database connection
-     * The number of people who speak the following languages from greatest number to smallest,
+     * contains connection parameters for database connection
+     * from greatest number to smallest,
      * including the percentage of the world population:
      * Chinese, English, Hindi, Spanish and Arabic.
      * Then return the data as array list.
@@ -76,10 +76,9 @@ public class CountryLanguagesReport {
 
 
     /**
-     * human_readable_format method used to format the population numbers for long variables
+     * human_readable_format method used to
+     * format the population numbers for long variables
      * e.g. 3242344 => 3,242,344
-     * @param population
-     * @return
      */
     public String humanReadableFormat(final long population){
         final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));

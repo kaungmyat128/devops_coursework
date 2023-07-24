@@ -6,7 +6,8 @@ package com.Ace.sem;
  */
 public class City {
 
-    // Declare Variables related to City Information, Country Code, District, Population, Country & Region .
+    // Declare Variables related to City Information,
+    // Country Code, District, Population, Country & Region .
 
     private long genPop;
     private String cityName;

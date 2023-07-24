@@ -7,19 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Creates methods to write sql queries and create arraylists of cities population
- * This Java Class File contains 5 java methods that contains 2 parameters - database connection & int limit parameters -
- * getCityPop(), getCityPopByContinent(), getCityPopByRegion() , getCityPopByCountry(), getCityPopByDistrict()
- * This class also contains other 5 java methods that contains ArrayList Parameter to display results
- * displayCities(), displayCityContinents(), displayCityRegion(), displayCityCountries() , displayCityDistrict()
+ * 5 fetching methods that use database connection and limit as parameters
+ * 5 display methods that use ArrayList as parameter
  * */
 public class CityReport {
 
-    // Create new object of CountryReport to use human_readable_format() method from country.java
     /* default */ String cityName = null;
     /* default */ String districtName = null;
 
     /**
-     * getCityPop() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in the world
      * with descending order of population'
      * Then return the data as array list.
@@ -63,9 +60,9 @@ public class CityReport {
     }
 
     /**
-     * getCityPopByContinent() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated cities in each Continent
-     * with descending order of population'
+     * contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated cities
+     * in each Continent with descending order of population'
      * Then return the data as array list.
      * */
     public List<City> getCityPopByContinent(final Connection con, final int lim) {
@@ -74,14 +71,16 @@ public class CityReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each continent
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Cities for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY Continent ASC, Population DESC";
             } else if (lim == 0) {
-                // Create string for SQL statement with no limit - fetch Cities population for each continent
+                // Create string for SQL statement with no limit
+                // - fetch Cities population for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
@@ -110,7 +109,7 @@ public class CityReport {
     }
 
     /**
-     * getCityPopByRegion() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each Region
      * with descending order of population'
      * Then return the data as array list.
@@ -121,14 +120,16 @@ public class CityReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each region
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Cities for each region
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY Region ASC ,Population DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch All Cities Countries for each continent
+                // Create string for SQL statement with no limit
+                // - fetch All Cities Countries for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
@@ -157,7 +158,7 @@ public class CityReport {
     }
 
     /**
-     * getCityPopByCountry() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each Country
      * with descending order of population'
      * Then return the data as array list.
@@ -168,14 +169,16 @@ public class CityReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each country
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Cities for each country
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
                                 + "WHERE row_num <= " + lim
                                 + " ORDER BY CountryName ASC, Population DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch All Cities Countries for each continent
+                // Create string for SQL statement with no limit
+                // - fetch All Cities Countries for each continent
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
                                 + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
@@ -202,7 +205,7 @@ public class CityReport {
     }
 
     /**
-     * getCityPopByDistrict() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each District
      * with descending order of population'
      * Then return the data as array list.
@@ -213,7 +216,8 @@ public class CityReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each district
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Cities for each district
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
                         + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
@@ -221,7 +225,8 @@ public class CityReport {
                                 + "WHERE row_num <= " + lim
                                 + " AND District != SPACE(1) ORDER BY District ASC, Population DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch All Cities Countries for each district
+                // Create string for SQL statement with no limit
+                // - fetch All Cities Countries for each district
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
                                 + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
@@ -277,7 +282,8 @@ public class CityReport {
     }
 
     /** display cities report based on continents using getter() and setter() methods
-     * Use if condition to check whether current continent change and print out current continent as title
+     * Use if condition to check whether current continent change
+     * and print out current continent as title
      * @param continentList
      */
     public void displayCityContinents(final List<City> continentList) {
@@ -317,7 +323,8 @@ public class CityReport {
     }
 
     /** display cities report based on regions using getter() and setter() methods
-     * Use if condition to check whether current region change and print out current region as title
+     * Use if condition to check whether current region change
+     * and print out current region as title
      * @param regionList
      */
     public void displayCityRegion(final List<City> regionList)     {
@@ -354,7 +361,8 @@ public class CityReport {
     }
 
     /** display cities report based on countries using getter() and setter() methods
-     * Use if condition to check whether current country change and print out current country as title
+     * Use if condition to check whether current country change
+     * and print out current country as title
      * @param countriesList
      */
     public void displayCityCountries(final List<City> countriesList)     {
@@ -392,7 +400,8 @@ public class CityReport {
     }
 
     /** display cities report based on districts using getter() and setter() methods
-     * Use if condition to check whether current districts change and print out current districts as title
+     * Use if condition to check whether current districts change
+     * and print out current districts as title
      * @param districtsList
      */
     public void displayCityDistrict(final List<City> districtsList)     {

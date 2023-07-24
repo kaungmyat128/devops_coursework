@@ -15,7 +15,8 @@ public class Country {
     private int population;
     private String capital;
 
-    // Use Encapsulation : Getter & Setter Method for each variable initialized in above
+    // Use Encapsulation :
+    // Getter & Setter Method for each variable initialized in above
     public long getGenPop() {
         return genPop;
     }

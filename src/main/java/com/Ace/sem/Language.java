@@ -5,7 +5,8 @@ public class Language {
     private long totalPopulation;
     private double percentage;
 
-    // Use Encapsulation : Getter & Setter Method for each variable initialized in above
+    // Use Encapsulation :
+    // Getter & Setter Method for each variable initialized in above
     public String getLanguage() {
         return language;
     }

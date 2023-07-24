@@ -117,7 +117,8 @@ public class IntegratedTest
     }
 
     /**
-     * this method checks if the country data is gathered correctly or not for each continents
+     * this method checks if the country data is gathered
+     * correctly or not for each continents
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -163,7 +164,8 @@ public class IntegratedTest
         }
     }
     /**
-     * this method checks if the country data is gathered correctly or not for each region
+     * this method checks if the country data is gathered
+     * correctly or not for each region
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -253,7 +255,8 @@ public class IntegratedTest
     }
 
     /**
-     * this method checks if the city data is gathered correctly or not based on continents
+     * this method checks if the city data is gathered
+     * correctly or not based on continents
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -264,7 +267,8 @@ void getdisplayCitiesContinent()     {
         city = cityReport.getCityPopByContinent(app.con, 3);
         // Test for not null data
         assertNotNull(city, "The ArrayList of cities should not be null.");
-        // Test for correct numbers of query results. Limit - 3 cities report for each continent.
+        // Test for correct numbers of query results.
+        // Limit - 3 cities report for each continent.
         // So total queries result will be ( 3 * 7 ) = 21
         assertEquals(21, city.size(), "The method should return 3 * 7 continents = 21 results  as specified by the limit.");
         cityReport.displayCityContinents(city);
@@ -296,7 +300,8 @@ void getdisplayCitiesContinent()     {
 }
 
     /**
-     * this method checks if the city data is gathered correctly or not based on regions
+     * this method checks if the city data is gathered
+     * correctly or not based on regions
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -339,7 +344,8 @@ void getdisplayCitiesContinent()     {
     }
 
     /**
-     * this method checks if the city data is gathered correctly or not based on countries
+     * this method checks if the city data is gathered
+     * correctly or not based on countries
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -380,7 +386,8 @@ void getdisplayCitiesContinent()     {
     }
 
     /**
-     * this method checks if the city data is gathered correctly or not based on districts
+     * this method checks if the city data is gathered
+     * correctly or not based on districts
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -391,7 +398,8 @@ void getdisplayCitiesContinent()     {
             city = cityReport.getCityPopByDistrict(app.con, 3);
             // Test for not null data
             assertNotNull(city, "The ArrayList of cities should not be null.");
-            // Test for correct numbers of query results. Limit - 3 cities report for each district.
+            // Test for correct numbers of query results.
+            // Limit - 3 cities report for each district.
             // So total queries result will be 2261
             assertEquals(2261, city.size(), "The method should return 3 cities ( total 2261 results ) as specified by the limit.");
             cityReport.displayCityDistrict(city);
@@ -495,7 +503,8 @@ void getdisplayCitiesContinent()     {
     }
 
     /**
-     * this method checks if the capital city data is gathered correctly or not based on continents
+     * this method checks if the capital city data is gathered
+     * correctly or not based on continents
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -506,7 +515,8 @@ void getdisplayCitiesContinent()     {
             city = capitalReport.getCapitalPopByContinent(app.con, 3);
             // Test for not null data
             assertNotNull(city, "The ArrayList of Capital cities should not be null.");
-            // Test for correct numbers of query results. Limit - 3 cities report for each continent.
+            // Test for correct numbers of query results.
+            // Limit - 3 cities report for each continent.
             // So total queries result will be 3 * 7 continents  = 21
             assertEquals(21, city.size(), "The method should return 3 cities (total 21 results ) as specified by the limit.");
             capitalReport.displayCapitalContinent(city);
@@ -539,7 +549,8 @@ void getdisplayCitiesContinent()     {
         }
     }
     /**
-     * this method checks if the capital city data is gathered correctly or not based on region
+     * this method checks if the capital city data is gathered
+     * correctly or not based on region
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -550,7 +561,8 @@ void getdisplayCitiesContinent()     {
             city = capitalReport.getCapitalPopByRegion(app.con, 3);
             // Test for not null data
             assertNotNull(city, "The ArrayList of Capital cities should not be null.");
-            // Test for correct numbers of query results. Limit - 3 cities report for each region.
+            // Test for correct numbers of query results.
+            // Limit - 3 cities report for each region.
             // So total queries result will be 72
             assertEquals(72, city.size(), "The method should return 3 cities ( total 72 results ) as specified by the limit.");
             capitalReport.displayCapitalRegion(city);
@@ -587,7 +599,8 @@ void getdisplayCitiesContinent()     {
 
     /**
      * Rural and Urban report testing starts here
-     * this method checks if the population data is gathered correctly or not based on continent
+     * this method checks if the population data is gathered
+     * correctly or not based on continent
      * also checks if the given value matches gathered data or not
      */
 
@@ -599,7 +612,9 @@ void getdisplayCitiesContinent()     {
             // Test for not null data
             assertNotNull(city, "The ArrayList of Rural & Urban Report should not be null.");
             // Test for correct numbers of query results.
-            // So total queries result will be 6 because there are 6 continents . Antarctica Continent is not displayed.
+            // So total queries result will be 6
+            // because there are 6 continents .
+            // Antarctica Continent is not displayed.
             assertEquals(6, city.size(), "The method should return 7 continents Rural Urban population report");
             ruReport.displayContinentPopulation(city);
             // Test for correct numbers of column names (presence of columns)
@@ -619,7 +634,8 @@ void getdisplayCitiesContinent()     {
     }
 
     /**
-     * this method checks if the population data is gathered correctly or not based on region
+     * this method checks if the population data is gathered
+     * correctly or not based on region
      * also checks if the given value matches gathered data or not
      */
     @Test
@@ -650,7 +666,8 @@ void getdisplayCitiesContinent()     {
     }
 
     /**
-     * this method checks if the population data is gathered correctly or not based on country
+     * this method checks if the population data is gathered
+     * correctly or not based on country
      * also checks if the given value matches gathered data or not
      */
     @Test

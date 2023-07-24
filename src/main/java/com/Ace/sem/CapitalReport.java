@@ -7,12 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 public class CapitalReport {
 
-
-    // To use the human_readable_format() method from country.java in this new object is created
-
     /**
-     * getCapitalPopByWorld() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated Capital cities around the world'.
+     * database connection parameters and limit parameter
+     * write sql query to produce 'ALL or Top N most populated
+     * Capital cities around the world'.
      * Then return the data as array list.
      * */
     public List<City> getCapitalPopByWorld (final Connection con,final int lim){
@@ -21,13 +19,15 @@ public class CapitalReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Capital City
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Capital City
                 strSelect =
                         "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
                                 "FROM `city` JOIN country ON country.Capital = city.ID " +
                                 "ORDER BY city.Population DESC LIMIT " + lim;
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch all Capital Cities by population
+                // Create string for SQL statement with no limit
+                // - fetch all Capital Cities by population
                 strSelect =
                         "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
                                 "FROM `city` JOIN country ON country.Capital = city.ID " +
@@ -40,7 +40,8 @@ public class CapitalReport {
             return capitalArrList(capitalPop, query1);
 
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population around the world [capital report]");
@@ -49,10 +50,10 @@ public class CapitalReport {
     }
 
     /**
-     * getCapitalPopByContinent() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated Capital Cities based on each continent
-     * with descending order of population'
-     * Then return the data as array list.
+     * contains database connection parameter and limit parameter
+     * write sql query to produce 'ALL or Top N most populated
+     * Capital Cities based on each continent
+     * with descending order of population' Then return the data as array list.
      * */
     public List<City> getCapitalPopByContinent (final Connection con,final int lim){
         try{
@@ -60,7 +61,8 @@ public class CapitalReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Capital City
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Capital City
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) " +
                                 "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
@@ -68,7 +70,8 @@ public class CapitalReport {
                                 "WHERE row_num <= " + lim +
                                 " ORDER BY Continent ASC, CapitalPop DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch all Capital Cities by population
+                // Create string for SQL statement with no limit
+                // - fetch all Capital Cities by population
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) " +
                                 "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
@@ -82,7 +85,8 @@ public class CapitalReport {
             return capitalArrList(capitalPop, query1);
 
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population for each continent [capital report]");
@@ -91,10 +95,10 @@ public class CapitalReport {
     }
 
     /**
-     * getCapitalPopByRegion() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated Capital Cities based on each region
-     * with descending order of population'
-     * Then return the data as array list.
+     * contains database connection parameter and limit parameter
+     * write sql query to produce 'ALL or Top N
+     * most populated Capital Cities based on each region
+     * with descending order of population Then return the data as array list.
      * */
     public List<City> getCapitalPopByRegion (final Connection con,final int lim){
         try{
@@ -102,7 +106,8 @@ public class CapitalReport {
             final Statement stmt = con.createStatement();
             String strSelect = null;
             if (lim>0) {
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Capital City
+                // Create string for SQL statement with limit 'N'
+                // - fetch Top N Populated Capital City
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) " +
                                 "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
@@ -110,7 +115,8 @@ public class CapitalReport {
                                 "WHERE row_num <= " + lim +
                                 " ORDER BY Region ASC, CapitalPop DESC";
             } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch all Capital Cities by population
+                // Create string for SQL statement with no limit
+                // - fetch all Capital Cities by population
                 strSelect =
                         "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) " +
                                 "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
@@ -124,7 +130,8 @@ public class CapitalReport {
             return capitalArrList(capitalPop, query1);
 
         }
-        // Exception handling when any errors occur. Print out error type and error message and return null.
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population around each Region [capital report]");
@@ -132,9 +139,11 @@ public class CapitalReport {
         }
     }
     /**
-     * capitalArrList() method has two parameters - former for arraylist<City> and later for query result
+     * capitalArrList() method has two parameters
+     * - former for arraylist<City> and later for query result
      * This method will assign  City information query results into the arrayList.
-     * This method is reused in getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion() methods
+     * This method is reused in getCapitalPopByWorld(),
+     * getCapitalPopByContinent() and getCapitalPopByRegion() methods
      * in order to store query results as array lists and return it.
      */
     public List<City> capitalArrList(final List<City> arr, final ResultSet qry) {
@@ -151,7 +160,8 @@ public class CapitalReport {
             }
             // return the array list
             return arr;
-        }// Exception handling when any errors occur. Print out error type and error message and return null.
+        }// Exception handling when any errors occur.
+         // Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population [capital report]");

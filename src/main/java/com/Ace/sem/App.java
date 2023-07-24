@@ -5,7 +5,8 @@ import java.util.List;
 
 /**
  * Contains Connect() and Disconnect() Methods for database connection
- * Initialize New App Object, Country Object, Country Report Object, top_countries_population Object
+ * Initialize New App Object, Country Object,
+ * Country Report Object, top_countries_population Object
  * Initialize City Object, City Report Object, Top Populated Cities Object
  */
 public class App {
@@ -28,7 +29,8 @@ public class App {
         // create new object for SummaryReport Class Java
         final SummaryReport sumR = new SummaryReport();
 
-        //------------creating Object for People Living in Cities & Not Living in Cities Report------------
+        //------------creating Object for People
+        // Living in Cities & Not Living in Cities Report------------
         // create new object for top populated cities Class Java
         final RuralUrbanReport ruReport = new RuralUrbanReport();
 
@@ -188,17 +190,20 @@ public class App {
         System.out.println(String.format("%-30s| %-30s", "City", "Population"));
         sumR.displaySumCityPop(popCityReg);
 
-        //Display Population report of people living in cities and not living in cities in each continent
+        //Display Population report of people living in cities
+        //and not living in cities in each continent
         final List<City> report1 = ruReport.getContinentPopulation(app.con);
         System.out.println("Population report of people living in cities and not living in cities in each continent");
         ruReport.displayContinentPopulation(report1);
 
-        //Display Population report of people living in cities and not living in cities in each region
+        //Display Population report of people living in cities
+        // and not living in cities in each region
         final List<City> report2 = ruReport.getRegionPopulation(app.con);
         System.out.println("Population report of people living in cities and not living in cities in each region");
         ruReport.displayRegionPopulation(report2);
 
-        //Display Population report of people living in cities and not living in cities in each country
+        //Display Population report of people living in cities
+        //and not living in cities in each country
         final List<City> report3 = ruReport.getCountryPopulation(app.con);
         System.out.println("Population report of people living in cities and not living in cities in each country");
         ruReport.displayCountryPopulation(report3);
@@ -214,7 +219,8 @@ public class App {
 
 
     /*
-     Connect to the MySQL database. Load mysql driver and connect database up to 100 tries
+     Connect to the MySQL database. Load mysql driver
+     and connect database up to 100 tries
      until database connection is connected.
      */
     public void connect() {
