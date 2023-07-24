@@ -235,7 +235,7 @@ public class App {
                 Thread.sleep(30000);
                 // Connect to database
 
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
+                //con = DriverManager.getConnection("jdbc:mysql://localhost:33061/world", "root", "example");
 
                 if (i%2 == 0) {
                     con = DriverManager.getConnection("jdbc:mysql://db:3306/world", "root", "example");
