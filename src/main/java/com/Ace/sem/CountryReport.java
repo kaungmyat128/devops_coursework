@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.text.NumberFormat;
 import java.util.Locale;
-
+import java.util.List;
 /**
  * Creates methods to write sql queries and create arraylists of countries population
  * This Java Class File contains 8 java methods -
@@ -23,7 +23,7 @@ public class CountryReport {
      * write sql query to produce 'ALL or Top N most populated countries around the world'.
      * Then return the data as array list.
      * */
-    public ArrayList<Country> getCountries (Connection con, int lim){
+    public List<Country> getCountries (Connection con, int lim){
         try {
 
             // Create an SQL statement
@@ -45,7 +45,7 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather country data based on population
-            ArrayList<Country> top_countries_population = new ArrayList<>();
+            List<Country> top_countries_population = new ArrayList<>();
             return storeIntoArraylist(top_countries_population, query1);
 
         }
@@ -63,7 +63,7 @@ public class CountryReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<Country> getCountriesContinent(Connection con, int lim) {
+    public List<Country> getCountriesContinent(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -87,7 +87,7 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet query2 = stmt.executeQuery(strSelect);
             // Creates array to gather populated country data based on each continent
-            ArrayList<Country> top_countries_population = new ArrayList<>();
+            List<Country> top_countries_population = new ArrayList<>();
             return storeIntoArraylist(top_countries_population, query2);
 
         } catch (Exception e) {
@@ -103,7 +103,7 @@ public class CountryReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<Country> getCountriesRegion(Connection con, int lim) {
+    public List<Country> getCountriesRegion(Connection con, int lim) {
         try {
 
                 // Create an SQL statement
@@ -128,7 +128,7 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet query3 = stmt.executeQuery(strSelect);
             // Creates array to gather countries population data based on each region
-            ArrayList<Country> top_countries_population = new ArrayList<>();
+            List<Country> top_countries_population = new ArrayList<>();
             return storeIntoArraylist(top_countries_population, query3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -143,7 +143,7 @@ public class CountryReport {
      * This method is reused in get_countries(), get_countries_continent() and get_countries_region() methods
      * in order to store query results as array lists and return it.
      */
-    public ArrayList<Country> storeIntoArraylist(ArrayList<Country> al, ResultSet qry) {
+    public List<Country> storeIntoArraylist(List<Country> al, ResultSet qry) {
         try{
             // Extract population of countries information and store into array list
             while (qry.next()) {
@@ -168,9 +168,9 @@ public class CountryReport {
 
     /** Display Countries Report using getter() method
      *
-     * @param countries_list
+     * @param countriesList
      */
-    public void displayCountries(ArrayList<Country> countries_list) {
+    public void displayCountries(List<Country> countriesList) {
             try{
                 // Print header
                 System.out.println("============================================================");
@@ -178,7 +178,7 @@ public class CountryReport {
 
                 System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
                 // Loop over all countries population in the list
-                for (Country cp : countries_list)
+                for (Country cp : countriesList)
                 {
                     String countries_info =
                             String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
@@ -199,9 +199,9 @@ public class CountryReport {
 
     /** display countries report based on continents using getter() and setter() methods
      * Use if condition to check whether current continent change and print out current continent as title
-     * @param countries_list
+     * @param countriesList
      */
-    public void displayCountriesContinent(ArrayList<Country> countries_list) {
+    public void displayCountriesContinent(List<Country> countriesList) {
         try{
             // Print header
             System.out.println("============================================================");
@@ -210,7 +210,7 @@ public class CountryReport {
             String currentContinent = null;
 
             // Loop over all countries population in the list
-            for (Country cp : countries_list)
+            for (Country cp : countriesList)
             {
                 // Check the current continent changed or not
                 if (!cp.getContinent().equals(currentContinent)) {
@@ -237,9 +237,9 @@ public class CountryReport {
 
     /** display countries report based on regions using getter() and setter() methods
      * Use if condition to check whether current continent change and print out current region as title
-     * @param countries_list
+     * @param countriesList
      */
-    public void displayCountriesRegion(ArrayList<Country> countries_list) {
+    public void displayCountriesRegion(List<Country> countriesList) {
         try{
             // Print header
             System.out.println("============================================================");
@@ -248,7 +248,7 @@ public class CountryReport {
             String currentRegion = null;
 
             // Loop over all countries population in the list
-            for (Country cp : countries_list)
+            for (Country cp : countriesList)
             {
                 // Check the current continent changed or not
                 if (!cp.getRegion().equals(currentRegion)) {

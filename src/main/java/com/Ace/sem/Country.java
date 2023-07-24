@@ -8,12 +8,12 @@ public class Country {
     // Declare Variables related to Country Information and Capital City Names
 
     private long genPop;
-    private String Code;
-    private String Name;
-    private String Continent;
-    private String Region;
-    private int Population;
-    private String Capital;
+    private String code;
+    private String name;
+    private String continent;
+    private String region;
+    private int population;
+    private String capital;
 
     // Use Encapsulation : Getter & Setter Method for each variable initialized in above
     public long getGenPop() {
@@ -25,51 +25,51 @@ public class Country {
     }
 
     public String getCode() {
-        return Code;
+        return code;
     }
 
-    public void setCode(String Code) {
-        this.Code = Code;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getContinent() {
-        return Continent;
+        return continent;
     }
 
-    public void setContinent(String Continent) {
-        this.Continent = Continent;
+    public void setContinent(String continent) {
+        this.continent = continent;
     }
 
     public String getRegion() {
-        return Region;
+        return region;
     }
 
-    public void setRegion(String Region) {
-        this.Region = Region;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public int getPopulation() {
-        return Population;
+        return population;
     }
 
-    public void setPopulation(int Population) {
-        this.Population = Population;
+    public void setPopulation(int population) {
+        this.population = population;
     }
 
     public String getCapital() {
-        return Capital;
+        return capital;
     }
 
-    public void setCapital(String Capital) {
-        this.Capital = Capital;
+    public void setCapital(String capital) {
+        this.capital = capital;
     }
 
 }

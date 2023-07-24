@@ -16,7 +16,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public ArrayList<Country> sumWorldPop (Connection con){
+    public List<Country> sumWorldPop (Connection con){
         try {
 
             // Create an SQL statement
@@ -26,7 +26,7 @@ public class SummaryReport {
                     "SELECT SUM(Population) AS world_pop FROM country";
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
-            ArrayList<Country> worldPop = new ArrayList<>();
+            List<Country> worldPop = new ArrayList<>();
 
             while (pop.next()) {
                 Country cp = new Country();
@@ -49,7 +49,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public ArrayList<Country> sumContPop (Connection con, int topLimit){
+    public List<Country> sumContPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -60,7 +60,7 @@ public class SummaryReport {
                             "GROUP by Continent ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
-            ArrayList<Country> contPop = new ArrayList<>();
+            List<Country> contPop = new ArrayList<>();
 
             while (pop.next()) {
                 Country cp = new Country();
@@ -84,7 +84,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public ArrayList<Country> sumRegPop (Connection con, int topLimit){
+    public List<Country> sumRegPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -95,7 +95,7 @@ public class SummaryReport {
                             "GROUP by Region ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
-            ArrayList<Country> regPop = new ArrayList<>();
+            List<Country> regPop = new ArrayList<>();
 
             while (pop.next()) {
                 Country cp = new Country();
@@ -119,7 +119,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public ArrayList<Country> sumCouPop (Connection con, int topLimit){
+    public List<Country> sumCouPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -130,7 +130,7 @@ public class SummaryReport {
                             "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
-            ArrayList<Country> CountryPop = new ArrayList<>();
+            List<Country> CountryPop = new ArrayList<>();
 
             while (pop.next()) {
                 Country cp = new Country();
@@ -154,7 +154,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public ArrayList<City> sumDistPop (Connection con, int topLimit){
+    public List<City> sumDistPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -189,7 +189,7 @@ public class SummaryReport {
      * @param topLimit
      * @return
      */
-    public ArrayList<City> sumCityPop (Connection con, int topLimit){
+    public List<City> sumCityPop (Connection con, int topLimit){
         try {
 
             // Create an SQL statement
@@ -220,13 +220,13 @@ public class SummaryReport {
 
     /**
      * returns the data gathered by sumWorldPop
-     * @param pop_list
+     * @param popList
      */
-    public void displaySumWorldPop(ArrayList<Country> pop_list)
+    public void displaySumWorldPop(List<Country> popList)
     {
         try{
             // Loop over all data in the list
-            for (Country cp : pop_list)
+            for (Country cp : popList)
             {
                 // Format and print of data
                 String world_pop_info =
@@ -245,13 +245,13 @@ public class SummaryReport {
 
     /**
      * returns the data gathered by sumContPop
-     * @param cont_pop_list
+     * @param continentsList
      */
-    public void displaySumContPop(ArrayList<Country> cont_pop_list)
+    public void displaySumContPop(List<Country> continentsList)
     {
         try{
             // Loop over all data in the list
-            for (Country cp : cont_pop_list)
+            for (Country cp : continentsList)
             {
                 // Formatting and printing data
 
@@ -271,13 +271,13 @@ public class SummaryReport {
 
     /**
      * returns data gathered by sumRegPop
-     * @param reg_pop_list
+     * @param regionList
      */
-    public void displaySumRegPop(ArrayList<Country> reg_pop_list)
+    public void displaySumRegPop(List<Country> regionList)
     {
         try{
             // Loop over all data in the list
-            for (Country cp : reg_pop_list)
+            for (Country cp : regionList)
             {
                 // Formatting and printing data
 
@@ -297,13 +297,13 @@ public class SummaryReport {
 
     /**
      * Displays data gathered by sumCouPop
-    // * @param reg_pop_list
+    // * @param contriesList
      */
-    public void displaySumCouPop(ArrayList<Country> cou_pop_list)
+    public void displaySumCouPop(List<Country> contriesList)
     {
         try {
             // Loop over all data in the list
-            for (Country cp : cou_pop_list)
+            for (Country cp : contriesList)
             {
                 // Formatting and printing data
 
@@ -323,13 +323,13 @@ public class SummaryReport {
 
     /**
      * display data gathered by sumDistPop
-     * @param dist_pop_list
+     * @param districtsList
      */
-    public void displaySumDistPop(ArrayList<City> dist_pop_list)
+    public void displaySumDistPop(List<City> districtsList)
     {
         try{
             // Loop over all data in the list
-            for (City ct : dist_pop_list)
+            for (City ct : districtsList)
             {
                 // Formatting and printing data
 
@@ -350,13 +350,13 @@ public class SummaryReport {
 
     /**
      * display data gathered by sumCityPop
-     * @param city_pop_list
+     * @param citiesList
      */
-    public void displaySumCityPop(ArrayList<City> city_pop_list)
+    public void displaySumCityPop(List<City> citiesList)
     {
         try{
             // Loop over all data in the list
-            for (City ct : city_pop_list)
+            for (City ct : citiesList)
             {
                 // Formatting and printing data
 

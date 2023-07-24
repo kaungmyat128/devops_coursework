@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.List;
 /**
  * Creates methods to write sql queries and create arraylists of cities population
  * This Java Class File contains 5 java methods that contains 2 parameters - database connection & int limit parameters -
@@ -16,8 +16,8 @@ public class CityReport {
 
     // Create new object of CountryReport to use human_readable_format() method from country.java
     CountryReport formatPopulation = new CountryReport();
-    String CityName = null;
-    String DistrictName = null;
+    String cityName = null;
+    String districtName = null;
 
     /**
      * getCityPop() method contains connection parameters for database connection and limit parameter
@@ -25,7 +25,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPop(Connection con, int lim) {
+    public List<City> getCityPop(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -46,7 +46,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information from database
-            ArrayList<City> worldPop = new ArrayList<City>();
+            List<City> worldPop = new ArrayList<City>();
             while (rset.next()) {
                 City world = new City();
                 world.setCityName(rset.getString("CityName"));
@@ -69,7 +69,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByContinent(Connection con,int lim) {
+    public List<City> getCityPopByContinent(Connection con,int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -92,7 +92,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Continent from Database
-            ArrayList<City> continentPop = new ArrayList<City>();
+            List<City> continentPop = new ArrayList<City>();
             while (rset.next()) {
                 City continent = new City();
                 continent.setCityName(rset.getString("CityName"));
@@ -116,7 +116,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByRegion(Connection con, int lim) {
+    public List<City> getCityPopByRegion(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -139,7 +139,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Region From Database
-            ArrayList<City> regionPop = new ArrayList<City>();
+            List<City> regionPop = new ArrayList<City>();
             while (rset.next()) {
                 City region = new City();
                 region.setCityName(rset.getString("CityName"));
@@ -163,7 +163,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByCountry(Connection con, int lim) {
+    public List<City> getCityPopByCountry(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -185,7 +185,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each country From Database
-            ArrayList<City> countryPop = new ArrayList<City>();
+            List<City> countryPop = new ArrayList<City>();
             while (rset.next()) {
                 City country = new City();
                 country.setCityName(rset.getString("CityName"));
@@ -208,7 +208,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByDistrict(Connection con, int lim) {
+    public List<City> getCityPopByDistrict(Connection con, int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -233,7 +233,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each District From Database
-            ArrayList<City> districtPop = new ArrayList<City>();
+            List<City> districtPop = new ArrayList<City>();
             while (rset.next()) {
                 City district = new City();
                 district.setCityName(rset.getString("CityName"));
@@ -253,16 +253,16 @@ public class CityReport {
 
     /** Display Cities Report using getter() method
      *
-     * @param cities_list
+     * @param citiesList
      */
-    public void displayCities(ArrayList<City> cities_list) {
+    public void displayCities(List<City> citiesList) {
         try{
             // Print header
             System.out.println("============================================================");
 
             System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             // Loop over all cities population in the list
-            for (City cityR : cities_list)
+            for (City cityR : citiesList)
             {
                 String countries_info =
                         String.format("%-40s |%-30s |%-30s |%-20s",
@@ -279,9 +279,9 @@ public class CityReport {
 
     /** display cities report based on continents using getter() and setter() methods
      * Use if condition to check whether current continent change and print out current continent as title
-     * @param continent_list
+     * @param continentList
      */
-    public void displayCityContinents(ArrayList<City> continent_list) {
+    public void displayCityContinents(List<City> continentList) {
         try{
             // Print header
             System.out.println("============================================================");
@@ -290,7 +290,7 @@ public class CityReport {
             String currentContinent = null;
 
             // Loop over all continents and cities population in the list
-            for (City cityR : continent_list)
+            for (City cityR : continentList)
             {
                 if(!cityR.getContinents().equals(currentContinent)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
@@ -300,13 +300,13 @@ public class CityReport {
                 }
 
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cityR.getDistrict());
-                CityName = nullChecker(cityR.getCityName());
+                districtName = nullChecker(cityR.getDistrict());
+                cityName = nullChecker(cityR.getCityName());
 
                 String continent_info =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                                CityName, cityR.getCountryName(), cityR.getContinents(),
-                                DistrictName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
+                                cityName, cityR.getCountryName(), cityR.getContinents(),
+                                districtName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(continent_info);
             }
             System.out.println();
@@ -319,9 +319,9 @@ public class CityReport {
 
     /** display cities report based on regions using getter() and setter() methods
      * Use if condition to check whether current region change and print out current region as title
-     * @param region_list
+     * @param regionList
      */
-    public void displayCityRegion(ArrayList<City> region_list)     {
+    public void displayCityRegion(List<City> regionList)     {
         try{
             // Print header
             System.out.println("============================================================");
@@ -329,7 +329,7 @@ public class CityReport {
             String currentRegion = null;
 
             // Loop over all region population in the list
-            for (City cityR : region_list){
+            for (City cityR : regionList){
                 if(!cityR.getRegion().equals(currentRegion)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
                     System.out.println("===========================================");
@@ -337,12 +337,12 @@ public class CityReport {
                     System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
                 }
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cityR.getDistrict());
-                CityName = nullChecker(cityR.getCityName());
+                districtName = nullChecker(cityR.getDistrict());
+                cityName = nullChecker(cityR.getCityName());
 
                 String region_info =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                                CityName, cityR.getCountryName(), DistrictName,
+                                cityName, cityR.getCountryName(), districtName,
                                 cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(region_info);
             }
@@ -356,9 +356,9 @@ public class CityReport {
 
     /** display cities report based on countries using getter() and setter() methods
      * Use if condition to check whether current country change and print out current country as title
-     * @param countries_list
+     * @param countriesList
      */
-    public void displayCityCountries(ArrayList<City> countries_list)     {
+    public void displayCityCountries(List<City> countriesList)     {
         try{
             // Print header
             System.out.println("============================================================");
@@ -366,7 +366,7 @@ public class CityReport {
             String currentCountry = null;
 
             // Loop over all countries population in the list
-            for (City cty : countries_list){
+            for (City cty : countriesList){
                 if (!cty.getCountryName().equals(currentCountry)){
                     System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                     System.out.println("===========================================");
@@ -375,12 +375,12 @@ public class CityReport {
                 }
 
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cty.getDistrict());
-                CityName = nullChecker(cty.getCityName());
+                districtName = nullChecker(cty.getDistrict());
+                cityName = nullChecker(cty.getCityName());
 
                 String countries_info =
                         String.format("%-40s |%-30s |%-30s |%-20s",
-                                CityName, cty.getCountryName(), DistrictName,
+                                cityName, cty.getCountryName(), districtName,
                                 formatPopulation.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countries_info);
             }
@@ -394,16 +394,16 @@ public class CityReport {
 
     /** display cities report based on districts using getter() and setter() methods
      * Use if condition to check whether current districts change and print out current districts as title
-     * @param districts_list
+     * @param districtsList
      */
-    public void displayCityDistrict(ArrayList<City> districts_list)     {
+    public void displayCityDistrict(List<City> districtsList)     {
         try {
             // Print header
             System.out.println("============================================================");
             // Initialize Current Country variable
             String currentDistrict = null;
 
-            for (City cty : districts_list){
+            for (City cty : districtsList){
                 if (!cty.getDistrict().equals(currentDistrict)){
                     System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                     System.out.println("===========================================");
@@ -412,12 +412,12 @@ public class CityReport {
                 }
 
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cty.getDistrict());
-                CityName = nullChecker(cty.getCityName());
+                districtName = nullChecker(cty.getDistrict());
+                cityName = nullChecker(cty.getCityName());
 
                 String countries_info =
                         String.format("%-40s |%-30s |%-30s |%-20s",
-                                CityName, cty.getCountryName(), DistrictName,
+                                cityName, cty.getCountryName(), districtName,
                                 formatPopulation.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countries_info);
             }

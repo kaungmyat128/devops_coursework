@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.text.NumberFormat;
 import java.util.Locale;
-
+import java.util.List;
 
 /**
  * Creates methods to write sql queries and create arraylists of people living in cities & not living in cities
@@ -22,7 +22,7 @@ public class RuralUrbanReport {
      * The population of people, people living in cities, and people not living in cities in each continent
      * Then return the data as array list.
      * */
-    public ArrayList<City> getContinentPopulation(Connection con) {
+    public List<City> getContinentPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -39,7 +39,7 @@ public class RuralUrbanReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
-            ArrayList<City> RUContinentPopulation = new ArrayList<City>();
+            List<City> RUContinentPopulation = new ArrayList<>();
             // Extract population of countries information and store into array list
             while (query1.next()) {
                 City RUPop = new City();
@@ -63,7 +63,7 @@ public class RuralUrbanReport {
      * The population of people, people living in cities, and people not living in cities in each region
      * Then return the data as array list.
      * */
-    public ArrayList<City> getRegionPopulation(Connection con) {
+    public List<City> getRegionPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -81,7 +81,7 @@ public class RuralUrbanReport {
             // Execute SQL statement
             ResultSet query2 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
-            ArrayList<City> RURegionPopulation = new ArrayList<City>();
+            List<City> RURegionPopulation = new ArrayList<City>();
             // Extract population of countries information and store into array list
             while (query2.next()) {
                 City RUPop = new City();
@@ -104,7 +104,7 @@ public class RuralUrbanReport {
      * getContinentPopulation() method contains connection parameters for database connection
      * The population of people, people living in cities, and people not living in cities in each country
      * Then return the data as array list.
-     * */    public ArrayList<City> getCountryPopulation(Connection con) {
+     * */    public List<City> getCountryPopulation(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -119,7 +119,7 @@ public class RuralUrbanReport {
             // Execute SQL statement
             ResultSet query3 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
-            ArrayList<City> RUCountryPopulation = new ArrayList<City>();
+            List<City> RUCountryPopulation = new ArrayList<>();
             // Extract population of countries information and store into array list
             while (query3.next()) {
                 City RUPop = new City();
@@ -143,7 +143,7 @@ public class RuralUrbanReport {
      *
      * @param arrList
      */
-    public void displayContinentPopulation(ArrayList<City> arrList)
+    public void displayContinentPopulation(List<City> arrList)
     {
         try{
             // Print header
@@ -176,7 +176,7 @@ public class RuralUrbanReport {
      *
      * @param arrList
      */
-    public void displayRegionPopulation(ArrayList<City> arrList)
+    public void displayRegionPopulation(List<City> arrList)
     {
         try {
             // Print header
@@ -215,7 +215,7 @@ public class RuralUrbanReport {
      *
      * @param arrList
      */
-    public void displayCountryPopulation(ArrayList<City> arrList)
+    public void displayCountryPopulation(List<City> arrList)
     {
         try{
             // Print header

@@ -1,17 +1,12 @@
 package com.Ace.sem;
 
-import com.mysql.cj.protocol.Resultset;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-
-import java.lang.invoke.LambdaConversionException;
-import java.sql.*;
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,7 +18,7 @@ public class IntegratedTest
 {
     static CountryReport countryReport;
     static CityReport cityReport;
-    static countryLanguagesReport languagesReport;
+    static CountryLanguagesReport languagesReport;
     static SummaryReport summaryReport;
     static CapitalReport capitalReport;
     static RuralUrbanReport ruReport;
@@ -41,7 +36,7 @@ public class IntegratedTest
         app.connect();
         countryReport = new CountryReport();
         cityReport = new CityReport();
-        languagesReport = new countryLanguagesReport();
+        languagesReport = new CountryLanguagesReport();
         summaryReport = new SummaryReport();
         capitalReport = new CapitalReport();
         ruReport = new RuralUrbanReport();
@@ -72,7 +67,7 @@ public class IntegratedTest
     @Test
     void get_displayCountries() {
         try {
-            ArrayList<Country> country = new ArrayList<Country>();
+            List<Country> country = new ArrayList<Country>();
 
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
@@ -128,7 +123,7 @@ public class IntegratedTest
     @Test
     void get_displayCountriesContinent() {
         try {
-            ArrayList<Country> country = new ArrayList<Country>();
+            List<Country> country;
 
             country = countryReport.getCountriesContinent(app.con, 3);
             // Test for not null data
@@ -174,7 +169,7 @@ public class IntegratedTest
     @Test
     void get_displayCountriesRegion() {
         try {
-            ArrayList<Country> country1 = new ArrayList<Country>();
+            List<Country> country1;
 
             country1 = countryReport.getCountriesRegion(app.con, 3);
             // Test for not null data
@@ -222,7 +217,7 @@ public class IntegratedTest
     @Test
     void get_displayCities()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
 
             city = cityReport.getCityPop(app.con, 3);
             // Test for not null data
@@ -264,7 +259,7 @@ public class IntegratedTest
     @Test
 void get_displayCitiesContinent()     {
     try{
-        ArrayList<City> city = new ArrayList<>();
+        List<City> city;
 
         city = cityReport.getCityPopByContinent(app.con, 3);
         // Test for not null data
@@ -307,7 +302,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displayCitiesRegion()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
 
             city = cityReport.getCityPopByRegion(app.con, 3);
             // Test for not null data
@@ -350,7 +345,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displayCitiesCountry()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
 
             city = cityReport.getCityPopByCountry(app.con, 3);
             // Test for not null data
@@ -391,7 +386,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displayCitiesDistrict()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
 
             city = cityReport.getCityPopByDistrict(app.con, 3);
             // Test for not null data
@@ -432,7 +427,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displayLanguageReport()     {
         try{
-            ArrayList<Language> language = new ArrayList<>();
+            List<Language> language;
             language = languagesReport.getLanguagesReport(app.con);
             // Test for not null data
             assertNotNull(language, "The ArrayList of cities should not be null.");
@@ -465,7 +460,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displayCapitals()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
 
             city = capitalReport.getCapitalPopByWorld(app.con, 3);
             // Test for not null data
@@ -506,7 +501,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displayCapitalsByContinent()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
 
             city = capitalReport.getCapitalPopByContinent(app.con, 3);
             // Test for not null data
@@ -550,7 +545,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displayCapitalsByRegion()     {
         try{
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
 
             city = capitalReport.getCapitalPopByRegion(app.con, 3);
             // Test for not null data
@@ -598,7 +593,7 @@ void get_displayCitiesContinent()     {
 
     @Test
     void get_displayRuralUrbanByContinent()     {
-            ArrayList<City> city = new ArrayList<>();
+            List<City> city;
             city = ruReport.getContinentPopulation(app.con);
 
             // Test for not null data
@@ -629,7 +624,7 @@ void get_displayCitiesContinent()     {
      */
     @Test
     void get_displayRuralUrbanByRegion()     {
-        ArrayList<City> city = new ArrayList<>();
+        List<City> city;
         city = ruReport.getRegionPopulation(app.con);
 
         // Test for not null data
@@ -660,7 +655,7 @@ void get_displayCitiesContinent()     {
      */
     @Test
     void get_displayRuralUrbanCountry()     {
-        ArrayList<City> city = new ArrayList<>();
+        List<City> city;
         city = ruReport.getCountryPopulation(app.con);
 
         // Test for not null data
@@ -691,7 +686,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displaySummary()
     {
-        ArrayList<Country> summary = new ArrayList<>();
+        List<Country> summary;
         summary = summaryReport.sumWorldPop(app.con);
 
         // Test for not null data
@@ -714,7 +709,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displaySummaryContinent()
     {
-        ArrayList<Country> summary = new ArrayList<>();
+        List<Country> summary;
         summary = summaryReport.sumContPop(app.con, 1);
 
         // Test for not null data
@@ -737,7 +732,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displaySummaryRegion()
     {
-        ArrayList<Country> summary = new ArrayList<>();
+        List<Country> summary;
         summary = summaryReport.sumRegPop(app.con, 1);
 
         // Test for not null data
@@ -760,7 +755,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displaySummaryCountry()
     {
-        ArrayList<Country> summary = new ArrayList<>();
+        List<Country> summary;
         summary = summaryReport.sumCouPop(app.con, 1);
 
         // Test for not null data
@@ -784,7 +779,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displaySummaryDistrict()
     {
-        ArrayList<City> summary = new ArrayList<>();
+        List<City> summary;
         summary = summaryReport.sumDistPop(app.con, 1);
 
         // Test for not null data
@@ -808,7 +803,7 @@ void get_displayCitiesContinent()     {
     @Test
     void get_displaySummaryCity()
     {
-        ArrayList<City> summary = new ArrayList<>();
+        List<City> summary;
         summary = summaryReport.sumCityPop(app.con, 1);
 
         // Test for not null data
