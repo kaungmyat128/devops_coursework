@@ -14,7 +14,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public List<Country> sumWorldPop (Connection con){
+    public List<Country> sumWorldPop (final Connection con){
         try {
 
             // Create an SQL statement
@@ -47,7 +47,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public List<Country> sumContPop (Connection con, int topLimit){
+    public List<Country> sumContPop (final Connection con, final int topLimit){
         try {
 
             // Create an SQL statement
@@ -82,7 +82,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public List<Country> sumRegPop (Connection con, int topLimit){
+    public List<Country> sumRegPop (final Connection con, final int topLimit){
         try {
 
             // Create an SQL statement
@@ -117,7 +117,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public List<Country> sumCouPop (Connection con, int topLimit){
+    public List<Country> sumCouPop (final Connection con, final int topLimit){
         try {
 
             // Create an SQL statement
@@ -152,7 +152,7 @@ public class SummaryReport {
      * @param con
      * @return
      */
-    public List<City> sumDistPop (Connection con, int topLimit){
+    public List<City> sumDistPop (final Connection con, final int topLimit){
         try {
 
             // Create an SQL statement
@@ -187,7 +187,7 @@ public class SummaryReport {
      * @param topLimit
      * @return
      */
-    public List<City> sumCityPop (Connection con, int topLimit){
+    public List<City> sumCityPop (final Connection con, final int topLimit){
         try {
 
             // Create an SQL statement
@@ -220,7 +220,7 @@ public class SummaryReport {
      * returns the data gathered by sumWorldPop
      * @param popList
      */
-    public void displaySumWorldPop(List<Country> popList)
+    public void displaySumWorldPop(final List<Country> popList)
     {
         try{
             // Loop over all data in the list
@@ -245,7 +245,7 @@ public class SummaryReport {
      * returns the data gathered by sumContPop
      * @param continentsList
      */
-    public void displaySumContPop(List<Country> continentsList)
+    public void displaySumContPop(final List<Country> continentsList)
     {
         try{
             // Loop over all data in the list
@@ -271,7 +271,7 @@ public class SummaryReport {
      * returns data gathered by sumRegPop
      * @param regionList
      */
-    public void displaySumRegPop(List<Country> regionList)
+    public void displaySumRegPop(final List<Country> regionList)
     {
         try{
             // Loop over all data in the list
@@ -297,7 +297,7 @@ public class SummaryReport {
      * Displays data gathered by sumCouPop
     // * @param contriesList
      */
-    public void displaySumCouPop(List<Country> contriesList)
+    public void displaySumCouPop(final List<Country> contriesList)
     {
         try {
             // Loop over all data in the list
@@ -323,7 +323,7 @@ public class SummaryReport {
      * display data gathered by sumDistPop
      * @param districtsList
      */
-    public void displaySumDistPop(List<City> districtsList)
+    public void displaySumDistPop(final List<City> districtsList)
     {
         try{
             // Loop over all data in the list
@@ -350,7 +350,7 @@ public class SummaryReport {
      * display data gathered by sumCityPop
      * @param citiesList
      */
-    public void displaySumCityPop(List<City> citiesList)
+    public void displaySumCityPop(final List<City> citiesList)
     {
         try{
             // Loop over all data in the list
@@ -379,7 +379,7 @@ public class SummaryReport {
      * @param population
      * @return
      */
-    public String humanReadableFormatLong(long population){
+    public String humanReadableFormatLong(final long population){
         NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
         return numf.format(population);
     }

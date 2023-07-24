@@ -15,7 +15,7 @@ public class CapitalReport {
      * write sql query to produce 'ALL or Top N most populated Capital cities around the world'.
      * Then return the data as array list.
      * */
-    public List<City> getCapitalPopByWorld (Connection con,int lim){
+    public List<City> getCapitalPopByWorld (final Connection con,final int lim){
         try{
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -54,7 +54,7 @@ public class CapitalReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public List<City> getCapitalPopByContinent (Connection con,int lim){
+    public List<City> getCapitalPopByContinent (final Connection con,final int lim){
         try{
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -96,7 +96,7 @@ public class CapitalReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public List<City> getCapitalPopByRegion (Connection con,int lim){
+    public List<City> getCapitalPopByRegion (final Connection con,final int lim){
         try{
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -137,7 +137,7 @@ public class CapitalReport {
      * This method is reused in getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion() methods
      * in order to store query results as array lists and return it.
      */
-    public List<City> capitalArrList(List<City> arr, ResultSet qry) {
+    public List<City> capitalArrList(final List<City> arr, final ResultSet qry) {
         try {
             // Extract population of countries information and store into array list
             while (qry.next()) {
@@ -162,7 +162,7 @@ public class CapitalReport {
      *
      * @param capitalList
      */
-    public void displayCapital(List<City> capitalList)
+    public void displayCapital(final List<City> capitalList)
     {
         try{
             // Print header
@@ -194,7 +194,7 @@ public class CapitalReport {
      *
      * @param capitalList
      */
-    public void displayCapitalContinent(List<City> capitalList)
+    public void displayCapitalContinent(final List<City> capitalList)
     {
         try{
             // Print header
@@ -237,7 +237,7 @@ public class CapitalReport {
      *
      * @param capitalList
      */
-    public void displayCapitalRegion(List<City> capitalList) {
+    public void displayCapitalRegion(final List<City> capitalList) {
         try {
             // Print header
             System.out.println("========================================================================================");
@@ -273,7 +273,7 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data from regions can be extracted.[capital report]");
         }
     }
-    public String nullChecker(String checkElement){
+    public String nullChecker(final String checkElement){
         if(checkElement == null || checkElement == " " || checkElement == ""){
             return "-";
         }

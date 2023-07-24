@@ -43,20 +43,20 @@ public class IntegratedTest
     }
 
     // Helper method to check if the column is present (not null or not empty)
-    private boolean columnPresentString (String columnValue){
+    private boolean columnPresentString (final String columnValue){
         return columnValue != null || columnValue.isEmpty();
     }
     // Helper method to check if the column is present (not null or not empty)
-    private boolean columnPresentInt (int columnValue) {
+    private boolean columnPresentInt (final int columnValue) {
         return columnValue >= 0;
     }
     // Helper method to check if the column is present (not null or not empty)
-    private boolean columnPresentLong (long columnValue) {
+    private boolean columnPresentLong (final long columnValue) {
         return columnValue >= 0;
     }
 
     // Helper method to check if the column is present (not null or not empty)
-    private boolean columnPresentDouble (double columnValue) {
+    private boolean columnPresentDouble (final double columnValue) {
         return columnValue >= 0;
     }
     /**
