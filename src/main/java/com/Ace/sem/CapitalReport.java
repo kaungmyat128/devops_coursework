@@ -216,9 +216,10 @@ public class CapitalReport {
 
                 }
 
+                String capitalCity = nullChecker(cpr.getCityName());
                 String capitalsInfo =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
-                                cpr.getCityName(),
+                                capitalCity,
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
                                 cpr.getRegion(),
