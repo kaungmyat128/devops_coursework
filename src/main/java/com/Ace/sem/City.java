@@ -9,13 +9,12 @@ public class City {
     // Declare Variables related to City Information, Country Code, District, Population, Country & Region .
 
     private long genPop;
-    private String CityName;
-    private String CountryCode;
-    private String District;
-    private int Population;
-    private String CountryName;
-    private String Continents;
-    private String Region;
+    private String cityName;
+    private String district;
+    private int population;
+    private String countryName;
+    private String continents;
+    private String region;
     private long totalPopulation;
     private long totalCitiesPopulation;
     private long totalNotCitiesPopulation;
@@ -29,62 +28,62 @@ public class City {
     }
     // Getter method for CityName
     public String getCityName() {
-        return CityName;
+        return cityName;
     }
 
     // Setter method for CityName
-    public void setCityName(String CityName) {
-        this.CityName = CityName;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     // Getter method for District
     public String getDistrict() {
-        return District;
+        return district;
     }
 
     // Setter method for District
-    public void setDistrict(String District) {
-        this.District = District;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     // Getter method for Population
     public int getPopulation() {
-        return Population;
+        return population;
     }
 
     // Setter method for Population
-    public void setPopulation(int Population) {
-        this.Population = Population;
+    public void setPopulation(int population) {
+        this.population = population;
     }
 
     // Getter method for CountryName
     public String getCountryName() {
-        return CountryName;
+        return countryName;
     }
 
     // Setter method for CountryName
-    public void setCountryName(String CountryName) {
-        this.CountryName = CountryName;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     // Getter method for Continents
     public String getContinents() {
-        return Continents;
+        return continents;
     }
 
     // Setter method for Continents
-    public void setContinents(String Continents) {
-        this.Continents = Continents;
+    public void setContinents(String continents) {
+        this.continents = continents;
     }
 
     // Getter method for Region
     public String getRegion() {
-        return Region;
+        return region;
     }
 
     // Setter method for Region
-    public void setRegion(String Region) {
-        this.Region = Region;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     // Getter method for Total Population

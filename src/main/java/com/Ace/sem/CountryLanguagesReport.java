@@ -6,8 +6,9 @@ import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.List;
 
-public class countryLanguagesReport {
+public class CountryLanguagesReport {
 
     /**
      * getLanguagesReport() method contains connection parameters for database connection
@@ -16,7 +17,7 @@ public class countryLanguagesReport {
      * Chinese, English, Hindi, Spanish and Arabic.
      * Then return the data as array list.
      * */
-    public ArrayList<Language> getLanguagesReport(Connection con) {
+    public List<Language> getLanguagesReport(Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -26,7 +27,7 @@ public class countryLanguagesReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list and add query result into array list
-            ArrayList<Language> LanguagePopulation = new ArrayList<Language>();
+            List<Language> LanguagePopulation = new ArrayList<>();
 
             // Extract population of countries information and store into array list
             while (query1.next()) {
@@ -50,7 +51,7 @@ public class countryLanguagesReport {
      *
      * @param arrList
      */
-    public void displayLanguagesPopulation(ArrayList<Language> arrList)
+    public void displayLanguagesPopulation(List<Language> arrList)
     {
         try{
             // Print header

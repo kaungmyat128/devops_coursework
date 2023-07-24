@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.List;
 public class CapitalReport {
 
 
@@ -16,7 +16,7 @@ public class CapitalReport {
      * write sql query to produce 'ALL or Top N most populated Capital cities around the world'.
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCapitalPopByWorld (Connection con,int lim){
+    public List<City> getCapitalPopByWorld (Connection con,int lim){
         try{
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -37,7 +37,7 @@ public class CapitalReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            ArrayList<City> CapitalPop = new ArrayList<>();
+            List<City> CapitalPop = new ArrayList<>();
             return CapitalArrList(CapitalPop, query1);
 
         }
@@ -55,7 +55,7 @@ public class CapitalReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCapitalPopByContinent (Connection con,int lim){
+    public List<City> getCapitalPopByContinent (Connection con,int lim){
         try{
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -79,7 +79,7 @@ public class CapitalReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            ArrayList<City> CapitalPop = new ArrayList<>();
+            List<City> CapitalPop = new ArrayList<>();
             return CapitalArrList(CapitalPop, query1);
 
         }
@@ -97,7 +97,7 @@ public class CapitalReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCapitalPopByRegion (Connection con,int lim){
+    public List<City> getCapitalPopByRegion (Connection con,int lim){
         try{
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -121,7 +121,7 @@ public class CapitalReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            ArrayList<City> CapitalPop = new ArrayList<>();
+            List<City> CapitalPop = new ArrayList<>();
             return CapitalArrList(CapitalPop, query1);
 
         }
@@ -138,7 +138,7 @@ public class CapitalReport {
      * This method is reused in getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion() methods
      * in order to store query results as array lists and return it.
      */
-    public ArrayList<City> CapitalArrList(ArrayList<City> ar, ResultSet qry) {
+    public List<City> CapitalArrList(List<City> ar, ResultSet qry) {
         try {
             // Extract population of countries information and store into array list
             while (qry.next()) {
@@ -163,7 +163,7 @@ public class CapitalReport {
      *
      * @param capitalList
      */
-    public void displayCapital(ArrayList<City> capitalList)
+    public void displayCapital(List<City> capitalList)
     {
         try{
             // Print header
@@ -195,7 +195,7 @@ public class CapitalReport {
      *
      * @param capitalList
      */
-    public void displayCapitalContinent(ArrayList<City> capitalList)
+    public void displayCapitalContinent(List<City> capitalList)
     {
         try{
             // Print header
@@ -238,7 +238,7 @@ public class CapitalReport {
      *
      * @param capitalList
      */
-    public void displayCapitalRegion(ArrayList<City> capitalList) {
+    public void displayCapitalRegion(List<City> capitalList) {
         try {
             // Print header
             System.out.println("========================================================================================");

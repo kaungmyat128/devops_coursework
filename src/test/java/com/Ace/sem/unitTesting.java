@@ -16,7 +16,7 @@ public class unitTesting
 {
     static CountryReport countryReport;
     static CityReport cityReport;
-    static countryLanguagesReport languagesReport;
+    static CountryLanguagesReport languagesReport;
     static SummaryReport summaryReport;
     static CapitalReport capitalReport;
     static RuralUrbanReport ruReport;
@@ -33,7 +33,7 @@ public class unitTesting
         app.connect();
         countryReport = new CountryReport();
         cityReport = new CityReport();
-        languagesReport = new countryLanguagesReport();
+        languagesReport = new CountryLanguagesReport();
         summaryReport = new SummaryReport();
         capitalReport = new CapitalReport();
         ruReport = new RuralUrbanReport();
@@ -45,7 +45,7 @@ public class unitTesting
      */
     @Test
     void displayCountriesNull() {
-        countryReport.displayCountries(null);
+            countryReport.displayCountries(null);
     }
 
     /**
@@ -492,12 +492,12 @@ public class unitTesting
     }
 
     @Test
-    void displayCaptialContinentNull(){
+    void displayCapitalContinentNull(){
         capitalReport.displayCapitalContinent(null);
     }
 
     @Test
-    void displayCaptialRegionNull(){;
+    void displayCapitalRegionNull(){
         capitalReport.displayCapitalRegion(null);
     }
 
