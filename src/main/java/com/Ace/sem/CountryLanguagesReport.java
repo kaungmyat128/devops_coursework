@@ -17,7 +17,7 @@ public class CountryLanguagesReport {
      * Chinese, English, Hindi, Spanish and Arabic.
      * Then return the data as array list.
      * */
-    public List<Language> getLanguagesReport(Connection con) {
+    public List<Language> getLanguagesReport(final Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -51,7 +51,7 @@ public class CountryLanguagesReport {
      *
      * @param arrList
      */
-    public void displayLanguagesPopulation(List<Language> arrList)
+    public void displayLanguagesPopulation(final List<Language> arrList)
     {
         try{
             // Print header
@@ -81,7 +81,7 @@ public class CountryLanguagesReport {
      * @param population
      * @return
      */
-    public String humanReadableFormat(long population){
+    public String humanReadableFormat(final long population){
         NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
         return numf.format(population);
     }

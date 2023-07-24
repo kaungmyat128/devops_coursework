@@ -10,7 +10,7 @@ public class Language {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(final String language) {
         this.language = language;
     }
 
@@ -18,7 +18,7 @@ public class Language {
         return totalPopulation;
     }
 
-    public void setTotalPopulation(long totalPopulation) {
+    public void setTotalPopulation(final long totalPopulation) {
         this.totalPopulation = totalPopulation;
     }
 
@@ -26,7 +26,7 @@ public class Language {
         return percentage;
     }
 
-    public void setPercentage(double percentage) {
+    public void setPercentage(final double percentage) {
         this.percentage = percentage;
     }
 }

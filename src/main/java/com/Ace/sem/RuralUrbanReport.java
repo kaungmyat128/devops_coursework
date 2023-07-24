@@ -22,7 +22,7 @@ public class RuralUrbanReport {
      * The population of people, people living in cities, and people not living in cities in each continent
      * Then return the data as array list.
      * */
-    public List<City> getContinentPopulation(Connection con) {
+    public List<City> getContinentPopulation(final Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -63,7 +63,7 @@ public class RuralUrbanReport {
      * The population of people, people living in cities, and people not living in cities in each region
      * Then return the data as array list.
      * */
-    public List<City> getRegionPopulation(Connection con) {
+    public List<City> getRegionPopulation(final Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -104,7 +104,7 @@ public class RuralUrbanReport {
      * getContinentPopulation() method contains connection parameters for database connection
      * The population of people, people living in cities, and people not living in cities in each country
      * Then return the data as array list.
-     * */    public List<City> getCountryPopulation(Connection con) {
+     * */    public List<City> getCountryPopulation(final Connection con) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -143,7 +143,7 @@ public class RuralUrbanReport {
      *
      * @param arrList
      */
-    public void displayContinentPopulation(List<City> arrList)
+    public void displayContinentPopulation(final List<City> arrList)
     {
         try{
             // Print header
@@ -176,7 +176,7 @@ public class RuralUrbanReport {
      *
      * @param arrList
      */
-    public void displayRegionPopulation(List<City> arrList)
+    public void displayRegionPopulation(final List<City> arrList)
     {
         try {
             // Print header
@@ -213,7 +213,7 @@ public class RuralUrbanReport {
      *
      * @param arrList
      */
-    public void displayCountryPopulation(List<City> arrList)
+    public void displayCountryPopulation(final List<City> arrList)
     {
         try{
             // Print header
@@ -247,7 +247,7 @@ public class RuralUrbanReport {
      * @param population
      * @return
      */
-    public String humanReadableFormat(long population){
+    public String humanReadableFormat(final long population){
         NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
         return numf.format(population);
     }
