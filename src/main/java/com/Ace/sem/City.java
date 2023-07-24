@@ -23,7 +23,7 @@ public class City {
         return genPop;
     }
 
-    public void setGenPop(long genPop) {
+    public void setGenPop(final long genPop) {
         this.genPop = genPop;
     }
     // Getter method for CityName
@@ -32,7 +32,7 @@ public class City {
     }
 
     // Setter method for CityName
-    public void setCityName(String cityName) {
+    public void setCityName(final String cityName) {
         this.cityName = cityName;
     }
 
@@ -42,7 +42,7 @@ public class City {
     }
 
     // Setter method for District
-    public void setDistrict(String district) {
+    public void setDistrict(final String district) {
         this.district = district;
     }
 
@@ -52,7 +52,7 @@ public class City {
     }
 
     // Setter method for Population
-    public void setPopulation(int population) {
+    public void setPopulation(final int population) {
         this.population = population;
     }
 
@@ -62,7 +62,7 @@ public class City {
     }
 
     // Setter method for CountryName
-    public void setCountryName(String countryName) {
+    public void setCountryName(final String countryName) {
         this.countryName = countryName;
     }
 
@@ -72,7 +72,7 @@ public class City {
     }
 
     // Setter method for Continents
-    public void setContinents(String continents) {
+    public void setContinents(final String continents) {
         this.continents = continents;
     }
 
@@ -82,7 +82,7 @@ public class City {
     }
 
     // Setter method for Region
-    public void setRegion(String region) {
+    public void setRegion(final String region) {
         this.region = region;
     }
 
@@ -92,7 +92,7 @@ public class City {
     }
 
     // Setter method for Total Population
-    public void setTotalPopulation(long totalPopulation) {
+    public void setTotalPopulation(final long totalPopulation) {
         this.totalPopulation = totalPopulation;
     }
 
@@ -102,7 +102,7 @@ public class City {
     }
 
     // Setter method for Total Population
-    public void setTotalCitiesPopulation(long totalUrbanPop) {
+    public void setTotalCitiesPopulation(final long totalUrbanPop) {
         this.totalUrbanPop = totalUrbanPop;
     }
     // Getter method for Total Population
@@ -111,7 +111,7 @@ public class City {
     }
 
     // Setter method for Total Population
-    public void setTotalNotCitiesPopulation(long totalRuralPop) {
+    public void setTotalNotCitiesPopulation(final long totalRuralPop) {
         this.totalRuralPop = totalRuralPop;
     }
 }

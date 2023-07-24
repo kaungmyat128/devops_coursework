@@ -20,7 +20,7 @@ public class Country {
         return genPop;
     }
 
-    public void setGenPop(long genPop) {
+    public void setGenPop(final long genPop) {
         this.genPop = genPop;
     }
 
@@ -28,7 +28,7 @@ public class Country {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(final String code) {
         this.code = code;
     }
 
@@ -36,7 +36,7 @@ public class Country {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -44,7 +44,7 @@ public class Country {
         return continent;
     }
 
-    public void setContinent(String continent) {
+    public void setContinent(final String continent) {
         this.continent = continent;
     }
 
@@ -52,7 +52,7 @@ public class Country {
         return region;
     }
 
-    public void setRegion(String region) {
+    public void setRegion(final String region) {
         this.region = region;
     }
 
@@ -60,7 +60,7 @@ public class Country {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(final int population) {
         this.population = population;
     }
 
@@ -68,7 +68,7 @@ public class Country {
         return capital;
     }
 
-    public void setCapital(String capital) {
+    public void setCapital(final String capital) {
         this.capital = capital;
     }
 

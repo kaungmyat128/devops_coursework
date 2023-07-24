@@ -24,7 +24,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public List<City> getCityPop(Connection con, int lim) {
+    public List<City> getCityPop(final Connection con, final int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -68,7 +68,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public List<City> getCityPopByContinent(Connection con,int lim) {
+    public List<City> getCityPopByContinent(final Connection con, final int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -115,7 +115,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public List<City> getCityPopByRegion(Connection con, int lim) {
+    public List<City> getCityPopByRegion(final Connection con, final int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -162,7 +162,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public List<City> getCityPopByCountry(Connection con, int lim) {
+    public List<City> getCityPopByCountry(final Connection con, final int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -207,7 +207,7 @@ public class CityReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public List<City> getCityPopByDistrict(Connection con, int lim) {
+    public List<City> getCityPopByDistrict(final Connection con, final int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -254,7 +254,7 @@ public class CityReport {
      *
      * @param citiesList
      */
-    public void displayCities(List<City> citiesList) {
+    public void displayCities(final List<City> citiesList) {
         try{
             // Print header
             System.out.println("============================================================");
@@ -280,7 +280,7 @@ public class CityReport {
      * Use if condition to check whether current continent change and print out current continent as title
      * @param continentList
      */
-    public void displayCityContinents(List<City> continentList) {
+    public void displayCityContinents(final List<City> continentList) {
         try{
             // Print header
             System.out.println("============================================================");
@@ -320,7 +320,7 @@ public class CityReport {
      * Use if condition to check whether current region change and print out current region as title
      * @param regionList
      */
-    public void displayCityRegion(List<City> regionList)     {
+    public void displayCityRegion(final List<City> regionList)     {
         try{
             // Print header
             System.out.println("============================================================");
@@ -357,7 +357,7 @@ public class CityReport {
      * Use if condition to check whether current country change and print out current country as title
      * @param countriesList
      */
-    public void displayCityCountries(List<City> countriesList)     {
+    public void displayCityCountries(final List<City> countriesList)     {
         try{
             // Print header
             System.out.println("============================================================");
@@ -395,7 +395,7 @@ public class CityReport {
      * Use if condition to check whether current districts change and print out current districts as title
      * @param districtsList
      */
-    public void displayCityDistrict(List<City> districtsList)     {
+    public void displayCityDistrict(final List<City> districtsList)     {
         try {
             // Print header
             System.out.println("============================================================");
@@ -435,7 +435,7 @@ public class CityReport {
      * @param checkElement
      * @return
      */
-    public String nullChecker(String checkElement){
+    public String nullChecker(final String checkElement){
         if(checkElement == null || checkElement == " " || checkElement == ""){
             return "-";
         }

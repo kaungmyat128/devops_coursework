@@ -25,7 +25,7 @@ public class CountryReport {
      * write sql query to produce 'ALL or Top N most populated countries around the world'.
      * Then return the data as array list.
      * */
-    public final List<Country> getCountries (final Connection con, final int lim){
+    public List<Country> getCountries (final Connection con, final int lim){
         try {
 
             // Create an SQL statement
@@ -65,7 +65,7 @@ public class CountryReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public final List<Country> getCountriesContinent( final Connection con, final int lim) {
+    public List<Country> getCountriesContinent( final Connection con, final int lim) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -105,7 +105,7 @@ public class CountryReport {
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public final List<Country> getCountriesRegion(final Connection con, final int lim) {
+    public List<Country> getCountriesRegion(final Connection con, final int lim) {
         try {
 
                 // Create an SQL statement
