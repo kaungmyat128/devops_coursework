@@ -268,7 +268,7 @@ public class CountryReport {
                 String countries_info =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                humanReadableFormat(cp.getPopulation()), cp.getCapital());
+                                humanReadableFormat(cp.getPopulation()), Capital);
                 System.out.println(countries_info);
             }
             System.out.println();
@@ -296,7 +296,7 @@ public class CountryReport {
      * @return
      */
     public String nullChecker(String checkElement){
-        if(checkElement == null || checkElement == " " || checkElement == ""){
+        if(checkElement == null || checkElement == " " || checkElement == "" ||checkElement == "null"){
             return "-";
         }
         else{
