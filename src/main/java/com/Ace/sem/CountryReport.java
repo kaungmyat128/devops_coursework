@@ -18,6 +18,8 @@ import java.util.Locale;
 // New Object of CountryReport Java Class will be used from the App.java.
 public class CountryReport {
 
+    String Capital = null;
+
     /**
      * get_countries() method contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated countries around the world'.
@@ -180,13 +182,14 @@ public class CountryReport {
                 // Loop over all countries population in the list
                 for (Country cp : countries_list)
                 {
+                    Capital = nullChecker(cp.getCapital());
                     String countries_info =
                             String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                     cp.getCode(),
                                     cp.getName(),
                                     cp.getContinent(),
                                     cp.getRegion(),
-                                    humanReadableFormat(cp.getPopulation()), cp.getCapital());
+                                    humanReadableFormat(cp.getPopulation()), Capital);
                     System.out.println(countries_info);
                 }
                 System.out.println();
@@ -212,6 +215,7 @@ public class CountryReport {
             // Loop over all countries population in the list
             for (Country cp : countries_list)
             {
+                Capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
                 if (!cp.getContinent().equals(currentContinent)) {
                     // Print the continent header
@@ -250,6 +254,7 @@ public class CountryReport {
             // Loop over all countries population in the list
             for (Country cp : countries_list)
             {
+                Capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
                 if (!cp.getRegion().equals(currentRegion)) {
                     // Print the continent header
@@ -282,5 +287,21 @@ public class CountryReport {
             String formattedCode = nf.format(population);
             return formattedCode;
         }
+
+    /**
+     * checks if given value is null or blank
+     * return "-" if TRUE
+     * return given value if FALSE
+     * @param checkElement
+     * @return
+     */
+    public String nullChecker(String checkElement){
+        if(checkElement == null || checkElement == " " || checkElement == ""){
+            return "-";
+        }
+        else{
+            return checkElement;
+        }
+    }
 
 }
