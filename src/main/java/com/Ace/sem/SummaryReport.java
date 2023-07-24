@@ -130,15 +130,15 @@ public class SummaryReport {
                             "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
             ResultSet pop = stmt.executeQuery(strSelect);
-            List<Country> CountryPop = new ArrayList<>();
+            List<Country> countryPop = new ArrayList<>();
 
             while (pop.next()) {
                 Country cp = new Country();
                 cp.setName(pop.getString("Name"));
                 cp.setGenPop(pop.getLong("reg_pop"));
-                CountryPop.add(cp);
+                countryPop.add(cp);
             }
-            return CountryPop;
+            return countryPop;
         }
         // Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
@@ -229,11 +229,11 @@ public class SummaryReport {
             for (Country cp : popList)
             {
                 // Format and print of data
-                String world_pop_info =
+                String worldPopInfo =
                         String.format("%-20s| %-20s",
                                 "World Population",
                                 humanReadableFormatLong(cp.getGenPop()));
-                System.out.println(world_pop_info);
+                System.out.println(worldPopInfo);
             }
             System.out.println("");
         }
@@ -255,11 +255,11 @@ public class SummaryReport {
             {
                 // Formatting and printing data
 
-                String cont_pop_info =
+                String contPopInfo =
                         String.format("%-30s| %-30s",
                                 cp.getContinent(),
                                 humanReadableFormatLong(cp.getGenPop()));
-                System.out.println(cont_pop_info);
+                System.out.println(contPopInfo);
             }
             System.out.println("");
         }
@@ -281,11 +281,11 @@ public class SummaryReport {
             {
                 // Formatting and printing data
 
-                String reg_pop_info =
+                String regPopInfo =
                         String.format("%-30s| %-30s",
                                 cp.getRegion(),
                                 humanReadableFormatLong(cp.getGenPop()));
-                System.out.println(reg_pop_info);
+                System.out.println(regPopInfo);
             }
             System.out.println("");
         }
@@ -307,11 +307,11 @@ public class SummaryReport {
             {
                 // Formatting and printing data
 
-                String cou_pop_info =
+                String couPopInfo =
                         String.format("%-30s| %-30s",
                                 cp.getName(),
                                 humanReadableFormatLong(cp.getGenPop()));
-                System.out.println(cou_pop_info);
+                System.out.println(couPopInfo);
             }
             System.out.println("");
         }
@@ -333,11 +333,11 @@ public class SummaryReport {
             {
                 // Formatting and printing data
 
-                String dist_pop_info =
+                String distPopInfo =
                         String.format("%-30s| %-30s",
                                 ct.getDistrict(),
                                 humanReadableFormatLong(ct.getGenPop()));
-                System.out.println(dist_pop_info);
+                System.out.println(distPopInfo);
             }
             System.out.println("");
 
@@ -360,11 +360,11 @@ public class SummaryReport {
             {
                 // Formatting and printing data
 
-                String city_pop_info =
+                String cityPopInfo =
                         String.format("%-30s| %-30s",
                                 ct.getCityName(),
                                 humanReadableFormatLong(ct.getPopulation()));
-                System.out.println(city_pop_info);
+                System.out.println(cityPopInfo);
             }
             System.out.println("");
 

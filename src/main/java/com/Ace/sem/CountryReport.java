@@ -18,7 +18,7 @@ import java.util.List;
 // New Object of CountryReport Java Class will be used from the App.java.
 public class CountryReport {
 
-    String Capital = null;
+    String capital = null;
 
     /**
      * get_countries() method contains connection parameters for database connection and limit parameter
@@ -47,8 +47,8 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather country data based on population
-            List<Country> top_countries_population = new ArrayList<>();
-            return storeIntoArraylist(top_countries_population, query1);
+            List<Country> topCountriesPopulation = new ArrayList<>();
+            return storeIntoArraylist(topCountriesPopulation, query1);
 
         }
         // Exception handling when any errors occur. Print out error type and error message and return null.
@@ -89,8 +89,8 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet query2 = stmt.executeQuery(strSelect);
             // Creates array to gather populated country data based on each continent
-            List<Country> top_countries_population = new ArrayList<>();
-            return storeIntoArraylist(top_countries_population, query2);
+            List<Country> topCountriesPopulation = new ArrayList<>();
+            return storeIntoArraylist(topCountriesPopulation, query2);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -130,8 +130,8 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet query3 = stmt.executeQuery(strSelect);
             // Creates array to gather countries population data based on each region
-            List<Country> top_countries_population = new ArrayList<>();
-            return storeIntoArraylist(top_countries_population, query3);
+            List<Country> topCountriesPopulation = new ArrayList<>();
+            return storeIntoArraylist(topCountriesPopulation, query3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country population report [country report]");
@@ -182,15 +182,15 @@ public class CountryReport {
                 // Loop over all countries population in the list
                 for (Country cp : countriesList)
                 {
-                    Capital = nullChecker(cp.getCapital());
-                    String countries_info =
+                    capital = nullChecker(cp.getCapital());
+                    String countriesInfo =
                             String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                     cp.getCode(),
                                     cp.getName(),
                                     cp.getContinent(),
                                     cp.getRegion(),
-                                    humanReadableFormat(cp.getPopulation()), Capital);
-                    System.out.println(countries_info);
+                                    humanReadableFormat(cp.getPopulation()), capital);
+                    System.out.println(countriesInfo);
                 }
                 System.out.println();
             }
@@ -215,7 +215,7 @@ public class CountryReport {
             // Loop over all countries population in the list
             for (Country cp : countriesList)
             {
-                Capital = nullChecker(cp.getCapital());
+                capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
                 if (!cp.getContinent().equals(currentContinent)) {
                     // Print the continent header
@@ -226,11 +226,11 @@ public class CountryReport {
 
                 }
 
-                String countries_info =
+                String countriesInfo =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 humanReadableFormat(cp.getPopulation()), cp.getCapital());
-                System.out.println(countries_info);
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }  catch (Exception e) {
@@ -254,7 +254,7 @@ public class CountryReport {
             // Loop over all countries population in the list
             for (Country cp : countriesList)
             {
-                Capital = nullChecker(cp.getCapital());
+                capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
                 if (!cp.getRegion().equals(currentRegion)) {
                     // Print the continent header
@@ -265,11 +265,11 @@ public class CountryReport {
 
                 }
 
-                String countries_info =
+                String countriesInfo =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                humanReadableFormat(cp.getPopulation()), Capital);
-                System.out.println(countries_info);
+                                humanReadableFormat(cp.getPopulation()), capital);
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -282,7 +282,7 @@ public class CountryReport {
      * human_readable_format method used to format the population numbers
      * e.g. 3242344 => 3,242,344
      */
-    public String humanReadableFormat(int population){
+    public static String humanReadableFormat(int population){
             NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
             String formattedCode = nf.format(population);
             return formattedCode;

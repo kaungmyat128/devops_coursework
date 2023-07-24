@@ -9,7 +9,6 @@ public class CapitalReport {
 
 
     // To use the human_readable_format() method from country.java in this new object is created
-    CountryReport formatPopulation = new CountryReport();
 
     /**
      * getCapitalPopByWorld() method contains connection parameters for database connection and limit parameter
@@ -37,8 +36,8 @@ public class CapitalReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            List<City> CapitalPop = new ArrayList<>();
-            return CapitalArrList(CapitalPop, query1);
+            List<City> capitalPop = new ArrayList<>();
+            return capitalArrList(capitalPop, query1);
 
         }
         // Exception handling when any errors occur. Print out error type and error message and return null.
@@ -79,8 +78,8 @@ public class CapitalReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            List<City> CapitalPop = new ArrayList<>();
-            return CapitalArrList(CapitalPop, query1);
+            List<City> capitalPop = new ArrayList<>();
+            return capitalArrList(capitalPop, query1);
 
         }
         // Exception handling when any errors occur. Print out error type and error message and return null.
@@ -121,8 +120,8 @@ public class CapitalReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             //creates array to gather Capital Cities data based on population
-            List<City> CapitalPop = new ArrayList<>();
-            return CapitalArrList(CapitalPop, query1);
+            List<City> capitalPop = new ArrayList<>();
+            return capitalArrList(capitalPop, query1);
 
         }
         // Exception handling when any errors occur. Print out error type and error message and return null.
@@ -133,12 +132,12 @@ public class CapitalReport {
         }
     }
     /**
-     * CapitalArrList() method has two parameters - former for arraylist<City> and later for query result
+     * capitalArrList() method has two parameters - former for arraylist<City> and later for query result
      * This method will assign  City information query results into the arrayList.
      * This method is reused in getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion() methods
      * in order to store query results as array lists and return it.
      */
-    public List<City> CapitalArrList(List<City> ar, ResultSet qry) {
+    public List<City> capitalArrList(List<City> ar, ResultSet qry) {
         try {
             // Extract population of countries information and store into array list
             while (qry.next()) {
@@ -174,14 +173,14 @@ public class CapitalReport {
             // Loop over all countries population in the list
             for (City cpr : capitalList)
             {
-                String countries_info =
+                String countriesInfo =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
                                 cpr.getCityName(),
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
                                 cpr.getRegion(),
-                                formatPopulation.humanReadableFormat(cpr.getPopulation()));
-                System.out.println(countries_info);
+                                CountryReport.humanReadableFormat(cpr.getPopulation()));
+                System.out.println(countriesInfo);
             }
             System.out.println("========================================================================================");
         }
@@ -217,14 +216,14 @@ public class CapitalReport {
 
                 }
 
-                String capitals_info =
+                String capitalsInfo =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
                                 cpr.getCityName(),
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
                                 cpr.getRegion(),
-                                formatPopulation.humanReadableFormat(cpr.getPopulation()));
-                System.out.println(capitals_info);
+                                CountryReport.humanReadableFormat(cpr.getPopulation()));
+                System.out.println(capitalsInfo);
             }
             System.out.println("============================================================");
 
@@ -258,15 +257,15 @@ public class CapitalReport {
 
                 }
 
-                String CapitalCity = nullChecker(cpr.getCityName());
-                String capitals_info =
+                String capitalCity = nullChecker(cpr.getCityName());
+                String capitalsInfo =
                         String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
-                                CapitalCity,
+                                capitalCity,
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
                                 cpr.getRegion(),
-                                formatPopulation.humanReadableFormat(cpr.getPopulation()));
-                System.out.println(capitals_info);
+                                CountryReport.humanReadableFormat(cpr.getPopulation()));
+                System.out.println(capitalsInfo);
             }
             System.out.println("============================================================");
         } catch (Exception e) {

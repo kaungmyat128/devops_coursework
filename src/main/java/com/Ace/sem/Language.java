@@ -14,11 +14,11 @@ public class Language {
         this.language = language;
     }
 
-    public long getTotal_Population() {
+    public long getTotalPopulation() {
         return totalPopulation;
     }
 
-    public void setTotal_Population(long totalPopulation) {
+    public void setTotalPopulation(long totalPopulation) {
         this.totalPopulation = totalPopulation;
     }
 

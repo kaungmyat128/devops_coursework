@@ -38,18 +38,18 @@ public class RuralUrbanReport {
 
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
-            // Create array list 'RUContinentPopulation' and add query result into array list
-            List<City> RUContinentPopulation = new ArrayList<>();
+            // Create array list 'ruContinentPopulation' and add query result into array list
+            List<City> ruContinentPopulation = new ArrayList<>();
             // Extract population of countries information and store into array list
             while (query1.next()) {
-                City RUPop = new City();
-                RUPop.setContinents(query1.getString("Continent_Name"));
-                RUPop.setTotalPopulation(query1.getLong("Total_Population"));
-                RUPop.setTotalCitiesPopulation(query1.getLong("Cities_Population"));
-                RUPop.setTotalNotCitiesPopulation(query1.getLong("Not_Cities_Population"));
-                RUContinentPopulation.add(RUPop);
+                City ruPop = new City();
+                ruPop.setContinents(query1.getString("Continent_Name"));
+                ruPop.setTotalPopulation(query1.getLong("Total_Population"));
+                ruPop.setTotalCitiesPopulation(query1.getLong("Cities_Population"));
+                ruPop.setTotalNotCitiesPopulation(query1.getLong("Not_Cities_Population"));
+                ruContinentPopulation.add(ruPop);
             }
-            return RUContinentPopulation;
+            return ruContinentPopulation;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -81,17 +81,17 @@ public class RuralUrbanReport {
             // Execute SQL statement
             ResultSet query2 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
-            List<City> RURegionPopulation = new ArrayList<City>();
+            List<City> ruRegionPopulation = new ArrayList<City>();
             // Extract population of countries information and store into array list
             while (query2.next()) {
-                City RUPop = new City();
-                RUPop.setRegion(query2.getString("Region"));
-                RUPop.setTotalPopulation(query2.getLong("Total_Population"));
-                RUPop.setTotalCitiesPopulation(query2.getLong("Cities_Population"));
-                RUPop.setTotalNotCitiesPopulation(query2.getLong("Not_Cities_Population"));
-                RURegionPopulation.add(RUPop);
+                City ruPop = new City();
+                ruPop.setRegion(query2.getString("Region"));
+                ruPop.setTotalPopulation(query2.getLong("Total_Population"));
+                ruPop.setTotalCitiesPopulation(query2.getLong("Cities_Population"));
+                ruPop.setTotalNotCitiesPopulation(query2.getLong("Not_Cities_Population"));
+                ruRegionPopulation.add(ruPop);
             }
-            return RURegionPopulation;
+            return ruRegionPopulation;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -119,17 +119,17 @@ public class RuralUrbanReport {
             // Execute SQL statement
             ResultSet query3 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
-            List<City> RUCountryPopulation = new ArrayList<>();
+            List<City> ruCountryPopulation = new ArrayList<>();
             // Extract population of countries information and store into array list
             while (query3.next()) {
-                City RUPop = new City();
-                RUPop.setCountryName(query3.getString("Country"));
-                RUPop.setTotalPopulation(query3.getLong("Total_Population"));
-                RUPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
-                RUPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
-                RUCountryPopulation.add(RUPop);
+                City ruPop = new City();
+                ruPop.setCountryName(query3.getString("Country"));
+                ruPop.setTotalPopulation(query3.getLong("Total_Population"));
+                ruPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
+                ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
+                ruCountryPopulation.add(ruPop);
             }
-            return RUCountryPopulation;
+            return ruCountryPopulation;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each country [Rural]");
@@ -153,16 +153,16 @@ public class RuralUrbanReport {
             // Loop over all cities population in the list
             for (City c : arrList)
             {
-                double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
-                String s1 = String.format("%05.2f",people_living_in_cities) + "%";
-                double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
-                String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
-                String continent_population =
+                double peopleLivingInCities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s1 = String.format("%05.2f",peopleLivingInCities) + "%";
+                double peopleNotLivingInCities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s2 = String.format("%05.2f",peopleNotLivingInCities) + "%";
+                String contPop =
                         String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
                                 c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
                                 humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
-                System.out.println(continent_population);
+                System.out.println(contPop);
             }
             System.out.println("============================================================");
         }
@@ -186,19 +186,17 @@ public class RuralUrbanReport {
             // Loop over all cities population in the list
             for (City c : arrList)
             {
-                double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
-                String s1 = String.format("%05.2f",people_living_in_cities) + "%";
-                double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
-                String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
+                double peopleLivingInCities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s1 = String.format("%05.2f",peopleLivingInCities) + "%";
+                double peopleNotLivingInCities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s2 = String.format("%05.2f",peopleNotLivingInCities) + "%";
 
-
-
-                String continent_population =
+                String contPop =
                         String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
                                 c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
                                 humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
-                System.out.println(continent_population);
+                System.out.println(contPop);
             }
             System.out.println("============================================================");
 
@@ -225,16 +223,16 @@ public class RuralUrbanReport {
             // Loop over all cities population in the list
             for (City c : arrList)
             {
-                double people_living_in_cities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
-                String s1 = String.format("%05.2f",people_living_in_cities) + "%";
-                double people_not_living_in_cities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
-                String s2 = String.format("%05.2f",people_not_living_in_cities) + "%";
-                String continent_population =
+                double peopleLivingInCities = (double) c.getTotalCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s1 = String.format("%05.2f",peopleLivingInCities) + "%";
+                double peopleNotLivingInCities = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
+                String s2 = String.format("%05.2f",peopleNotLivingInCities) + "%";
+                String contPop =
                         String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
                                 c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
                                 humanReadableFormat(c.getTotalCitiesPopulation()), s1, "",
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),s2);
-                System.out.println(continent_population);
+                System.out.println(contPop);
             }
             System.out.println("============================================================");
         }

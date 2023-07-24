@@ -27,17 +27,17 @@ public class CountryLanguagesReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list and add query result into array list
-            List<Language> LanguagePopulation = new ArrayList<>();
+            List<Language> languagePopulation = new ArrayList();
 
             // Extract population of countries information and store into array list
             while (query1.next()) {
                 Language languagePop = new Language();
                 languagePop.setLanguage(query1.getString("Language"));
-                languagePop.setTotal_Population(query1.getLong("Total_Population"));
+                languagePop.setTotalPopulation(query1.getLong("Total_Population"));
                 languagePop.setPercentage(query1.getDouble("Percentage"));
-                LanguagePopulation.add(languagePop);
+                languagePopulation.add(languagePop);
             }
-            return LanguagePopulation;
+            return languagePopulation;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -61,11 +61,11 @@ public class CountryLanguagesReport {
             for (Language l : arrList)
             {
                 String percent = String.format("%05.2f",l.getPercentage()) + "%";
-                String language_population =
+                String languagePopulation =
                         String.format("%-40s | %-20s ( %-5s )",
-                                l.getLanguage(), humanReadableFormat(l.getTotal_Population()),
+                                l.getLanguage(), humanReadableFormat(l.getTotalPopulation()),
                                 percent);
-                System.out.println(language_population);
+                System.out.println(languagePopulation);
             }
             System.out.println("============================================================");
         }catch (Exception e) {

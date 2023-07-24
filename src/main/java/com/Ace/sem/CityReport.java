@@ -264,11 +264,11 @@ public class CityReport {
             // Loop over all cities population in the list
             for (City cityR : citiesList)
             {
-                String countries_info =
+                String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
                                 formatPopulation.humanReadableFormat(cityR.getPopulation()));
-                System.out.println(countries_info);
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -303,11 +303,11 @@ public class CityReport {
                 districtName = nullChecker(cityR.getDistrict());
                 cityName = nullChecker(cityR.getCityName());
 
-                String continent_info =
+                String continentInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                                 cityName, cityR.getCountryName(), cityR.getContinents(),
                                 districtName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
-                System.out.println(continent_info);
+                System.out.println(continentInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -340,11 +340,11 @@ public class CityReport {
                 districtName = nullChecker(cityR.getDistrict());
                 cityName = nullChecker(cityR.getCityName());
 
-                String region_info =
+                String regionInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                                 cityName, cityR.getCountryName(), districtName,
                                 cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
-                System.out.println(region_info);
+                System.out.println(regionInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -378,11 +378,11 @@ public class CityReport {
                 districtName = nullChecker(cty.getDistrict());
                 cityName = nullChecker(cty.getCityName());
 
-                String countries_info =
+                String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityName, cty.getCountryName(), districtName,
                                 formatPopulation.humanReadableFormat(cty.getPopulation()));
-                System.out.println(countries_info);
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -415,11 +415,11 @@ public class CityReport {
                 districtName = nullChecker(cty.getDistrict());
                 cityName = nullChecker(cty.getCityName());
 
-                String countries_info =
+                String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityName, cty.getCountryName(), districtName,
                                 formatPopulation.humanReadableFormat(cty.getPopulation()));
-                System.out.println(countries_info);
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }catch (Exception e) {

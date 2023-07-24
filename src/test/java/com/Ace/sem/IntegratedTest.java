@@ -65,7 +65,7 @@ public class IntegratedTest
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCountries() {
+    void getdisplayCountries() {
         try {
             List<Country> country = new ArrayList<Country>();
 
@@ -121,7 +121,7 @@ public class IntegratedTest
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCountriesContinent() {
+    void getdisplayCountriesContinent() {
         try {
             List<Country> country;
 
@@ -167,7 +167,7 @@ public class IntegratedTest
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCountriesRegion() {
+    void getdisplayCountriesRegion() {
         try {
             List<Country> country1;
 
@@ -215,7 +215,7 @@ public class IntegratedTest
      */
 
     @Test
-    void get_displayCities()     {
+    void getdisplayCities()     {
         try{
             List<City> city;
 
@@ -257,7 +257,7 @@ public class IntegratedTest
      * also checks if the given value matches gathered data or not
      */
     @Test
-void get_displayCitiesContinent()     {
+void getdisplayCitiesContinent()     {
     try{
         List<City> city;
 
@@ -300,7 +300,7 @@ void get_displayCitiesContinent()     {
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCitiesRegion()     {
+    void getdisplayCitiesRegion()     {
         try{
             List<City> city;
 
@@ -343,7 +343,7 @@ void get_displayCitiesContinent()     {
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCitiesCountry()     {
+    void getdisplayCitiesCountry()     {
         try{
             List<City> city;
 
@@ -384,7 +384,7 @@ void get_displayCitiesContinent()     {
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCitiesDistrict()     {
+    void getdisplayCitiesDistrict()     {
         try{
             List<City> city;
 
@@ -425,7 +425,7 @@ void get_displayCitiesContinent()     {
      * checks if the returned value matches desired value
      */
     @Test
-    void get_displayLanguageReport()     {
+    void getdisplayLanguageReport()     {
         try{
             List<Language> language;
             language = languagesReport.getLanguagesReport(app.con);
@@ -438,12 +438,12 @@ void get_displayCitiesContinent()     {
             // Test for correct numbers of column names (presence of columns)
             for (Language l : language) {
                 assertTrue(columnPresentString(l.getLanguage()), "City Name should be present.");
-                assertTrue(columnPresentLong(l.getTotal_Population()), "City name should be present.");
+                assertTrue(columnPresentLong(l.getTotalPopulation()), "City name should be present.");
                 assertTrue(columnPresentDouble(l.getPercentage()), "Region should be present.");
             }
             // Check The first entry of country report data is True as Expected.
             assertEquals(language.get(0).getLanguage(), "Chinese", "First Entry Language Report - Language is not true.");
-            assertEquals(language.get(0).getTotal_Population(), 1191843539, "First Entry Language Report - total population is not true.");
+            assertEquals(language.get(0).getTotalPopulation(), 1191843539, "First Entry Language Report - total population is not true.");
             assertEquals(language.get(0).getPercentage(), 19.6067225, "First Entry Language Report - percentage is not true.");
 
         }catch (Exception e) {
@@ -458,7 +458,7 @@ void get_displayCitiesContinent()     {
      *
      */
     @Test
-    void get_displayCapitals()     {
+    void getdisplayCapitals()     {
         try{
             List<City> city;
 
@@ -499,7 +499,7 @@ void get_displayCitiesContinent()     {
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCapitalsByContinent()     {
+    void getdisplayCapitalsByContinent()     {
         try{
             List<City> city;
 
@@ -543,7 +543,7 @@ void get_displayCitiesContinent()     {
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayCapitalsByRegion()     {
+    void getdisplayCapitalsByRegion()     {
         try{
             List<City> city;
 
@@ -592,7 +592,7 @@ void get_displayCitiesContinent()     {
      */
 
     @Test
-    void get_displayRuralUrbanByContinent()     {
+    void getdisplayRuralUrbanByContinent()     {
             List<City> city;
             city = ruReport.getContinentPopulation(app.con);
 
@@ -623,7 +623,7 @@ void get_displayCitiesContinent()     {
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayRuralUrbanByRegion()     {
+    void getdisplayRuralUrbanByRegion()     {
         List<City> city;
         city = ruReport.getRegionPopulation(app.con);
 
@@ -654,7 +654,7 @@ void get_displayCitiesContinent()     {
      * also checks if the given value matches gathered data or not
      */
     @Test
-    void get_displayRuralUrbanCountry()     {
+    void getdisplayRuralUrbanCountry()     {
         List<City> city;
         city = ruReport.getCountryPopulation(app.con);
 
@@ -684,7 +684,7 @@ void get_displayCitiesContinent()     {
      * gathers world population and check if it equals the desired amount
      */
     @Test
-    void get_displaySummary()
+    void getdisplaySummary()
     {
         List<Country> summary;
         summary = summaryReport.sumWorldPop(app.con);
@@ -707,7 +707,7 @@ void get_displayCitiesContinent()     {
      * gathers continent population and check if it equals the desired amount
      */
     @Test
-    void get_displaySummaryContinent()
+    void getdisplaySummaryContinent()
     {
         List<Country> summary;
         summary = summaryReport.sumContPop(app.con, 1);
@@ -730,7 +730,7 @@ void get_displayCitiesContinent()     {
      * gathers region population and check if it equals the desired amount
      */
     @Test
-    void get_displaySummaryRegion()
+    void getdisplaySummaryRegion()
     {
         List<Country> summary;
         summary = summaryReport.sumRegPop(app.con, 1);
@@ -753,7 +753,7 @@ void get_displayCitiesContinent()     {
      * gathers country population and check if it equals the desired amount
      */
     @Test
-    void get_displaySummaryCountry()
+    void getdisplaySummaryCountry()
     {
         List<Country> summary;
         summary = summaryReport.sumCouPop(app.con, 1);
@@ -777,7 +777,7 @@ void get_displayCitiesContinent()     {
      * gathers district population and check if it equals the desired amount
      */
     @Test
-    void get_displaySummaryDistrict()
+    void getdisplaySummaryDistrict()
     {
         List<City> summary;
         summary = summaryReport.sumDistPop(app.con, 1);
@@ -801,7 +801,7 @@ void get_displayCitiesContinent()     {
      * gathers city population and check if it equals the desired amount
      */
     @Test
-    void get_displaySummaryCity()
+    void getdisplaySummaryCity()
     {
         List<City> summary;
         summary = summaryReport.sumCityPop(app.con, 1);

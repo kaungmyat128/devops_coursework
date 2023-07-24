@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * the class created for the purpose of unit testing
  * all the individual methods are included
  */
-public class unitTesting
+public class UnitTest
 {
     static CountryReport countryReport;
     static CityReport cityReport;
@@ -468,7 +468,7 @@ public class unitTesting
             ArrayList<Language> language = new ArrayList<>();
             Language ln = new Language();
             ln.setLanguage("Burmese");
-            ln.setTotal_Population(54000000);
+            ln.setTotalPopulation(54000000);
             ln.setPercentage(68.35);
             language.add(ln);
             languagesReport.displayLanguagesPopulation(language);
@@ -506,7 +506,7 @@ public class unitTesting
      */
     @Test
     void arraylistCapitalNull(){
-        capitalReport.CapitalArrList(null, null);
+        capitalReport.capitalArrList(null, null);
     }
 
     /**
@@ -543,7 +543,7 @@ public class unitTesting
         ArrayList<City> city = new ArrayList<>();
         city.add(null);
         ResultSet qry = null;
-        capitalReport.CapitalArrList(city, qry);
+        capitalReport.capitalArrList(city, qry);
     }
 
     /**
@@ -609,7 +609,7 @@ public class unitTesting
 
             Statement stmt = app.con.createStatement();
             ResultSet qry = stmt.executeQuery(strSelect);
-            capitalReport.CapitalArrList(city, qry);
+            capitalReport.capitalArrList(city, qry);
 
         }catch (Exception e) {
             System.out.println(e.getMessage());
