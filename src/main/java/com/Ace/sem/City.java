@@ -16,8 +16,8 @@ public class City {
     private String continents;
     private String region;
     private long totalPopulation;
-    private long totalCitiesPopulation;
-    private long totalNotCitiesPopulation;
+    private long totalRuralPop;
+    private long totalUrbanPop;
 
     public long getGenPop() {
         return genPop;
@@ -98,21 +98,21 @@ public class City {
 
     // Getter method for Total Population
     public long getTotalCitiesPopulation() {
-        return totalCitiesPopulation;
+        return totalUrbanPop;
     }
 
     // Setter method for Total Population
-    public void setTotalCitiesPopulation(long totalCitiesPopulation) {
-        this.totalCitiesPopulation = totalCitiesPopulation;
+    public void setTotalCitiesPopulation(long totalUrbanPop) {
+        this.totalUrbanPop = totalUrbanPop;
     }
     // Getter method for Total Population
     public long getTotalNotCitiesPopulation() {
-        return totalNotCitiesPopulation;
+        return totalRuralPop;
     }
 
     // Setter method for Total Population
-    public void setTotalNotCitiesPopulation(long totalNotCitiesPopulation) {
-        this.totalNotCitiesPopulation = totalNotCitiesPopulation;
+    public void setTotalNotCitiesPopulation(long totalRuralPop) {
+        this.totalRuralPop = totalRuralPop;
     }
 }
 

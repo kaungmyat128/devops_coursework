@@ -27,7 +27,7 @@ public class CountryLanguagesReport {
             // Execute SQL statement
             ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list and add query result into array list
-            List<Language> languagePopulation = new ArrayList();
+            List<Language> lanPop = new ArrayList();
 
             // Extract population of countries information and store into array list
             while (query1.next()) {
@@ -35,9 +35,9 @@ public class CountryLanguagesReport {
                 languagePop.setLanguage(query1.getString("Language"));
                 languagePop.setTotalPopulation(query1.getLong("Total_Population"));
                 languagePop.setPercentage(query1.getDouble("Percentage"));
-                languagePopulation.add(languagePop);
+                lanPop.add(languagePop);
             }
-            return languagePopulation;
+            return lanPop;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -61,11 +61,11 @@ public class CountryLanguagesReport {
             for (Language l : arrList)
             {
                 String percent = String.format("%05.2f",l.getPercentage()) + "%";
-                String languagePopulation =
+                String lanPop =
                         String.format("%-40s | %-20s ( %-5s )",
                                 l.getLanguage(), humanReadableFormat(l.getTotalPopulation()),
                                 percent);
-                System.out.println(languagePopulation);
+                System.out.println(lanPop);
             }
             System.out.println("============================================================");
         }catch (Exception e) {
@@ -82,8 +82,7 @@ public class CountryLanguagesReport {
      * @return
      */
     public String humanReadableFormat(long population){
-        NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
-        String formattedCode = nf.format(population);
-        return formattedCode;
+        NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
+        return numf.format(population);
     }
 }

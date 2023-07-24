@@ -9,8 +9,6 @@ import java.sql.*;
  */
 public class SummaryReport {
 
-    CountryReport cr = new CountryReport();
-
     /**
      * gathers the population of the entire world
      * @param con
@@ -29,9 +27,9 @@ public class SummaryReport {
             List<Country> worldPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cp = new Country();
-                cp.setGenPop(pop.getLong("world_pop"));
-                worldPop.add(cp);
+                Country cou = new Country();
+                cou.setGenPop(pop.getLong("world_pop"));
+                worldPop.add(cou);
             }
             return worldPop;
         }
@@ -63,10 +61,10 @@ public class SummaryReport {
             List<Country> contPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cp = new Country();
-                cp.setContinent(pop.getString("continent"));
-                cp.setGenPop(pop.getLong("cont_pop"));
-                contPop.add(cp);
+                Country cou = new Country();
+                cou.setContinent(pop.getString("continent"));
+                cou.setGenPop(pop.getLong("cont_pop"));
+                contPop.add(cou);
             }
             return contPop;
         }
@@ -98,10 +96,10 @@ public class SummaryReport {
             List<Country> regPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cp = new Country();
-                cp.setRegion(pop.getString("region"));
-                cp.setGenPop(pop.getLong("reg_pop"));
-                regPop.add(cp);
+                Country cou = new Country();
+                cou.setRegion(pop.getString("region"));
+                cou.setGenPop(pop.getLong("reg_pop"));
+                regPop.add(cou);
             }
             return regPop;
         }
@@ -133,10 +131,10 @@ public class SummaryReport {
             List<Country> countryPop = new ArrayList<>();
 
             while (pop.next()) {
-                Country cp = new Country();
-                cp.setName(pop.getString("Name"));
-                cp.setGenPop(pop.getLong("reg_pop"));
-                countryPop.add(cp);
+                Country cou = new Country();
+                cou.setName(pop.getString("Name"));
+                cou.setGenPop(pop.getLong("reg_pop"));
+                countryPop.add(cou);
             }
             return countryPop;
         }
@@ -168,10 +166,10 @@ public class SummaryReport {
             ArrayList<City> distPop = new ArrayList<>();
 
             while (pop.next()) {
-                City ct = new City();
-                ct.setDistrict(pop.getString("District"));
-                ct.setGenPop(pop.getLong("dist_pop"));
-                distPop.add(ct);
+                City cty = new City();
+                cty.setDistrict(pop.getString("District"));
+                cty.setGenPop(pop.getLong("dist_pop"));
+                distPop.add(cty);
             }
             return distPop;
         }
@@ -203,10 +201,10 @@ public class SummaryReport {
             ArrayList<City> cityPop = new ArrayList<>();
 
             while (pop.next()) {
-                City ct = new City();
-                ct.setCityName(pop.getString("Name"));
-                ct.setPopulation(pop.getInt("Population"));
-                cityPop.add(ct);
+                City cty = new City();
+                cty.setCityName(pop.getString("Name"));
+                cty.setPopulation(pop.getInt("Population"));
+                cityPop.add(cty);
             }
             return cityPop;
         }
@@ -382,9 +380,8 @@ public class SummaryReport {
      * @return
      */
     public String humanReadableFormatLong(long population){
-        NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
-        String formattedCode = nf.format(population);
-        return formattedCode;
+        NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
+        return numf.format(population);
     }
 
 }

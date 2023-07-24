@@ -15,9 +15,8 @@ import java.util.List;
 public class CityReport {
 
     // Create new object of CountryReport to use human_readable_format() method from country.java
-    CountryReport formatPopulation = new CountryReport();
-    String cityName = null;
-    String districtName = null;
+    /* default */ String cityName = null;
+    /* default */ String districtName = null;
 
     /**
      * getCityPop() method contains connection parameters for database connection and limit parameter
@@ -46,7 +45,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information from database
-            List<City> worldPop = new ArrayList<City>();
+            List<City> worldPop = new ArrayList();
             while (rset.next()) {
                 City world = new City();
                 world.setCityName(rset.getString("CityName"));
@@ -92,7 +91,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Continent from Database
-            List<City> continentPop = new ArrayList<City>();
+            List<City> continentPop = new ArrayList();
             while (rset.next()) {
                 City continent = new City();
                 continent.setCityName(rset.getString("CityName"));
@@ -139,7 +138,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Region From Database
-            List<City> regionPop = new ArrayList<City>();
+            List<City> regionPop = new ArrayList();
             while (rset.next()) {
                 City region = new City();
                 region.setCityName(rset.getString("CityName"));
@@ -185,7 +184,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each country From Database
-            List<City> countryPop = new ArrayList<City>();
+            List<City> countryPop = new ArrayList();
             while (rset.next()) {
                 City country = new City();
                 country.setCityName(rset.getString("CityName"));
@@ -233,7 +232,7 @@ public class CityReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each District From Database
-            List<City> districtPop = new ArrayList<City>();
+            List<City> districtPop = new ArrayList();
             while (rset.next()) {
                 City district = new City();
                 district.setCityName(rset.getString("CityName"));
@@ -267,7 +266,7 @@ public class CityReport {
                 String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
-                                formatPopulation.humanReadableFormat(cityR.getPopulation()));
+                                CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(countriesInfo);
             }
             System.out.println();
@@ -306,7 +305,7 @@ public class CityReport {
                 String continentInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                                 cityName, cityR.getCountryName(), cityR.getContinents(),
-                                districtName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
+                                districtName, CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(continentInfo);
             }
             System.out.println();
@@ -343,7 +342,7 @@ public class CityReport {
                 String regionInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
                                 cityName, cityR.getCountryName(), districtName,
-                                cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
+                                cityR.getRegion(), CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(regionInfo);
             }
             System.out.println();
@@ -381,7 +380,7 @@ public class CityReport {
                 String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityName, cty.getCountryName(), districtName,
-                                formatPopulation.humanReadableFormat(cty.getPopulation()));
+                                CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);
             }
             System.out.println();
@@ -418,7 +417,7 @@ public class CityReport {
                 String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityName, cty.getCountryName(), districtName,
-                                formatPopulation.humanReadableFormat(cty.getPopulation()));
+                                CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);
             }
             System.out.println();

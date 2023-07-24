@@ -14,13 +14,13 @@ import java.util.ArrayList;
  */
 public class UnitTest
 {
-    static CountryReport countryReport;
-    static CityReport cityReport;
-    static CountryLanguagesReport languagesReport;
-    static SummaryReport summaryReport;
-    static CapitalReport capitalReport;
-    static RuralUrbanReport ruReport;
-    static App app;
+    private static CountryReport countryReport;
+    private static CityReport cityReport;
+    private static CountryLanguagesReport languagesReport;
+    private static SummaryReport summaryReport;
+    private static CapitalReport capitalReport;
+    private static RuralUrbanReport ruReport;
+    private static App app;
 
     /**
      * created objects to be reused in the testing
@@ -132,15 +132,15 @@ public class UnitTest
      */
     @Test
     void displayCountries()     {
-            ArrayList<Country> country = new ArrayList<Country>();
-            Country c = new Country();
-            c.setCode("MYN");
-            c.setName("Myanmar");
-            c.setContinent("Asia");
-            c.setRegion("Southeast Asia");
-            c.setPopulation(54593833);
-            c.setCapital("Yangon");
-            country.add(c);
+            ArrayList<Country> country = new ArrayList();
+            Country cou = new Country();
+            cou.setCode("MYN");
+            cou.setName("Myanmar");
+            cou.setContinent("Asia");
+            cou.setRegion("Southeast Asia");
+            cou.setPopulation(54_593_833);
+            cou.setCapital("Yangon");
+            country.add(cou);
             countryReport.displayCountries(country);
 
     }
@@ -150,15 +150,15 @@ public class UnitTest
      */
     @Test
     void displayCountriesContinent()     {
-        ArrayList<Country> country = new ArrayList<Country>();
-        Country c = new Country();
-        c.setCode("MYN");
-        c.setName("Myanmar");
-        c.setContinent("Asia");
-        c.setRegion("Southeast Asia");
-        c.setPopulation(54593833);
-        c.setCapital("Yangon");
-        country.add(c);
+        ArrayList<Country> country = new ArrayList();
+        Country cou = new Country();
+        cou.setCode("MYN");
+        cou.setName("Myanmar");
+        cou.setContinent("Asia");
+        cou.setRegion("Southeast Asia");
+        cou.setPopulation(54_593_833);
+        cou.setCapital("Yangon");
+        country.add(cou);
         countryReport.displayCountriesContinent(country);
 
     }
@@ -167,15 +167,15 @@ public class UnitTest
      */
     @Test
     void displayCountriesRegion()     {
-        ArrayList<Country> country = new ArrayList<Country>();
-        Country c = new Country();
-        c.setCode("MYN");
-        c.setName("Myanmar");
-        c.setContinent("Asia");
-        c.setRegion("Southeast Asia");
-        c.setPopulation(54593833);
-        c.setCapital("Yangon");
-        country.add(c);
+        ArrayList<Country> country = new ArrayList();
+        Country cou = new Country();
+        cou.setCode("MYN");
+        cou.setName("Myanmar");
+        cou.setContinent("Asia");
+        cou.setRegion("Southeast Asia");
+        cou.setPopulation(54_593_833);
+        cou.setCapital("Yangon");
+        country.add(cou);
         countryReport.displayCountriesRegion(country);
 
     }
@@ -186,15 +186,15 @@ public class UnitTest
     @Test
     void storeIntoArrayListNotNull()     {
         try{
-            ArrayList<Country> country = new ArrayList<Country>();
-            Country c = new Country();
-            c.setCode("MYN");
-            c.setName("Myanmar");
-            c.setContinent("Asia");
-            c.setRegion("Southeast Asia");
-            c.setPopulation(54593833);
-            c.setCapital("Yangon");
-            country.add(c);
+            ArrayList<Country> country = new ArrayList();
+            Country cou = new Country();
+            cou.setCode("MYN");
+            cou.setName("Myanmar");
+            cou.setContinent("Asia");
+            cou.setRegion("Southeast Asia");
+            cou.setPopulation(54_593_833);
+            cou.setCapital("Yangon");
+            country.add(cou);
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
                             + "FROM country INNER JOIN city ON country.Capital = city.ID "
@@ -213,17 +213,17 @@ public class UnitTest
      * checks if country data based on different categories can be gathered with and without limit
      */
     @Test
-    void getCountries()     {
+    void countriesFetch()     {
             countryReport.getCountries(app.con, 3);
             countryReport.getCountries(app.con, 0);
     }
     @Test
-    void getCountriesContinent()     {
+    void countriesContinentFetch()     {
         countryReport.getCountriesContinent(app.con, 3);
         countryReport.getCountriesContinent(app.con, 0);
     }
     @Test
-    void getCountriesRegion()     {
+    void countriesRegionFetch()     {
         countryReport.getCountriesRegion(app.con, 3);
         countryReport.getCountriesRegion(app.con, 0);
     }
@@ -331,7 +331,7 @@ public class UnitTest
             ct1.setContinents("Asia");
             ct1.setRegion("Southeast Asia");
             ct1.setDistrict("Yangon");
-            ct1.setPopulation(5434678);
+            ct1.setPopulation(5_434_678);
             city.add(ct1);
             cityReport.displayCities(city);
     }
@@ -345,7 +345,7 @@ public class UnitTest
         ct1.setContinents("Asia");
         ct1.setRegion("Southeast Asia");
         ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
+        ct1.setPopulation(5_434_678);
         city.add(ct1);
         cityReport.displayCityContinents(city);
     }
@@ -359,7 +359,7 @@ public class UnitTest
         ct1.setContinents("Asia");
         ct1.setRegion("Southeast Asia");
         ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
+        ct1.setPopulation(5_434_678);
         city.add(ct1);
         cityReport.displayCityCountries(city);
 
@@ -374,7 +374,7 @@ public class UnitTest
         ct1.setContinents("Asia");
         ct1.setRegion("Southeast Asia");
         ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
+        ct1.setPopulation(5_434_678);
         city.add(ct1);
         cityReport.displayCityRegion(city);
     }
@@ -388,7 +388,7 @@ public class UnitTest
         ct1.setContinents("Asia");
         ct1.setRegion("Southeast Asia");
         ct1.setDistrict("Yangon");
-        ct1.setPopulation(5434678);
+        ct1.setPopulation(5_434_678);
         city.add(ct1);
         cityReport.displayCityDistrict(city);
     }
@@ -406,27 +406,27 @@ public class UnitTest
      * with or without limit
      */
     @Test
-    void getCityPop()     {
+    void cityPopFetch()     {
         cityReport.getCityPop(app.con, 3);
         cityReport.getCityPop(app.con, 0);
     }
     @Test
-    void getCityPopByDistrict()     {
+    void cityPopByDistrictFetch()     {
         cityReport.getCityPopByDistrict(app.con, 3);
         cityReport.getCityPopByDistrict(app.con, 0);
     }
     @Test
-    void getCityPopByContinent()     {
+    void cityPopByContinentFetch()     {
         cityReport.getCityPopByContinent(app.con, 3);
         cityReport.getCityPopByContinent(app.con, 0);
     }
     @Test
-    void getCityPopByRegion()     {
+    void cityPopByRegionFetch()     {
         cityReport.getCityPopByRegion(app.con, 3);
         cityReport.getCityPopByRegion(app.con, 0);
     }
     @Test
-    void getCityPopByCountry()     {
+    void cityPopByCountryFetch()     {
         cityReport.getCityPopByCountry(app.con, 3);
         cityReport.getCityPopByCountry(app.con, 0);
     }
@@ -456,7 +456,7 @@ public class UnitTest
      */
     @Test
     void humanReadableFormatDouble(){
-        languagesReport.humanReadableFormat(54000000);
+        languagesReport.humanReadableFormat(54_000_000);
 
     }
 
@@ -466,11 +466,11 @@ public class UnitTest
     @Test
     void displayLanguageReport()     {
             ArrayList<Language> language = new ArrayList<>();
-            Language ln = new Language();
-            ln.setLanguage("Burmese");
-            ln.setTotalPopulation(54000000);
-            ln.setPercentage(68.35);
-            language.add(ln);
+            Language lan = new Language();
+            lan.setLanguage("Burmese");
+            lan.setTotalPopulation(54_000_000);
+            lan.setPercentage(68.35);
+            language.add(lan);
             languagesReport.displayLanguagesPopulation(language);
     }
 
@@ -478,7 +478,7 @@ public class UnitTest
      * checks if langauge data can be gathered
      */
     @Test
-    void getLanguageReport(){
+    void languageReportFetch(){
         languagesReport.getLanguagesReport(app.con);
     }
 
@@ -552,39 +552,39 @@ public class UnitTest
     @Test
     void displayCapitals()     {
             ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCityName("Yangon");
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setPopulation(5434678);
-            city.add(ct);
+            City cty = new City();
+            cty.setCityName("Yangon");
+            cty.setCountryName("Myanmar");
+            cty.setContinents("Asia");
+            cty.setRegion("Southeast Asia");
+            cty.setPopulation(5_434_678);
+            city.add(cty);
             capitalReport.displayCapital(city);
     }
 
     @Test
     void displayCapitalsCont()     {
             ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCityName("Yangon");
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setPopulation(5434678);
-            city.add(ct);
+            City cty = new City();
+            cty.setCityName("Yangon");
+            cty.setCountryName("Myanmar");
+            cty.setContinents("Asia");
+            cty.setRegion("Southeast Asia");
+            cty.setPopulation(5_434_678);
+            city.add(cty);
             capitalReport.displayCapitalContinent(city);
         }
 
     @Test
     void displayCapitalsReg()     {
             ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCityName("Yangon");
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setPopulation(5434678);
-            city.add(ct);
+            City cty = new City();
+            cty.setCityName("Yangon");
+            cty.setCountryName("Myanmar");
+            cty.setContinents("Asia");
+            cty.setRegion("Southeast Asia");
+            cty.setPopulation(5_434_678);
+            city.add(cty);
             capitalReport.displayCapitalRegion(city);
         }
 
@@ -595,13 +595,13 @@ public class UnitTest
     void arrayListCapitals()     {
         try{
             ArrayList<City> city = new ArrayList<>();
-            City ct = new City();
-            ct.setCityName("Yangon");
-            ct.setCountryName("Myanmar");
-            ct.setContinents("Asia");
-            ct.setRegion("Southeast Asia");
-            ct.setPopulation(5434678);
-            city.add(ct);
+            City cty = new City();
+            cty.setCityName("Yangon");
+            cty.setCountryName("Myanmar");
+            cty.setContinents("Asia");
+            cty.setRegion("Southeast Asia");
+            cty.setPopulation(5_434_678);
+            city.add(cty);
             String strSelect =
                     "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
                             "FROM `city` JOIN country ON country.Capital = city.ID " +
@@ -621,19 +621,19 @@ public class UnitTest
      * with or without limit
      */
     @Test
-    void getCapital()     {
+    void capitalFetch()     {
         capitalReport.getCapitalPopByWorld(app.con, 3);
         capitalReport.getCapitalPopByWorld(app.con, 0);
     }
 
     @Test
-    void getCapitalCont()     {
+    void capitalContFetch()     {
         capitalReport.getCapitalPopByContinent(app.con, 3);
         capitalReport.getCapitalPopByContinent(app.con, 0);
     }
 
     @Test
-    void getCapitalReg()     {
+    void capitalRegFetch()     {
         capitalReport.getCapitalPopByRegion(app.con, 3);
         capitalReport.getCapitalPopByRegion(app.con, 0);
     }
@@ -696,7 +696,7 @@ public class UnitTest
     void humanReadableFormatofRU()
     {
 
-        ruReport.humanReadableFormat(1000000000);
+        ruReport.humanReadableFormat(1_000_000_000);
     }
 
     /**
@@ -705,42 +705,42 @@ public class UnitTest
     @Test
     void displayRuralUrbanContPop() {
         ArrayList<City> city = new ArrayList<>();
-        City ct = new City();
-        ct.setCountryName("Myanmar");
-        ct.setContinents("Asia");
-        ct.setRegion("Southeast Asia");
-        ct.setTotalCitiesPopulation(2200000);
-        ct.setTotalNotCitiesPopulation(3000000);
-        ct.setTotalPopulation(5200000);
-        city.add(ct);
+        City cty = new City();
+        cty.setCountryName("Myanmar");
+        cty.setContinents("Asia");
+        cty.setRegion("Southeast Asia");
+        cty.setTotalCitiesPopulation(2_200_000);
+        cty.setTotalNotCitiesPopulation(3_000_000);
+        cty.setTotalPopulation(5_200_000);
+        city.add(cty);
         ruReport.displayContinentPopulation(city);
     }
 
     @Test
     void displayRuralUrbanRegPop()     {
         ArrayList<City> city = new ArrayList<>();
-        City ct = new City();
-        ct.setCountryName("Myanmar");
-        ct.setContinents("Asia");
-        ct.setRegion("Southeast Asia");
-        ct.setTotalCitiesPopulation(2200000);
-        ct.setTotalNotCitiesPopulation(3000000);
-        ct.setTotalPopulation(5200000);
-        city.add(ct);
+        City cty = new City();
+        cty.setCountryName("Myanmar");
+        cty.setContinents("Asia");
+        cty.setRegion("Southeast Asia");
+        cty.setTotalCitiesPopulation(2_200_000);
+        cty.setTotalNotCitiesPopulation(3_000_000);
+        cty.setTotalPopulation(5_200_000);
+        city.add(cty);
         ruReport.displayRegionPopulation(city);
     }
 
     @Test
     void displayRuralUrbanCouPop()     {
         ArrayList<City> city = new ArrayList<>();
-        City ct = new City();
-        ct.setCountryName("Myanmar");
-        ct.setContinents("Asia");
-        ct.setRegion("Southeast Asia");
-        ct.setTotalCitiesPopulation(2200000);
-        ct.setTotalNotCitiesPopulation(3000000);
-        ct.setTotalPopulation(5200000);
-        city.add(ct);
+        City cty = new City();
+        cty.setCountryName("Myanmar");
+        cty.setContinents("Asia");
+        cty.setRegion("Southeast Asia");
+        cty.setTotalCitiesPopulation(2_200_000);
+        cty.setTotalNotCitiesPopulation(3_000_000);
+        cty.setTotalPopulation(5_200_000);
+        city.add(cty);
         ruReport.displayCountryPopulation(city);
 
     }
@@ -749,17 +749,17 @@ public class UnitTest
      * gather rural and urban data based on multiple categories
      */
     @Test
-    void getRuralUrbanContop() {
+    void ruralUrbanContopFetch() {
         ruReport.getContinentPopulation(app.con);
     }
 
     @Test
-    void getRuralUrbanRegtop() {
+    void ruralUrbanRegtopFetch() {
         ruReport.getRegionPopulation(app.con);
     }
 
     @Test
-    void getRuralUrbanCoutop() {
+    void ruralUrbanCoutopFetch() {
         ruReport.getCountryPopulation(app.con);
     }
 
@@ -857,9 +857,9 @@ public class UnitTest
     void displaySummaryWorld()
     {
             ArrayList<Country> couSum = new ArrayList<>();
-            Country c = new Country();
-            c.setGenPop(600000000);
-            couSum.add(c);
+            Country cou = new Country();
+            cou.setGenPop(600_000_000);
+            couSum.add(cou);
 
             summaryReport.displaySumWorldPop(couSum);
     }
@@ -868,10 +868,10 @@ public class UnitTest
     void displaySummaryCont()
     {
         ArrayList<Country> couSum = new ArrayList<>();
-        Country c = new Country();
-        c.setContinent("Asia");
-        c.setGenPop(50000000);
-        couSum.add(c);
+        Country cou = new Country();
+        cou.setContinent("Asia");
+        cou.setGenPop(50_000_000);
+        couSum.add(cou);
 
         summaryReport.displaySumContPop(couSum);
     }
@@ -879,10 +879,10 @@ public class UnitTest
     void displaySummaryReg()
     {
         ArrayList<Country> couSum = new ArrayList<>();
-        Country c = new Country();
-        c.setRegion("Southeast Asia");
-        c.setGenPop(10000000);
-        couSum.add(c);
+        Country cou = new Country();
+        cou.setRegion("Southeast Asia");
+        cou.setGenPop(10_000_000);
+        couSum.add(cou);
 
         summaryReport.displaySumRegPop(couSum);
     }
@@ -890,10 +890,10 @@ public class UnitTest
     void displaySummaryCou()
     {
         ArrayList<Country> couSum = new ArrayList<>();
-        Country c = new Country();
-        c.setName("Timor");
-        c.setGenPop(50000);
-        couSum.add(c);
+        Country cou = new Country();
+        cou.setName("Timor");
+        cou.setGenPop(50_000);
+        couSum.add(cou);
 
         summaryReport.displaySumCouPop(couSum);
     }
@@ -901,10 +901,10 @@ public class UnitTest
     void displaySummaryDist()
     {
         ArrayList<City> citySum = new ArrayList<>();
-        City c = new City();
-        c.setCityName("Fife");
-        c.setGenPop(100000);
-        citySum.add(c);
+        City cty = new City();
+        cty.setCityName("Fife");
+        cty.setGenPop(100_000);
+        citySum.add(cty);
 
         summaryReport.displaySumDistPop(citySum);
     }
@@ -912,10 +912,10 @@ public class UnitTest
     void displaySummaryCity()
     {
         ArrayList<City> citySum = new ArrayList<>();
-        City c = new City();
-        c.setCityName("Auchtermuchty");
-        c.setPopulation(50000);
-        citySum.add(c);
+        City cty = new City();
+        cty.setCityName("Auchtermuchty");
+        cty.setPopulation(50_000);
+        citySum.add(cty);
 
         summaryReport.displaySumCityPop(citySum);
     }
@@ -924,27 +924,27 @@ public class UnitTest
      * tested get methods to see if data can be gathered
      */
     @Test
-    void getSummaryWorld() {
+    void summaryWorldFetch() {
         summaryReport.sumWorldPop(app.con);
     }
     @Test
-    void getSummaryCont() {
+    void summaryContFetch() {
         summaryReport.sumContPop(app.con, 1);
     }
     @Test
-    void getSummaryReg() {
+    void summaryRegFetch() {
         summaryReport.sumRegPop(app.con, 1);
     }
     @Test
-    void getSummaryCou() {
+    void summaryCouFetch() {
         summaryReport.sumCouPop(app.con, 1);
     }
     @Test
-    void getSummaryDist() {
+    void summaryDistFetch() {
         summaryReport.sumDistPop(app.con, 1);
         }
     @Test
-    void getSummaryCity() {
+    void summaryCityFetch() {
         summaryReport.sumCityPop(app.con, 1);
     }
 

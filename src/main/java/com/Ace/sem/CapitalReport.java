@@ -137,7 +137,7 @@ public class CapitalReport {
      * This method is reused in getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion() methods
      * in order to store query results as array lists and return it.
      */
-    public List<City> capitalArrList(List<City> ar, ResultSet qry) {
+    public List<City> capitalArrList(List<City> arr, ResultSet qry) {
         try {
             // Extract population of countries information and store into array list
             while (qry.next()) {
@@ -147,10 +147,10 @@ public class CapitalReport {
                 cty.setContinents(qry.getString("Continent"));
                 cty.setRegion(qry.getString("Region"));
                 cty.setPopulation(qry.getInt("CapitalPop"));
-                ar.add(cty);
+                arr.add(cty);
             }
             // return the array list
-            return ar;
+            return arr;
         }// Exception handling when any errors occur. Print out error type and error message and return null.
         catch (Exception e) {
             System.out.println(e.getMessage());
