@@ -67,17 +67,17 @@ public class App {
 
         // Display Top 10 Countries Population
         ArrayList<Country> CPop4 = cr.getCountries(a.con, 10);
-        log.fine("Top 10 Countries Population in the World");
+        print("Top 10 Countries Population in the World");
         cr.displayCountries(CPop4);
 
         // Display Top 10 Countries Population in Each Continent
         ArrayList<Country> CPop5 = cr.getCountriesContinent(a.con, 10);
-        log.fine("Top 10 Countries Population in Each Continent");
+        print("Top 10 Countries Population in Each Continent");
         cr.displayCountriesContinent(CPop5);
 
         // Display Top 10 Countries Population in Each Region
         ArrayList<Country> CPop6 = cr.getCountriesRegion(a.con,10);
-        log.fine("Top 10 Countries Population in Each Region");
+        print("Top 10 Countries Population in Each Region");
         cr.displayCountriesRegion(CPop6);
 
 //        //---------------All Cities Report---------------
@@ -229,13 +229,13 @@ public class App {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Could not load SQL driver");
+            print("Could not load SQL driver");
             System.exit(-1);
         }
 
         int retries = 10;
         for (int i = 0; i < retries; ++i) {
-            System.out.println("Connecting to database...");
+            print("Connecting to database...");
             try {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
@@ -248,13 +248,13 @@ public class App {
                 } else{
                     con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "example");
                 }
-                System.out.println("Successfully connected");
+                print("Successfully connected");
                 break;
             } catch (SQLException sqle) {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
-                System.out.println(sqle.getMessage());
+                print("Failed to connect to database attempt " + Integer.toString(i));
+                print(sqle.getMessage());
             } catch (InterruptedException ie) {
-                System.out.println("Thread interrupted? Should not happen.");
+                print("Thread interrupted? Should not happen.");
             }
         }
     }
@@ -271,5 +271,9 @@ public class App {
                 System.out.println("Error closing connection to database");
             }
         }
+    }
+
+    public static void print(String sentence){
+        System.out.println(sentence);
     }
 }
