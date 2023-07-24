@@ -46,8 +46,8 @@ public class CityReport {
             final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information from database
             final List<City> worldPop = new ArrayList();
+            final City world = new City();
             while (rset.next()) {
-                final City world = new City();
                 world.setCityName(rset.getString("CityName"));
                 world.setCountryName(rset.getString("CountryName"));
                 world.setDistrict(rset.getString("District"));
@@ -92,8 +92,8 @@ public class CityReport {
             final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Continent from Database
             final List<City> continentPop = new ArrayList();
+            final City continent = new City();
             while (rset.next()) {
-                final City continent = new City();
                 continent.setCityName(rset.getString("CityName"));
                 continent.setCountryName(rset.getString("CountryName"));
                 continent.setDistrict(rset.getString("District"));
@@ -139,8 +139,8 @@ public class CityReport {
             final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each Region From Database
             final List<City> regionPop = new ArrayList();
+            final City region = new City();
             while (rset.next()) {
-                final City region = new City();
                 region.setCityName(rset.getString("CityName"));
                 region.setCountryName(rset.getString("CountryName"));
                 region.setDistrict(rset.getString("District"));
@@ -185,8 +185,8 @@ public class CityReport {
             final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each country From Database
             final List<City> countryPop = new ArrayList();
+            final City country = new City();
             while (rset.next()) {
-                final City country = new City();
                 country.setCityName(rset.getString("CityName"));
                 country.setCountryName(rset.getString("CountryName"));
                 country.setDistrict(rset.getString("District"));
@@ -233,8 +233,8 @@ public class CityReport {
             final ResultSet rset = stmt.executeQuery(strSelect);
             // Extract City information for Each District From Database
             final List<City> districtPop = new ArrayList();
+            final City district = new City();
             while (rset.next()) {
-                final City district = new City();
                 district.setCityName(rset.getString("CityName"));
                 district.setCountryName(rset.getString("CountryName"));
                 district.setDistrict(rset.getString("District"));

@@ -140,8 +140,9 @@ public class CapitalReport {
     public List<City> capitalArrList(final List<City> arr, final ResultSet qry) {
         try {
             // Extract population of countries information and store into array list
+            final City cty = new City();
             while (qry.next()) {
-                final City cty = new City();
+
                 cty.setCityName(qry.getString("CapitalName"));
                 cty.setCountryName(qry.getString("CountryName"));
                 cty.setContinents(qry.getString("Continent"));

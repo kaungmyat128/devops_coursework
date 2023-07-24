@@ -40,9 +40,9 @@ public class RuralUrbanReport {
             final ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list 'ruContinentPopulation' and add query result into array list
             final List<City> ruContPop = new ArrayList<>();
+            final City ruPop = new City();
             // Extract population of countries information and store into array list
             while (query1.next()) {
-                final City ruPop = new City();
                 ruPop.setContinents(query1.getString("Continent_Name"));
                 ruPop.setTotalPopulation(query1.getLong("Total_Population"));
                 ruPop.setTotalCitiesPopulation(query1.getLong("Cities_Population"));
@@ -82,9 +82,9 @@ public class RuralUrbanReport {
             final ResultSet query2 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             final List<City> ruRegPop = new ArrayList();
+            final City ruPop = new City();
             // Extract population of countries information and store into array list
             while (query2.next()) {
-                final City ruPop = new City();
                 ruPop.setRegion(query2.getString("Region"));
                 ruPop.setTotalPopulation(query2.getLong("Total_Population"));
                 ruPop.setTotalCitiesPopulation(query2.getLong("Cities_Population"));
@@ -120,9 +120,9 @@ public class RuralUrbanReport {
             final ResultSet query3 = stmt.executeQuery(strSelect);
             // Create array list 'RUContinentPopulation' and add query result into array list
             final List<City> ruCounPop = new ArrayList<>();
+            final City ruPop = new City();
             // Extract population of countries information and store into array list
             while (query3.next()) {
-                final City ruPop = new City();
                 ruPop.setCountryName(query3.getString("Country"));
                 ruPop.setTotalPopulation(query3.getLong("Total_Population"));
                 ruPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));

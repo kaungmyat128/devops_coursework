@@ -28,10 +28,10 @@ public class CountryLanguagesReport {
             final ResultSet query1 = stmt.executeQuery(strSelect);
             // Create array list and add query result into array list
             final List<Language> lanPop = new ArrayList();
+            final Language languagePop = new Language();
 
             // Extract population of countries information and store into array list
             while (query1.next()) {
-                final Language languagePop = new Language();
                 languagePop.setLanguage(query1.getString("Language"));
                 languagePop.setTotalPopulation(query1.getLong("Total_Population"));
                 languagePop.setPercentage(query1.getDouble("Percentage"));
