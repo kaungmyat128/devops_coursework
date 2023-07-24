@@ -25,9 +25,9 @@ public class SummaryReport {
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
             final List<Country> worldPop = new ArrayList<>();
-            final Country cou = new Country();
 
             while (pop.next()) {
+                final Country cou = new Country();
                 cou.setGenPop(pop.getLong("world_pop"));
                 worldPop.add(cou);
             }
@@ -59,9 +59,9 @@ public class SummaryReport {
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
             final List<Country> contPop = new ArrayList<>();
-            final Country cou = new Country();
 
             while (pop.next()) {
+                final Country cou = new Country();
                 cou.setContinent(pop.getString("continent"));
                 cou.setGenPop(pop.getLong("cont_pop"));
                 contPop.add(cou);
@@ -94,9 +94,8 @@ public class SummaryReport {
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
             final List<Country> regPop = new ArrayList<>();
-            final Country cou = new Country();
-
             while (pop.next()) {
+                final Country cou = new Country();
                 cou.setRegion(pop.getString("region"));
                 cou.setGenPop(pop.getLong("reg_pop"));
                 regPop.add(cou);
@@ -129,9 +128,9 @@ public class SummaryReport {
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
             final List<Country> countryPop = new ArrayList<>();
-            final Country cou = new Country();
 
             while (pop.next()) {
+                final Country cou = new Country();
                 cou.setName(pop.getString("Name"));
                 cou.setGenPop(pop.getLong("reg_pop"));
                 countryPop.add(cou);
@@ -164,9 +163,9 @@ public class SummaryReport {
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
             final ArrayList<City> distPop = new ArrayList<>();
-            final City cty = new City();
 
             while (pop.next()) {
+                final City cty = new City();
                 cty.setDistrict(pop.getString("District"));
                 cty.setGenPop(pop.getLong("dist_pop"));
                 distPop.add(cty);
@@ -199,9 +198,9 @@ public class SummaryReport {
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
             final ArrayList<City> cityPop = new ArrayList<>();
-            final City cty = new City();
 
             while (pop.next()) {
+                final City cty = new City();
                 cty.setCityName(pop.getString("Name"));
                 cty.setPopulation(pop.getInt("Population"));
                 cityPop.add(cty);

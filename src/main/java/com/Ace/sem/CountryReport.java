@@ -147,9 +147,9 @@ public class CountryReport {
      */
     public List<Country> storeIntoArraylist(final List<Country> arl, final ResultSet qry) {
         try{
-            final Country cou = new Country();
             // Extract population of countries information and store into array list
             while (qry.next()) {
+                final Country cou = new Country();
                 cou.setCode(qry.getString("Code"));
                 cou.setName(qry.getString("Name"));
                 cou.setContinent(qry.getString("Continent"));
