@@ -303,7 +303,7 @@ public class CountryReport {
      * @return
      */
     public String nullChecker(final String checkElement){
-        if(checkElement == null || checkElement == " " || checkElement == "" ||checkElement == "null"){
+        if(checkElement == null || checkElement.equals(" ") || checkElement.equals("") ||checkElement.equals("null")){
             return "-";
         }
         else{

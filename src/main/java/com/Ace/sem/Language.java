@@ -1,18 +1,18 @@
 package com.Ace.sem;
 
 public class Language {
-    private String language;
+    private String languages;
     private long totalPopulation;
     private double percentage;
 
     // Use Encapsulation :
     // Getter & Setter Method for each variable initialized in above
     public String getLanguage() {
-        return language;
+        return languages;
     }
 
     public void setLanguage(final String language) {
-        this.language = language;
+        this.languages = language;
     }
 
     public long getTotalPopulation() {

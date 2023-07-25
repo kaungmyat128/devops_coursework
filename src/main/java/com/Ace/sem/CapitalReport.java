@@ -285,7 +285,7 @@ public class CapitalReport {
         }
     }
     public String nullChecker(final String checkElement){
-        if(checkElement == null || checkElement == " " || checkElement == ""){
+        if(checkElement == null || checkElement.equals(" ") || checkElement.equals("")){
             return "-";
         }
         else{
