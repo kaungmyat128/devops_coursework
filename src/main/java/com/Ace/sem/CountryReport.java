@@ -2,6 +2,7 @@ package com.Ace.sem;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.text.NumberFormat;
@@ -16,8 +17,6 @@ import java.util.List;
 // New Object of CountryReport Java Class will be used from the App.java.
 public class CountryReport {
 
-    /* default */ String capital = null;
-
     /**
      * connection parameters for database connection and limit parameter
      * write sql query to produce
@@ -27,34 +26,27 @@ public class CountryReport {
     public List<Country> getCountries (final Connection con, final int lim){
         //creates array to gather country data based on population
         final List<Country> topCounPop = new ArrayList<>();
-        try {
-
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0) {
-                // Create string for SQL statement with limit 'N'
-                // - fetch Top N Populated Countries
-                strSelect =
-                        "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
-                                + "FROM country INNER JOIN city ON country.Capital = city.ID "
-                                + "ORDER BY country.Population DESC LIMIT " + lim;
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch all queries
-                strSelect =
-                        "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
-                                + "FROM country INNER JOIN city ON country.Capital = city.ID "
-                                + "ORDER BY country.Population DESC";
-            }
-            // Execute SQL statement
-            final ResultSet query1 = stmt.executeQuery(strSelect);
-
+        String strSelect = null;
+        if (lim>0) {
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Countries
+            strSelect =
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
+                            + "FROM country INNER JOIN city ON country.Capital = city.ID "
+                            + "ORDER BY country.Population DESC LIMIT " + lim;
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit - fetch all queries
+            strSelect =
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
+                            + "FROM country INNER JOIN city ON country.Capital = city.ID "
+                            + "ORDER BY country.Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
             return storeIntoArraylist(topCounPop, query1);
-
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return countries population around the world [country report]");
             return topCounPop;
@@ -70,34 +62,28 @@ public class CountryReport {
     public List<Country> getCountriesContinent( final Connection con, final int lim) {
         // Creates array to gather populated country data based on each continent
         final List<Country> topCounPop = new ArrayList<>();
-        try {
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            String strSelect = null;
-            // Create string for SQL statement
-            if (lim>0) {
-                // Create string for SQL statement with limit 'N'
-                // - fetch Top N Populated Countries for each continent
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
-                                + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS Capital FROM country "
-                                + "INNER JOIN city ON country.Capital = city.ID) AS subquery WHERE row_num <= " + lim
-                                + " ORDER BY Continent ASC, Population DESC";
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit
-                // - fetch Countries population for each continent
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
-                                + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital FROM country "
-                                + "INNER JOIN city ON country.Capital = city.ID) AS subquery "
-                                + "ORDER BY Continent ASC, Population DESC";
-            }
-            // Execute SQL statement
-            final ResultSet query2 = stmt.executeQuery(strSelect);
-
+        String strSelect = null;
+        // Create string for SQL statement
+        if (lim>0) {
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Countries for each continent
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
+                            + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS Capital FROM country "
+                            + "INNER JOIN city ON country.Capital = city.ID) AS subquery WHERE row_num <= " + lim
+                            + " ORDER BY Continent ASC, Population DESC";
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch Countries population for each continent
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY country.Population DESC) AS row_num, "
+                            + "country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital FROM country "
+                            + "INNER JOIN city ON country.Capital = city.ID) AS subquery "
+                            + "ORDER BY Continent ASC, Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet query2 = stmt.executeQuery(strSelect)){
             return storeIntoArraylist(topCounPop, query2);
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country population report [country report]");
             return topCounPop;
@@ -113,33 +99,28 @@ public class CountryReport {
     public List<Country> getCountriesRegion(final Connection con, final int lim) {
         // Creates array to gather countries population data based on each region
         final List<Country> topCounPop = new ArrayList<>();
-        try {
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-                String strSelect = null;
-                // Create string for SQL statement
-            if (lim>0) {
-                // Create string for SQL statement with limit 'N'
-                // - fetch Top N Populated Countries for each region
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
-                                + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
-                                + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
-                                + "WHERE row_num <= " + lim + " ORDER BY Region ASC, Population DESC";
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit
-                // - fetch Countries population for each region
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
-                                + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
-                                + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
-                                + "ORDER BY Region ASC, Population DESC";
-            }
-            // Execute SQL statement
-            final ResultSet query3 = stmt.executeQuery(strSelect);
-
+        String strSelect = null;
+        // Create string for SQL statement
+        if (lim>0) {
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Countries for each region
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
+                            + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
+                            + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
+                            + "WHERE row_num <= " + lim + " ORDER BY Region ASC, Population DESC";
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch Countries population for each region
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY country.Population DESC) AS row_num, "
+                            + "country.Code, country.Name, country.Continent, country.Region, country.Population, "
+                            + "city.Name as Capital FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery "
+                            + "ORDER BY Region ASC, Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             return storeIntoArraylist(topCounPop, query3);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country population report [country report]");
             return topCounPop;
@@ -191,7 +172,7 @@ public class CountryReport {
                 // Loop over all countries population in the list
                 for (final Country cp : countriesList)
                 {
-                    capital = nullChecker(cp.getCapital());
+                    String capital = nullChecker(cp.getCapital());
                     final String countriesInfo =
                             String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                     cp.getCode(),
@@ -225,7 +206,7 @@ public class CountryReport {
             // Loop over all countries population in the list
             for (final Country cp : countriesList)
             {
-                capital = nullChecker(cp.getCapital());
+                String capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
                 if (!cp.getContinent().equals(currentContinent)) {
                     // Print the continent header
@@ -239,7 +220,7 @@ public class CountryReport {
                 final String countriesInfo =
                         String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
-                                humanReadableFormat(cp.getPopulation()), cp.getCapital());
+                                humanReadableFormat(cp.getPopulation()), capital);
                 System.out.println(countriesInfo);
             }
             System.out.println();
@@ -265,7 +246,7 @@ public class CountryReport {
             // Loop over all countries population in the list
             for (final Country cp : countriesList)
             {
-                capital = nullChecker(cp.getCapital());
+                String capital = nullChecker(cp.getCapital());
                 // Check the current continent changed or not
                 if (!cp.getRegion().equals(currentRegion)) {
                     // Print the continent header

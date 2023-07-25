@@ -16,27 +16,20 @@ public class SummaryReport {
      */
     public List<Country> sumWorldPop (final Connection con){
         final List<Country> worldPop = new ArrayList<>();
-
-        try {
-
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement of population all around the world
-            String strSelect =
-                    "SELECT SUM(Population) AS world_pop FROM country";
-            // Execute SQL statement
-            final ResultSet pop = stmt.executeQuery(strSelect);
-
-            while (pop.next()) {
+        // Create string for SQL statement of population all around the world
+        String strSelect =
+                "SELECT SUM(Population) AS world_pop FROM country";
+        try(Statement stmt = con.createStatement(); ResultSet query = stmt.executeQuery(strSelect)){
+            while (query.next()) {
                 final Country cou = new Country();
-                cou.setGenPop(pop.getLong("world_pop"));
+                cou.setGenPop(query.getLong("world_pop"));
                 worldPop.add(cou);
             }
             return worldPop;
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population around the world [summary report]");
             return worldPop;
@@ -51,29 +44,23 @@ public class SummaryReport {
      */
     public List<Country> sumContPop (final Connection con, final int topLimit){
         final List<Country> contPop = new ArrayList<>();
+        // Create string for SQL statement of population from each continent
+        final String strSelect =
+                "SELECT Continent, SUM(Population) AS cont_pop FROM country " +
+                        "GROUP by Continent ORDER BY SUM(Population) DESC LIMIT " + topLimit;
+        try(Statement stmt = con.createStatement(); ResultSet query = stmt.executeQuery(strSelect)){
 
-        try {
-
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement of population from each continent
-            final String strSelect =
-                    "SELECT Continent, SUM(Population) AS cont_pop FROM country " +
-                            "GROUP by Continent ORDER BY SUM(Population) DESC LIMIT " + topLimit;
-            // Execute SQL statement
-            final ResultSet pop = stmt.executeQuery(strSelect);
-
-            while (pop.next()) {
+            while (query.next()) {
                 final Country cou = new Country();
-                cou.setContinent(pop.getString("continent"));
-                cou.setGenPop(pop.getLong("cont_pop"));
+                cou.setContinent(query.getString("continent"));
+                cou.setGenPop(query.getLong("cont_pop"));
                 contPop.add(cou);
             }
             return contPop;
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each continent [summary report]");
             return contPop;
@@ -88,28 +75,22 @@ public class SummaryReport {
      */
     public List<Country> sumRegPop (final Connection con, final int topLimit){
         final List<Country> regPop = new ArrayList<>();
-
-        try {
-
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement of population from each region
-            final String strSelect =
-                    "SELECT Region, SUM(Population) AS reg_pop FROM country " +
-                            "GROUP by Region ORDER BY SUM(Population) DESC LIMIT " + topLimit;
-            // Execute SQL statement
-            final ResultSet pop = stmt.executeQuery(strSelect);
-            while (pop.next()) {
+        // Create string for SQL statement of population from each region
+        final String strSelect =
+                "SELECT Region, SUM(Population) AS reg_pop FROM country " +
+                        "GROUP by Region ORDER BY SUM(Population) DESC LIMIT " + topLimit;
+        try(Statement stmt = con.createStatement(); ResultSet query = stmt.executeQuery(strSelect)){
+            while (query.next()) {
                 final Country cou = new Country();
-                cou.setRegion(pop.getString("region"));
-                cou.setGenPop(pop.getLong("reg_pop"));
+                cou.setRegion(query.getString("region"));
+                cou.setGenPop(query.getLong("reg_pop"));
                 regPop.add(cou);
             }
             return regPop;
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each region [summary report]");
             return regPop;
@@ -124,29 +105,22 @@ public class SummaryReport {
      */
     public List<Country> sumCouPop (final Connection con, final int topLimit){
         final List<Country> countryPop = new ArrayList<>();
-
-        try {
-
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement of population from each region
-            final String strSelect =
-                    "SELECT Name, Population AS reg_pop FROM country " +
-                            "ORDER BY Population DESC LIMIT " + topLimit;
-            // Execute SQL statement
-            final ResultSet pop = stmt.executeQuery(strSelect);
-
-            while (pop.next()) {
+        // Create string for SQL statement of population from each region
+        final String strSelect =
+                "SELECT Name, Population AS reg_pop FROM country " +
+                        "ORDER BY Population DESC LIMIT " + topLimit;
+        try(Statement stmt = con.createStatement(); ResultSet query = stmt.executeQuery(strSelect)){
+            while (query.next()) {
                 final Country cou = new Country();
-                cou.setName(pop.getString("Name"));
-                cou.setGenPop(pop.getLong("reg_pop"));
+                cou.setName(query.getString("Name"));
+                    cou.setGenPop(query.getLong("reg_pop"));
                 countryPop.add(cou);
             }
             return countryPop;
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each country [summary report]");
             return countryPop;
@@ -161,22 +135,15 @@ public class SummaryReport {
      */
     public List<City> sumDistPop (final Connection con, final int topLimit){
         final ArrayList<City> distPop = new ArrayList<>();
-
-        try {
-
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement of population from each district
-            final String strSelect =
-                    "SELECT District, SUM(Population) AS dist_pop FROM city " +
-                            "GROUP by District ORDER BY SUM(Population) DESC LIMIT " + topLimit;
-            // Execute SQL statement
-            final ResultSet pop = stmt.executeQuery(strSelect);
-
-            while (pop.next()) {
+        // Create string for SQL statement of population from each district
+        final String strSelect =
+                "SELECT District, SUM(Population) AS dist_pop FROM city " +
+                        "GROUP by District ORDER BY SUM(Population) DESC LIMIT " + topLimit;
+        try(Statement stmt = con.createStatement(); ResultSet query = stmt.executeQuery(strSelect)){
+            while (query.next()) {
                 final City cty = new City();
-                cty.setDistrict(pop.getString("District"));
-                cty.setGenPop(pop.getLong("dist_pop"));
+                cty.setDistrict(query.getString("District"));
+                cty.setGenPop(query.getLong("dist_pop"));
                 distPop.add(cty);
             }
             return distPop;
@@ -198,29 +165,22 @@ public class SummaryReport {
      */
     public List<City> sumCityPop (final Connection con, final int topLimit){
         final ArrayList<City> cityPop = new ArrayList<>();
-
-        try {
-
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement of population from each city
-            final String strSelect =
-                    "SELECT Name, Population FROM city " +
-                            "ORDER BY Population DESC LIMIT " + topLimit;
-            // Execute SQL statement
-            final ResultSet pop = stmt.executeQuery(strSelect);
-
-            while (pop.next()) {
+        // Create string for SQL statement of population from each city
+        final String strSelect =
+                "SELECT Name, Population FROM city " +
+                        "ORDER BY Population DESC LIMIT " + topLimit;
+        try(Statement stmt = con.createStatement(); ResultSet query = stmt.executeQuery(strSelect)){
+            while (query.next()) {
                 final City cty = new City();
-                cty.setCityName(pop.getString("Name"));
-                cty.setPopulation(pop.getInt("Population"));
+                cty.setCityName(query.getString("Name"));
+                cty.setPopulation(query.getInt("Population"));
                 cityPop.add(cty);
             }
             return cityPop;
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population the city [summary report]");
             return cityPop;

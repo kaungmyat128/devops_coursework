@@ -2,6 +2,7 @@ package com.Ace.sem;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,37 +17,34 @@ public class CapitalReport {
     public List<City> getCapitalPopByWorld (final Connection con,final int lim){
         //creates array to gather Capital Cities data based on population
         final List<City> capitalPop = new ArrayList<>();
-        try{
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0) {
-                // Create string for SQL statement with limit 'N'
-                // - fetch Top N Populated Capital City
-                strSelect =
-                        "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                                "FROM `city` JOIN country ON country.Capital = city.ID " +
-                                "ORDER BY city.Population DESC LIMIT " + lim;
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit
-                // - fetch all Capital Cities by population
-                strSelect =
-                        "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                                "FROM `city` JOIN country ON country.Capital = city.ID " +
-                                "ORDER BY city.Population DESC";
-            }
-            // Execute SQL statement
-            final ResultSet query1 = stmt.executeQuery(strSelect);
-            return capitalArrList(capitalPop, query1);
 
+        String strSelect = null;
+        if (lim>0) {
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Capital City
+            strSelect =
+                    "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                            "FROM `city` JOIN country ON country.Capital = city.ID " +
+                            "ORDER BY city.Population DESC LIMIT " + lim;
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch all Capital Cities by population
+            strSelect =
+                    "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                            "FROM `city` JOIN country ON country.Capital = city.ID " +
+                            "ORDER BY city.Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
+            return capitalArrList(capitalPop, query1);
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population around the world [capital report]");
             return capitalPop;
         }
+
     }
 
     /**
@@ -58,36 +56,31 @@ public class CapitalReport {
     public List<City> getCapitalPopByContinent (final Connection con,final int lim){
         //creates array to gather Capital Cities data based on population
         final List<City> capitalPop = new ArrayList<>();
-        try{
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0) {
-                // Create string for SQL statement with limit 'N'
-                // - fetch Top N Populated Capital City
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) " +
-                                "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                                "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
-                                "WHERE row_num <= " + lim +
-                                " ORDER BY Continent ASC, CapitalPop DESC";
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit
-                // - fetch all Capital Cities by population
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) " +
-                                "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                                "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
-                                "ORDER BY Continent ASC, CapitalPop DESC";
-            }
-            // Execute SQL statement
-            final ResultSet query1 = stmt.executeQuery(strSelect);
+        String strSelect = null;
+        if (lim>0) {
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Capital City
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) " +
+                            "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                            "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
+                            "WHERE row_num <= " + lim +
+                            " ORDER BY Continent ASC, CapitalPop DESC";
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch all Capital Cities by population
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) " +
+                            "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                            "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
+                            "ORDER BY Continent ASC, CapitalPop DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
             return capitalArrList(capitalPop, query1);
-
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population for each continent [capital report]");
             return capitalPop;
@@ -103,36 +96,31 @@ public class CapitalReport {
     public List<City> getCapitalPopByRegion (final Connection con,final int lim){
         //creates array to gather Capital Cities data based on population
         final List<City> capitalPop = new ArrayList();
-        try{
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0) {
-                // Create string for SQL statement with limit 'N'
-                // - fetch Top N Populated Capital City
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) " +
-                                "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                                "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
-                                "WHERE row_num <= " + lim +
-                                " ORDER BY Region ASC, CapitalPop DESC";
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit
-                // - fetch all Capital Cities by population
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) " +
-                                "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                                "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
-                                "ORDER BY Region ASC, CapitalPop DESC";
-            }
-            // Execute SQL statement
-            final ResultSet query1 = stmt.executeQuery(strSelect);
-            return capitalArrList(capitalPop, query1);
-
+        String strSelect = null;
+        if (lim>0) {
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Capital City
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) " +
+                            "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                            "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
+                            "WHERE row_num <= " + lim +
+                            " ORDER BY Region ASC, CapitalPop DESC";
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch all Capital Cities by population
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) " +
+                            "AS row_num, city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                            "FROM country LEFT JOIN city ON country.Capital = city.ID) AS subquery " +
+                            "ORDER BY Region ASC, CapitalPop DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
+           return capitalArrList(capitalPop, query1);
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population around each Region [capital report]");
             return capitalPop;
@@ -195,8 +183,8 @@ public class CapitalReport {
             System.out.println("========================================================================================");
         }
         catch (Exception e) {
-        //System.out.println(e.getMessage());
-        System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
+            System.out.println(e.getMessage());
+            System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
     }
 
@@ -279,7 +267,8 @@ public class CapitalReport {
                 System.out.println(capitalsInfo);
             }
             System.out.println("============================================================");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             //System.out.println(e.getMessage());
             System.out.println("Nothing to display : No Capital data from regions can be extracted.[capital report]");
         }

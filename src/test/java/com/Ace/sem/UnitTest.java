@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * the class created for the purpose of unit testing
  * all the individual methods are included
  */
-public class UnitTest
+class UnitTest
 {
     private static CountryReport countryReport;
     private static CityReport cityReport;
@@ -115,8 +116,8 @@ public class UnitTest
     {
         final ArrayList<Country> country = new ArrayList<>();
         country.add(null);
-        ResultSet qry = null;
-        countryReport.storeIntoArraylist(country, qry);
+        countryReport.storeIntoArraylist(country, null);
+
     }
     /**
      * checks if the human readable format method of int works
@@ -187,7 +188,11 @@ public class UnitTest
      */
     @Test
     void storeIntoArrayListNotNull()     {
-        try{
+        final String strSelect =
+                "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
+                        + "FROM country INNER JOIN city ON country.Capital = city.ID "
+                        + "ORDER BY country.Population DESC LIMIT 5";
+        try(Statement stmt = app.con.createStatement(); ResultSet qry = stmt.executeQuery(strSelect)){
             final ArrayList<Country> country = new ArrayList();
             final Country cou = new Country();
             cou.setCode("MYN");
@@ -197,17 +202,13 @@ public class UnitTest
             cou.setPopulation(54_593_833);
             cou.setCapital("Yangon");
             country.add(cou);
-            final String strSelect =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
-                            + "FROM country INNER JOIN city ON country.Capital = city.ID "
-                            + "ORDER BY country.Population DESC LIMIT 5";
-
-            final Statement stmt = app.con.createStatement();
-            final ResultSet qry = stmt.executeQuery(strSelect);
             countryReport.storeIntoArraylist(country, qry);
 
-        }catch (Exception e) {
+        }catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+        catch (Exception e1) {
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -546,8 +547,7 @@ public class UnitTest
     {
         final ArrayList<City> city = new ArrayList<>();
         city.add(null);
-        ResultSet qry = null;
-        capitalReport.capitalArrList(city, qry);
+        capitalReport.capitalArrList(city, null);
     }
 
     /**
@@ -597,7 +597,11 @@ public class UnitTest
      */
     @Test
     void arrayListCapitals()     {
-        try{
+        final String strSelect =
+                "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
+                        "FROM `city` JOIN country ON country.Capital = city.ID " +
+                        "ORDER BY city.Population DESC";
+        try(Statement stmt = app.con.createStatement(); ResultSet qry = stmt.executeQuery(strSelect)){
             final ArrayList<City> city = new ArrayList<>();
             final City cty = new City();
             cty.setCityName("Yangon");
@@ -606,17 +610,14 @@ public class UnitTest
             cty.setRegion("Southeast Asia");
             cty.setPopulation(5_434_678);
             city.add(cty);
-            final String strSelect =
-                    "SELECT city.Name AS CapitalName, country.Name AS CountryName, country.Continent AS Continent, country.Region AS Region, city.Population AS CapitalPop " +
-                            "FROM `city` JOIN country ON country.Capital = city.ID " +
-                            "ORDER BY city.Population DESC";
 
-            final Statement stmt = app.con.createStatement();
-            final ResultSet qry = stmt.executeQuery(strSelect);
             capitalReport.capitalArrList(city, qry);
 
-        }catch (Exception e) {
+        }catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+        catch (Exception e1) {
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -800,7 +801,7 @@ public class UnitTest
     }
 
     @Test
-    void humanRedable() {
+    void humanReadable() {
 
         summaryReport.humanReadableFormatLong(0);
         countryReport.humanReadableFormat(1000);

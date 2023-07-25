@@ -11,9 +11,9 @@ import java.util.List;
  */
 public class App {
     // Connection to MySQL database.
-    public Connection con = null;
+    public Connection con;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // create new Application Object
         final App app = new App();
 
@@ -162,32 +162,32 @@ public class App {
         //Summary reports
         final List<Country> popSumWorld =  sumR.sumWorldPop(app.con);
         System.out.println("==========Population of the world==========");
-        System.out.println(String.format("%-20s| %-20s", "Location", "Population"));
+        System.out.printf("%-20s| %-20s%n", "Location", "Population");
         sumR.displaySumWorldPop(popSumWorld);
 
         final List<Country> popSumCont =  sumR.sumContPop(app.con, 1);
         System.out.println("==========Population of most populated continent==========");
-        System.out.println(String.format("%-30s| %-30s", "Continent", "Population"));
+        System.out.printf("%-30s| %-30s%n", "Continent", "Population");
         sumR.displaySumContPop(popSumCont);
 
         final List<Country> popSumReg =  sumR.sumRegPop(app.con, 1);
         System.out.println("==========Population of most populated region==========");
-        System.out.println(String.format("%-30s| %-30s", "Region", "Population"));
+        System.out.printf("%-30s| %-30s%n", "Region", "Population");
         sumR.displaySumRegPop(popSumReg);
 
         final List<Country> popSumCoun = sumR.sumCouPop(app.con,1 );
         System.out.println("==========Population of most populated country==========");
-        System.out.println(String.format("%-30s| %-30s", "Country", "Population"));
+        System.out.printf("%-30s| %-30s%n", "Country", "Population");
         sumR.displaySumCouPop(popSumCoun);
 
         final List<City> popDistReg =  sumR.sumDistPop(app.con, 1);
         System.out.println("==========Population of most populated district==========");
-        System.out.println(String.format("%-30s| %-30s", "District", "Population"));
+        System.out.printf("%-30s| %-30s%n", "District", "Population");
         sumR.displaySumDistPop(popDistReg);
 
         final List<City> popCityReg =  sumR.sumCityPop(app.con, 1);
         System.out.println("==========Population of most populated city==========");
-        System.out.println(String.format("%-30s| %-30s", "City", "Population"));
+        System.out.printf("%-30s| %-30s%n", "City", "Population");
         sumR.displaySumCityPop(popCityReg);
 
         //Display Population report of people living in cities
@@ -229,7 +229,7 @@ public class App {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
-            System.exit(-1);
+            //System.exit(-1);
         }
 
         int retries = 10;
@@ -266,8 +266,11 @@ public class App {
             try {
                 // Close connection
                 con.close();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Error closing connection to database");
+            }catch (Exception e) {
+                System.out.println("Exception Occurs.");
+                System.out.println(e.getMessage());
             }
         }
     }

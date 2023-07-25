@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * this class is created for the purpose of integrated testing
  * includes all the methods except some catch phrases
  */
-public class IntegratedTest
+class IntegratedTest
 {
     private static CountryReport countryReport;
     private static CityReport cityReport;
@@ -66,16 +67,14 @@ public class IntegratedTest
      */
     @Test
     void getdisplayCountries() {
-        try {
+        final String strSelect =
+                "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
+                        + "FROM country INNER JOIN city ON country.Capital = city.ID "
+                        + "ORDER BY country.Population DESC LIMIT 5";
+
+        try(Statement stmt = app.con.createStatement(); ResultSet qry = stmt.executeQuery(strSelect)){
             List<Country> country = new ArrayList();
 
-            final String strSelect =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital "
-                            + "FROM country INNER JOIN city ON country.Capital = city.ID "
-                            + "ORDER BY country.Population DESC LIMIT 5";
-
-            final Statement stmt = app.con.createStatement();
-            final ResultSet qry = stmt.executeQuery(strSelect);
             countryReport.storeIntoArraylist(country, qry);
 
             // Retrieve all countries report with limit
@@ -111,8 +110,12 @@ public class IntegratedTest
             assertEquals(country.get(0).getCapital(), "Peking", "First Entry Country Report - Capital City is not true.");
 
 
-        }catch (Exception e) {
+        }
+        catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+        catch (Exception e1) {
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -159,7 +162,8 @@ public class IntegratedTest
             assertEquals(country.get(0).getPopulation(), 1_277_558_000, "First Entry Country Report - Population is not true.");
             assertEquals(country.get(0).getCapital(), "Peking", "First Entry Country Report - Capital City is not true.");
 
-        }catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

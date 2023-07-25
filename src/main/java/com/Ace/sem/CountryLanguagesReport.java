@@ -2,6 +2,7 @@ package com.Ace.sem;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -20,14 +21,10 @@ public class CountryLanguagesReport {
     public List<Language> getLanguagesReport(final Connection con) {
         // Create array list and add query result into array list
         final List<Language> lanPop = new ArrayList();
-        try {
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement with no limit - fetch all queries
-            String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
+        // Create string for SQL statement with no limit - fetch all queries
+        String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
 
-            // Execute SQL statement
-            final ResultSet query1 = stmt.executeQuery(strSelect);
+        try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
             while (query1.next()) {
                 final Language languagePop = new Language();
@@ -38,7 +35,7 @@ public class CountryLanguagesReport {
             }
             return lanPop;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People who speaks different kind of languages [language report]");
             return lanPop;

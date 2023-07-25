@@ -2,6 +2,7 @@ package com.Ace.sem;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.text.NumberFormat;
@@ -25,22 +26,17 @@ public class RuralUrbanReport {
     public List<City> getContinentPopulation(final Connection con) {
         // Create array list 'ruContinentPopulation' and add query result into array list
         final List<City> ruContPop = new ArrayList<>();
-        try {
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement with no limit - fetch all queries
-            final String strSelect = "SELECT country.Continent as Continent_Name, "
-                                + "SUM(country.Population) AS Total_Population, "
-                                + "SUM(city.Total_Cities_Population) AS Cities_Population, "
-                                + "SUM(country.Population - city.Total_Cities_Population) AS Not_Cities_Population "
-                                + "FROM country "
-                                + "JOIN ( SELECT city.CountryCode , SUM(city.Population) AS Total_Cities_Population "
-                                + "FROM city GROUP BY city.CountryCode ) AS city ON country.code = city.CountryCode "
-                                + "GROUP BY country.Continent ORDER BY Total_Population DESC";
+        // Create string for SQL statement with no limit - fetch all queries
+        final String strSelect = "SELECT country.Continent as Continent_Name, "
+                + "SUM(country.Population) AS Total_Population, "
+                + "SUM(city.Total_Cities_Population) AS Cities_Population, "
+                + "SUM(country.Population - city.Total_Cities_Population) AS Not_Cities_Population "
+                + "FROM country "
+                + "JOIN ( SELECT city.CountryCode , SUM(city.Population) AS Total_Cities_Population "
+                + "FROM city GROUP BY city.CountryCode ) AS city ON country.code = city.CountryCode "
+                + "GROUP BY country.Continent ORDER BY Total_Population DESC";
 
-            // Execute SQL statement
-            final ResultSet query1 = stmt.executeQuery(strSelect);
-
+        try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
             while (query1.next()) {
                 final City ruPop = new City();
@@ -52,7 +48,7 @@ public class RuralUrbanReport {
             }
             return ruContPop;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each continent [Rural]");
             return ruContPop;
@@ -68,23 +64,17 @@ public class RuralUrbanReport {
     public List<City> getRegionPopulation(final Connection con) {
         // Create array list 'RUContinentPopulation' and add query result into array list
         final List<City> ruRegPop = new ArrayList();
-        try {
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement with no limit - fetch all queries
-            final String strSelect = "SELECT country.Region AS Region, SUM(country.Population) AS Total_Population, "
-                    + "SUM(city.cities_population) AS Cities_Population, "
-                    + "SUM(country.Population - city.cities_population) AS Not_Cities_Population "
-                    + "FROM country "
-                    + "JOIN ( SELECT city.countryCode, SUM(city.Population) AS cities_population "
-                    + "FROM city GROUP BY city.CountryCode ) AS city "
-                    + "ON city.CountryCode = country.Code "
-                    + "GROUP BY country.region "
-                    + "ORDER BY Total_Population DESC";
-
-            // Execute SQL statement
-            final ResultSet query2 = stmt.executeQuery(strSelect);
-
+        // Create string for SQL statement with no limit - fetch all queries
+        final String strSelect = "SELECT country.Region AS Region, SUM(country.Population) AS Total_Population, "
+                + "SUM(city.cities_population) AS Cities_Population, "
+                + "SUM(country.Population - city.cities_population) AS Not_Cities_Population "
+                + "FROM country "
+                + "JOIN ( SELECT city.countryCode, SUM(city.Population) AS cities_population "
+                + "FROM city GROUP BY city.CountryCode ) AS city "
+                + "ON city.CountryCode = country.Code "
+                + "GROUP BY country.region "
+                + "ORDER BY Total_Population DESC";
+        try(Statement stmt = con.createStatement(); ResultSet query2 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
             while (query2.next()) {
                 final City ruPop = new City();
@@ -96,7 +86,7 @@ public class RuralUrbanReport {
             }
             return ruRegPop;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each region [Rural]");
             return ruRegPop;
@@ -112,20 +102,14 @@ public class RuralUrbanReport {
     public List<City> getCountryPopulation(final Connection con) {
         // Create array list 'RUContinentPopulation' and add query result into array list
         final List<City> ruCounPop = new ArrayList<>();
-        try {
-            // Create an SQL statement
-            final Statement stmt = con.createStatement();
-            // Create string for SQL statement with no limit - fetch all queries
-            final String strSelect = "SELECT country.Name AS Country, SUM(country.Population) AS total_population , "
-                    + "SUM(city.Population) AS Cities_Population, "
-                    + "SUM(country.population) - SUM(city.Population) AS Not_Cities_Population "
-                    + "FROM country "
-                    + "JOIN city ON country.Code = city.CountryCode "
-                    + "GROUP BY country.Name ORDER BY total_population DESC";
-
-            // Execute SQL statement
-            final ResultSet query3 = stmt.executeQuery(strSelect);
-
+        // Create string for SQL statement with no limit - fetch all queries
+        final String strSelect = "SELECT country.Name AS Country, SUM(country.Population) AS total_population , "
+                + "SUM(city.Population) AS Cities_Population, "
+                + "SUM(country.population) - SUM(city.Population) AS Not_Cities_Population "
+                + "FROM country "
+                + "JOIN city ON country.Code = city.CountryCode "
+                + "GROUP BY country.Name ORDER BY total_population DESC";
+        try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
             while (query3.next()) {
                 final City ruPop = new City();
@@ -136,7 +120,7 @@ public class RuralUrbanReport {
                 ruCounPop.add(ruPop);
             }
             return ruCounPop;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each country [Rural]");
             return ruCounPop;
