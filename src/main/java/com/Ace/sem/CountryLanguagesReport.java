@@ -18,6 +18,8 @@ public class CountryLanguagesReport {
      * Then return the data as array list.
      * */
     public List<Language> getLanguagesReport(final Connection con) {
+        // Create array list and add query result into array list
+        final List<Language> lanPop = new ArrayList();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -26,9 +28,6 @@ public class CountryLanguagesReport {
 
             // Execute SQL statement
             final ResultSet query1 = stmt.executeQuery(strSelect);
-            // Create array list and add query result into array list
-            final List<Language> lanPop = new ArrayList();
-
             // Extract population of countries information and store into array list
             while (query1.next()) {
                 final Language languagePop = new Language();
@@ -42,7 +41,7 @@ public class CountryLanguagesReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People who speaks different kind of languages [language report]");
-            return null;
+            return lanPop;
         }
     }
 

@@ -22,6 +22,8 @@ public class CityReport {
      * Then return the data as array list.
      * */
     public List<City> getCityPop(final Connection con, final int lim) {
+        // Extract City information from database
+        final List<City> worldPop = new ArrayList();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -41,8 +43,7 @@ public class CityReport {
             }
             // Execute SQL statement
             final ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information from database
-            final List<City> worldPop = new ArrayList();
+
             while (rset.next()) {
                 final City world = new City();
                 world.setCityName(rset.getString("CityName"));
@@ -55,7 +56,7 @@ public class CityReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by World [city report]");
-            return null;
+            return worldPop;
         }
     }
 
@@ -66,6 +67,8 @@ public class CityReport {
      * Then return the data as array list.
      * */
     public List<City> getCityPopByContinent(final Connection con, final int lim) {
+        // Extract City information for Each Continent from Database
+        final List<City> continentPop = new ArrayList();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -89,8 +92,7 @@ public class CityReport {
 
             // Execute SQL statement
             final ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each Continent from Database
-            final List<City> continentPop = new ArrayList();
+
             while (rset.next()) {
                 final City continent = new City();
                 continent.setCityName(rset.getString("CityName"));
@@ -104,7 +106,7 @@ public class CityReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by Continent [city report]");
-            return null;
+            return continentPop;
         }
     }
 
@@ -115,6 +117,8 @@ public class CityReport {
      * Then return the data as array list.
      * */
     public List<City> getCityPopByRegion(final Connection con, final int lim) {
+        // Extract City information for Each Region From Database
+        final List<City> regionPop = new ArrayList();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -138,8 +142,7 @@ public class CityReport {
 
             // Execute SQL statement
             final ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each Region From Database
-            final List<City> regionPop = new ArrayList();
+
             while (rset.next()) {
                 final City region = new City();
                 region.setCityName(rset.getString("CityName"));
@@ -153,7 +156,7 @@ public class CityReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by Region [city report]");
-            return null;
+            return regionPop;
         }
     }
 
@@ -164,6 +167,8 @@ public class CityReport {
      * Then return the data as array list.
      * */
     public List<City> getCityPopByCountry(final Connection con, final int lim) {
+        // Extract City information for Each country From Database
+        final List<City> countryPop = new ArrayList();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -186,8 +191,7 @@ public class CityReport {
             }
             // Execute SQL statement
             final ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each country From Database
-            final List<City> countryPop = new ArrayList();
+
             while (rset.next()) {
                 final City country = new City();
                 country.setCityName(rset.getString("CityName"));
@@ -200,7 +204,7 @@ public class CityReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by Country [city report]");
-            return null;
+            return countryPop;
         }
     }
 
@@ -211,6 +215,8 @@ public class CityReport {
      * Then return the data as array list.
      * */
     public List<City> getCityPopByDistrict(final Connection con, final int lim) {
+        // Extract City information for Each District From Database
+        final List<City> districtPop = new ArrayList();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -236,8 +242,7 @@ public class CityReport {
             }
             // Execute SQL statement
             final ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each District From Database
-            final List<City> districtPop = new ArrayList();
+
             while (rset.next()) {
                 final City district = new City();
                 district.setCityName(rset.getString("CityName"));
@@ -250,7 +255,7 @@ public class CityReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City By District [city report]");
-            return null;
+            return districtPop;
         }
     }
 

@@ -14,6 +14,8 @@ public class CapitalReport {
      * Then return the data as array list.
      * */
     public List<City> getCapitalPopByWorld (final Connection con,final int lim){
+        //creates array to gather Capital Cities data based on population
+        final List<City> capitalPop = new ArrayList<>();
         try{
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -35,8 +37,6 @@ public class CapitalReport {
             }
             // Execute SQL statement
             final ResultSet query1 = stmt.executeQuery(strSelect);
-            //creates array to gather Capital Cities data based on population
-            final List<City> capitalPop = new ArrayList<>();
             return capitalArrList(capitalPop, query1);
 
         }
@@ -45,7 +45,7 @@ public class CapitalReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population around the world [capital report]");
-            return null;
+            return capitalPop;
         }
     }
 
@@ -56,6 +56,8 @@ public class CapitalReport {
      * with descending order of population' Then return the data as array list.
      * */
     public List<City> getCapitalPopByContinent (final Connection con,final int lim){
+        //creates array to gather Capital Cities data based on population
+        final List<City> capitalPop = new ArrayList<>();
         try{
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -80,8 +82,6 @@ public class CapitalReport {
             }
             // Execute SQL statement
             final ResultSet query1 = stmt.executeQuery(strSelect);
-            //creates array to gather Capital Cities data based on population
-            final List<City> capitalPop = new ArrayList<>();
             return capitalArrList(capitalPop, query1);
 
         }
@@ -90,7 +90,7 @@ public class CapitalReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population for each continent [capital report]");
-            return null;
+            return capitalPop;
         }
     }
 
@@ -101,6 +101,8 @@ public class CapitalReport {
      * with descending order of population Then return the data as array list.
      * */
     public List<City> getCapitalPopByRegion (final Connection con,final int lim){
+        //creates array to gather Capital Cities data based on population
+        final List<City> capitalPop = new ArrayList();
         try{
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -125,8 +127,6 @@ public class CapitalReport {
             }
             // Execute SQL statement
             final ResultSet query1 = stmt.executeQuery(strSelect);
-            //creates array to gather Capital Cities data based on population
-            final List<City> capitalPop = new ArrayList<>();
             return capitalArrList(capitalPop, query1);
 
         }
@@ -135,7 +135,7 @@ public class CapitalReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population around each Region [capital report]");
-            return null;
+            return capitalPop;
         }
     }
     /**
@@ -165,7 +165,7 @@ public class CapitalReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population [capital report]");
-            return null;
+            return arr;
         }
     }
     /** Display Capital Cities Report using getter() method

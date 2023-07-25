@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * this class is created for the purpose of integrated testing
- * includes all of the methods except some catch phrases
+ * includes all the methods except some catch phrases
  */
 public class IntegratedTest
 {

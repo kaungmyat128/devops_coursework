@@ -25,6 +25,8 @@ public class CountryReport {
      * Then return the data as array list.
      * */
     public List<Country> getCountries (final Connection con, final int lim){
+        //creates array to gather country data based on population
+        final List<Country> topCounPop = new ArrayList<>();
         try {
 
             // Create an SQL statement
@@ -46,8 +48,7 @@ public class CountryReport {
             }
             // Execute SQL statement
             final ResultSet query1 = stmt.executeQuery(strSelect);
-            //creates array to gather country data based on population
-            final List<Country> topCounPop = new ArrayList<>();
+
             return storeIntoArraylist(topCounPop, query1);
 
         }
@@ -56,7 +57,7 @@ public class CountryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return countries population around the world [country report]");
-            return null;
+            return topCounPop;
         }
     }
 
@@ -67,6 +68,8 @@ public class CountryReport {
      * Then return the data as array list.
      * */
     public List<Country> getCountriesContinent( final Connection con, final int lim) {
+        // Creates array to gather populated country data based on each continent
+        final List<Country> topCounPop = new ArrayList<>();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -91,14 +94,13 @@ public class CountryReport {
             }
             // Execute SQL statement
             final ResultSet query2 = stmt.executeQuery(strSelect);
-            // Creates array to gather populated country data based on each continent
-            final List<Country> topCounPop = new ArrayList<>();
+
             return storeIntoArraylist(topCounPop, query2);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country population report [country report]");
-            return null;
+            return topCounPop;
         }
     }
 
@@ -109,9 +111,10 @@ public class CountryReport {
      * Then return the data as array list.
      * */
     public List<Country> getCountriesRegion(final Connection con, final int lim) {
+        // Creates array to gather countries population data based on each region
+        final List<Country> topCounPop = new ArrayList<>();
         try {
-
-                // Create an SQL statement
+            // Create an SQL statement
             final Statement stmt = con.createStatement();
                 String strSelect = null;
                 // Create string for SQL statement
@@ -134,13 +137,12 @@ public class CountryReport {
             }
             // Execute SQL statement
             final ResultSet query3 = stmt.executeQuery(strSelect);
-            // Creates array to gather countries population data based on each region
-            final List<Country> topCounPop = new ArrayList<>();
+
             return storeIntoArraylist(topCounPop, query3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country population report [country report]");
-            return null;
+            return topCounPop;
         }
     }
 
@@ -170,7 +172,7 @@ public class CountryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return countries population [country report]");
-            return null;
+            return arl;
         }
     }
 

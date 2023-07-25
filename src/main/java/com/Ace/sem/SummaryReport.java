@@ -15,6 +15,8 @@ public class SummaryReport {
      * @return
      */
     public List<Country> sumWorldPop (final Connection con){
+        final List<Country> worldPop = new ArrayList<>();
+
         try {
 
             // Create an SQL statement
@@ -24,7 +26,6 @@ public class SummaryReport {
                     "SELECT SUM(Population) AS world_pop FROM country";
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
-            final List<Country> worldPop = new ArrayList<>();
 
             while (pop.next()) {
                 final Country cou = new Country();
@@ -38,7 +39,7 @@ public class SummaryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population around the world [summary report]");
-            return null;
+            return worldPop;
         }
     }
 
@@ -49,6 +50,8 @@ public class SummaryReport {
      * @return
      */
     public List<Country> sumContPop (final Connection con, final int topLimit){
+        final List<Country> contPop = new ArrayList<>();
+
         try {
 
             // Create an SQL statement
@@ -59,7 +62,6 @@ public class SummaryReport {
                             "GROUP by Continent ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
-            final List<Country> contPop = new ArrayList<>();
 
             while (pop.next()) {
                 final Country cou = new Country();
@@ -74,7 +76,7 @@ public class SummaryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each continent [summary report]");
-            return null;
+            return contPop;
         }
     }
 
@@ -85,6 +87,8 @@ public class SummaryReport {
      * @return
      */
     public List<Country> sumRegPop (final Connection con, final int topLimit){
+        final List<Country> regPop = new ArrayList<>();
+
         try {
 
             // Create an SQL statement
@@ -95,7 +99,6 @@ public class SummaryReport {
                             "GROUP by Region ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
-            final List<Country> regPop = new ArrayList<>();
             while (pop.next()) {
                 final Country cou = new Country();
                 cou.setRegion(pop.getString("region"));
@@ -109,7 +112,7 @@ public class SummaryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each region [summary report]");
-            return null;
+            return regPop;
         }
     }
 
@@ -120,6 +123,8 @@ public class SummaryReport {
      * @return
      */
     public List<Country> sumCouPop (final Connection con, final int topLimit){
+        final List<Country> countryPop = new ArrayList<>();
+
         try {
 
             // Create an SQL statement
@@ -130,7 +135,6 @@ public class SummaryReport {
                             "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
-            final List<Country> countryPop = new ArrayList<>();
 
             while (pop.next()) {
                 final Country cou = new Country();
@@ -145,7 +149,7 @@ public class SummaryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of each country [summary report]");
-            return null;
+            return countryPop;
         }
     }
 
@@ -156,6 +160,8 @@ public class SummaryReport {
      * @return
      */
     public List<City> sumDistPop (final Connection con, final int topLimit){
+        final ArrayList<City> distPop = new ArrayList<>();
+
         try {
 
             // Create an SQL statement
@@ -166,7 +172,6 @@ public class SummaryReport {
                             "GROUP by District ORDER BY SUM(Population) DESC LIMIT " + topLimit;
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
-            final ArrayList<City> distPop = new ArrayList<>();
 
             while (pop.next()) {
                 final City cty = new City();
@@ -181,7 +186,7 @@ public class SummaryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population of district [summary report]");
-            return null;
+            return distPop;
         }
     }
 
@@ -192,6 +197,8 @@ public class SummaryReport {
      * @return
      */
     public List<City> sumCityPop (final Connection con, final int topLimit){
+        final ArrayList<City> cityPop = new ArrayList<>();
+
         try {
 
             // Create an SQL statement
@@ -202,7 +209,6 @@ public class SummaryReport {
                             "ORDER BY Population DESC LIMIT " + topLimit;
             // Execute SQL statement
             final ResultSet pop = stmt.executeQuery(strSelect);
-            final ArrayList<City> cityPop = new ArrayList<>();
 
             while (pop.next()) {
                 final City cty = new City();
@@ -217,7 +223,7 @@ public class SummaryReport {
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return population the city [summary report]");
-            return null;
+            return cityPop;
         }
     }
 

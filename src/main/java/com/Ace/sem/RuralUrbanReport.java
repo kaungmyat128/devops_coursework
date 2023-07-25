@@ -23,6 +23,8 @@ public class RuralUrbanReport {
      * Then return the data as array list.
      * */
     public List<City> getContinentPopulation(final Connection con) {
+        // Create array list 'ruContinentPopulation' and add query result into array list
+        final List<City> ruContPop = new ArrayList<>();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -38,8 +40,7 @@ public class RuralUrbanReport {
 
             // Execute SQL statement
             final ResultSet query1 = stmt.executeQuery(strSelect);
-            // Create array list 'ruContinentPopulation' and add query result into array list
-            final List<City> ruContPop = new ArrayList<>();
+
             // Extract population of countries information and store into array list
             while (query1.next()) {
                 final City ruPop = new City();
@@ -54,7 +55,7 @@ public class RuralUrbanReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each continent [Rural]");
-            return null;
+            return ruContPop;
         }
     }
 
@@ -65,6 +66,8 @@ public class RuralUrbanReport {
      * Then return the data as array list.
      * */
     public List<City> getRegionPopulation(final Connection con) {
+        // Create array list 'RUContinentPopulation' and add query result into array list
+        final List<City> ruRegPop = new ArrayList();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -81,8 +84,7 @@ public class RuralUrbanReport {
 
             // Execute SQL statement
             final ResultSet query2 = stmt.executeQuery(strSelect);
-            // Create array list 'RUContinentPopulation' and add query result into array list
-            final List<City> ruRegPop = new ArrayList();
+
             // Extract population of countries information and store into array list
             while (query2.next()) {
                 final City ruPop = new City();
@@ -97,7 +99,7 @@ public class RuralUrbanReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each region [Rural]");
-            return null;
+            return ruRegPop;
         }
     }
 
@@ -106,7 +108,10 @@ public class RuralUrbanReport {
      * The population of people, people living in cities,
      * and people not living in cities in each country
      * Then return the data as array list.
-     * */    public List<City> getCountryPopulation(final Connection con) {
+     * */
+    public List<City> getCountryPopulation(final Connection con) {
+        // Create array list 'RUContinentPopulation' and add query result into array list
+        final List<City> ruCounPop = new ArrayList<>();
         try {
             // Create an SQL statement
             final Statement stmt = con.createStatement();
@@ -120,8 +125,7 @@ public class RuralUrbanReport {
 
             // Execute SQL statement
             final ResultSet query3 = stmt.executeQuery(strSelect);
-            // Create array list 'RUContinentPopulation' and add query result into array list
-            final List<City> ruCounPop = new ArrayList<>();
+
             // Extract population of countries information and store into array list
             while (query3.next()) {
                 final City ruPop = new City();
@@ -135,7 +139,7 @@ public class RuralUrbanReport {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each country [Rural]");
-            return null;
+            return ruCounPop;
         }
     }
 
