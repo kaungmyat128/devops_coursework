@@ -12,7 +12,7 @@ import java.util.List;
 public class App {
     // Connection to MySQL database.
     public Connection con;
-
+    // Main method that run the whole program
     public static void main(final String[] args) {
         // create new Application Object
         final App app = new App();
@@ -30,11 +30,11 @@ public class App {
         final SummaryReport sumR = new SummaryReport();
 
         //------------creating Object for People
-        // Living in Cities & Not Living in Cities Report------------
+        //------------Living in Cities & Not Living in Cities Report------------
         // create new object for top populated cities Class Java
         final RuralUrbanReport ruReport = new RuralUrbanReport();
 
-        //------------coureating Object for Language Report------------
+        //------------creating Object for Language Report------------
         final CountryLanguagesReport languageReport = new CountryLanguagesReport();
 
         final CapitalReport cpr = new CapitalReport();
@@ -218,10 +218,10 @@ public class App {
     }
 
 
-    /*
-     Connect to the MySQL database. Load mysql driver
-     and connect database up to 100 tries
-     until database connection is connected.
+    /**
+     * Connect to the MySQL database. Load mysql driver
+     * and connect database up to 100 tries
+     * until database connection is connected.
      */
     public void connect() {
         try {

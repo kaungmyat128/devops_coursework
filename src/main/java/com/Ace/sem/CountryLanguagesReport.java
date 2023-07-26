@@ -13,7 +13,7 @@ public class CountryLanguagesReport {
 
     /**
      * contains connection parameters for database connection
-     * from greatest number to smallest,
+     * from the greatest number to smallest,
      * including the percentage of the world population:
      * Chinese, English, Hindi, Spanish and Arabic.
      * Then return the data as array list.

@@ -8,11 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Creates methods to write sql queries and create arraylists of capital cities population
- * This Java Class File contains 3 java methods that contains 2 parameters - database connection & int limit parameters -
- * getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion()
- * This class also contains other 3 java methods that contains ArrayList Parameter to display results
- * displayCapital(), displayCapitalContinents() and displayCapitalRegion()
+ * Creates methods to write sql queries and create arraylists of cities population
+ * 3 fetching methods that use database connection and limit as parameters
+ * 3 display methods that use ArrayList as parameter
  * */
 
 public class CapitalReport {
@@ -282,6 +280,11 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data from regions can be extracted.[capital report]");
         }
     }
+    /**
+     * This method takes a String parameter 'checkElement' and checks if it is null or empty.
+     * If the 'checkElement' is null, empty, or contains only spaces, it returns a hyphen ("-").
+     * Otherwise, it returns the original 'checkElement'.
+     */
     public String nullChecker(final String checkElement){
         if(checkElement == null || checkElement.equals(" ") || checkElement.equals("")){
             return "-";
