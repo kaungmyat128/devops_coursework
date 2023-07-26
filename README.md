@@ -4,10 +4,12 @@
 
 <br>This is a coursework repository for the Devops Subject [Group 3]
 
-<br>Master Build Status: ![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
-<br>Develop Build Status: ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
+<br><b>Master Build Status:  </b>![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
+<br><b>Develop Build Status: </b> ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
 <br><b>License Status: </b> [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
+<br><b>Code Coverage:</b>[![codecov](https://codecov.io/github/kaungmyat128/devops_coursework/branch/hotfix/graph/badge.svg?token=H47J5ZLWRO)](https://codecov.io/github/kaungmyat128/devops_coursework)
 <br><b>Release Status:</b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
+
 
 &emsp; We are working for the organization that require reporting on world population information.
 We have been ask to implement the new system which can easily access to the information of the population.
@@ -32,14 +34,14 @@ The system will be using the world database.
 
 <h3>Contribution to the Project by Scrum Team members</h3>
 
-| Name               | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
-|--------------------|---------------|---------------|---------------|---------------|-------------------|
-| Kaung Khant Hein   | 22%           | 24%           | TBD           | TBD           | TBD               |
-| May Phyu Sin Thant | 22%           | 24%           | TBD           | TBD           | TBD               |
-| Kaung Myat         | 24%           | 23%           | TBD           | TBD           | TBD               |
-| Zwe Htut Htay Lwin | 22%           | 22%           | TBD           | TBD           | TBD               |
-| Hein Thaw Zin      | 10%           | 7%            | TBD           | TBD           | TBD               |
-| Total              | 100%          | 100%          | TBD           | TBD           | TBD               |
+| Name               | Code Review 1 | Code Review 2 | Code Review 3  | Code Review 4 | Final Deliverable |
+|--------------------|---------------|---------------|----------------|---------------|-------------------|
+| Kaung Khant Hein   | 22%           | 24%           | 21%            | TBD           | TBD               |
+| May Phyu Sin Thant | 22%           | 24%           | 23%            | TBD           | TBD               |
+| Kaung Myat         | 24%           | 23%           | 20%            | TBD           | TBD               |
+| Zwe Htut Htay Lwin | 22%           | 22%           | 20%            | TBD           | TBD               |
+| Hein Thaw Zin      | 10%           | 7%            | 16%            | TBD           | TBD               |
+| Total              | 100%          | 100%          | 100%           | TBD           | TBD               |
 
 
 <h2>Code Review 1</h2>

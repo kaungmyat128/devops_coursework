@@ -2,53 +2,43 @@ package com.Ace.sem;
 //importing necessary java sql and util library
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.List;
 /**
  * Creates methods to write sql queries and create arraylists of cities population
- * This Java Class File contains 5 java methods that contains 2 parameters - database connection & int limit parameters -
- * getCityPop(), getCityPopByContinent(), getCityPopByRegion() , getCityPopByCountry(), getCityPopByDistrict()
- * This class also contains other 5 java methods that contains ArrayList Parameter to display results
- * displayCities(), displayCityContinents(), displayCityRegion(), displayCityCountries() , displayCityDistrict()
+ * 5 fetching methods that use database connection and limit as parameters
+ * 5 display methods that use ArrayList as parameter
  * */
 public class CityReport {
 
-    // Create new object of CountryReport to use human_readable_format() method from country.java
-    CountryReport formatPopulation = new CountryReport();
-    String CityName = null;
-    String DistrictName = null;
-
     /**
-     * getCityPop() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in the world
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPop(Connection con, int lim) {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities
-                strSelect =
-                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
-                                + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
-                                + "ORDER BY Population DESC LIMIT "+ lim;
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch all queries
-                strSelect =
-                        "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
-                                + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
-                                + "ORDER BY Population DESC";
-            }
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information from database
-            ArrayList<City> worldPop = new ArrayList<City>();
+    public List<City> getCityPop(final Connection con, final int lim) {
+        // Extract City information from database
+        final List<City> worldPop = new ArrayList();
+        String strSelect = null;
+        if (lim>0){
+            // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities
+            strSelect =
+                    "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
+                            + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
+                            + "ORDER BY Population DESC LIMIT "+ lim;
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit - fetch all queries
+            strSelect =
+                    "SELECT (city.Name) AS CityName,country.Name AS CountryName,city.District,city.Population "
+                            + "FROM city INNER JOIN country ON city.CountryCode = country.Code "
+                            + "ORDER BY Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet rset = stmt.executeQuery(strSelect)){
             while (rset.next()) {
-                City world = new City();
+                final City world = new City();
                 world.setCityName(rset.getString("CityName"));
                 world.setCountryName(rset.getString("CountryName"));
                 world.setDistrict(rset.getString("District"));
@@ -56,45 +46,42 @@ public class CityReport {
                 worldPop.add(world);
             }
             return worldPop;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by World [city report]");
-            return null;
+            return worldPop;
         }
     }
 
     /**
-     * getCityPopByContinent() method contains connection parameters for database connection and limit parameter
-     * write sql query to produce 'ALL or Top N most populated cities in each Continent
-     * with descending order of population'
+     * contains connection parameters for database connection and limit parameter
+     * write sql query to produce 'ALL or Top N most populated cities
+     * in each Continent with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByContinent(Connection con,int lim) {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each continent
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
-                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "WHERE row_num <= " + lim
-                                + " ORDER BY Continent ASC, Population DESC";
-            } else if (lim == 0) {
-                // Create string for SQL statement with no limit - fetch Cities population for each continent
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
-                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "ORDER BY Continent ASC, Population DESC";
-            }
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each Continent from Database
-            ArrayList<City> continentPop = new ArrayList<City>();
+    public List<City> getCityPopByContinent(final Connection con, final int lim) {
+        // Extract City information for Each Continent from Database
+        final List<City> continentPop = new ArrayList();
+        String strSelect = null;
+        if (lim>0){
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Cities for each continent
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE row_num <= " + lim
+                            + " ORDER BY Continent ASC, Population DESC";
+        } else if (lim == 0) {
+            // Create string for SQL statement with no limit
+            // - fetch Cities population for each continent
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Continent ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Continent AS Continent, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "ORDER BY Continent ASC, Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet rset = stmt.executeQuery(strSelect)){
             while (rset.next()) {
-                City continent = new City();
+                final City continent = new City();
                 continent.setCityName(rset.getString("CityName"));
                 continent.setCountryName(rset.getString("CountryName"));
                 continent.setDistrict(rset.getString("District"));
@@ -103,45 +90,42 @@ public class CityReport {
                 continentPop.add(continent);
             }
             return continentPop;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by Continent [city report]");
-            return null;
+            return continentPop;
         }
     }
 
     /**
-     * getCityPopByRegion() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each Region
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByRegion(Connection con, int lim) {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each region
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
-                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "WHERE row_num <= " + lim
-                                + " ORDER BY Region ASC ,Population DESC";
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch All Cities Countries for each continent
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
-                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "ORDER BY Region ASC ,Population DESC";
-            }
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each Region From Database
-            ArrayList<City> regionPop = new ArrayList<City>();
+    public List<City> getCityPopByRegion(final Connection con, final int lim) {
+        // Extract City information for Each Region From Database
+        final List<City> regionPop = new ArrayList();
+        String strSelect = null;
+        if (lim>0){
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Cities for each region
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE row_num <= " + lim
+                            + " ORDER BY Region ASC ,Population DESC";
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch All Cities Countries for each continent
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Region ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, country.Region AS Region, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "ORDER BY Region ASC ,Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet rset = stmt.executeQuery(strSelect)){
             while (rset.next()) {
-                City region = new City();
+                final City region = new City();
                 region.setCityName(rset.getString("CityName"));
                 region.setCountryName(rset.getString("CountryName"));
                 region.setDistrict(rset.getString("District"));
@@ -150,44 +134,42 @@ public class CityReport {
                 regionPop.add(region);
             }
             return regionPop;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by Region [city report]");
-            return null;
+            return regionPop;
         }
     }
 
     /**
-     * getCityPopByCountry() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each Country
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByCountry(Connection con, int lim) {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each country
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "WHERE row_num <= " + lim
-                                + " ORDER BY CountryName ASC, Population DESC";
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch All Cities Countries for each continent
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                                + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "ORDER BY CountryName ASC, Population DESC";
-            }
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each country From Database
-            ArrayList<City> countryPop = new ArrayList<City>();
+    public List<City> getCityPopByCountry(final Connection con, final int lim) {
+        // Extract City information for Each country From Database
+        final List<City> countryPop = new ArrayList();
+        String strSelect = null;
+        if (lim>0){
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Cities for each country
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE row_num <= " + lim
+                            + " ORDER BY CountryName ASC, Population DESC";
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch All Cities Countries for each continent
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY country.Name ORDER BY city.Population DESC) AS row_num, city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                            + "FROM country LEFT JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "ORDER BY CountryName ASC, Population DESC";
+        }
+        try(Statement stmt = con.createStatement(); ResultSet rset = stmt.executeQuery(strSelect)){
             while (rset.next()) {
-                City country = new City();
+                final City country = new City();
                 country.setCityName(rset.getString("CityName"));
                 country.setCountryName(rset.getString("CountryName"));
                 country.setDistrict(rset.getString("District"));
@@ -195,47 +177,45 @@ public class CityReport {
                 countryPop.add(country);
             }
             return countryPop;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City by Country [city report]");
-            return null;
+            return countryPop;
         }
     }
 
     /**
-     * getCityPopByDistrict() method contains connection parameters for database connection and limit parameter
+     * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each District
      * with descending order of population'
      * Then return the data as array list.
      * */
-    public ArrayList<City> getCityPopByDistrict(Connection con, int lim) {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            String strSelect = null;
-            if (lim>0){
-                // Create string for SQL statement with limit 'N' - fetch Top N Populated Cities for each district
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
-                        + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                                + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "WHERE row_num <= " + lim
-                                + " AND District != SPACE(1) ORDER BY District ASC, Population DESC";
-            } else if (lim==0) {
-                // Create string for SQL statement with no limit - fetch All Cities Countries for each district
-                strSelect =
-                        "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
-                                + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
-                                + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
-                                + "WHERE District != SPACE(1) ORDER BY District ASC, Population DESC";
+    public List<City> getCityPopByDistrict(final Connection con, final int lim) {
+        // Extract City information for Each District From Database
+        final List<City> districtPop = new ArrayList();
+        String strSelect = null;
+        if (lim>0){
+            // Create string for SQL statement with limit 'N'
+            // - fetch Top N Populated Cities for each district
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
+                            + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                            + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE row_num <= " + lim
+                            + " AND District != SPACE(1) ORDER BY District ASC, Population DESC";
+        } else if (lim==0) {
+            // Create string for SQL statement with no limit
+            // - fetch All Cities Countries for each district
+            strSelect =
+                    "SELECT * FROM (SELECT ROW_NUMBER() OVER (PARTITION BY city.District ORDER BY city.Population DESC) AS row_num, "
+                            + "city.Name AS CityName, country.Name AS CountryName, city.District AS District, city.Population AS Population "
+                            + "FROM country INNER JOIN city ON country.Code = city.CountryCode) AS subquery "
+                            + "WHERE District != SPACE(1) ORDER BY District ASC, Population DESC";
 
-            }
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract City information for Each District From Database
-            ArrayList<City> districtPop = new ArrayList<City>();
+        }
+        try(Statement stmt = con.createStatement(); ResultSet rset = stmt.executeQuery(strSelect)){
             while (rset.next()) {
-                City district = new City();
+                final City district = new City();
                 district.setCityName(rset.getString("CityName"));
                 district.setCountryName(rset.getString("CountryName"));
                 district.setDistrict(rset.getString("District"));
@@ -243,32 +223,32 @@ public class CityReport {
                 districtPop.add(district);
             }
             return districtPop;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Population of City By District [city report]");
-            return null;
+            return districtPop;
         }
     }
 
 
     /** Display Cities Report using getter() method
      *
-     * @param cities_list
+     * @param citiesList
      */
-    public void displayCities(ArrayList<City> cities_list) {
+    public void displayCities(final List<City> citiesList) {
         try{
             // Print header
             System.out.println("============================================================");
 
             System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             // Loop over all cities population in the list
-            for (City cityR : cities_list)
+            for (final City cityR : citiesList)
             {
-                String countries_info =
+                final String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
                                 cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
-                                formatPopulation.humanReadableFormat(cityR.getPopulation()));
-                System.out.println(countries_info);
+                                CountryReport.humanReadableFormat(cityR.getPopulation()));
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -278,10 +258,11 @@ public class CityReport {
     }
 
     /** display cities report based on continents using getter() and setter() methods
-     * Use if condition to check whether current continent change and print out current continent as title
-     * @param continent_list
+     * Use if condition to check whether current continent change
+     * and print out current continent as title
+     * @param continentList
      */
-    public void displayCityContinents(ArrayList<City> continent_list) {
+    public void displayCityContinents(final List<City> continentList) {
         try{
             // Print header
             System.out.println("============================================================");
@@ -290,7 +271,7 @@ public class CityReport {
             String currentContinent = null;
 
             // Loop over all continents and cities population in the list
-            for (City cityR : continent_list)
+            for (final City cityR : continentList)
             {
                 if(!cityR.getContinents().equals(currentContinent)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
@@ -300,14 +281,14 @@ public class CityReport {
                 }
 
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cityR.getDistrict());
-                CityName = nullChecker(cityR.getCityName());
+                String districtName = nullChecker(cityR.getDistrict());
+                String cityName = nullChecker(cityR.getCityName());
 
-                String continent_info =
+                final String continentInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                                CityName, cityR.getCountryName(), cityR.getContinents(),
-                                DistrictName, formatPopulation.humanReadableFormat(cityR.getPopulation()));
-                System.out.println(continent_info);
+                                cityName, cityR.getCountryName(), cityR.getContinents(),
+                                districtName, CountryReport.humanReadableFormat(cityR.getPopulation()));
+                System.out.println(continentInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -318,10 +299,11 @@ public class CityReport {
     }
 
     /** display cities report based on regions using getter() and setter() methods
-     * Use if condition to check whether current region change and print out current region as title
-     * @param region_list
+     * Use if condition to check whether current region change
+     * and print out current region as title
+     * @param regionList
      */
-    public void displayCityRegion(ArrayList<City> region_list)     {
+    public void displayCityRegion(final List<City> regionList)     {
         try{
             // Print header
             System.out.println("============================================================");
@@ -329,7 +311,7 @@ public class CityReport {
             String currentRegion = null;
 
             // Loop over all region population in the list
-            for (City cityR : region_list){
+            for (final City cityR : regionList){
                 if(!cityR.getRegion().equals(currentRegion)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
                     System.out.println("===========================================");
@@ -337,14 +319,14 @@ public class CityReport {
                     System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
                 }
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cityR.getDistrict());
-                CityName = nullChecker(cityR.getCityName());
+                String districtName = nullChecker(cityR.getDistrict());
+                String cityName = nullChecker(cityR.getCityName());
 
-                String region_info =
+                final String regionInfo =
                         String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
-                                CityName, cityR.getCountryName(), DistrictName,
-                                cityR.getRegion(), formatPopulation.humanReadableFormat(cityR.getPopulation()));
-                System.out.println(region_info);
+                                cityName, cityR.getCountryName(), districtName,
+                                cityR.getRegion(), CountryReport.humanReadableFormat(cityR.getPopulation()));
+                System.out.println(regionInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -355,10 +337,11 @@ public class CityReport {
     }
 
     /** display cities report based on countries using getter() and setter() methods
-     * Use if condition to check whether current country change and print out current country as title
-     * @param countries_list
+     * Use if condition to check whether current country change
+     * and print out current country as title
+     * @param countriesList
      */
-    public void displayCityCountries(ArrayList<City> countries_list)     {
+    public void displayCityCountries(final List<City> countriesList)     {
         try{
             // Print header
             System.out.println("============================================================");
@@ -366,7 +349,7 @@ public class CityReport {
             String currentCountry = null;
 
             // Loop over all countries population in the list
-            for (City cty : countries_list){
+            for (final City cty : countriesList){
                 if (!cty.getCountryName().equals(currentCountry)){
                     System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                     System.out.println("===========================================");
@@ -375,14 +358,14 @@ public class CityReport {
                 }
 
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cty.getDistrict());
-                CityName = nullChecker(cty.getCityName());
+                String districtName = nullChecker(cty.getDistrict());
+                String cityName = nullChecker(cty.getCityName());
 
-                String countries_info =
+                final String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
-                                CityName, cty.getCountryName(), DistrictName,
-                                formatPopulation.humanReadableFormat(cty.getPopulation()));
-                System.out.println(countries_info);
+                                cityName, cty.getCountryName(), districtName,
+                                CountryReport.humanReadableFormat(cty.getPopulation()));
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -393,17 +376,18 @@ public class CityReport {
     }
 
     /** display cities report based on districts using getter() and setter() methods
-     * Use if condition to check whether current districts change and print out current districts as title
-     * @param districts_list
+     * Use if condition to check whether current districts change
+     * and print out current districts as title
+     * @param districtsList
      */
-    public void displayCityDistrict(ArrayList<City> districts_list)     {
+    public void displayCityDistrict(final List<City> districtsList)     {
         try {
             // Print header
             System.out.println("============================================================");
             // Initialize Current Country variable
             String currentDistrict = null;
 
-            for (City cty : districts_list){
+            for (final City cty : districtsList){
                 if (!cty.getDistrict().equals(currentDistrict)){
                     System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                     System.out.println("===========================================");
@@ -412,14 +396,14 @@ public class CityReport {
                 }
 
                 //checking null value and transforming them to blank in district
-                DistrictName = nullChecker(cty.getDistrict());
-                CityName = nullChecker(cty.getCityName());
+                String districtName = nullChecker(cty.getDistrict());
+                String cityName = nullChecker(cty.getCityName());
 
-                String countries_info =
+                final String countriesInfo =
                         String.format("%-40s |%-30s |%-30s |%-20s",
-                                CityName, cty.getCountryName(), DistrictName,
-                                formatPopulation.humanReadableFormat(cty.getPopulation()));
-                System.out.println(countries_info);
+                                cityName, cty.getCountryName(), districtName,
+                                CountryReport.humanReadableFormat(cty.getPopulation()));
+                System.out.println(countriesInfo);
             }
             System.out.println();
         }catch (Exception e) {
@@ -436,8 +420,8 @@ public class CityReport {
      * @param checkElement
      * @return
      */
-    public String nullChecker(String checkElement){
-        if(checkElement == null || checkElement == " " || checkElement == ""){
+    public String nullChecker(final String checkElement){
+        if(checkElement == null || checkElement.equals(" ") || checkElement.equals("")){
             return "-";
         }
         else{
