@@ -6,18 +6,45 @@ package com.Ace.sem;
  */
 public class City {
 
-    // Declare Variables related to City Information,
-    // Country Code, District, Population, Country & Region .
-
+    /**
+     * genPop variable to store total population
+     */
     private long genPop;
+    /**
+     * variable to store city name
+     */
     private String cityName;
+    /**
+     * variable to store district
+     */
     private String district;
+    /**
+     * variable to store city population
+     */
     private int population;
+    /**
+     * variable to store country name
+     */
     private String countryName;
+    /**
+     * variable to store continent
+     */
     private String continents;
+    /**
+     * variable to store region
+     */
     private String region;
+    /**
+     * variable to store total population
+     */
     private long totalPopulation;
+    /**
+     * variable to store total population in cities
+     */
     private long totalRuralPop;
+    /**
+     * variable to store total population in not cities
+     */
     private long totalUrbanPop;
 
     public long getGenPop() {

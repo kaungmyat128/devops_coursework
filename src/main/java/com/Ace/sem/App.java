@@ -10,7 +10,9 @@ import java.util.List;
  * Initialize City Object, City Report Object, Top Populated Cities Object
  */
 public class App {
-    // Connection to MySQL database.
+    /**
+    * Connection to MySQL database.
+    */
     public Connection con;
     // Main method that run the whole program
     public static void main(final String[] args) {
@@ -259,7 +261,7 @@ public class App {
     }
 
     /**
-     *Disconnect from the MySQL database.
+     * Disconnect from the MySQL database.
      */
     public void disconnect() {
         if (con != null) {

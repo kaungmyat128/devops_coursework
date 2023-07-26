@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * */
 
 public class CapitalReport {
-
     /**
      * database connection parameters and limit parameter
      * write sql query to produce 'ALL or Top N most populated
