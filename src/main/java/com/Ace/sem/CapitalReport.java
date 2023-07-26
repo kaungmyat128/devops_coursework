@@ -280,8 +280,8 @@ public class CapitalReport {
         }
     }
     /**
-     * This method takes a String parameter 'checkElement' and checks if it is null or empty.
-     * If the 'checkElement' is null, empty, or contains only spaces, it returns a hyphen ("-").
+     * This method used to check a column value is null or empty.
+     * If 'checkElement' is null, empty, or contains only spaces, it returns hyphen.
      * Otherwise, it returns the original 'checkElement'.
      */
     public String nullChecker(final String checkElement){

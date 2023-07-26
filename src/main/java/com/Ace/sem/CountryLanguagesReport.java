@@ -8,7 +8,12 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.List;
-
+/**
+ * Creates methods to write sql queries and
+ * create arraylists of population of people who speak specific languages
+ * contain getLanguageReport(), displayLanguagesPopulation() and
+ * humanReadableFormat() methods
+ * */
 public class CountryLanguagesReport {
 
     /**
