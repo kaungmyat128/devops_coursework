@@ -216,9 +216,9 @@ public class App {
     }
 
 
-    /*
-     Connect to the MySQL database. Load mysql driver and connect database up to 100 tries
-     until database connection is connected.
+    /**
+     *Connect to the MySQL database. Load mysql driver and connect database up to 100 tries
+     *until database connection is connected.
      */
     public void connect() {
         try {
@@ -254,8 +254,8 @@ public class App {
         }
     }
 
-    /*
-     Disconnect from the MySQL database.
+    /**
+     *Disconnect from the MySQL database.
      */
     public void disconnect() {
         if (con != null) {

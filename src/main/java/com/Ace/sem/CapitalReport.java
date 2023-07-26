@@ -5,10 +5,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Creates methods to write sql queries and create arraylists of capital cities population
+ * This Java Class File contains 3 java methods that contains 2 parameters - database connection & int limit parameters -
+ * getCapitalPopByWorld(), getCapitalPopByContinent() and getCapitalPopByRegion()
+ * This class also contains other 3 java methods that contains ArrayList Parameter to display results
+ * displayCapital(), displayCapitalContinents() and displayCapitalRegion()
+ * */
 public class CapitalReport {
 
 
-    // To use the human_readable_format() method from country.java in this new object is created
+    //To use the human_readable_format() method from country.java in this new object is created
     CountryReport formatPopulation = new CountryReport();
 
     /**
