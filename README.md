@@ -11,11 +11,11 @@
 <br><b>Release Status:</b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
 
 
-&emsp; We are working for the organization that require reporting on world population information.
-We have been ask to implement the new system which can easily access to the information of the population.
+&emsp; We are working for the organization that require reports of world population information.
+We have been asked to implement the new system which can easily access to the information of the population.
 The system will be using the world database.
 
-&emsp;Some of the reports that organization want are -
+&emsp;Some of the reports that organization wants are -
 
 * Finding the largest to smallest populated countries, cities and capital cities in the world, continents and regions.
 
@@ -24,7 +24,7 @@ The system will be using the world database.
 
 <h3>Scrum Team members:</h3>
 
-| Name               | Matriculaiton Number | Role           |
+| Name               | Matriculation Number | Role           |
 |--------------------|----------------------|----------------|
 | Kaung Khant Hein   | 40614799             | Scrum Master   |
 | May Phyu Sin Thant | 40614797             | Product Owner  |
@@ -79,7 +79,7 @@ The system will be using the world database.
 - [X] Bug reporting system set-up.
 
 
-<h3> Final Deliverable</h3>
+<h3> Final Deliverables</h3>
 
 | ID  | Name                                                                                                                                                                                | Met  | Screenshot                                                                                                                |
 |-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|---------------------------------------------------------------------------------------------------------------------------|
