@@ -277,7 +277,7 @@ public class CityReport {
                     System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
                     System.out.println("==============================================================================================================");
                     currentContinent = cityR.getContinents();
-                    System.out.println(String.format("%-40s | %-30s | %-30s | %-30s | %-20s |", "City", "Country", "Continent", "District", "Population"));
+                    System.out.println(String.format("%-30s | %-30s | %-30s | %-25s | %-15s |", "City", "Country", "Continent", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -285,7 +285,7 @@ public class CityReport {
                 String cityName = nullChecker(cityR.getCityName());
 
                 final String continentInfo =
-                        String.format("%-40s | %-30s | %-30s | %-30s | %-20s |",
+                        String.format("%-30s | %-30s | %-30s | %-25s | %-15s |",
                                 cityName, cityR.getCountryName(), cityR.getContinents(),
                                 districtName, CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(continentInfo);
@@ -316,14 +316,14 @@ public class CityReport {
                     System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
                     System.out.println("============================================================================================================");
                     currentRegion = cityR.getRegion();
-                    System.out.println(String.format("%-40s | %-30s | %-30s | %-30s | %-20s |", "City", "Country", "District", "Region", "Population"));
+                    System.out.println(String.format("%-30s | %-30s | %-30s | %-25s | %-15s |", "City", "Country", "District", "Region", "Population"));
                 }
                 //checking null value and transforming them to blank in district
                 String districtName = nullChecker(cityR.getDistrict());
                 String cityName = nullChecker(cityR.getCityName());
 
                 final String regionInfo =
-                        String.format("%-40s | %-30s | %-30s | %-30s | %-20s |",
+                        String.format("%-30s | %-30s | %-30s | %-25s | %-15s |",
                                 cityName, cityR.getCountryName(), districtName,
                                 cityR.getRegion(), CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(regionInfo);
@@ -354,7 +354,7 @@ public class CityReport {
                     System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
                     System.out.println("===========================================================================================");
                     currentCountry = cty.getCountryName();
-                    System.out.println(String.format("%-40s | %-30s | %-30s | %-20s |", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-40s | %-30s | %-20s | %-15s |", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -362,7 +362,7 @@ public class CityReport {
                 String cityName = nullChecker(cty.getCityName());
 
                 final String countriesInfo =
-                        String.format("%-40s | %-30s | %-30s | %-20s |",
+                        String.format("%-40s | %-30s | %-20s | %-15s |",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);
@@ -392,7 +392,7 @@ public class CityReport {
                     System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
                     System.out.println("===========================================================================================");
                     currentDistrict = cty.getDistrict();
-                    System.out.println(String.format("%-40s | %-30s | %-30s | %-20s |", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-30s | %-30s | %-30s | %-15s |", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -400,7 +400,7 @@ public class CityReport {
                 String cityName = nullChecker(cty.getCityName());
 
                 final String countriesInfo =
-                        String.format("%-40s | %-30s | %-30s | %-20s |",
+                        String.format("%-30s | %-30s | %-30s | %-15s |",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);

@@ -214,7 +214,7 @@ public class CapitalReport {
                 if (!cpr.getContinents().equals(currentContinent)) {
                     // Print the continent header
                     System.out.println("\n Capitals sorted by Population in " + cpr.getContinents() + " Continent");
-                    System.out.println("===========================================");
+                    System.out.println("========================================================================================");
                     currentContinent = cpr.getContinents();
                     System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
@@ -230,7 +230,7 @@ public class CapitalReport {
                                 CountryReport.humanReadableFormat(cpr.getPopulation()));
                 System.out.println(capitalsInfo);
             }
-            System.out.println("============================================================");
+            System.out.println("========================================================================================");
 
         }
         catch (Exception e) {
@@ -256,7 +256,7 @@ public class CapitalReport {
                 if (!cpr.getRegion().equals(currentRegion)) {
                     // Print the continent header
                     System.out.println("\n Capitals sorted by Population in " + cpr.getRegion() + " Region");
-                    System.out.println("===========================================");
+                    System.out.println("========================================================================================");
                     currentRegion = cpr.getRegion();
                     System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
@@ -272,7 +272,7 @@ public class CapitalReport {
                                 CountryReport.humanReadableFormat(cpr.getPopulation()));
                 System.out.println(capitalsInfo);
             }
-            System.out.println("============================================================");
+            System.out.println("========================================================================================");
         }
         catch (Exception e) {
             //System.out.println(e.getMessage());
