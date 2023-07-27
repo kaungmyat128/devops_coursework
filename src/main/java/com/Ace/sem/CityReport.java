@@ -240,7 +240,7 @@ public class CityReport {
             // Print header
             System.out.println("========================================================================================");
 
-            System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+            System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "City", "Country", "District", "Population"));
             // Loop over all cities population in the list
             for (final City cityR : citiesList)
             {
@@ -323,7 +323,7 @@ public class CityReport {
                 String cityName = nullChecker(cityR.getCityName());
 
                 final String regionInfo =
-                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                        String.format("%-40s | %-30s | %-30s | %-30s | %-20s",
                                 cityName, cityR.getCountryName(), districtName,
                                 cityR.getRegion(), CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(regionInfo);
@@ -362,7 +362,7 @@ public class CityReport {
                 String cityName = nullChecker(cty.getCityName());
 
                 final String countriesInfo =
-                        String.format("%-40s |%-30s |%-30s |%-20s",
+                        String.format("%-40s | %-30s | %-30s | %-20s",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);
@@ -400,7 +400,7 @@ public class CityReport {
                 String cityName = nullChecker(cty.getCityName());
 
                 final String countriesInfo =
-                        String.format("%-40s |%-30s |%-30s |%-20s",
+                        String.format("%-40s | %-30s | %-30s | %-20s",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);

@@ -224,7 +224,7 @@ public class RuralUrbanReport {
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),st2);
                 System.out.println(contPop);
             }
-            System.out.println("===============================================================================");
+            System.out.println("==================================================================================================");
         }
         catch (Exception e){
             System.out.println("Nothing to display: Rural Urban population of countries failed to extract [Rural]");
