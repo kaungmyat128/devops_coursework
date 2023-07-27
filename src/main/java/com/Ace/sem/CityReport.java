@@ -238,14 +238,14 @@ public class CityReport {
     public void displayCities(final List<City> citiesList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("========================================================================================");
 
             System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
             // Loop over all cities population in the list
             for (final City cityR : citiesList)
             {
                 final String countriesInfo =
-                        String.format("%-40s |%-30s |%-30s |%-20s",
+                        String.format("%-40s | % -30s | %-30s | %-20s",
                                 cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
                                 CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(countriesInfo);
@@ -265,7 +265,7 @@ public class CityReport {
     public void displayCityContinents(final List<City> continentList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("===================================================================================================================");
 
             // Initialize Current Continent variable
             String currentContinent = null;
@@ -275,9 +275,9 @@ public class CityReport {
             {
                 if(!cityR.getContinents().equals(currentContinent)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
-                    System.out.println("===========================================");
+                    System.out.println("==============================================================================================================");
                     currentContinent = cityR.getContinents();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "Continent", "District", "Population"));
+                    System.out.println(String.format("%-40s | %-30s | %-30s | %-30s | %-20s", "City", "Country", "Continent", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -285,7 +285,7 @@ public class CityReport {
                 String cityName = nullChecker(cityR.getCityName());
 
                 final String continentInfo =
-                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                        String.format("%-40s | %-30s | %-30s | %-30s | %-20s",
                                 cityName, cityR.getCountryName(), cityR.getContinents(),
                                 districtName, CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(continentInfo);
@@ -306,7 +306,7 @@ public class CityReport {
     public void displayCityRegion(final List<City> regionList)     {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("====================================================================================================================");
             // Initialize Current Region variable
             String currentRegion = null;
 
@@ -314,9 +314,9 @@ public class CityReport {
             for (final City cityR : regionList){
                 if(!cityR.getRegion().equals(currentRegion)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
-                    System.out.println("===========================================");
+                    System.out.println("============================================================================================================");
                     currentRegion = cityR.getRegion();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
+                    System.out.println(String.format("%-40s | %-30s | %-30s | %-30s | %-20s", "City", "Country", "District", "Region", "Population"));
                 }
                 //checking null value and transforming them to blank in district
                 String districtName = nullChecker(cityR.getDistrict());
@@ -344,7 +344,7 @@ public class CityReport {
     public void displayCityCountries(final List<City> countriesList)     {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("====================================================================================================");
             // Initialize Current Country variable
             String currentCountry = null;
 
@@ -352,9 +352,9 @@ public class CityReport {
             for (final City cty : countriesList){
                 if (!cty.getCountryName().equals(currentCountry)){
                     System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
-                    System.out.println("===========================================");
+                    System.out.println("===========================================================================================");
                     currentCountry = cty.getCountryName();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -383,16 +383,16 @@ public class CityReport {
     public void displayCityDistrict(final List<City> districtsList)     {
         try {
             // Print header
-            System.out.println("============================================================");
+            System.out.println("===================================================================================================");
             // Initialize Current Country variable
             String currentDistrict = null;
 
             for (final City cty : districtsList){
                 if (!cty.getDistrict().equals(currentDistrict)){
                     System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
-                    System.out.println("===========================================");
+                    System.out.println("===========================================================================================");
                     currentDistrict = cty.getDistrict();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-40s | %-30s | %-30s | %-20s", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
