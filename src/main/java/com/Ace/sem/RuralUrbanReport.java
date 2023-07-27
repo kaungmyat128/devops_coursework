@@ -137,8 +137,8 @@ public class RuralUrbanReport {
     {
         try{
             // Print header
-            System.out.println("============================================================");
-            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Continent", "Total Population",
+            System.out.println("==================================================================================================");
+            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s |", "Continent", "Total Population",
                     "People Living in Cities", "People Not Living in Cities"));
             // Loop over all cities population in the list
             for (final City c : arrList)
@@ -148,13 +148,13 @@ public class RuralUrbanReport {
                 final double ruralPop = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
                 final String st2 = String.format("%05.2f",ruralPop) + "%";
                 final String contPop =
-                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
+                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s ) |",
                                 c.getContinents(), humanReadableFormat(c.getTotalPopulation()),
                                 humanReadableFormat(c.getTotalCitiesPopulation()), st1, "",
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),st2);
                 System.out.println(contPop);
             }
-            System.out.println("============================================================");
+            System.out.println("==================================================================================================");
         }
         catch (Exception e){
             System.out.println("Nothing to display: Rural Urban population of continent failed to extract [Rural]");
@@ -170,8 +170,8 @@ public class RuralUrbanReport {
     {
         try {
             // Print header
-            System.out.println("============================================================");
-            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Region", "Total Population",
+            System.out.println("==================================================================================================");
+            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s |", "Region", "Total Population",
                     "People Living in Cities", "People Not Living in Cities"));
             // Loop over all cities population in the list
             for (final City c : arrList)
@@ -182,13 +182,13 @@ public class RuralUrbanReport {
                 final String st2 = String.format("%05.2f",ruralPop) + "%";
 
                 final String contPop =
-                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
+                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s ) |",
                                 c.getRegion(), humanReadableFormat(c.getTotalPopulation()),
                                 humanReadableFormat(c.getTotalCitiesPopulation()), st1, "",
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),st2);
                 System.out.println(contPop);
             }
-            System.out.println("============================================================");
+            System.out.println("==================================================================================================");
 
         }
         catch (Exception e){
@@ -207,8 +207,8 @@ public class RuralUrbanReport {
     {
         try{
             // Print header
-            System.out.println("============================================================");
-            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s", "Country", "Total Population",
+            System.out.println("==================================================================================================");
+            System.out.println(String.format("%-40s | %-30s | %-35s | %-20s |", "Country", "Total Population",
                     "People Living in Cities", "People Not Living in Cities"));
             // Loop over all cities population in the list
             for (final City c : arrList)
@@ -218,13 +218,13 @@ public class RuralUrbanReport {
                 final double ruralPop = (double) c.getTotalNotCitiesPopulation() / c.getTotalPopulation() * 100;
                 final String st2 = String.format("%05.2f",ruralPop) + "%";
                 final String contPop =
-                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s )",
+                        String.format("%-40s | %-30s | %-15s ( %-5s ) %-8s | %-20s ( %-5s ) |",
                                 c.getCountryName(), humanReadableFormat(c.getTotalPopulation()),
                                 humanReadableFormat(c.getTotalCitiesPopulation()), st1, "",
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),st2);
                 System.out.println(contPop);
             }
-            System.out.println("============================================================");
+            System.out.println("==================================================================================================");
         }
         catch (Exception e){
             System.out.println("Nothing to display: Rural Urban population of countries failed to extract [Rural]");

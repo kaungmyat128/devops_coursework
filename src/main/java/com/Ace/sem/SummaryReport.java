@@ -199,7 +199,7 @@ public class SummaryReport {
             {
                 // Format and print of data
                 final String worldPopInfo =
-                        String.format("%-20s| %-20s",
+                        String.format("%-20s | %-20s |",
                                 "World Population",
                                 humanReadableFormatLong(cp.getGenPop()));
                 System.out.println(worldPopInfo);
@@ -225,7 +225,7 @@ public class SummaryReport {
                 // Formatting and printing data
 
                 final String contPopInfo =
-                        String.format("%-30s| %-30s",
+                        String.format("%-20s | %-20s |",
                                 cp.getContinent(),
                                 humanReadableFormatLong(cp.getGenPop()));
                 System.out.println(contPopInfo);
@@ -251,7 +251,7 @@ public class SummaryReport {
                 // Formatting and printing data
 
                 final String regPopInfo =
-                        String.format("%-30s| %-30s",
+                        String.format("%-20s | %-20s |",
                                 cp.getRegion(),
                                 humanReadableFormatLong(cp.getGenPop()));
                 System.out.println(regPopInfo);
@@ -277,7 +277,7 @@ public class SummaryReport {
                 // Formatting and printing data
 
                 final String couPopInfo =
-                        String.format("%-30s| %-30s",
+                        String.format("%-20s | %-20s |",
                                 cp.getName(),
                                 humanReadableFormatLong(cp.getGenPop()));
                 System.out.println(couPopInfo);
@@ -303,7 +303,7 @@ public class SummaryReport {
                 // Formatting and printing data
 
                 final String distPopInfo =
-                        String.format("%-30s| %-30s",
+                        String.format("%-20s | %-20s |",
                                 ct.getDistrict(),
                                 humanReadableFormatLong(ct.getGenPop()));
                 System.out.println(distPopInfo);
@@ -330,7 +330,7 @@ public class SummaryReport {
                 // Formatting and printing data
 
                 final String cityPopInfo =
-                        String.format("%-30s| %-30s",
+                        String.format("%-20s | %-20s |",
                                 ct.getCityName(),
                                 humanReadableFormatLong(ct.getPopulation()));
                 System.out.println(cityPopInfo);
