@@ -137,7 +137,7 @@ public class RuralUrbanReport {
     {
         try{
             // Print header
-            System.out.println("==============================================================================");
+            System.out.println("==================================================================================================");
             System.out.println(String.format("%-40s | %-30s | %-35s | %-20s |", "Continent", "Total Population",
                     "People Living in Cities", "People Not Living in Cities"));
             // Loop over all cities population in the list
@@ -154,7 +154,7 @@ public class RuralUrbanReport {
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),st2);
                 System.out.println(contPop);
             }
-            System.out.println("===============================================================================");
+            System.out.println("==================================================================================================");
         }
         catch (Exception e){
             System.out.println("Nothing to display: Rural Urban population of continent failed to extract [Rural]");
@@ -170,7 +170,7 @@ public class RuralUrbanReport {
     {
         try {
             // Print header
-            System.out.println("===============================================================================");
+            System.out.println("==================================================================================================");
             System.out.println(String.format("%-40s | %-30s | %-35s | %-20s |", "Region", "Total Population",
                     "People Living in Cities", "People Not Living in Cities"));
             // Loop over all cities population in the list
@@ -188,7 +188,7 @@ public class RuralUrbanReport {
                                 humanReadableFormat(c.getTotalNotCitiesPopulation()),st2);
                 System.out.println(contPop);
             }
-            System.out.println("==============================================================================");
+            System.out.println("==================================================================================================");
 
         }
         catch (Exception e){
@@ -207,7 +207,7 @@ public class RuralUrbanReport {
     {
         try{
             // Print header
-            System.out.println("==============================================================================");
+            System.out.println("==================================================================================================");
             System.out.println(String.format("%-40s | %-30s | %-35s | %-20s |", "Country", "Total Population",
                     "People Living in Cities", "People Not Living in Cities"));
             // Loop over all cities population in the list

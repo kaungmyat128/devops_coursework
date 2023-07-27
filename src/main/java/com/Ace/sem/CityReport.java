@@ -245,7 +245,7 @@ public class CityReport {
             for (final City cityR : citiesList)
             {
                 final String countriesInfo =
-                        String.format("%-40s | % -30s | %-30s | %-20s |",
+                        String.format("%-40s | %-30s | %-30s | %-20s |",
                                 cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
                                 CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(countriesInfo);
