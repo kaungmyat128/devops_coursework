@@ -57,13 +57,13 @@ public class CountryLanguagesReport {
         try{
             // Print header
             System.out.println("==================================================================================================");
-            System.out.println(String.format("%-40s | %-30s", "Language", "Total Population of People who Speak This Language"));
+            System.out.println(String.format("%-40s | %-30s |", "Language", "Total Population of People who Speak This Language"));
             // Loop over all cities population in the list
             for (final Language l : arrList)
             {
                 final String percent = String.format("%05.2f",l.getPercentage()) + "%";
                 final String lanPop =
-                        String.format("%-40s | %-20s ( %-5s )",
+                        String.format("%-40s | %-20s ( %-5s ) |",
                                 l.getLanguage(), humanReadableFormat(l.getTotalPopulation()),
                                 percent);
                 System.out.println(lanPop);

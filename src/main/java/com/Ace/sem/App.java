@@ -164,32 +164,32 @@ public class App {
         //Summary reports
         final List<Country> popSumWorld =  sumR.sumWorldPop(app.con);
         System.out.println("==========Population of the world==========");
-        System.out.printf("%-20s| %-20s%n", "Location", "Population");
+        System.out.printf("%-20s | %-20s |%n", "Location", "Population");
         sumR.displaySumWorldPop(popSumWorld);
 
         final List<Country> popSumCont =  sumR.sumContPop(app.con, 1);
         System.out.println("==========Population of most populated continent==========");
-        System.out.printf("%-30s| %-30s%n", "Continent", "Population");
+        System.out.printf("%-30s | %-30s |%n", "Continent", "Population");
         sumR.displaySumContPop(popSumCont);
 
         final List<Country> popSumReg =  sumR.sumRegPop(app.con, 1);
         System.out.println("==========Population of most populated region==========");
-        System.out.printf("%-30s| %-30s%n", "Region", "Population");
+        System.out.printf("%-30s | %-30s |%n", "Region", "Population");
         sumR.displaySumRegPop(popSumReg);
 
         final List<Country> popSumCoun = sumR.sumCouPop(app.con,1 );
         System.out.println("==========Population of most populated country==========");
-        System.out.printf("%-30s| %-30s%n", "Country", "Population");
+        System.out.printf("%-30s | %-30s |%n", "Country", "Population");
         sumR.displaySumCouPop(popSumCoun);
 
         final List<City> popDistReg =  sumR.sumDistPop(app.con, 1);
         System.out.println("==========Population of most populated district==========");
-        System.out.printf("%-30s| %-30s%n", "District", "Population");
+        System.out.printf("%-30s | %-30s |%n", "District", "Population");
         sumR.displaySumDistPop(popDistReg);
 
         final List<City> popCityReg =  sumR.sumCityPop(app.con, 1);
         System.out.println("==========Population of most populated city==========");
-        System.out.printf("%-30s| %-30s%n", "City", "Population");
+        System.out.printf("%-30s | %-30s |%n", "City", "Population");
         sumR.displaySumCityPop(popCityReg);
 
         //Display Population report of people living in cities

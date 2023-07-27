@@ -173,12 +173,12 @@ public class CapitalReport {
             System.out.println("========================================================================================");
             System.out.println("Capital Cities sorted by population in the world ");
 
-            System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s","CapitalName", "CountryName", "Continent", "Region", "Population"));
+            System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |","CapitalName", "CountryName", "Continent", "Region", "Population"));
             // Loop over all countries population in the list
             for (final City cpr : capitalList)
             {
                 final String countriesInfo =
-                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                        String.format("%-35s | %-40s | %-18s | %-26s | %-15s |",
                                 cpr.getCityName(),
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
@@ -216,13 +216,13 @@ public class CapitalReport {
                     System.out.println("\n Capitals sorted by Population in " + cpr.getContinents() + " Continent");
                     System.out.println("===========================================");
                     currentContinent = cpr.getContinents();
-                    System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String capitalCity = nullChecker(cpr.getCityName());
                 final String capitalsInfo =
-                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                        String.format("%-35s | %-40s | %-18s | %-26s | %-15s |",
                                 capitalCity,
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
@@ -258,13 +258,13 @@ public class CapitalReport {
                     System.out.println("\n Capitals sorted by Population in " + cpr.getRegion() + " Region");
                     System.out.println("===========================================");
                     currentRegion = cpr.getRegion();
-                    System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String capitalCity = nullChecker(cpr.getCityName());
                 final String capitalsInfo =
-                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                        String.format("%-35s | %-40s | %-18s | %-26s | %-15s |",
                                 capitalCity,
                                 cpr.getCountryName(),
                                 cpr.getContinents(),

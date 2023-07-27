@@ -168,13 +168,13 @@ public class CountryReport {
                 System.out.println("============================================================");
                 System.out.println("Countries sorted by population in the world ");
 
-                System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+                System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
                 // Loop over all countries population in the list
                 for (final Country cp : countriesList)
                 {
                     String capital = nullChecker(cp.getCapital());
                     final String countriesInfo =
-                            String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
+                            String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |",
                                     cp.getCode(),
                                     cp.getName(),
                                     cp.getContinent(),
@@ -213,12 +213,12 @@ public class CountryReport {
                     System.out.println("\n Countries sorted by Population in " + cp.getContinent() + " Continent");
                     System.out.println("===========================================");
                     currentContinent = cp.getContinent();
-                    System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String countriesInfo =
-                        String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
+                        String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 humanReadableFormat(cp.getPopulation()), capital);
                 System.out.println(countriesInfo);
@@ -253,12 +253,12 @@ public class CountryReport {
                     System.out.println("\n Countries sorted by Population in " + cp.getRegion() + " Region");
                     System.out.println("===========================================");
                     currentRegion = cp.getRegion();
-                    System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String countriesInfo =
-                        String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
+                        String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 humanReadableFormat(cp.getPopulation()), capital);
                 System.out.println(countriesInfo);
