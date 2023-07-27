@@ -165,7 +165,7 @@ public class CountryReport {
     public void displayCountries(final List<Country> countriesList) {
             try{
                 // Print header
-                System.out.println("============================================================");
+                System.out.println("=====================================================================================");
                 System.out.println("Countries sorted by population in the world ");
 
                 System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
@@ -198,7 +198,7 @@ public class CountryReport {
     public void displayCountriesContinent(final List<Country> countriesList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("=====================================================================================");
 
             // Initialize Current Continent variable
             String currentContinent = null;
@@ -211,7 +211,7 @@ public class CountryReport {
                 if (!cp.getContinent().equals(currentContinent)) {
                     // Print the continent header
                     System.out.println("\n Countries sorted by Population in " + cp.getContinent() + " Continent");
-                    System.out.println("===========================================");
+                    System.out.println("=====================================================================================");
                     currentContinent = cp.getContinent();
                     System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
 
@@ -238,7 +238,7 @@ public class CountryReport {
     public void displayCountriesRegion(final List<Country> countriesList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("=====================================================================================");
 
             // Initialize Current Region variable
             String currentRegion = null;
@@ -251,7 +251,7 @@ public class CountryReport {
                 if (!cp.getRegion().equals(currentRegion)) {
                     // Print the continent header
                     System.out.println("\n Countries sorted by Population in " + cp.getRegion() + " Region");
-                    System.out.println("===========================================");
+                    System.out.println("=====================================================================================");
                     currentRegion = cp.getRegion();
                     System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
 
