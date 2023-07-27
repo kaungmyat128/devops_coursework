@@ -27,7 +27,13 @@ public class CountryLanguagesReport {
         // Create array list and add query result into array list
         final List<Language> lanPop = new ArrayList();
         // Create string for SQL statement with no limit - fetch all queries
-        String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
+        String strSelect = "SELECT language_table.Language, language_table.Total_Population, " +
+                "( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage " +
+                "FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) " +
+                "AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode " +
+                "WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table " +
+                "CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population " +
+                "ORDER BY language_table.Total_Population DESC";
 
         try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
