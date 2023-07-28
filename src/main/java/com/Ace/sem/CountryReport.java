@@ -46,9 +46,13 @@ public class CountryReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population around the world [country report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather countries population around the world [country report]");
+            return topCounPop;
+        }
+        catch (Throwable e2){
+            System.out.println("Error occurred");
+            System.out.println(e2.getMessage());
             return topCounPop;
         }
     }
@@ -83,9 +87,16 @@ public class CountryReport {
         }
         try(Statement stmt = con.createStatement(); ResultSet query2 = stmt.executeQuery(strSelect)){
             return storeIntoArraylist(topCounPop, query2);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country population report [country report]");
+        }
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
+        catch (SQLException e1) {
+            System.out.println("Failed to gather countries population around the world [country report]");
+            return topCounPop;
+        }
+        catch (Throwable e2){
+            System.out.println("Error occurred");
+            System.out.println(e2.getMessage());
             return topCounPop;
         }
     }
@@ -120,9 +131,16 @@ public class CountryReport {
         }
         try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             return storeIntoArraylist(topCounPop, query3);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country population report [country report]");
+        }
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
+        catch (SQLException e1) {
+            System.out.println("Failed to gather countries population around the world [country report]");
+            return topCounPop;
+        }
+        catch (Throwable e2){
+            System.out.println("Error occurred");
+            System.out.println(e2.getMessage());
             return topCounPop;
         }
     }
@@ -150,7 +168,7 @@ public class CountryReport {
             return arl;
         }// Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (Throwable e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return countries population [country report]");
             return arl;
@@ -165,16 +183,16 @@ public class CountryReport {
     public void displayCountries(final List<Country> countriesList) {
             try{
                 // Print header
-                System.out.println("============================================================");
+                System.out.println("=====================================================================================");
                 System.out.println("Countries sorted by population in the world ");
 
-                System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+                System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
                 // Loop over all countries population in the list
                 for (final Country cp : countriesList)
                 {
                     String capital = nullChecker(cp.getCapital());
                     final String countriesInfo =
-                            String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
+                            String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |",
                                     cp.getCode(),
                                     cp.getName(),
                                     cp.getContinent(),
@@ -184,9 +202,12 @@ public class CountryReport {
                 }
                 System.out.println();
             }
-            catch (Exception e) {
-                //System.out.println(e.getMessage());
+            catch (NullPointerException e1) {
                 System.out.println("Nothing to display : No Countries Data found. [country report]");
+            }
+            catch (Throwable e2) {
+                System.out.println("Cannot display: error occurred. [country report]");
+                System.out.println(e2.getMessage());
             }
         }
 
@@ -198,7 +219,7 @@ public class CountryReport {
     public void displayCountriesContinent(final List<Country> countriesList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("=====================================================================================");
 
             // Initialize Current Continent variable
             String currentContinent = null;
@@ -211,22 +232,26 @@ public class CountryReport {
                 if (!cp.getContinent().equals(currentContinent)) {
                     // Print the continent header
                     System.out.println("\n Countries sorted by Population in " + cp.getContinent() + " Continent");
-                    System.out.println("===========================================");
+                    System.out.println("=====================================================================================");
                     currentContinent = cp.getContinent();
-                    System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String countriesInfo =
-                        String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
+                        String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 humanReadableFormat(cp.getPopulation()), capital);
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }  catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Countries Data found for each continent. [country report]");
+        }
+        catch (NullPointerException e1) {
+            System.out.println("Nothing to display : No Countries Data found. [country report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: error occurred. [country report]");
+            System.out.println(e2.getMessage());
         }
     }
 
@@ -238,7 +263,7 @@ public class CountryReport {
     public void displayCountriesRegion(final List<Country> countriesList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("=====================================================================================");
 
             // Initialize Current Region variable
             String currentRegion = null;
@@ -251,22 +276,26 @@ public class CountryReport {
                 if (!cp.getRegion().equals(currentRegion)) {
                     // Print the continent header
                     System.out.println("\n Countries sorted by Population in " + cp.getRegion() + " Region");
-                    System.out.println("===========================================");
+                    System.out.println("=====================================================================================");
                     currentRegion = cp.getRegion();
-                    System.out.println(String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String countriesInfo =
-                        String.format("%-10s |%-40s |%-15s |%-27s |%-15s |%-15s",
+                        String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |",
                                 cp.getCode(), cp.getName(), cp.getContinent(), cp.getRegion(),
                                 humanReadableFormat(cp.getPopulation()), capital);
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Countries Data found for each Region. [country report]");
+        }
+        catch (NullPointerException e1) {
+            System.out.println("Nothing to display : No Countries Data found. [country report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: error occurred. [country report]");
+            System.out.println(e2.getMessage());
         }
     }
 

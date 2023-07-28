@@ -10,7 +10,9 @@ import java.util.List;
  * Initialize City Object, City Report Object, Top Populated Cities Object
  */
 public class App {
-    // Connection to MySQL database.
+    /**
+    * Connection to MySQL database.
+    */
     public Connection con;
     // Main method that run the whole program
     public static void main(final String[] args) {
@@ -43,20 +45,20 @@ public class App {
         app.connect();
 
         //---------------All Country Report---------------
-//        //Display All Countries Population
-//        final List<Country> cPop1 = cour.getCountries(app.con, 0);
-//        System.out.println("All Countries Population in the World");
-//        cour.displayCountries(cPop1);
-//
-//        // Display All Countries Population based on Each Continent
-//        final List<Country> cPop2 = cour.getCountriesContinent(app.con, 0);
-//        System.out.println("All Countries Population in the World categorized by Continents");
-//        cour.displayCountriesContinent(cPop2);
-//
-//        // Display All Countries Population based on Each Region
-//        final List<Country> cPop3 = cour.getCountriesRegion(app.con, 0);
-//        System.out.println("All Countries Population in the World categorized by Regions");
-//        cour.displayCountriesRegion(cPop3);
+        //Display All Countries Population
+        final List<Country> cPop1 = cour.getCountries(app.con, 0);
+        System.out.println("All Countries Population in the World");
+        cour.displayCountries(cPop1);
+
+        // Display All Countries Population based on Each Continent
+        final List<Country> cPop2 = cour.getCountriesContinent(app.con, 0);
+        System.out.println("All Countries Population in the World categorized by Continents");
+        cour.displayCountriesContinent(cPop2);
+
+        // Display All Countries Population based on Each Region
+        final List<Country> cPop3 = cour.getCountriesRegion(app.con, 0);
+        System.out.println("All Countries Population in the World categorized by Regions");
+        cour.displayCountriesRegion(cPop3);
 
         //---------------Top Country Report---------------
 
@@ -78,29 +80,29 @@ public class App {
         //---------------All Cities Report---------------
 
         //Display All Cities Population in the world
-//        final List<City> tpciCity = cty.getCityPop(app.con, 0);
-//        System.out.println("All Cities Population in the world");
-//        cty.displayCities(tpciCity);
-//
-//        //Display All Population in Each Continent
-//        final List<City> tpciContinent = cty.getCityPopByContinent(app.con, 0);
-//        System.out.println("All Cities Population in the each Continent");
-//        cty.displayCityContinents(tpciContinent);
-//
-//        //Display All Cities Population in Each Region
-//        final List<City> tpciRegion = cty.getCityPopByRegion(app.con, 0);
-//        System.out.println("All Cities Population in the each Region");
-//        cty.displayCityRegion(tpciRegion);
-//
-//        //Display All Cities Population in Each Country
-//        final List<City> tpciCountry = cty.getCityPopByCountry(app.con, 0);
-//        System.out.println("All Cities Population in the each Country");
-//        cty.displayCityCountries(tpciCountry);
-//
-//        //Display All Cities Population in Each District
-//        final List<City> tpciDistrict = cty.getCityPopByDistrict(app.con, 0);
-//        System.out.println("All Cities Population in the each District");
-//        cty.displayCityDistrict(tpciDistrict);
+        final List<City> tpciCity = cty.getCityPop(app.con, 0);
+        System.out.println("All Cities Population in the world");
+        cty.displayCities(tpciCity);
+
+        //Display All Population in Each Continent
+        final List<City> tpciContinent = cty.getCityPopByContinent(app.con, 0);
+        System.out.println("All Cities Population in the each Continent");
+        cty.displayCityContinents(tpciContinent);
+
+        //Display All Cities Population in Each Region
+        final List<City> tpciRegion = cty.getCityPopByRegion(app.con, 0);
+        System.out.println("All Cities Population in the each Region");
+        cty.displayCityRegion(tpciRegion);
+
+        //Display All Cities Population in Each Country
+        final List<City> tpciCountry = cty.getCityPopByCountry(app.con, 0);
+        System.out.println("All Cities Population in the each Country");
+        cty.displayCityCountries(tpciCountry);
+
+        //Display All Cities Population in Each District
+        final List<City> tpciDistrict = cty.getCityPopByDistrict(app.con, 0);
+        System.out.println("All Cities Population in the each District");
+        cty.displayCityDistrict(tpciDistrict);
 
         //---------------Top Cities Report---------------
 
@@ -129,30 +131,34 @@ public class App {
         System.out.println("Top 5 Cities Population in the each District");
         cty.displayCityDistrict(tpciDistrict1);
 
-//        //Display All Capital Population in the world
-//        final List<City> capitalR1 = cpr.getCapitalPopByWorld(app.con, 0);
-//        System.out.println("All Capital Population in the World");
-//        cpr.displayCapital(capitalR1);
+        //---------------All Capital Cities Report---------------
 
-       //Display top 10 Capital By Population in the world
+        //Display All Capital Population in the world
+        final List<City> capitalR1 = cpr.getCapitalPopByWorld(app.con, 0);
+        System.out.println("All Capital Population in the World");
+        cpr.displayCapital(capitalR1);
+
+        //Display All Capital Population for each Continent
+        final List<City> capitalR3 = cpr.getCapitalPopByContinent(app.con, 0);
+        System.out.println("All Capital Population in each Continent");
+        cpr.displayCapitalContinent(capitalR3);
+
+        //Display All Capital Population for each region
+        final List<City> capitalR5 = cpr.getCapitalPopByRegion(app.con, 0);
+        System.out.println("All Capital Population in each Region");
+        cpr.displayCapitalContinent(capitalR5);
+
+        //---------------Top Capital Cities Report---------------
+
+        //Display top 10 Capital By Population in the world
         final List<City> capitalR2 = cpr.getCapitalPopByWorld(app.con, 10);
         System.out.println("Top 10 Capital Population in the World");
         cpr.displayCapital(capitalR2);
-
-//        //Display All Capital Population for each Continent
-//        final List<City> capitalR3 = cpr.getCapitalPopByContinent(app.con, 0);
-//        System.out.println("All Capital Population in each Continent");
-//        cpr.displayCapitalContinent(capitalR3);
 
         //Display top 10 Capital By Population in each continent
         final List<City> capitalR4 = cpr.getCapitalPopByContinent(app.con, 10);
         System.out.println("Top 10 Capital Population in each Continent");
         cpr.displayCapitalContinent(capitalR4);
-
-//        //Display All Capital Population for each region
-//        final List<City> capitalR5 = cpr.getCapitalPopByRegion(app.con, 0);
-//        System.out.println("All Capital Population in each Region");
-//        cpr.displayCapitalContinent(capitalR5);
 
         //Display top 10 Capital By Population each Region
         final List<City> capitalR6 = cpr.getCapitalPopByRegion(app.con, 10);
@@ -162,32 +168,32 @@ public class App {
         //Summary reports
         final List<Country> popSumWorld =  sumR.sumWorldPop(app.con);
         System.out.println("==========Population of the world==========");
-        System.out.printf("%-20s| %-20s%n", "Location", "Population");
+        System.out.printf("%-20s | %-20s |%n", "Location", "Population");
         sumR.displaySumWorldPop(popSumWorld);
 
         final List<Country> popSumCont =  sumR.sumContPop(app.con, 1);
         System.out.println("==========Population of most populated continent==========");
-        System.out.printf("%-30s| %-30s%n", "Continent", "Population");
+        System.out.printf("%-20s | %-20s |%n", "Continent", "Population");
         sumR.displaySumContPop(popSumCont);
 
         final List<Country> popSumReg =  sumR.sumRegPop(app.con, 1);
         System.out.println("==========Population of most populated region==========");
-        System.out.printf("%-30s| %-30s%n", "Region", "Population");
+        System.out.printf("%-20s | %-20s |%n", "Region", "Population");
         sumR.displaySumRegPop(popSumReg);
 
         final List<Country> popSumCoun = sumR.sumCouPop(app.con,1 );
         System.out.println("==========Population of most populated country==========");
-        System.out.printf("%-30s| %-30s%n", "Country", "Population");
+        System.out.printf("%-20s | %-20s |%n", "Country", "Population");
         sumR.displaySumCouPop(popSumCoun);
 
         final List<City> popDistReg =  sumR.sumDistPop(app.con, 1);
         System.out.println("==========Population of most populated district==========");
-        System.out.printf("%-30s| %-30s%n", "District", "Population");
+        System.out.printf("%-20s | %-20s |%n", "District", "Population");
         sumR.displaySumDistPop(popDistReg);
 
         final List<City> popCityReg =  sumR.sumCityPop(app.con, 1);
         System.out.println("==========Population of most populated city==========");
-        System.out.printf("%-30s| %-30s%n", "City", "Population");
+        System.out.printf("%-20s | %-20s |%n", "City", "Population");
         sumR.displaySumCityPop(popCityReg);
 
         //Display Population report of people living in cities
@@ -259,7 +265,7 @@ public class App {
     }
 
     /**
-     *Disconnect from the MySQL database.
+     * Disconnect from the MySQL database.
      */
     public void disconnect() {
         if (con != null) {

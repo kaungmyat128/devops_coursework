@@ -46,9 +46,13 @@ public class CityReport {
                 worldPop.add(world);
             }
             return worldPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by World [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return worldPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e2.getMessage());
             return worldPop;
         }
     }
@@ -90,9 +94,13 @@ public class CityReport {
                 continentPop.add(continent);
             }
             return continentPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Continent [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return continentPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e2.getMessage());
             return continentPop;
         }
     }
@@ -134,9 +142,13 @@ public class CityReport {
                 regionPop.add(region);
             }
             return regionPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Region [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return regionPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e2.getMessage());
             return regionPop;
         }
     }
@@ -177,9 +189,13 @@ public class CityReport {
                 countryPop.add(country);
             }
             return countryPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Country [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return countryPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e2.getMessage());
             return countryPop;
         }
     }
@@ -223,9 +239,13 @@ public class CityReport {
                 districtPop.add(district);
             }
             return districtPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City By District [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return districtPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e2.getMessage());
             return districtPop;
         }
     }
@@ -238,22 +258,26 @@ public class CityReport {
     public void displayCities(final List<City> citiesList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("========================================================================================");
 
-            System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+            System.out.println(String.format("%-40s | %-30s | %-30s | %-20s |", "City", "Country", "District", "Population"));
             // Loop over all cities population in the list
             for (final City cityR : citiesList)
             {
                 final String countriesInfo =
-                        String.format("%-40s |%-30s |%-30s |%-20s",
+                        String.format("%-40s | %-30s | %-30s | %-20s |",
                                 cityR.getCityName(), cityR.getCountryName(), cityR.getDistrict(),
                                 CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
+        }
+        catch (NullPointerException e1){
             System.out.println("Nothing to display : No Cities Data found. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e2.getMessage());
         }
     }
 
@@ -265,7 +289,7 @@ public class CityReport {
     public void displayCityContinents(final List<City> continentList) {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("===================================================================================================================");
 
             // Initialize Current Continent variable
             String currentContinent = null;
@@ -275,9 +299,9 @@ public class CityReport {
             {
                 if(!cityR.getContinents().equals(currentContinent)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getContinents() + " Continents");
-                    System.out.println("===========================================");
+                    System.out.println("==============================================================================================================");
                     currentContinent = cityR.getContinents();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "Continent", "District", "Population"));
+                    System.out.println(String.format("%-30s | %-30s | %-30s | %-25s | %-15s |", "City", "Country", "Continent", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -285,15 +309,18 @@ public class CityReport {
                 String cityName = nullChecker(cityR.getCityName());
 
                 final String continentInfo =
-                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                        String.format("%-30s | %-30s | %-30s | %-25s | %-15s |",
                                 cityName, cityR.getCountryName(), cityR.getContinents(),
                                 districtName, CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(continentInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found for Each Continent. [city report]");
+        }catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Cities Data found for each continent. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e2.getMessage());
         }
 
     }
@@ -306,7 +333,7 @@ public class CityReport {
     public void displayCityRegion(final List<City> regionList)     {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("====================================================================================================================");
             // Initialize Current Region variable
             String currentRegion = null;
 
@@ -314,24 +341,27 @@ public class CityReport {
             for (final City cityR : regionList){
                 if(!cityR.getRegion().equals(currentRegion)){
                     System.out.println("\n Cities sorted by Population in " + cityR.getRegion() + " Region");
-                    System.out.println("===========================================");
+                    System.out.println("============================================================================================================");
                     currentRegion = cityR.getRegion();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-30s |%-20s", "City", "Country", "District", "Region", "Population"));
+                    System.out.println(String.format("%-30s | %-30s | %-30s | %-25s | %-15s |", "City", "Country", "District", "Region", "Population"));
                 }
                 //checking null value and transforming them to blank in district
                 String districtName = nullChecker(cityR.getDistrict());
                 String cityName = nullChecker(cityR.getCityName());
 
                 final String regionInfo =
-                        String.format("%-40s |%-30s |%-30s |%-30s |%-20s",
+                        String.format("%-30s | %-30s | %-30s | %-25s | %-15s |",
                                 cityName, cityR.getCountryName(), districtName,
                                 cityR.getRegion(), CountryReport.humanReadableFormat(cityR.getPopulation()));
                 System.out.println(regionInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found for each Region. [city report]");
+        }catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Cities Data found for each region. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e2.getMessage());
         }
 
     }
@@ -344,7 +374,7 @@ public class CityReport {
     public void displayCityCountries(final List<City> countriesList)     {
         try{
             // Print header
-            System.out.println("============================================================");
+            System.out.println("====================================================================================================");
             // Initialize Current Country variable
             String currentCountry = null;
 
@@ -352,9 +382,9 @@ public class CityReport {
             for (final City cty : countriesList){
                 if (!cty.getCountryName().equals(currentCountry)){
                     System.out.println("\n Cities sorted by Population in " + cty.getCountryName() + " Country");
-                    System.out.println("===========================================");
+                    System.out.println("===========================================================================================");
                     currentCountry = cty.getCountryName();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-40s | %-30s | %-20s | %-15s |", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -362,15 +392,18 @@ public class CityReport {
                 String cityName = nullChecker(cty.getCityName());
 
                 final String countriesInfo =
-                        String.format("%-40s |%-30s |%-30s |%-20s",
+                        String.format("%-40s | %-30s | %-20s | %-15s |",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
+        }catch (NullPointerException e1){
             System.out.println("Nothing to display : No Cities Data found for each country. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e2.getMessage());
         }
 
     }
@@ -383,16 +416,16 @@ public class CityReport {
     public void displayCityDistrict(final List<City> districtsList)     {
         try {
             // Print header
-            System.out.println("============================================================");
+            System.out.println("===================================================================================================");
             // Initialize Current Country variable
             String currentDistrict = null;
 
             for (final City cty : districtsList){
                 if (!cty.getDistrict().equals(currentDistrict)){
                     System.out.println("\n Cities sorted by Population in " + cty.getDistrict() + " District");
-                    System.out.println("===========================================");
+                    System.out.println("===========================================================================================");
                     currentDistrict = cty.getDistrict();
-                    System.out.println(String.format("%-40s |%-30s |%-30s |%-20s", "City", "Country", "District", "Population"));
+                    System.out.println(String.format("%-30s | %-30s | %-30s | %-15s |", "City", "Country", "District", "Population"));
                 }
 
                 //checking null value and transforming them to blank in district
@@ -400,15 +433,18 @@ public class CityReport {
                 String cityName = nullChecker(cty.getCityName());
 
                 final String countriesInfo =
-                        String.format("%-40s |%-30s |%-30s |%-20s",
+                        String.format("%-30s | %-30s | %-30s | %-15s |",
                                 cityName, cty.getCountryName(), districtName,
                                 CountryReport.humanReadableFormat(cty.getPopulation()));
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No City Data found for each district. [city report]");
+        }catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Cities Data found for each district. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e2.getMessage());
         }
 
     }

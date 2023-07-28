@@ -8,7 +8,12 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.List;
-
+/**
+ * Creates methods to write sql queries and
+ * create arraylists of population of people who speak specific languages
+ * contain getLanguageReport(), displayLanguagesPopulation() and
+ * humanReadableFormat() methods
+ * */
 public class CountryLanguagesReport {
 
     /**
@@ -22,7 +27,13 @@ public class CountryLanguagesReport {
         // Create array list and add query result into array list
         final List<Language> lanPop = new ArrayList();
         // Create string for SQL statement with no limit - fetch all queries
-        String strSelect = "SELECT language_table.Language, language_table.Total_Population, ( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population ORDER BY language_table.Total_Population DESC";
+        String strSelect = "SELECT language_table.Language, language_table.Total_Population, " +
+                "( language_table.Total_Population / world_population.Total_Population * 100 ) AS Percentage " +
+                "FROM (SELECT countrylanguage.Language, SUM(country.Population * countrylanguage.Percentage / 100) " +
+                "AS Total_Population FROM countrylanguage JOIN country ON country.Code = countrylanguage.CountryCode " +
+                "WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') GROUP BY Language) AS language_table " +
+                "CROSS JOIN (SELECT SUM(Population) AS Total_Population FROM country) AS world_population " +
+                "ORDER BY language_table.Total_Population DESC";
 
         try(Statement stmt = con.createStatement(); ResultSet query1 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
@@ -35,9 +46,12 @@ public class CountryLanguagesReport {
             }
             return lanPop;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e1) {
             System.out.println("Failed to get Population of People who speaks different kind of languages [language report]");
+            return lanPop;
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
             return lanPop;
         }
     }
@@ -51,22 +65,26 @@ public class CountryLanguagesReport {
     {
         try{
             // Print header
-            System.out.println("============================================================");
-            System.out.println(String.format("%-40s | %-30s", "Language", "Total Population of People who Speak This Language"));
+            System.out.println("==================================================================================================");
+            System.out.println(String.format("%-20s | %-30s |", "Language", "Total Population of People who Speak This Language"));
             // Loop over all cities population in the list
             for (final Language l : arrList)
             {
                 final String percent = String.format("%05.2f",l.getPercentage()) + "%";
                 final String lanPop =
-                        String.format("%-40s | %-20s ( %-5s )",
+                        String.format("%-20s | %-20s ( %-5s ) |",
                                 l.getLanguage(), humanReadableFormat(l.getTotalPopulation()),
                                 percent);
                 System.out.println(lanPop);
             }
-            System.out.println("============================================================");
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
+            System.out.println("================================================================================================");
+        }
+        catch (NullPointerException e1){
             System.out.println("Nothing to display : No Language Population Report Found.[language report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display : Error occurred.[language report]");
+            System.out.println(e2.getMessage());
         }
     }
 

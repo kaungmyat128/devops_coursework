@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * */
 
 public class CapitalReport {
-
     /**
      * database connection parameters and limit parameter
      * write sql query to produce 'ALL or Top N most populated
@@ -46,9 +45,13 @@ public class CapitalReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population around the world [capital report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather Capital Cities population around the world [capital report]");
+            return capitalPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("Error Occurred");
+            System.out.print(e2.getMessage());
             return capitalPop;
         }
 
@@ -87,9 +90,13 @@ public class CapitalReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population for each continent [capital report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather Capital Cities population around the world [capital report]");
+            return capitalPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("Error Occurred");
+            System.out.print(e2.getMessage());
             return capitalPop;
         }
     }
@@ -127,9 +134,13 @@ public class CapitalReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population around each Region [capital report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather Capital Cities population around the world [capital report]");
+            return capitalPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("Error Occurred");
+            System.out.print(e2.getMessage());
             return capitalPop;
         }
     }
@@ -157,7 +168,7 @@ public class CapitalReport {
             return arr;
         }// Exception handling when any errors occur.
          // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (Throwable e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population [capital report]");
             return arr;
@@ -174,12 +185,12 @@ public class CapitalReport {
             System.out.println("========================================================================================");
             System.out.println("Capital Cities sorted by population in the world ");
 
-            System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s","CapitalName", "CountryName", "Continent", "Region", "Population"));
+            System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |","CapitalName", "CountryName", "Continent", "Region", "Population"));
             // Loop over all countries population in the list
             for (final City cpr : capitalList)
             {
                 final String countriesInfo =
-                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                        String.format("%-35s | %-40s | %-18s | %-26s | %-15s |",
                                 cpr.getCityName(),
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
@@ -189,9 +200,12 @@ public class CapitalReport {
             }
             System.out.println("========================================================================================");
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
+        catch (NullPointerException e1){
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
+            System.out.println(e2.getMessage());
         }
     }
 
@@ -215,15 +229,15 @@ public class CapitalReport {
                 if (!cpr.getContinents().equals(currentContinent)) {
                     // Print the continent header
                     System.out.println("\n Capitals sorted by Population in " + cpr.getContinents() + " Continent");
-                    System.out.println("===========================================");
+                    System.out.println("========================================================================================");
                     currentContinent = cpr.getContinents();
-                    System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String capitalCity = nullChecker(cpr.getCityName());
                 final String capitalsInfo =
-                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                        String.format("%-35s | %-40s | %-18s | %-26s | %-15s |",
                                 capitalCity,
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
@@ -231,12 +245,15 @@ public class CapitalReport {
                                 CountryReport.humanReadableFormat(cpr.getPopulation()));
                 System.out.println(capitalsInfo);
             }
-            System.out.println("============================================================");
+            System.out.println("========================================================================================");
 
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Capital data from continents can be extracted. [capital report]");
+        catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
+            System.out.println(e2.getMessage());
         }
     }
     /** Display Capital Cities Report using getter() method
@@ -257,15 +274,15 @@ public class CapitalReport {
                 if (!cpr.getRegion().equals(currentRegion)) {
                     // Print the continent header
                     System.out.println("\n Capitals sorted by Population in " + cpr.getRegion() + " Region");
-                    System.out.println("===========================================");
+                    System.out.println("========================================================================================");
                     currentRegion = cpr.getRegion();
-                    System.out.println(String.format("%-35s |%-40s |%-18s |%-26s |%-15s", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
+                    System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |", "CapitalName", "CountryName", "Continent", "Region", "Population", "Capital City"));
 
                 }
 
                 final String capitalCity = nullChecker(cpr.getCityName());
                 final String capitalsInfo =
-                        String.format("%-35s |%-40s |%-18s |%-26s |%-15s",
+                        String.format("%-35s | %-40s | %-18s | %-26s | %-15s |",
                                 capitalCity,
                                 cpr.getCountryName(),
                                 cpr.getContinents(),
@@ -273,16 +290,19 @@ public class CapitalReport {
                                 CountryReport.humanReadableFormat(cpr.getPopulation()));
                 System.out.println(capitalsInfo);
             }
-            System.out.println("============================================================");
+            System.out.println("========================================================================================");
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Capital data from regions can be extracted.[capital report]");
+        catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
+            System.out.println(e2.getMessage());
         }
     }
     /**
-     * This method takes a String parameter 'checkElement' and checks if it is null or empty.
-     * If the 'checkElement' is null, empty, or contains only spaces, it returns a hyphen ("-").
+     * This method used to check a column value is null or empty.
+     * If 'checkElement' is null, empty, or contains only spaces, it returns hyphen.
      * Otherwise, it returns the original 'checkElement'.
      */
     public String nullChecker(final String checkElement){

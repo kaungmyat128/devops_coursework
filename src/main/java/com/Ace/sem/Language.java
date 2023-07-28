@@ -1,16 +1,31 @@
 package com.Ace.sem;
-
+/**
+ * Declares variables to be used for language report
+ * Encapsulation : Creates getter & setter methods for displaying reports
+ */
 public class Language {
+    /**
+     * variable to store language name
+     * */
     private String languages;
+    /**
+     * variable to store total population of people who speak that language
+     * */
     private long totalPopulation;
+    /**
+     * variable to store population percentage of people who speak that language
+     * */
     private double percentage;
 
-    // Use Encapsulation :
-    // Getter & Setter Method for each variable initialized in above
+    /**
+     * Getter Method for each variable initialized in above
+     **/
     public String getLanguage() {
         return languages;
     }
-
+    /**
+     * Setter Method for each variable initialized in above
+     **/
     public void setLanguage(final String language) {
         this.languages = language;
     }

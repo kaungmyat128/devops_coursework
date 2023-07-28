@@ -1,18 +1,39 @@
 package com.Ace.sem;
 
 /**
-     * Declares variables to be used for country related reports
-     * Creates methods for displaying reports
-     */
+ * Declares variables to be used for country related reports
+ * Creates methods for displaying reports
+ */
 public class Country {
     // Declare Variables related to Country Information and Capital City Names
 
+    /**
+     * variable for total population
+     * */
     private long genPop;
+    /**
+     * variable to store country code
+     * */
     private String code;
+    /**
+     * variable to store country name
+     * */
     private String name;
+    /**
+     * variable to store continent
+     * */
     private String continent;
+    /**
+     * variable to store region
+     * */
     private String region;
+    /**
+     * variable to store country population
+     * */
     private int population;
+    /**
+     * variable to store country capital
+     * */
     private String capital;
 
     // Use Encapsulation :

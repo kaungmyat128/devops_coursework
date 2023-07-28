@@ -207,7 +207,7 @@ class UnitTest
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        catch (Exception e1) {
+        catch (Throwable e1) {
             System.out.println(e1.getMessage());
         }
     }
@@ -616,7 +616,7 @@ class UnitTest
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        catch (Exception e1) {
+        catch (Throwable e1) {
             System.out.println(e1.getMessage());
         }
     }
