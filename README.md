@@ -9,7 +9,7 @@
 <br><b>License Status: </b> [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
 <br><b>Code Coverage:</b>[![codecov](https://codecov.io/github/kaungmyat128/devops_coursework/branch/hotfix/graph/badge.svg?token=H47J5ZLWRO)](https://codecov.io/github/kaungmyat128/devops_coursework)
 <br><b>Release Status:</b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
-<br><b>Code Of Conduct:</b> [![README](https://img.shields.io/badge/Code_of_Conduct-Readme.md-%23D81D69)](https://github.com/kaungmyat128/devops_coursework/blob/master/README.md)
+<br><b>Code Of Conduct:</b> [![README](https://img.shields.io/badge/Code_of_Conduct-README.md-%23D81D69)](https://github.com/kaungmyat128/devops_coursework/blob/master/README.md)
 
 &emsp; We are working for the organization that require reporting on world population information.
 We have been ask to implement the new system which can easily access to the information of the population.
