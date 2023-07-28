@@ -321,7 +321,6 @@ public class SummaryReport {
             for (final City ct : districtsList)
             {
                 // Formatting and printing data
-
                 final String distPopInfo =
                         String.format("%-20s | %-20s |",
                                 ct.getDistrict(),
@@ -329,7 +328,6 @@ public class SummaryReport {
                 System.out.println(distPopInfo);
             }
             System.out.println("");
-
         }
         catch (NullPointerException e){
             System.out.println("Nothing to display : District Population cannot be extracted [summary report]");
@@ -338,7 +336,6 @@ public class SummaryReport {
             System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
-
     /**
      * display data gathered by sumCityPop
      * @param citiesList
@@ -358,7 +355,6 @@ public class SummaryReport {
                 System.out.println(cityPopInfo);
             }
             System.out.println("");
-
         }
         catch (NullPointerException e){
             System.out.println("Nothing to display : City Population cannot be extracted [summary report]");
@@ -367,7 +363,6 @@ public class SummaryReport {
             System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
-
     /**
      * human_readable_format method used to
      * format the population numbers for long variables
@@ -377,5 +372,4 @@ public class SummaryReport {
         final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
         return numf.format(population);
     }
-
 }

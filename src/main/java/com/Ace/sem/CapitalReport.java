@@ -148,7 +148,7 @@ public class CapitalReport {
      */
     public List<City> capitalArrList(final List<City> arr, final ResultSet qry) {
         try {
-            // Extract population of countries information and store into array list
+            // Extract population of Capital Cities information and store into array list
             while (qry.next()) {
                 final City cty = new City();
                 cty.setCityName(qry.getString("CapitalName"));
@@ -180,7 +180,7 @@ public class CapitalReport {
             System.out.println("Capital Cities sorted by population in the world ");
 
             System.out.println(String.format("%-35s | %-40s | %-18s | %-26s | %-15s |","CapitalName", "CountryName", "Continent", "Region", "Population"));
-            // Loop over all countries population in the list
+            // Loop over all Capital Cities population in the list
             for (final City cpr : capitalList)
             {
                 final String countriesInfo =
@@ -214,7 +214,7 @@ public class CapitalReport {
             // Initialize Current Continent variable
             String currentContinent = null;
 
-            // Loop over all countries population in the list
+            // Loop over all Capital Cities population in the list
             for (final City cpr : capitalList)
             {
                 // Check the current continent changed or not
@@ -259,7 +259,7 @@ public class CapitalReport {
             // Initialize Current Region variable
             String currentRegion = null;
 
-            // Loop over all countries population in the list
+            // Loop over all Capital Cities population in the list
             for (final City cpr : capitalList) {
                 // Check the current Region changed or not
                 if (!cpr.getRegion().equals(currentRegion)) {
