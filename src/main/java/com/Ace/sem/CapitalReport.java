@@ -50,6 +50,7 @@ public class CapitalReport {
             return capitalPop;
         }
         catch (Throwable e2) {
+            System.out.println("Error Occurred");
             System.out.print(e2.getMessage());
             return capitalPop;
         }
@@ -94,6 +95,7 @@ public class CapitalReport {
             return capitalPop;
         }
         catch (Throwable e2) {
+            System.out.println("Error Occurred");
             System.out.print(e2.getMessage());
             return capitalPop;
         }
@@ -137,6 +139,7 @@ public class CapitalReport {
             return capitalPop;
         }
         catch (Throwable e2) {
+            System.out.println("Error Occurred");
             System.out.print(e2.getMessage());
             return capitalPop;
         }
@@ -201,6 +204,7 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
             System.out.println(e2.getMessage());
         }
     }
@@ -248,6 +252,7 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
             System.out.println(e2.getMessage());
         }
     }
@@ -291,6 +296,7 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
             System.out.println(e2.getMessage());
         }
     }

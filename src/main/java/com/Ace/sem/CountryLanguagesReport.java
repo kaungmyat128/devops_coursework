@@ -82,7 +82,7 @@ public class CountryLanguagesReport {
         catch (NullPointerException e1){
             System.out.println("Nothing to display : No Language Population Report Found.[language report]");
         }
-        catch (Exception e2) {
+        catch (Throwable e2) {
             System.out.println("Cannot display : Error occurred.[language report]");
             System.out.println(e2.getMessage());
         }

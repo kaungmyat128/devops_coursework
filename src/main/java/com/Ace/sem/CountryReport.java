@@ -51,6 +51,7 @@ public class CountryReport {
             return topCounPop;
         }
         catch (Throwable e2){
+            System.out.println("Error occurred");
             System.out.println(e2.getMessage());
             return topCounPop;
         }
@@ -94,6 +95,7 @@ public class CountryReport {
             return topCounPop;
         }
         catch (Throwable e2){
+            System.out.println("Error occurred");
             System.out.println(e2.getMessage());
             return topCounPop;
         }
@@ -137,6 +139,7 @@ public class CountryReport {
             return topCounPop;
         }
         catch (Throwable e2){
+            System.out.println("Error occurred");
             System.out.println(e2.getMessage());
             return topCounPop;
         }
@@ -203,8 +206,8 @@ public class CountryReport {
                 System.out.println("Nothing to display : No Countries Data found. [country report]");
             }
             catch (Throwable e2) {
-                //System.out.println(e.getMessage());
-                System.out.println("Cannot display country data. [country report]");
+                System.out.println("Cannot display: error occurred. [country report]");
+                System.out.println(e2.getMessage());
             }
         }
 
@@ -247,8 +250,8 @@ public class CountryReport {
             System.out.println("Nothing to display : No Countries Data found. [country report]");
         }
         catch (Throwable e2) {
-            //System.out.println(e.getMessage());
-            System.out.println("Cannot display country data. [country report]");
+            System.out.println("Cannot display: error occurred. [country report]");
+            System.out.println(e2.getMessage());
         }
     }
 
@@ -291,8 +294,8 @@ public class CountryReport {
             System.out.println("Nothing to display : No Countries Data found. [country report]");
         }
         catch (Throwable e2) {
-            //System.out.println(e.getMessage());
-            System.out.println("Cannot display country data. [country report]");
+            System.out.println("Cannot display: error occurred. [country report]");
+            System.out.println(e2.getMessage());
         }
     }
 

@@ -51,6 +51,7 @@ public class CityReport {
             return worldPop;
         }
         catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
             System.out.println(e2.getMessage());
             return worldPop;
         }
@@ -98,6 +99,7 @@ public class CityReport {
             return continentPop;
         }
         catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
             System.out.println(e2.getMessage());
             return continentPop;
         }
@@ -145,6 +147,7 @@ public class CityReport {
             return regionPop;
         }
         catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
             System.out.println(e2.getMessage());
             return regionPop;
         }
@@ -191,6 +194,7 @@ public class CityReport {
             return countryPop;
         }
         catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
             System.out.println(e2.getMessage());
             return countryPop;
         }
@@ -240,6 +244,7 @@ public class CityReport {
             return districtPop;
         }
         catch (Throwable e2) {
+            System.out.println("ERROR OCCURRED");
             System.out.println(e2.getMessage());
             return districtPop;
         }
@@ -271,6 +276,7 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found. [city report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
             System.out.println(e2.getMessage());
         }
     }
@@ -313,6 +319,7 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each continent. [city report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
             System.out.println(e2.getMessage());
         }
 
@@ -353,6 +360,7 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each region. [city report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
             System.out.println(e2.getMessage());
         }
 
@@ -394,6 +402,7 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each country. [city report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
             System.out.println(e2.getMessage());
         }
 
@@ -434,6 +443,7 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each district. [city report]");
         }
         catch (Throwable e2) {
+            System.out.println("Cannot display: ERROR OCCURRED");
             System.out.println(e2.getMessage());
         }
 
