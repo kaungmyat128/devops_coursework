@@ -184,9 +184,12 @@ public class CountryReport {
                 }
                 System.out.println();
             }
-            catch (Exception e) {
-                //System.out.println(e.getMessage());
+            catch (NullPointerException e) {
                 System.out.println("Nothing to display : No Countries Data found. [country report]");
+            }
+            catch (Throwable e) {
+                //System.out.println(e.getMessage());
+                System.out.println("Cannot display country data. [country report]");
             }
         }
 
