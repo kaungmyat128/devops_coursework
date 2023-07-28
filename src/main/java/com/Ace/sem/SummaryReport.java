@@ -30,8 +30,12 @@ public class SummaryReport {
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
         catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return population around the world [summary report]");
+            System.out.println("Failed to return population the world [summary report]");
+            return worldPop;
+        }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e1.getMessage());
             return worldPop;
         }
     }
@@ -61,8 +65,12 @@ public class SummaryReport {
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
         catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each continent [summary report]");
+            System.out.println("Failed to return population the continent [summary report]");
+            return contPop;
+        }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e1.getMessage());
             return contPop;
         }
     }
@@ -91,8 +99,12 @@ public class SummaryReport {
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
         catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each region [summary report]");
+            System.out.println("Failed to return population the region [summary report]");
+            return regPop;
+        }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e1.getMessage());
             return regPop;
         }
     }
@@ -121,8 +133,12 @@ public class SummaryReport {
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
         catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return population of each country [summary report]");
+            System.out.println("Failed to return population the country [summary report]");
+            return countryPop;
+        }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e1.getMessage());
             return countryPop;
         }
     }
@@ -150,9 +166,13 @@ public class SummaryReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return population of district [summary report]");
+        catch (SQLException e) {
+            System.out.println("Failed to return population the district [summary report]");
+            return distPop;
+        }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e1.getMessage());
             return distPop;
         }
     }
@@ -181,8 +201,12 @@ public class SummaryReport {
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
         catch (SQLException e) {
-            System.out.println(e.getMessage());
             System.out.println("Failed to return population the city [summary report]");
+            return cityPop;
+        }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED");
+            System.out.println(e1.getMessage());
             return cityPop;
         }
     }
@@ -206,9 +230,12 @@ public class SummaryReport {
             }
             System.out.println("");
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
+        catch (NullPointerException e){
             System.out.println("Nothing to display : World Population cannot be extracted [summary report]");
+        }
+        catch (Throwable e1) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -232,9 +259,12 @@ public class SummaryReport {
             }
             System.out.println("");
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
+        catch (NullPointerException e){
             System.out.println("Nothing to display : Continent Population cannot be extracted [summary report]");
+        }
+        catch (Throwable e1) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -258,9 +288,12 @@ public class SummaryReport {
             }
             System.out.println("");
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
+        catch (NullPointerException e){
             System.out.println("Nothing to display : Region Population cannot be extracted [summary report]");
+        }
+        catch (Throwable e1) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -284,9 +317,12 @@ public class SummaryReport {
             }
             System.out.println("");
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
+        catch (NullPointerException e){
             System.out.println("Nothing to display : Country Population cannot be extracted [summary report]");
+        }
+        catch (Throwable e1) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -311,9 +347,12 @@ public class SummaryReport {
             System.out.println("");
 
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
+        catch (NullPointerException e){
             System.out.println("Nothing to display : District Population cannot be extracted [summary report]");
+        }
+        catch (Throwable e1) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -338,9 +377,12 @@ public class SummaryReport {
             System.out.println("");
 
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
+        catch (NullPointerException e){
             System.out.println("Nothing to display : City Population cannot be extracted [summary report]");
+        }
+        catch (Throwable e1) {
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e1.getMessage());
         }
     }
 
