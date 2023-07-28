@@ -114,7 +114,7 @@ class IntegratedTest
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        catch (Exception e1) {
+        catch (Throwable e1) {
             System.out.println(e1.getMessage());
         }
     }
@@ -163,7 +163,7 @@ class IntegratedTest
             assertEquals(country.get(0).getCapital(), "Peking", "First Entry Country Report - Capital City is not true.");
 
         }
-        catch (Exception e) {
+        catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -210,7 +210,7 @@ class IntegratedTest
             assertEquals(country1.get(0).getPopulation(), 0, "First Entry Country Report - Population is not true.");
             assertEquals(country1.get(0).getCapital(), null, "First Entry Country Report - Capital City is not true.");
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -253,7 +253,7 @@ class IntegratedTest
             assertEquals(city.get(0).getPopulation(), 10_500_000, "First Entry City Report - Population is not true.");
 
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -298,7 +298,7 @@ void getdisplayCitiesContinent()     {
         assertEquals(city.get(0).getDistrict(), "Maharashtra", "First Entry City Report - District Name is not true.");
         assertEquals(city.get(0).getPopulation(), 10_500_000, "First Entry City Report - Population is not true.");
 
-    }catch (Exception e) {
+    }catch (Throwable e) {
         System.out.println(e.getMessage());
     }
 }
@@ -342,7 +342,7 @@ void getdisplayCitiesContinent()     {
             assertEquals(city.get(0).getRegion(), "Antarctica", "First Entry Country Report - Region Name is not true.");
             assertEquals(city.get(0).getPopulation(), 10_500_000, "First Entry Country Report - Population is not true.");
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -384,7 +384,7 @@ void getdisplayCitiesContinent()     {
             assertEquals(city.get(0).getDistrict(), "Kabol", "First Entry City Report - District  Name is not true.");
             assertEquals(city.get(0).getPopulation(), 1_780_000 , "First Entry City Report - Population is not true.");
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -427,7 +427,7 @@ void getdisplayCitiesContinent()     {
             assertEquals(city.get(0).getDistrict(), "", "First Entry City Report - District  Name is not true.");
             assertEquals(city.get(0).getPopulation(), 165_524 , "First Entry Country Report - Population is not true.");
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -458,7 +458,7 @@ void getdisplayCitiesContinent()     {
             assertEquals(language.get(0).getTotalPopulation(), 1_191_843_539, "First Entry Language Report - total population is not true.");
             assertEquals(language.get(0).getPercentage(), 19.6067225, "First Entry Language Report - percentage is not true.");
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -501,7 +501,7 @@ void getdisplayCitiesContinent()     {
             assertEquals(city.get(0).getContinents(), "Asia", "First Entry Capital City Report - continent name is not true.");
             assertEquals(city.get(0).getRegion(), "Eastern Asia", "First Entry Capital City  Report - Region Name is not true.");
             assertEquals(city.get(0).getPopulation(), 9_981_619, "First Entry Capital City Report - population is not true.");
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -548,7 +548,7 @@ void getdisplayCitiesContinent()     {
             assertEquals(city.get(0).getPopulation(), 9_981_619, "First Entry Capital City Report - population is not true.");
 
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
@@ -595,7 +595,7 @@ void getdisplayCitiesContinent()     {
 
 
 
-        }catch (Exception e) {
+        }catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }

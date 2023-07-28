@@ -53,6 +53,11 @@ public class RuralUrbanReport {
             System.out.println("Failed to get Population of People living in cities and not living in cities in each continent [Rural]");
             return ruContPop;
         }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED!");
+            System.out.println(e1.getMessage());
+            return ruContPop;
+        }
     }
 
     /**
@@ -91,6 +96,11 @@ public class RuralUrbanReport {
             System.out.println("Failed to get Population of People living in cities and not living in cities in each region [Rural]");
             return ruRegPop;
         }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED!");
+            System.out.println(e1.getMessage());
+            return ruRegPop;
+        }
     }
 
     /**
@@ -121,8 +131,12 @@ public class RuralUrbanReport {
             }
             return ruCounPop;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
             System.out.println("Failed to get Population of People living in cities and not living in cities in each country [Rural]");
+            return ruCounPop;
+        }
+        catch (Throwable e1){
+            System.out.println("ERROR OCCURRED!");
+            System.out.println(e1.getMessage());
             return ruCounPop;
         }
     }
@@ -156,8 +170,12 @@ public class RuralUrbanReport {
             }
             System.out.println("==================================================================================================");
         }
-        catch (Exception e){
-            System.out.println("Nothing to display: Rural Urban population of continent failed to extract [Rural]");
+        catch (NullPointerException e1){
+            System.out.println("Nothing to display: Rural Urban population of continents failed to extract [Rural]");
+        }
+        catch (Throwable e){
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -191,8 +209,12 @@ public class RuralUrbanReport {
             System.out.println("==================================================================================================");
 
         }
-        catch (Exception e){
+        catch (NullPointerException e1){
             System.out.println("Nothing to display: Rural Urban population of regions failed to extract [Rural]");
+        }
+        catch (Throwable e){
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -226,8 +248,12 @@ public class RuralUrbanReport {
             }
             System.out.println("==================================================================================================");
         }
-        catch (Exception e){
+        catch (NullPointerException e1){
             System.out.println("Nothing to display: Rural Urban population of countries failed to extract [Rural]");
+        }
+        catch (Throwable e){
+            System.out.println("Cannot display: ERROR OCCURRED");
+            System.out.println(e.getMessage());
         }
     }
 

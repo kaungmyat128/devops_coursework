@@ -45,9 +45,13 @@ public class CapitalReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population around the world [capital report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather Capital Cities population around the world [capital report]");
+            return capitalPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("Error Occurred");
+            System.out.print(e2.getMessage());
             return capitalPop;
         }
 
@@ -86,9 +90,13 @@ public class CapitalReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population for each continent [capital report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather Capital Cities population around the world [capital report]");
+            return capitalPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("Error Occurred");
+            System.out.print(e2.getMessage());
             return capitalPop;
         }
     }
@@ -126,9 +134,13 @@ public class CapitalReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return Capital Cities population around each Region [capital report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather Capital Cities population around the world [capital report]");
+            return capitalPop;
+        }
+        catch (Throwable e2) {
+            System.out.println("Error Occurred");
+            System.out.print(e2.getMessage());
             return capitalPop;
         }
     }
@@ -156,7 +168,7 @@ public class CapitalReport {
             return arr;
         }// Exception handling when any errors occur.
          // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (Throwable e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return Capital Cities population [capital report]");
             return arr;
@@ -188,9 +200,12 @@ public class CapitalReport {
             }
             System.out.println("========================================================================================");
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
+        catch (NullPointerException e1){
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
+            System.out.println(e2.getMessage());
         }
     }
 
@@ -233,9 +248,12 @@ public class CapitalReport {
             System.out.println("========================================================================================");
 
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Capital data from continents can be extracted. [capital report]");
+        catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
+            System.out.println(e2.getMessage());
         }
     }
     /** Display Capital Cities Report using getter() method
@@ -274,9 +292,12 @@ public class CapitalReport {
             }
             System.out.println("========================================================================================");
         }
-        catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Capital data from regions can be extracted.[capital report]");
+        catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
+        }
+        catch (Throwable e2) {
+            System.out.println("Cannot display: Error occurred");
+            System.out.println(e2.getMessage());
         }
     }
     /**
