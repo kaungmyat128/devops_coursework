@@ -46,9 +46,12 @@ public class CountryReport {
         }
         // Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to return countries population around the world [country report]");
+        catch (SQLException e1) {
+            System.out.println("Failed to gather countries population around the world [country report]");
+            return topCounPop;
+        }
+        catch (Throwable e2){
+            System.out.println(e2.getMessage());
             return topCounPop;
         }
     }
@@ -83,9 +86,15 @@ public class CountryReport {
         }
         try(Statement stmt = con.createStatement(); ResultSet query2 = stmt.executeQuery(strSelect)){
             return storeIntoArraylist(topCounPop, query2);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country population report [country report]");
+        }
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
+        catch (SQLException e1) {
+            System.out.println("Failed to gather countries population around the world [country report]");
+            return topCounPop;
+        }
+        catch (Throwable e2){
+            System.out.println(e2.getMessage());
             return topCounPop;
         }
     }
@@ -120,9 +129,15 @@ public class CountryReport {
         }
         try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             return storeIntoArraylist(topCounPop, query3);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country population report [country report]");
+        }
+        // Exception handling when any errors occur.
+        // Print out error type and error message and return null.
+        catch (SQLException e1) {
+            System.out.println("Failed to gather countries population around the world [country report]");
+            return topCounPop;
+        }
+        catch (Throwable e2){
+            System.out.println(e2.getMessage());
             return topCounPop;
         }
     }
@@ -150,7 +165,7 @@ public class CountryReport {
             return arl;
         }// Exception handling when any errors occur.
         // Print out error type and error message and return null.
-        catch (Exception e) {
+        catch (Throwable e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to return countries population [country report]");
             return arl;
@@ -184,10 +199,10 @@ public class CountryReport {
                 }
                 System.out.println();
             }
-            catch (NullPointerException e) {
+            catch (NullPointerException e1) {
                 System.out.println("Nothing to display : No Countries Data found. [country report]");
             }
-            catch (Throwable e) {
+            catch (Throwable e2) {
                 //System.out.println(e.getMessage());
                 System.out.println("Cannot display country data. [country report]");
             }
@@ -227,9 +242,13 @@ public class CountryReport {
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }  catch (Exception e) {
+        }
+        catch (NullPointerException e1) {
+            System.out.println("Nothing to display : No Countries Data found. [country report]");
+        }
+        catch (Throwable e2) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Countries Data found for each continent. [country report]");
+            System.out.println("Cannot display country data. [country report]");
         }
     }
 
@@ -267,9 +286,13 @@ public class CountryReport {
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
+        }
+        catch (NullPointerException e1) {
+            System.out.println("Nothing to display : No Countries Data found. [country report]");
+        }
+        catch (Throwable e2) {
             //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Countries Data found for each Region. [country report]");
+            System.out.println("Cannot display country data. [country report]");
         }
     }
 

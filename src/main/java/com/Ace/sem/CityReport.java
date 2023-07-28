@@ -46,9 +46,12 @@ public class CityReport {
                 worldPop.add(world);
             }
             return worldPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by World [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return worldPop;
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
             return worldPop;
         }
     }
@@ -90,9 +93,12 @@ public class CityReport {
                 continentPop.add(continent);
             }
             return continentPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Continent [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return continentPop;
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
             return continentPop;
         }
     }
@@ -134,9 +140,12 @@ public class CityReport {
                 regionPop.add(region);
             }
             return regionPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Region [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return regionPop;
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
             return regionPop;
         }
     }
@@ -177,9 +186,12 @@ public class CityReport {
                 countryPop.add(country);
             }
             return countryPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City by Country [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return countryPop;
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
             return countryPop;
         }
     }
@@ -223,9 +235,12 @@ public class CityReport {
                 districtPop.add(district);
             }
             return districtPop;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get Population of City By District [city report]");
+        } catch (SQLException e1) {
+            System.out.println("Failed to gather Population of City by World [city report]");
+            return districtPop;
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
             return districtPop;
         }
     }
@@ -251,9 +266,12 @@ public class CityReport {
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
+        }
+        catch (NullPointerException e1){
             System.out.println("Nothing to display : No Cities Data found. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
         }
     }
 
@@ -291,9 +309,11 @@ public class CityReport {
                 System.out.println(continentInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found for Each Continent. [city report]");
+        }catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Cities Data found for each continent. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
         }
 
     }
@@ -329,9 +349,11 @@ public class CityReport {
                 System.out.println(regionInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No Cities Data found for each Region. [city report]");
+        }catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Cities Data found for each region. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
         }
 
     }
@@ -368,9 +390,11 @@ public class CityReport {
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
+        }catch (NullPointerException e1){
             System.out.println("Nothing to display : No Cities Data found for each country. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
         }
 
     }
@@ -406,9 +430,11 @@ public class CityReport {
                 System.out.println(countriesInfo);
             }
             System.out.println();
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println("Nothing to display : No City Data found for each district. [city report]");
+        }catch (NullPointerException e1){
+            System.out.println("Nothing to display : No Cities Data found for each district. [city report]");
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
         }
 
     }

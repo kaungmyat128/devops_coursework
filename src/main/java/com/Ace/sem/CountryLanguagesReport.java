@@ -46,9 +46,12 @@ public class CountryLanguagesReport {
             }
             return lanPop;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e1) {
             System.out.println("Failed to get Population of People who speaks different kind of languages [language report]");
+            return lanPop;
+        }
+        catch (Throwable e2) {
+            System.out.println(e2.getMessage());
             return lanPop;
         }
     }
@@ -75,9 +78,13 @@ public class CountryLanguagesReport {
                 System.out.println(lanPop);
             }
             System.out.println("================================================================================================");
-        }catch (Exception e) {
-            //System.out.println(e.getMessage());
+        }
+        catch (NullPointerException e1){
             System.out.println("Nothing to display : No Language Population Report Found.[language report]");
+        }
+        catch (Exception e2) {
+            System.out.println("Cannot display : Error occurred.[language report]");
+            System.out.println(e2.getMessage());
         }
     }
 
