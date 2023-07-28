@@ -50,13 +50,10 @@ public class CapitalReport {
             return capitalPop;
         }
         catch (Throwable e2) {
-            System.out.println("Error Occurred");
-            System.out.print(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return capitalPop;
         }
-
     }
-
     /**
      * contains database connection parameter and limit parameter
      * write sql query to produce 'ALL or Top N most populated
@@ -95,12 +92,10 @@ public class CapitalReport {
             return capitalPop;
         }
         catch (Throwable e2) {
-            System.out.println("Error Occurred");
-            System.out.print(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return capitalPop;
         }
     }
-
     /**
      * contains database connection parameter and limit parameter
      * write sql query to produce 'ALL or Top N
@@ -139,8 +134,7 @@ public class CapitalReport {
             return capitalPop;
         }
         catch (Throwable e2) {
-            System.out.println("Error Occurred");
-            System.out.print(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return capitalPop;
         }
     }
@@ -204,11 +198,9 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: Error occurred");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
     }
-
     /** Display Capital Cities Report using getter() method
      *
      * @param capitalList
@@ -252,8 +244,7 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: Error occurred");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
     }
     /** Display Capital Cities Report using getter() method
@@ -296,8 +287,7 @@ public class CapitalReport {
             System.out.println("Nothing to display : No Capital data can be extracted.[capital report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: Error occurred");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
     }
     /**

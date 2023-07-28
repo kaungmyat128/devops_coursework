@@ -51,12 +51,10 @@ public class CityReport {
             return worldPop;
         }
         catch (Throwable e2) {
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return worldPop;
         }
     }
-
     /**
      * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities
@@ -99,12 +97,10 @@ public class CityReport {
             return continentPop;
         }
         catch (Throwable e2) {
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return continentPop;
         }
     }
-
     /**
      * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each Region
@@ -147,12 +143,10 @@ public class CityReport {
             return regionPop;
         }
         catch (Throwable e2) {
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return regionPop;
         }
     }
-
     /**
      * contains connection parameters for database connection and limit parameter
      * write sql query to produce 'ALL or Top N most populated cities in each Country
@@ -194,8 +188,7 @@ public class CityReport {
             return countryPop;
         }
         catch (Throwable e2) {
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return countryPop;
         }
     }
@@ -244,8 +237,7 @@ public class CityReport {
             return districtPop;
         }
         catch (Throwable e2) {
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
             return districtPop;
         }
     }
@@ -276,8 +268,7 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found. [city report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
     }
 
@@ -319,12 +310,9 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each continent. [city report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
-
     }
-
     /** display cities report based on regions using getter() and setter() methods
      * Use if condition to check whether current region change
      * and print out current region as title
@@ -360,12 +348,9 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each region. [city report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
-
     }
-
     /** display cities report based on countries using getter() and setter() methods
      * Use if condition to check whether current country change
      * and print out current country as title
@@ -402,8 +387,7 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each country. [city report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
 
     }
@@ -443,12 +427,9 @@ public class CityReport {
             System.out.println("Nothing to display : No Cities Data found for each district. [city report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e2.getMessage());
+            System.out.print("Error Occurred: " + e2.getMessage());
         }
-
     }
-
     /**
      * checks if given value is null or blank
      * return "-" if TRUE

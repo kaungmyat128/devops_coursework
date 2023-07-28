@@ -95,12 +95,10 @@ public class CountryReport {
             return topCounPop;
         }
         catch (Throwable e2){
-            System.out.println("Error occurred");
-            System.out.println(e2.getMessage());
+            System.out.println("Error occurred: " + e2.getMessage());
             return topCounPop;
         }
     }
-
     /**
      * contains database connection parameters and limit parameter
      * write sql query to produce 'ALL or Top N most populated countries
@@ -139,12 +137,10 @@ public class CountryReport {
             return topCounPop;
         }
         catch (Throwable e2){
-            System.out.println("Error occurred");
-            System.out.println(e2.getMessage());
+            System.out.println("Error occurred: " + e2.getMessage());
             return topCounPop;
         }
     }
-
     /**
      * two parameters - arraylist<Country> and query result
      * assign country information query results into the arrayList.
@@ -174,8 +170,6 @@ public class CountryReport {
             return arl;
         }
     }
-
-
     /** Display Countries Report using getter() method
      *
      * @param countriesList
@@ -206,11 +200,9 @@ public class CountryReport {
                 System.out.println("Nothing to display : No Countries Data found. [country report]");
             }
             catch (Throwable e2) {
-                System.out.println("Cannot display: error occurred. [country report]");
-                System.out.println(e2.getMessage());
+                System.out.println("Error occurred: " + e2.getMessage());
             }
         }
-
     /** display countries report based on continents
      * Use if condition to check whether current continent change
      * and print out current continent as title
@@ -235,7 +227,6 @@ public class CountryReport {
                     System.out.println("=====================================================================================");
                     currentContinent = cp.getContinent();
                     System.out.println(String.format("%-10s | %-40s | %-15s | %-27s | %-15s | %-15s |", "Code", "Name", "Continent", "Region", "Population", "Capital City"));
-
                 }
 
                 final String countriesInfo =
@@ -250,8 +241,7 @@ public class CountryReport {
             System.out.println("Nothing to display : No Countries Data found. [country report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: error occurred. [country report]");
-            System.out.println(e2.getMessage());
+            System.out.println("Cannot display: error occurred. [country report] \n" + e2.getMessage());
         }
     }
 
@@ -294,11 +284,9 @@ public class CountryReport {
             System.out.println("Nothing to display : No Countries Data found. [country report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display: error occurred. [country report]");
-            System.out.println(e2.getMessage());
+            System.out.println("Cannot display: error occurred. [country report] \n" + e2.getMessage());
         }
     }
-
     /**
      * human_readable_format method used to format the population numbers
      * e.g. 3242344 => 3,242,344
@@ -307,7 +295,6 @@ public class CountryReport {
         final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
             return numf.format(population);
         }
-
     /**
      * checks if given value is null or blank
      * return "-" if TRUE

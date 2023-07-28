@@ -83,12 +83,9 @@ public class CountryLanguagesReport {
             System.out.println("Nothing to display : No Language Population Report Found.[language report]");
         }
         catch (Throwable e2) {
-            System.out.println("Cannot display : Error occurred.[language report]");
-            System.out.println(e2.getMessage());
+            System.out.println("Cannot display : Error occurred.[language report] \n" + e2.getMessage());
         }
     }
-
-
     /**
      * human_readable_format method used to
      * format the population numbers for long variables

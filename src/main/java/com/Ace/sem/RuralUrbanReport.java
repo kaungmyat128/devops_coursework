@@ -54,12 +54,10 @@ public class RuralUrbanReport {
             return ruContPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED!");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return ruContPop;
         }
     }
-
     /**
      * contains connection parameters for database connection
      * The population of people, people living in cities,
@@ -97,12 +95,10 @@ public class RuralUrbanReport {
             return ruRegPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED!");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return ruRegPop;
         }
     }
-
     /**
      * contains connection parameters for database connection
      * The population of people, people living in cities,
@@ -135,13 +131,10 @@ public class RuralUrbanReport {
             return ruCounPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED!");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return ruCounPop;
         }
     }
-
-
     /** Display Population of People living in cities
      *  and not living in cities in each continent
      *  Report using getter() method
@@ -174,11 +167,9 @@ public class RuralUrbanReport {
             System.out.println("Nothing to display: Rural Urban population of continents failed to extract [Rural]");
         }
         catch (Throwable e){
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e.getMessage());
+            System.out.println("Error Occurred: " + e.getMessage());
         }
     }
-
     /** Display Population of People living in cities
      *  and not living in cities in each region
      *  Report using getter() method
@@ -213,13 +204,9 @@ public class RuralUrbanReport {
             System.out.println("Nothing to display: Rural Urban population of regions failed to extract [Rural]");
         }
         catch (Throwable e){
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e.getMessage());
+            System.out.println("Error Occurred: " + e.getMessage());
         }
     }
-
-
-
     /** Display Population of People living in cities
      *  and not living in cities in each country
      *  Report using getter() method
@@ -252,11 +239,9 @@ public class RuralUrbanReport {
             System.out.println("Nothing to display: Rural Urban population of countries failed to extract [Rural]");
         }
         catch (Throwable e){
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e.getMessage());
+            System.out.println("Error Occurred: " + e.getMessage());
         }
     }
-
     /**
      * human_readable_format method used to format
      * the population numbers for long variables
@@ -266,6 +251,4 @@ public class RuralUrbanReport {
         final NumberFormat numf = NumberFormat.getInstance(new Locale("en", "US"));
         return numf.format(population);
     }
-
-
 }

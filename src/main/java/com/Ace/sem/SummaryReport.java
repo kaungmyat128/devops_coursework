@@ -34,12 +34,10 @@ public class SummaryReport {
             return worldPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return worldPop;
         }
     }
-
     /**
      * gather the population of given amount of continents ( 1 continent )
      * @param topLimit
@@ -69,12 +67,10 @@ public class SummaryReport {
             return contPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return contPop;
         }
     }
-
     /**
      * gather population from given regions (1 region)
      * @param topLimit
@@ -103,12 +99,10 @@ public class SummaryReport {
             return regPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return regPop;
         }
     }
-
     /**
      * gathers data of total population given number of countries ( 1 country)
      * @param topLimit
@@ -137,12 +131,10 @@ public class SummaryReport {
             return countryPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return countryPop;
         }
     }
-
     /**
      * gathers data of total population of given amount of districts (1 district)
      * @param  topLimit
@@ -171,12 +163,10 @@ public class SummaryReport {
             return distPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return distPop;
         }
     }
-
     /**
      * gathers population data of given amount of cities (1 city)
      * @param con
@@ -205,12 +195,10 @@ public class SummaryReport {
             return cityPop;
         }
         catch (Throwable e1){
-            System.out.println("ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
             return cityPop;
         }
     }
-
     /**
      * returns the data gathered by sumWorldPop
      * @param popList
@@ -234,8 +222,7 @@ public class SummaryReport {
             System.out.println("Nothing to display : World Population cannot be extracted [summary report]");
         }
         catch (Throwable e1) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
 
@@ -263,8 +250,7 @@ public class SummaryReport {
             System.out.println("Nothing to display : Continent Population cannot be extracted [summary report]");
         }
         catch (Throwable e1) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
 
@@ -292,8 +278,7 @@ public class SummaryReport {
             System.out.println("Nothing to display : Region Population cannot be extracted [summary report]");
         }
         catch (Throwable e1) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
 
@@ -321,8 +306,7 @@ public class SummaryReport {
             System.out.println("Nothing to display : Country Population cannot be extracted [summary report]");
         }
         catch (Throwable e1) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
 
@@ -351,8 +335,7 @@ public class SummaryReport {
             System.out.println("Nothing to display : District Population cannot be extracted [summary report]");
         }
         catch (Throwable e1) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
 
@@ -381,8 +364,7 @@ public class SummaryReport {
             System.out.println("Nothing to display : City Population cannot be extracted [summary report]");
         }
         catch (Throwable e1) {
-            System.out.println("Cannot display: ERROR OCCURRED");
-            System.out.println(e1.getMessage());
+            System.out.println("Error Occurred: " + e1.getMessage());
         }
     }
 
