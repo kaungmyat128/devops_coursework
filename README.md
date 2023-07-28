@@ -36,12 +36,12 @@ The system will be using the world database.
 
 | Name               | Code Review 1 | Code Review 2 | Code Review 3  | Code Review 4 | Final Deliverable |
 |--------------------|---------------|---------------|----------------|---------------|-------------------|
-| Kaung Khant Hein   | 22%           | 24%           | 21%            | TBD           | TBD               |
-| May Phyu Sin Thant | 22%           | 24%           | 23%            | TBD           | TBD               |
-| Kaung Myat         | 24%           | 23%           | 20%            | TBD           | TBD               |
-| Zwe Htut Htay Lwin | 22%           | 22%           | 20%            | TBD           | TBD               |
-| Hein Thaw Zin      | 10%           | 7%            | 16%            | TBD           | TBD               |
-| Total              | 100%          | 100%          | 100%           | TBD           | TBD               |
+| Kaung Khant Hein   | 22%           | 24%           | 21%            | 20%           | TBD               |
+| May Phyu Sin Thant | 22%           | 24%           | 23%            | 20%           | TBD               |
+| Kaung Myat         | 24%           | 23%           | 20%            | 20%           | TBD               |
+| Zwe Htut Htay Lwin | 22%           | 22%           | 20%            | 20%           | TBD               |
+| Hein Thaw Zin      | 10%           | 7%            | 16%            | 20%           | TBD               |
+| Total              | 100%          | 100%          | 100%           | 100%          | TBD               |
 
 
 <h2>Code Review 1</h2>
