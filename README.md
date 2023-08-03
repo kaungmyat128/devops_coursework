@@ -7,10 +7,12 @@
 <br><b>Master Build Status:  </b>![workflow](https://github.com/kaungmyat128/devops_coursework/actions/workflows/main.yml/badge.svg)
 <br><b>Develop Build Status: </b> ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/kaungmyat128/devops_coursework/main.yml?branch=master)
 <br><b>License Status: </b> [![LICENSE](https://img.shields.io/github/license/kaungmyat128/devops_coursework.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/blob/master/LICENSE)
-<br><b>Code Coverage:</b>[![codecov](https://codecov.io/github/kaungmyat128/devops_coursework/branch/master/graph/badge.svg?token=H47J5ZLWRO)](https://app.codecov.io/github/kaungmyat128/devops_coursework/tree/master)
-<br><b>Release Status:</b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
-<br><b>Code Of Conduct:</b> [![README](https://img.shields.io/badge/Code_of_Conduct-code_of_conduct.md-%23D81D69)](https://github.com/kaungmyat128/devops_coursework/blob/master/code_of_conduct.md)
-<br><b>Project Backlog:</b>  [![README](https://img.shields.io/badge/Project_Backlog-Project_Backlog-%23D81D69)](https://github.com/users/kaungmyat128/projects/5/views/1)
+<br><b>Code Coverage: </b>[![codecov](https://codecov.io/github/kaungmyat128/devops_coursework/branch/master/graph/badge.svg?token=H47J5ZLWRO)](https://app.codecov.io/github/kaungmyat128/devops_coursework/tree/master)
+<br><b>Release Status: </b> [![Releases](https://img.shields.io/github/release/kaungmyat128/devops_coursework/all.svg?style=flat-square)](https://github.com/kaungmyat128/devops_coursework/releases)
+<br><b>Code Of Conduct: </b> [![README](https://img.shields.io/badge/Code_of_Conduct-code_of_conduct.md-%23D81D69)](https://github.com/kaungmyat128/devops_coursework/blob/master/code_of_conduct.md)
+<br><b>Project Backlog: </b>  [![README](https://img.shields.io/badge/Project_Backlog-Project_Backlog-%23D81D69)](https://github.com/users/kaungmyat128/projects/5/views/1)
+<br><b>Kanban Board: </b> [![README](https://img.shields.io/badge/Kanban_board-Kanban_board-%23D81D69)](https://zube.io/representations-of-bsc-hons-group-3-party/group-3-party/w/project/kanban)
+<br><b>Sprint: </b> [![README](https://img.shields.io/badge/Sprint-Sprint-%23D81D69)](https://zube.io/representations-of-bsc-hons-group-3-party/group-3-party/w/project/sprints)
 
 &emsp; We are working for the organization that require reports of world population information.
 We have been asked to implement the new system which can easily access to the information of the population.
