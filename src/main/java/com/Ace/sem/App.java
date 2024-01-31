@@ -42,6 +42,7 @@ public class App {
         final CapitalReport cpr = new CapitalReport();
 
         // Connect to database
+        // either local or outside
         app.connect();
 
         //---------------All Country Report---------------
