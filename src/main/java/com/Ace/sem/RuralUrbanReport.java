@@ -132,10 +132,11 @@ public class RuralUrbanReport {
                 ruCounPop.add(ruPop);
             }
             return ruCounPop;
-        } catch (SQLException e) {
-            System.out.println("Failed to get Population of People living in cities and not living in cities in each country [Rural]");
-            return ruCounPop;
         }
+//        catch (SQLException e) {
+//            System.out.println("Failed to get Population of People living in cities and not living in cities in each country [Rural]");
+//            return ruCounPop;
+//        }
         catch (Throwable e1){
             System.out.println("Error Occurred: " + e1.getMessage());
             return ruCounPop;
