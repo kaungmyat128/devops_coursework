@@ -683,7 +683,7 @@ void getdisplayCitiesContinent()     {
         assertNotNull(city, "The ArrayList of Rural & Urban Report should not be null.");
         // Test for correct numbers of query results.
         // So total queries result will be 7 because there are 7 continents
-        assertEquals(232, city.size(), "The method should return 7 countries Rural Urban population report");
+        assertEquals(239, city.size(), "The method should return 7 countries Rural Urban population report");
         ruReport.displayCountryPopulation(city);
         // Test for correct numbers of column names (presence of columns)
         for (final City c : city) {

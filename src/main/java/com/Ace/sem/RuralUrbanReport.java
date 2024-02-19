@@ -136,12 +136,12 @@ public class RuralUrbanReport {
                 ruPop.setTotalPopulation(query3.getLong("CountryPopulation"));
                 ruPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
                 ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
-//                if (query3.getLong("Not_Cities_Population") < 0){
-//                    ruPop.setTotalNotCitiesPopulation(0);
-//                }
-//                else {
-//                    ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
-//                }
+                if (query3.getLong("Not_Cities_Population") < 0){
+                    ruPop.setTotalNotCitiesPopulation(0);
+                }
+                else {
+                    ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
+                }
                 ruCounPop.add(ruPop);
             }
             return ruCounPop;
