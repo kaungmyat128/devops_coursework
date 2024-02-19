@@ -114,7 +114,7 @@ public class RuralUrbanReport {
                 + "country.Population - SUM(city.Population) AS Not_Cities_Population "
                 + "FROM country "
                 + "JOIN city ON country.Code = city.CountryCode "
-                + "GROUP BY country.Name ORDER BY total_population DESC";
+                + "GROUP BY country.Name ORDER BY country.Population DESC";
         try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
             while (query3.next()) {
