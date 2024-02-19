@@ -116,19 +116,15 @@ public class RuralUrbanReport {
 //                + "LEFT JOIN city ON country.Code = city.CountryCode "
 //                + "GROUP BY country.Name ORDER BY country.Population DESC";
 
-        final String strSelect = "SELECT Country, " +
-                    "CountryPopulation, " +
-                    "IFNULL(Cities_Population, 0) AS Cities_Population, " +
-                    "IFNULL(CountryPopulation - Cities_Population, 0) AS Not_Cities_Population " +
-                    "FROM ( " +
-                    "    SELECT country.Name AS Country, " +
-                    "           country.Population AS CountryPopulation, " +
-                    "           SUM(city.Population) AS Cities_Population " +
-                    "    FROM country " +
-                    "    LEFT JOIN city ON country.Code = city.CountryCode " +
-                    "    GROUP BY country.Name " +
-                    ") AS subquery " +
-                    "ORDER BY CountryPopulation DESC";
+        String strSelect = "SELECT c.Name AS Country, " +
+                "c.Population AS CountryPopulation, " +
+                "IFNULL(SUM(ci.Population), 0) AS Cities_Population, " +
+                "c.Population - IFNULL(SUM(ci.Population), 0) AS Not_Cities_Population " +
+                "FROM country c " +
+                "LEFT JOIN city ci ON c.Code = ci.CountryCode " +
+                "GROUP BY c.Name " +
+                "ORDER BY CountryPopulation DESC";
+
 
         try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
