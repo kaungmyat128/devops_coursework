@@ -109,9 +109,9 @@ public class RuralUrbanReport {
         // Create array list 'RUContinentPopulation' and add query result into array list
         final List<City> ruCounPop = new ArrayList<>();
         // Create string for SQL statement with no limit - fetch all queries
-        final String strSelect = "SELECT country.Name AS Country, SUM(country.Population) AS total_population , "
+        final String strSelect = "SELECT country.Name AS Country, country.Population AS total_population , "
                 + "SUM(city.Population) AS Cities_Population, "
-                + "SUM(country.population) - SUM(city.Population) AS Not_Cities_Population "
+                + "country.population - SUM(city.Population) AS Not_Cities_Population "
                 + "FROM country "
                 + "JOIN city ON country.Code = city.CountryCode "
                 + "GROUP BY country.Name ORDER BY total_population DESC";
