@@ -693,9 +693,9 @@ void getdisplayCitiesContinent()     {
         }
         // Check The first entry of country report data is True as Expected.
         assertEquals(city.get(0).getCountryName(), "China", "First Entry Rural Urban Report - country name is not true.");
-        assertEquals(city.get(0).getTotalPopulation(),  463_753_554_000L, "First Entry Capital City Report - population is not true.");
+        assertEquals(city.get(0).getTotalPopulation(),  1_277_558_000L, "First Entry Capital City Report - population is not true.");
         assertEquals(city.get(0).getTotalCitiesPopulation(), 175_953_614, "First Entry Rural Urban Report - continent name is not true.");
-        assertEquals(city.get(0).getTotalNotCitiesPopulation(),  463_577_600_386L , "First Entry Capital City Report - population is not true.");
+        assertEquals(city.get(0).getTotalNotCitiesPopulation(),  1_101_604_386L , "First Entry Capital City Report - population is not true.");
 
     }
 

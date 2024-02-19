@@ -110,8 +110,8 @@ public class RuralUrbanReport {
         final List<City> ruCounPop = new ArrayList<>();
         // Create string for SQL statement with no limit - fetch all queries
 //        final String strSelect = "SELECT country.Name AS Country, country.Population , "
-//                + "IFNULL(SUM(city.Population), 0) AS Cities_Population, "
-//                + "country.Population - IFNULL(SUM(city.Population), 0) AS Not_Cities_Population "
+//                + SUM(city.Population) AS Cities_Population, "
+//                + "country.Population - SUM(city.Population) AS Not_Cities_Population "
 //                + "FROM country "
 //                + "LEFT JOIN city ON country.Code = city.CountryCode "
 //                + "GROUP BY country.Name ORDER BY country.Population DESC";
@@ -124,9 +124,6 @@ public class RuralUrbanReport {
                 "LEFT JOIN city ci ON c.Code = ci.CountryCode " +
                 "GROUP BY c.Name " +
                 "ORDER BY CountryPopulation DESC";
-
-
-
 
         try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
