@@ -119,11 +119,14 @@ public class RuralUrbanReport {
         String strSelect = "SELECT c.Name AS Country, " +
                 "c.Population AS CountryPopulation, " +
                 "IFNULL(SUM(ci.Population), 0) AS Cities_Population, " +
-                "c.Population - IFNULL(SUM(ci.Population), 0) AS Not_Cities_Population " +
+                "(SELECT c.Population - IFNULL(SUM(ci.Population), 0) " +
+                " FROM country c LEFT JOIN city ci ON c.Code = ci.CountryCode " +
+                " WHERE c.Name = Country) AS Not_Cities_Population " +
                 "FROM country c " +
                 "LEFT JOIN city ci ON c.Code = ci.CountryCode " +
                 "GROUP BY c.Name " +
                 "ORDER BY CountryPopulation DESC";
+
 
 
         try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
