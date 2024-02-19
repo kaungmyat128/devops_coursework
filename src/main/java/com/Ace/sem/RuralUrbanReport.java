@@ -120,9 +120,14 @@ public class RuralUrbanReport {
             while (query3.next()) {
                 final City ruPop = new City();
                 ruPop.setCountryName(query3.getString("Country"));
-                ruPop.setTotalPopulation(query3.getLong("Total_Population"));
+                ruPop.setTotalPopulation(query3.getLong("total_Population"));
                 ruPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
-                ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
+                if (query3.getLong("Not_Cities_Population") < 0){ 
+                    ruPop.setTotalNotCitiesPopulation(0));
+                }
+                else {
+                    ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
+                }
                 ruCounPop.add(ruPop);
             }
             return ruCounPop;
