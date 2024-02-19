@@ -109,18 +109,33 @@ public class RuralUrbanReport {
         // Create array list 'RUContinentPopulation' and add query result into array list
         final List<City> ruCounPop = new ArrayList<>();
         // Create string for SQL statement with no limit - fetch all queries
-        final String strSelect = "SELECT country.Name AS Country, country.Population , "
-                + "SUM(city.Population) AS Cities_Population, "
-                + "country.Population - SUM(city.Population) AS Not_Cities_Population "
-                + "FROM country "
-                + "JOIN city ON country.Code = city.CountryCode "
-                + "GROUP BY country.Name ORDER BY country.Population DESC";
+//        final String strSelect = "SELECT country.Name AS Country, country.Population , "
+//                + "IFNULL(SUM(city.Population), 0) AS Cities_Population, "
+//                + "country.Population - IFNULL(SUM(city.Population), 0) AS Not_Cities_Population "
+//                + "FROM country "
+//                + "LEFT JOIN city ON country.Code = city.CountryCode "
+//                + "GROUP BY country.Name ORDER BY country.Population DESC";
+
+        final String strSelect = "SELECT Country, " +
+                    "CountryPopulation, " +
+                    "IFNULL(Cities_Population, 0) AS Cities_Population, " +
+                    "IFNULL(CountryPopulation - Cities_Population, 0) AS Not_Cities_Population " +
+                    "FROM ( " +
+                    "    SELECT country.Name AS Country, " +
+                    "           country.Population AS CountryPopulation, " +
+                    "           SUM(city.Population) AS Cities_Population " +
+                    "    FROM country " +
+                    "    LEFT JOIN city ON country.Code = city.CountryCode " +
+                    "    GROUP BY country.Name " +
+                    ") AS subquery " +
+                    "ORDER BY CountryPopulation DESC";
+
         try(Statement stmt = con.createStatement(); ResultSet query3 = stmt.executeQuery(strSelect)){
             // Extract population of countries information and store into array list
             while (query3.next()) {
                 final City ruPop = new City();
                 ruPop.setCountryName(query3.getString("Country"));
-                ruPop.setTotalPopulation(query3.getLong("country.Population"));
+                ruPop.setTotalPopulation(query3.getLong("CountryPopulation"));
                 ruPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
                 ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
 //                if (query3.getLong("Not_Cities_Population") < 0){
