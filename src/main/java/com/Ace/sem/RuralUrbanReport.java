@@ -109,9 +109,9 @@ public class RuralUrbanReport {
         // Create array list 'RUContinentPopulation' and add query result into array list
         final List<City> ruCounPop = new ArrayList<>();
         // Create string for SQL statement with no limit - fetch all queries
-        final String strSelect = "SELECT country.Name AS Country, country.Population AS total_population , "
+        final String strSelect = "SELECT country.Name AS Country, SUM(country.Population) AS total_population , "
                 + "SUM(city.Population) AS Cities_Population, "
-                + "country.Population - SUM(city.Population) AS Not_Cities_Population "
+                + "SUM(country.population) - SUM(city.Population) AS Not_Cities_Population "
                 + "FROM country "
                 + "JOIN city ON country.Code = city.CountryCode "
                 + "GROUP BY country.Name ORDER BY total_population DESC";
@@ -120,14 +120,15 @@ public class RuralUrbanReport {
             while (query3.next()) {
                 final City ruPop = new City();
                 ruPop.setCountryName(query3.getString("Country"));
-                ruPop.setTotalPopulation(query3.getLong("total_Population"));
+                ruPop.setTotalPopulation(query3.getLong("Total_Population"));
                 ruPop.setTotalCitiesPopulation(query3.getLong("Cities_Population"));
-                if (query3.getLong("Not_Cities_Population") < 0){ 
-                    ruPop.setTotalNotCitiesPopulation(0);
-                }
-                else {
-                    ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
-                }
+                ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
+//                if (query3.getLong("Not_Cities_Population") < 0){
+//                    ruPop.setTotalNotCitiesPopulation(0);
+//                }
+//                else {
+//                    ruPop.setTotalNotCitiesPopulation(query3.getLong("Not_Cities_Population"));
+//                }
                 ruCounPop.add(ruPop);
             }
             return ruCounPop;
